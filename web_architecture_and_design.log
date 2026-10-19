@@ -1,0 +1,277 @@
+# 六年級英語特訓網頁 — 詳細設計架構、目標與設計原因 (web_architecture_and_design.log)
+建立日期：2026-10-18
+文件性質：系統架構規格書、設計決策白皮書、教研哲學與維護指引
+適用對象：使用者、後續維護之 AI Agent、英語教研專家
+
+================================================================================
+目錄導覽
+================================================================================
+一、產品核心定位與教育目標 (Product Vision & Core Goals)
+  1.1 研發背景與目標對象 (Target Audience)
+  1.2 傳統小學生英語學習四大痛點 (Core Pain Points Solved)
+  1.3 三大訓練矩陣 (Three-Tier Training Matrix)
+
+二、詳細系統設計架構 (Detailed System Architecture)
+  2.1 零建構純靜態 SPA 架構 (Zero-Build Vanilla SPA)
+  2.2 目錄結構與模組職責 (File Structure & Module Responsibilities)
+  2.3 全域狀態管理與生命週期 (State Management & Data Flow)
+  2.4 原生 Web Speech API 雙速語音引擎 (Web Speech Dual-Speed TTS)
+  2.5 A4 實體考卷排版與 QR Code 深度連結系統 (Print Engine & Deep Linking)
+  2.6 AI 教研閉環匯出器架構 (AI Prompt Exporter Architecture)
+
+三、關鍵設計決策與設計原因 (Design Decisions & Rationales - "Why")
+  3.1 為什麼堅持捨棄 Vite/React 改用純原生 Vanilla SPA？
+  3.2 為什麼堅持「先在實體紙筆作答，再上網即時對答案」？
+  3.3 為什麼需要設計「晨間純腦力體操」（免動筆 1★~10★ 語感天梯）？
+  3.4 為什麼需要「雙速 TTS（1.0x 常速 / 0.8x 慢速）」？
+  3.5 為什麼單字卡需要「7 大記憶錨點（字根/諧音/情境/搭配/口訣/易混淆）」？
+  3.6 為什麼 A4 考卷需要專屬「單字聽寫格」與「作答 QR Code」？
+
+四、六大核心模組功能與互動邏輯細節 (Module & Interaction Details)
+  4.1 頂部導覽列 (Topbar)
+  4.2 首頁進度儀表板 (Dashboard View)
+  4.3 單字與閱聽專區 (Vocabulary & Reading Study Room)
+  4.4 雙軌測驗作答頁 (Quiz View: 紙筆對答軌 vs iPad 晨間體操軌)
+  4.5 終身錯題本與弱點消滅戰 (Error Book View)
+  4.6 A4 考卷即時排版與出卷中心 (Print Setup View)
+
+五、資料結構規範與未來擴充指引 (Data Specification & Roadmap)
+  5.1 課本與單元物件規格 (Book & Unit Schema)
+  5.2 詞彙物件規格 (Vocabulary Schema - 7 記憶錨點)
+  5.3 文法物件規格 (Grammar Schema)
+  5.4 測驗題目物件規格 (Quiz Question Schema)
+  5.5 部署 GitHub Pages 與 iPad PWA 設定指南
+
+================================================================================
+一、產品核心定位與教育目標 (Product Vision & Core Goals)
+================================================================================
+
+### 1.1 研發背景與目標對象 (Target Audience)
+本系統專為「國小六年級學生（12 歲）」量身研發，對標台灣小六英語課綱與校內段考重點，向下紮根課本基礎、向上直通全民英檢（GEPT 初級）與劍橋國際英語檢定（Cambridge KET / Flyers A2~B1 頂標）。
+
+### 1.2 傳統小學生英語學習四大痛點 (Core Pain Points Solved)
+1. **死記硬背單字，脫離語境與拼寫結構**：傳統單字表只提供「英文-中文」，學生死記字母排列，遇到同音異字或詞性變化立刻卡關，缺乏字根字首邏輯與語境搭配感。
+2. **螢幕填鴨點選，脫離紙筆拼寫基本功**：坊間線上學習多為四選一選擇題，學生在螢幕上看懂單字，到了學校月考紙筆測驗卻頻繁出現漏字母、動詞三態拼錯、單複數漏加 s 等致命失誤。
+3. **對答案脫節，錯題未即時閉環**：寫完坊間評量後等待家長或安親班老師批改，早已忘記當下語意邏輯；錯題未標註盲點原因，導致相同文法漏洞一再重現。
+4. **雲端依賴與網路延遲耗損專注力**：舊版採用 Google Apps Script (GAS) 搭配 Google 試算表，讀取題目時常面臨數秒至十數秒延遲，嚴重干擾學童學習節奏。
+
+### 1.3 三大訓練矩陣 (Three-Tier Training Matrix)
+1. **課本高保真閱聽與單字精練（Ground Truth 錨點）**：
+   - 100% 覆蓋課本課文、情境對話、核心單字與隨堂練習。
+   - 搭配原生 Web Speech 雙速 TTS 語音朗讀，兼顧「聽、說、讀、寫」。
+2. **晨間早餐「純腦力體操」（1★~10★ 晨間無痛思維升級）**：
+   - 重視語感邏輯與語境辨析、**完全不需要拿筆**的深度選擇題（4 選項）。
+   - 專供學生利用早餐 5~10 分鐘在 iPad 上單手點選，透過時態倒裝、代名詞指涉、介系詞搭配快速秒殺，無痛養成道地英語直覺。
+3. **A4 實體考卷列印手寫 + 網頁即時核對閉環**：
+   - 支援「Spelling Bee 單字聽寫卷」、「Grammar & Usage 文法診斷卷」、「Reading Comprehension 閱讀測驗卷」。
+   - 紙上作答保留拼寫肌肉記憶，網頁單題三態核對（👍 答對 / ⏳ 想很久 / ❌ 答錯），錯題自動歸檔終身錯題本。
+
+================================================================================
+二、詳細系統設計架構 (Detailed System Architecture)
+================================================================================
+
+### 2.1 零建構純靜態 SPA 架構 (Zero-Build Vanilla SPA)
+本專案全面繼承六上數學專案的「純前端靜態單頁應用」優勢：
+- **無任何打包工具與編譯步驟**（No Vite, No Webpack, No Babel, No npm build）。
+- **技術棧**：原生 HTML5 + CSS3 (CSS Variables + Flexbox/Grid) + Vanilla JavaScript (ES6+)。
+- **外部依賴極小化**：
+  * `qrcode-generator (1.4.4)`：即時生成 A4 考卷之高品質向量 SVG QR Code。
+  * `Google Fonts`：Inter 與 Noto Sans TC，打造國際感、通透且具質感的學習介面。
+- **優勢**：
+  * **永久免維護**：不依賴後端伺服器或雲端試算表，零維運成本。
+  * **極致加載速度**：所有靜態資源首屏毫秒開啟，完全無冷啟動延遲。
+  * **離線支援與隨處部署**：支援 GitHub Pages、本機靜態伺服器，甚至雙擊 `index.html` 即可完整執行。
+
+### 2.2 目錄結構與模組職責 (File Structure & Module Responsibilities)
+```text
+英語學習網頁/
+├── index.html                   # 應用骨架、SEO Meta、頂部導覽列、視圖容器
+├── style.css                    # 完整 Design System：深藍/翡翠/琥珀配色、玻璃擬態、A4 列印樣式
+├── english_data.js              # 領域資料庫：教材單元、7 記憶錨點單字庫、文法規則、測驗題庫
+├── app.js                       # 應用核心控制器：路由視圖切換、全域狀態機、TTS 語音控制、A4 出卷、錯題本
+├── goals_and_roadmap.log        # 專案目標與規劃 Log
+├── memory.log                   # 專案歷史對話與記憶 Log
+├── web_architecture_and_design.log # 詳細設計架構與邏輯 Log
+└── 六年級上/
+    └── 課本/                    # 課本掃描 PDF 與後續高保真 MD 檔案庫
+```
+
+### 2.3 全域狀態管理與生命週期 (State Management & Data Flow)
+- **State 物件**：
+  ```javascript
+  const AppState = {
+    currentView: 'dashboard',    // 'dashboard' | 'vocab' | 'quiz' | 'error_book' | 'print_setup'
+    selectedBookId: 'od3',       // 當前選定課本
+    selectedUnitId: 'u01',       // 當前選定單元
+    quizMode: 'practice',        // 'practice' (紙筆對答) | 'brain_gym' (晨間腦力) | 'error_retry' (重練錯題)
+    quizQuestions: [],           // 當前場次題目清單
+    currentIndex: 0,             // 當前題目索引
+    quizAnswers: {},             // 作答狀態記錄 { qId: { result: 'correct'|'hesitant'|'wrong', timestamp } }
+    ttsSpeed: 1.0,               // 語音速度 1.0 或 0.8
+    ttsVoice: null               // 選定之美式/英式發音人聲
+  };
+  ```
+- **LocalStorage 儲存鍵值**：
+  * `tiger_english_user`：使用者身分識別。
+  * `tiger_english_progress`：各單元學習進度與星級統計。
+  * `tiger_english_errors`：終身錯題本清單（包含題目 ID、出錯次數、出錯原因代碼、最近作答時間）。
+  * `tiger_english_settings`：音量、TTS 語速、主題模式。
+
+### 2.4 原生 Web Speech API 雙速語音引擎 (Web Speech Dual-Speed TTS)
+- **實作架構**：
+  - 調用 `window.speechSynthesis`。
+  - 初始化時監聽 `speechSynthesis.onvoiceschanged`，優先挑選：
+    1. Microsoft Natural English Voices (如 Jenny, Guy, Sonia)
+    2. Google US English
+    3. 系統原生 `en-US` 或 `en-GB`。
+  - 控制參數：`rate = AppState.ttsSpeed`（1.0x 或 0.8x）、`pitch = 1.0`。
+  - 提供防抖（Debounce）與中斷機制：新發音觸發前自動 `speechSynthesis.cancel()`，避免重複堆疊播音。
+
+### 2.5 A4 實體考卷排版與 QR Code 深度連結系統
+- **列印樣式引擎 (`@media print`)**：
+  - 強制設定 `@page { size: A4 portrait; margin: 12mm 15mm 15mm 15mm; }`。
+  - 自動隱藏頂部導覽列、按鈕群與底欄。
+  - 單字聽寫卷自動套用雙欄排列，每題預留 10mm 橫線供書寫。
+  - 考卷右上角自動生成該單元對應網頁的 SVG QR Code。
+
+### 2.6 AI 教研閉環匯出器架構 (AI Prompt Exporter)
+- 當學生在某單元完成測驗或錯題本積累錯誤時，點擊「匯出給 AI」按鈕，系統自動將：
+  1. 學生錯題文字與選錯選項
+  2. 題目背後綁定的 `concept_id` 與 `misconceptions` 代碼
+  3. 學生標註的盲點原因（如拼寫粗心、時態搞混、生字未背）
+  組裝成一份高精準度 Prompt，學生或家長可一鍵複製貼給 AI，立即生成 3 題同觀念變式題進行精準補強。
+
+================================================================================
+三、關鍵設計決策與設計原因 (Design Decisions & Rationales - "Why")
+================================================================================
+
+### 3.1 為什麼堅持捨棄 Vite/React 改用純原生 Vanilla SPA？
+- **原因 1：極致輕量與零構建阻力**。使用者不需要安裝 Node.js、不需要執行 `npm run dev`，任何設備雙擊 `index.html` 即可執行。
+- **原因 2：永久穩定性**。前端框架與相依套件每隔一年可能出現重大升級與破壞性變更（Breaking Changes），而純 HTML5/CSS3/ES6 標準具有十年以上的向下相容性。
+- **原因 3：首屏秒開與離線支援**。所有程式碼與資料直接就緒，徹底擺脫 Vite 打包後的檔案分散與加載開銷。
+
+### 3.2 為什麼堅持「先在實體紙筆作答，再上網即時對答案」？
+- **原因 1：保護 12 歲學童視力**。避免小朋友一整天盯著螢幕做題，造成視力惡化與注意力渙散。
+- **原因 2：鍛鍊拼寫手感與學校考試手感**。國小英語段考全為實體手寫卷，字母大小寫、標點符號、字間距離（Spacing）都需要紙筆書寫肌肉記憶。
+
+### 3.3 為什麼需要設計「晨間純腦力體操」（免動筆 1★~10★ 語感天梯）？
+- **原因**：利用早餐 5~10 分鐘碎片時間。小朋友早上剛起床拿筆寫字抗拒感大，但利用 iPad 單手點擊挑戰 1~10 星語感題，趣味性高、無痛喚醒大腦英語思維。
+
+### 3.4 為什麼需要「雙速 TTS（1.0x 常速 / 0.8x 慢速）」？
+- **原因**：小學生在聽英語句子時，常因為常速中的「連音（Liaison）」或「尾音弱化（Reduction）」聽不清楚單字。提供 0.8x 慢速可以讓孩子精準聽清每一個音節與發音細節。
+
+### 3.5 為什麼單字卡需要「7 大記憶錨點」？
+- **原因**：單一記憶點（只背中英文）極易遺忘。結合「字根字首（理解單字起源）」、「諧音聯想（幽默掛鉤）」、「生活情境（畫面感）」、「押韻口訣（節奏感）」能同時啟動左右腦記憶迴路。
+
+### 3.6 為什麼 A4 考卷需要專屬「單字聽寫格」與「作答 QR Code」？
+- **原因**：小學生字體大、若沒有格線或橫線容易歪斜重疊；專屬 QR Code 則讓小朋友寫完紙卷後，拿起 iPad 掃一下即可瞬間跳到該份考卷的對答案頁面，體驗一氣呵成。
+
+================================================================================
+四、六大核心模組功能與互動邏輯細節 (Module & Interaction Details)
+================================================================================
+
+### 4.1 頂部導覽列 (Topbar)
+- 包含：品牌標誌、課本切換下拉選單、視圖切換 Tab（學習專區 / 測驗練習 / 終身錯題本 / A4 出卷）、TTS 語速切換鈕（1.0x / 0.8x）、使用者頭像與掌握度總覽。
+
+### 4.2 首頁進度儀表板 (Dashboard View)
+- 呈現各單元掌握度卡片（詞彙精熟度、文法掌握度、測驗通過狀態）。
+- 提供「每日晨間英語體操」快捷入口，一鍵隨機抽取 5 題星級題。
+
+### 4.3 單字與閱聽專區 (Vocabulary & Reading Study Room)
+- 支援課文分段閱讀，每段自帶發音按鈕與中英對照切換開關。
+- 支援單字卡翻轉檢視，正面為單字、音標、詞性與發音鈕；背面展開 7 大記憶錨點與例句。
+
+### 4.4 雙軌測驗作答頁 (Quiz View)
+- 支援兩種模式：
+  1. **紙筆對答模式**：畫面只顯示題號與大按鈕（👍 / ⏳ / ❌），點擊後立即展開正解、文法考點與防坑診斷。
+  2. **iPad 互動模式**：畫面呈現題目與 4 個大按鈕選項，點選後即時給予雙色視覺反饋。
+
+### 4.5 終身錯題本與弱點消滅戰 (Error Book View)
+- 彙整所有被標註為 ❌ 或 ⏳ 的題目。
+- 支援篩選功能（依單元、依題型、依錯題次數）。
+- 提供「一鍵啟動錯題消滅戰」：僅針對未熟練題目進行重測，連續兩次答對自動移出錯題本。
+
+### 4.6 A4 考卷即時排版與出卷中心 (Print Setup View)
+- 自由勾選出卷單元與題型比例（單字聽寫、文法填空、閱讀理解）。
+- 即時預覽標準 A4 排版，提供「列印考卷」與「列印解答（教師/家長版）」兩種輸出模式。
+
+================================================================================
+五、資料結構規範與未來擴充指引 (Data Specification)
+================================================================================
+
+### 5.1 課本與單元物件規格 (Book & Unit Schema)
+```javascript
+{
+  book_id: "od3",
+  book_name: "Oxford Discover 3",
+  units: [
+    {
+      unit_id: "od3_u01",
+      unit_number: 1,
+      unit_title: "How do we explore space?",
+      big_question: "How do we explore space?",
+      page_range: "p.6 - p.15"
+    }
+  ]
+}
+```
+
+### 5.2 詞彙物件規格 (Vocabulary Schema - 7 記憶錨點)
+```javascript
+{
+  word_id: "od3_u01_v01",
+  book_id: "od3",
+  unit_id: "od3_u01",
+  word: "Astronaut",
+  ipa: "/ˈæstrənɔːt/",
+  pos: "名詞 (Noun)",
+  chi: "太空人、宇航員",
+  breakdown: "astro (星星) + naut (水手) -> 在星海中航行的水手",
+  trick: "諧音「愛死戳鬧」，太空人在太空艙裡愛死戳鬧了",
+  scene: "穿著臃腫白色太空服，在無重力太空中漫步，背後是蔚藍美麗的地球",
+  collocation: "Neil Armstrong, trained astronaut, space mission",
+  img: "👨‍🚀",
+  context_eng: "Neil Armstrong was the first astronaut to walk on the moon.",
+  context_chi: "阿姆斯壯是第一位登上月球的太空人。",
+  chant: "Stars in sight, astronauts take flight!",
+  compare: "Astronaut (太空人) vs. Astronomer (天文學家)"
+}
+```
+
+### 5.3 測驗題目物件規格 (Quiz Question Schema)
+```javascript
+{
+  q_id: "od3_u01_q01",
+  book_id: "od3",
+  unit_id: "od3_u01",
+  type: "grammar",            // "reading" | "grammar" | "vocab" | "brain_gym"
+  question: "The satellite ___ around the Earth every 90 minutes.",
+  options: ["orbit", "orbits", "is orbiting", "orbited"],
+  answer: "orbits",
+  difficulty: "★★★☆☆",
+  explanation: "正確答案：orbits。\\n原因：描述客觀規律或科學事實使用現在簡單式，主詞 The satellite 為第三人稱單數，動詞需加 s。\\n盲點警示：勿誤選 is orbiting (進行式) 或 orbited (過去式)。",
+  concept_id: "OD3_U01_PRESENT_SIMPLE_FACTS"
+}
+```
+
+
+================================================================================
+六、六上期中考特訓專區 (Midterm Sprint) 架構設計與互動規範 (2026-10-19 新增)
+================================================================================
+
+### 6.1 核心理念：堅持「零鍵盤打字」、「精細分句精聽」與「直覺點詞改錯」
+小學生在電腦或 iPad 鍵盤上打字極為耗時且容易因拼字手誤產生挫折感。因此期中考專區嚴格奉行三大原則：
+1. **紙筆書寫第一**：學生在實體紙筆寫完，按螢幕翻牌核對，自評 👍 答對 / ❌ 答錯（記入錯題本）。
+2. **點詞劃錯互動 (Mistake Buster)**：改錯題將句子切分成單詞 Token Chips，學生點擊錯誤單詞（紅色劃線標記），翻牌後浮現更正標籤與盲點破題思路，杜絕彈窗打字。
+3. **分句獨立精聽 (Sentence Shadowing)**：長篇課文嚴禁全文無腦播放，切成獨立單句卡片，點句即唸、即時金黃高亮（.active-sentence），唸完自動暫停讓孩子消化跟讀；支援 1.0x / 0.8x 雙速與逐句自動跟讀 3 秒倒數計時。
+
+### 6.2 midterm_data.js 前端資料架構規格
+包含 4 大教材、11 個單元完整結構：
+- `passages`: 分句朗讀篇章（切成單句陣列，排除註腳符號）
+- `vocab`: 核心單字與計量詞搭配庫
+- `mistake_buster`: 改錯題（含句子、單詞 Token、錯誤索引、修正詞、教研盲點）
+- `quizzes`: 二選一、句子改寫、是非題、閱讀理解、階梯挑戰題
+
+### 6.3 語音模式 (Voice Mode) 模糊匹配引擎
+採用 Web Speech API (SpeechRecognition / webkitSpeechRecognition) 進行即時英文語音轉錄。
+轉錄結果透過 Token 匹配度演算法進行相似度計算（>=65% 判定通過），既能容許標點符號與輕微發音差異，又能鍛鍊孩子的口說流暢度。

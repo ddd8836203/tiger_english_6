@@ -1,0 +1,393 @@
+# 專案執行對話與歷程完整記憶檔 (memory.log)
+建立日期：2026-10-18
+紀錄對象：使用者與 AI 協作全紀錄
+檔案用途：提供日後 AI 重新載入時快速還原上下文、決策背景、已產出檔案與操作細節。
+
+================================================================================
+目錄導覽
+================================================================================
+一、條列式大綱 (Chronological Outline)
+  1. 階段一 (2026-10-18)：專案啟動、核心願景與參考專案比對檢核
+  2. 階段二 (2026-10-18)：技術架構可行性論證與重大決策確立（Vanilla SPA + 雙軌作答 + Web Speech TTS + 本地資料庫）
+  3. 階段三 (2026-10-18)：六年級上學期課本現況診斷與「雙層融合 MD (Dual-Layer)」轉檔規格確立
+  4. 階段四 (2026-10-18)：專案管理 3 大 Log 機制正式落地建立
+  5. 階段五 (2026-10-18)：第一單元課本高解析抽圖與標準雙層 Unit01.md 試轉完工 (✅ 完工)
+  6. 階段六 (2026-10-18)：新增專案管理工具 source_manifest.log 與 ai_conversion_prompt.md (✅ 完工)
+  7. 階段七 (2026-10-18)：既有 Excel 資料庫解析與前端純靜態 english_data.js 整合 (✅ 完工)
+  8. 階段八 (2026-10-18)：搭建 Zero-Build Vanilla SPA 前台原型與雙軌測驗/A4 列印引擎 (✅ 完工)
+  10. 階段十 (2026-10-18 ~ 2026-10-19)：國小六上英語期中考範圍 11 大核心單元全數高保真轉錄完工 (✅ 完工)
+  11. 階段十一 (2026-10-19)：期中考特訓專區 (Midterm Sprint) 全功能實作、資料庫生成與 E2E 實機驗收 (✅ 完工)
+  12. 階段十二 (2026-10-19)：單元選單精簡、句庫雜質徹底清除與逐句繁中翻譯按鈕落地驗收 (✅ 完工)
+  13. 階段十三 (2026-10-19)：國小六上 6 頁歷史考券標準四層分離數位化與教研總綱落地 (✅ 完工)
+  14. 階段十四 (2026-10-19)：岱崙美語歷史考券錯題特訓專區、A4 紅黑批改對照卷與 AI 變式狙擊卷落地 (✅ 完工)
+  15. 階段十五 (2026-10-19)：全單元小考題庫爆量擴充、雙軌測驗題型膠囊分類、單字盲聽與三段式教研詳解全面落地 (✅ 完工)
+
+二、條列式大綱細節 (Comprehensive Conversation History & Action Log)
+  [詳見後續各章節深入記錄]
+================================================================================
+
+--------------------------------------------------------------------------------
+一、條列式大綱 (Chronological Outline)
+--------------------------------------------------------------------------------
+1. 階段一 (2026-10-18)：專案啟動、核心願景與參考專案比對檢核
+   - 1.1 使用者明確提出建立全新「英語學習網頁」之需求，強調「先不要動手做網頁，先確認可行性跟做法」。
+   - 1.2 指出舊專案路徑 `C:\@植善課業\AI\Tiger_5th 2 nd`，且已將 Google 雲端資料庫 Excel 下載至 `Tiger 5th 2ndBooks.xlsx`。
+   - 1.3 指出參考架構為最新建好的數學網頁專案 `C:\@植善課業\AI\數學轉 MD 檔`。
+   - 1.4 要求專案管理建立 3 個 Log 檔案（專案目的 log、memory log、完整詳細網頁設計架構跟邏輯 log），並詢問專案管理建議。
+   - 1.5 指出教材放置於 `C:\@植善課業\AI\英語學習網頁\六年級上\課本`，要求確認如何 100% 高保真轉為 AI 專用 MD 檔。
+
+2. 階段二 (2026-10-18)：技術架構可行性論證與重大決策確立
+   - 2.1 AI 全面檢驗舊專案 `Tiger_5th 2 nd`：確認採用 React 18 + Vite + GAS (Google Apps Script) + TSV 架構。
+   - 2.2 AI 深入剖析數學專案 `數學轉 MD 檔` 之核心致勝架構：Zero-Build Vanilla SPA (HTML+CSS+JS)、雙軌作答（A4 列印紙筆手寫 + 網頁即時核對）、LocalStorage 終身錯題本、雙層融合 MD。
+   - 2.3 確立技術架構升級決策：全面移植數學專案的「純前端靜態 SPA 架構」，避開 Vite 打包構建與 GAS 雲端試算表延遲問題；新增原生 Web Speech API 雙速發音引擎，打造極致絲滑的英語學習前台。
+
+3. 階段三 (2026-10-18)：六年級上學期課本現況診斷與「雙層融合 MD (Dual-Layer)」轉檔規格確立
+   - 3.1 透過 Python PyMuPDF 工具檢視 `六年級上\課本` 目錄下 9 本 PDF（Oxford Discover 3、Oxford Discover Grammar 3、Reading with Writing 6、Write Right 3 等）。
+   - 3.2 發現關鍵事實：所有 PDF 均為「掃描版影像（Scanned PDF，無可選取之文字層）」。
+   - 3.3 確立轉檔前置作業：使用 PyMuPDF 批次將 PDF 頁面渲染為高解析圖片，再透過 Vision 模型進行逐頁 100% 高保真提取。
+   - 3.4 確立英語專屬的「雙層融合 MD」架構：Layer 1 課本 100% 原文 Ground Truth（含對話、課文、插圖文字化、單字、隨堂題）；Layer 2 AI_SPEC 英語教研增強區塊（概念代碼、核心語法公式、動詞三態、搭配詞、易混淆對比、GEPT/劍橋梯隊對標）。
+
+4. 階段四 (2026-10-18)：專案管理 3 大 Log 機制正式落地建立
+   - 4.1 使用者確認執行路線圖，下達「log 檔你直接幫我建立」之明確指令。
+   - 4.2 嚴格遵照使用者在 `如何叫 AI 寫 Log 紀錄.txt` 與數學專案之標準規範，採「一、條列式大綱」與「二、條列式大綱細節」雙層格式建立 3 個 Log 檔案：
+     - `goals_and_roadmap.log`（專案目標與後續執行規劃細節）
+     - `memory.log`（專案執行對話與歷程完整記憶檔，含今日日期 2026-10-18）
+     - `web_architecture_and_design.log`（詳細設計架構、目標與設計原因）
+
+================================================================================
+二、條列式大綱細節 (Comprehensive Conversation History & Action Log)
+================================================================================
+
+### 1. 階段一 (2026-10-18)：專案啟動、核心願景與參考專案比對檢核
+- **使用者核心指示**：
+  - 「我要建立一個新的英語學習網頁, 先不要動手做網頁, 先確認可行性跟做法」
+  - 1. 舊的網頁專案是 `C:\@植善課業\AI\Tiger_5th 2 nd`，資料庫 Excel 為 `Tiger 5th 2ndBooks.xlsx`。
+  - 2. 建立新架構類似最近建好的數學網頁 `C:\@植善課業\AI\數學轉 MD 檔`。
+  - 3. 先看完舊專案，根據新數學架構規劃新英語網頁。
+  - 4. 建立 3 個 Log 檔管理（專案目的 log、memory log、完整詳細網頁設計架構跟邏輯 log），並請 AI 提供專案管理建議。
+  - 5. 檢視 `六年級上\課本`，確認如何 100% 高保真提取課本內容轉成 AI 專用 MD 檔。
+- **AI 檢核動作**：
+  - 檢視 `C:\@植善課業\AI` 總目錄結構，確認各專案關聯性。
+  - 讀取 `如何叫 AI 寫 Log 紀錄.txt`，確認使用者對 Log 記錄的嚴格標準：
+    * 必須具備今天日期。
+    * 內容分 2 部分：1. 先寫條列式大綱，2. 再寫每一個條列式大綱細節。
+
+---
+
+### 2. 階段二 (2026-10-18)：技術架構可行性論證與重大決策確立
+- **舊專案 (`Tiger_5th 2 nd`) 架構檢視與資產分析**：
+  - 技術棧：React 18 + Vite + GAS (Google Apps Script) + TSV。
+  - 頁面與組件：`StudyRoom.jsx`（閱讀 ReadingTab、單字 VocabTab、文法 GrammarTab）、`QuizEngine.jsx`、`SpellingQuizEngine.jsx`。
+  - 資料庫：`Tiger 5th 2ndBooks.xlsx`，內含 10 大工作表（Books, Units, Reading_Content, Vocabulary, Grammar, Reading_Quiz, Grammar_Quiz, Vocab_Quiz, Scores, Question_Log）。
+  - 單字卡包含極具價值的教研欄位：`Break` (字根拆解)、`Trick` (諧音聯想)、`Scene` (情境畫面)、`Collocation` (搭配詞)、`Chant` (記憶口訣)、`Compare` (易混淆詞)。
+  - 舊專案痛點：依賴 Vite 編譯打包、依賴 Google Apps Script 雲端試算表帶來的網路延遲與配額限制、缺乏實體 A4 考卷排版列印、無法與國小校內段考及檢定深度銜接。
+- **數學專案 (`數學轉 MD 檔`) 架構檢核與致勝要素**：
+  - 技術棧：Zero-Build Vanilla SPA (`index.html` + `style.css` + `math_data.js` + `app.js`)。
+  - 核心特色：
+    * 零依賴、免 npm build、無伺服器延遲、首屏毫秒開啟。
+    * 雙軌作答模式：A4 考卷一鍵列印手寫（字體 16pt、自帶草稿格與 QR Code）+ 網頁即時三態核對（👍/⏳/❌）。
+    * 終身錯題本 (Error Book)：LocalStorage 本地永久保存，支持一鍵重測錯題。
+    * 早餐純腦力體操：1~10★ 免動筆選擇題，iPad 觸控秒殺，雙色盲點回饋。
+    * AI Prompt Exporter：一鍵複製錯題代碼與學生盲點，直接餵給 AI 出變式題。
+- **新英語網頁融合決策**：
+  - 100% 採納數學專案的「Zero-Build Vanilla SPA」架構，徹底解決舊版網路延遲與構建負擔。
+  - 引入瀏覽器原生 `Web Speech API` 雙速 TTS，支援 0.8x 慢速精聽與 1.0x 正常朗讀。
+  - 撰寫 Python 腳本將 `Tiger 5th 2ndBooks.xlsx` 既有資料無痛轉化為 `english_data.js`。
+
+---
+
+### 3. 階段三 (2026-10-18)：六年級上學期課本現況診斷與「雙層融合 MD」轉檔規格確立
+- **課本 PDF 調查結果**：
+  - 經使用 Python PyMuPDF (`fitz`) 檢查，[六年級上/課本](file:///C:/@植善課業/AI/英語學習網頁/六年級上/課本) 中 9 本 PDF 均為掃描圖片（`text_len=0, images_count=1`）。
+  - 結論：無法透過純文字工具提取，必須依循先前數學專案模式，渲染高解析圖片後由 Vision AI 逐頁辨識提取。
+- **雙層融合 MD (Dual-Layer) 規格定案**：
+  - **Layer 1: 課本 100% 原文高保真 (Ground Truth)**：對話、課文、插圖文字化描繪、單字、隨堂測驗題幹與選項完全無刪減。
+  - **Layer 2: AI_SPEC 英語教研增強規範**：包含 concept_id、核心語法公式、動詞三態、字根字首、搭配詞、易混淆對比、GEPT/劍橋英檢梯隊對標。
+
+---
+
+### 4. 階段四 (2026-10-18)：專案管理 3 大 Log 機制正式落地建立
+- 使用者回覆：「log 檔你直接幫我建立，並確認依序推進 3 大步驟」。
+- AI 立即執行 `write_to_file`，於專案根目錄正式建立：
+  1. `goals_and_roadmap.log`
+  2. `memory.log`
+  3. `web_architecture_and_design.log`
+- 專案管理制度正式確立，下一步將進入第一單元課本抽樣試轉驗證。
+
+---
+
+### 5. 階段五 (2026-10-18)：第一單元課本高解析抽圖與標準雙層 Unit01.md 試轉完工
+- **高解析圖檔抽取**：
+  - 使用 Python PyMuPDF (`fitz`) 直接提取 `Oxford Discover_3.pdf` 原始內嵌影像，以每頁 1800x2500 超高解析度無損產出前 12 頁至 `六年級上\課本\OD3_pages/`。
+- **逐頁高保真提取**：
+  - 鎖定 Unit 1 核心範疇：p.6 至 p.15（共 10 頁課本內容）。
+  - 100% 完整收錄：
+    * Big Question 1 跨頁開篇（輪椅籃球賽插圖、探究四象限便籤、4 大引導任務）。
+    * Get Ready 核心單字 10 詞（festival, folk dance, wedding, family reunion, fair, race, team, winner, score, player）與全部 10 張彩圖描述、練習題圈選答案。
+    * Before You Read 閱讀策略（Fact vs. Opinion 事實判斷規則框、7 題打勾判斷、4 大語境詞彙）。
+    * Read 課文閱讀正文（"Having Fun" 四大主題：Festivals, Sports, Family Celebrations, Community Events，包含 7 張世界各國文化配圖深度描繪、側邊 Think 提問泡泡）。
+    * Understand 閱讀理解（8 題單字對應句子連線、事實摘要、4 題語境照片配對）。
+    * Grammar in Use 文法專區（Jay、Harry、Hannah 四格彩色漫畫、-ed 與 -ing 形容詞規則框、隨堂選擇與造句）。
+    * Communicate 聽口專區（埃及婚禮聽力題組、印度 vs 西方婚禮口說照片對比）。
+    * Word Study & Writing Study（名詞動詞雙棲詞同形異義、過去式時間副詞 on Sunday/last night、大單元總結）。
+- **AI_SPEC 英語教研增強規範注入**：
+  - 包含 concept_id (`OD3_U01_HAVING_FUN_CULTURE`)、CEFR A2 對標。
+  - 注入 4 大典型小學生易錯陷阱代碼（ERR_ED_ING_CONFUSION、ERR_THING_MODIFIED_BY_ED、ERR_TIME_PREPOSITION_ON_VS_IN、ERR_NOUN_VERB_POSITION）。
+  - 建立四級能力天梯出題樣題（L1 課本基礎檢索、L2 段考克漏字、L3 GEPT/劍橋英檢事實推論、L4 引導式寫作）。
+- **產出成果**：正式寫入 [OD3_Unit01_Having_Fun.md](file:///C:/@植善課業/AI/英語學習網頁/六年級上/課本/OD3_Unit01_Having_Fun.md)。
+
+---
+
+### 6. 階段六 (2026-10-18)：新增專案管理工具 source_manifest.log 與 ai_conversion_prompt.md (✅ 完工)
+- **使用者指示**：認可 AI 提出的兩項額外專案管理建議，明確要求「新增這 2 個 log 檔」。
+- **產出工具 1：教材數位化進度追蹤表**：
+  - 正式建立 [source_manifest.log](file:///C:/@植善課業/AI/英語學習網頁/source_manifest.log)。
+  - 全面清查並列冊「六年級上/課本」目錄下所有 9 本 PDF、共 415 頁掃描檔案。
+  - 明確規劃各教材目標 MD 檔名、單元範圍、核心文法對應與 6 項驗收 Checklist (Definition of Done)，徹底防止漏頁或單元錯位。
+- **產出工具 2：英語課本轉 MD 標準提示詞規範**：
+  - 正式建立 [ai_conversion_prompt.md](file:///C:/@植善課業/AI/英語學習網頁/ai_conversion_prompt.md)。
+  - 固化角色設定、三大核心原則（100% 零遺漏、插圖生動文字化、學生筆跡分離）。
+  - 提供各板塊提取細則、AI_SPEC YAML Schema、嚴格負向約束清單與以 OD3 Unit 1 為基礎的黃金示範樣板。
+- **當前專案管理制度總覽**：
+  - 已建立完整的「4 Log + 1 Prompt 規範」體系：
+    1. `goals_and_roadmap.log`（專案目標與路線圖）
+    2. `memory.log`（歷史記憶與對話全紀錄）
+    3. `web_architecture_and_design.log`（系統架構與設計邏輯）
+    4. `source_manifest.log`（教材數位化進度追蹤表）
+    5. `ai_conversion_prompt.md`（課本轉 MD 標準提示詞規範）
+
+---
+
+### 7. 階段七 (2026-10-18)：既有 Excel 資料庫解析與前端純靜態 english_data.js 整合 (✅ 完工)
+- **使用者指示**：推進至第三步，撰寫轉換腳本將舊資料庫 `Tiger 5th 2ndBooks.xlsx` 解析並生成前端純靜態 `english_data.js`。
+- **資料庫全面解析與轉檔腳本實作**：
+  - 編寫並執行 `convert_excel_to_data.py`，完整解析舊 Excel 的 8 大核心工作表：
+    * `Books`：9 本核心教材中英文名稱、類別與年級標籤。
+    * `Units`：106 個單元結構與主題名稱。
+    * `Reading_Content`：172 篇課文正文、字數統計與閱讀理解要點。
+    * `Vocabulary`：600 個核心單字，完整保留 7 大教研記憶錨點（Break 字根拆解、Trick 記憶聯想、Scene 情境畫面、Collocation 搭配詞、Chant 韻律口訣、Compare 易混淆詞）。
+    * `Grammar`：74 組核心文法規則、句型公式與對比例句。
+    * `Reading_Quiz` + `Grammar_Quiz` + `Vocab_Quiz`：1,612 題測驗題目，涵蓋題幹、四選項、正解與詳解。
+- **純靜態前端資料層產出**：
+  - 成功生成 `english_data.js`（檔案大小約 1.75 MB）。
+  - 掛載於全域變數 `window.ENGLISH_DATABASE`，徹底去除 Google Apps Script / Google Sheets 雲端試算表延遲，實現 0 延遲純靜態離線載入。
+
+---
+
+### 8. 階段八 (2026-10-18)：搭建 Zero-Build Vanilla SPA 前台原型與雙軌測驗/A4 列印引擎 (✅ 完工)
+- **使用者指示**：搭建首版原生 SPA 前台原型（支援單字閱聽卡、雙速 TTS 發音、A4 考卷排版列印）。
+- **前端三大核心檔案完工**：
+  1. `index.html`：
+     - 精品級導覽列：教材選擇（9 本書聯動 106 單元）、單元切換、三大模組切換（單字閱聽卡、雙軌測驗、晨間體操、A4 考卷列印、終身錯題本）。
+     - 具備統計數據摘要列（單字數、課文數、測驗題數）。
+     - 內建 AI Prompt Exporter 彈窗。
+  2. `style.css`：
+     - 暗色夜幕霓虹深邃配色（#0b0f19 背景、深藍晶體卡片、青藍與紫光強調）。
+     - 純手刻現代排版：CSS Grid / Flexbox、雙態切換、微動畫過渡、發音動態波紋。
+     - 專屬 `@media print` A4 排版樣式（隱藏操作按鈕、放大字體至 16pt、雙欄單字聽寫網格、標準考卷題號與作答橫線、右上角 QR Code 占位格）。
+  3. `app.js`：
+     - 全域狀態機與單元連動（當前書本、單元、題庫索引、答題紀錄）。
+     - 瀏覽器原生 Web Speech API 語音合成引擎：提供 1.0x 正常速度與 0.8x 慢速精聽發音。
+     - 7 大錨點單字卡渲染（中英、音標、Break、Trick、Scene、Collocation、Chant、Compare）。
+     - 雙軌測驗引擎：支援「實體紙筆手寫」三態核對（👍 答對 / ⏳ 猶豫 / ❌ 答錯）與「平板/線上」四選一點選即時回饋。
+     - 晨間純腦力體操（Brain Gym）：1~10★ 難度梯度、秒殺作答、雙色盲點即時提示。
+     - 終身錯題本：LocalStorage 自動持久化所有錯題與未熟題，支援「一鍵重測錯題」。
+     - A4 出卷引擎：一鍵組卷、渲染為標準 A4 聽寫卷與綜合試卷，並支援原生 `window.print()`。
+- **端對端實機驗收（E2E Browser Testing）**：
+  - 於本地 `http://localhost:8085/index.html` 啟動背景伺服器。
+  - 使用瀏覽器次代理人執行端對端測試：
+    * 成功切換教材與單元。
+    * 單字卡 7 大錨點完整展開，TTS 語音按鈕觸發正常。
+    * 雙軌測驗紙筆與線上模式切換流暢，詳解展開與三態打分無誤。
+    * 晨間體操答題後即時雙色解析（綠色正確語感、紅色排除干擾）。
+    * A4 考卷一鍵排版生成完畢，自帶列印專用樣式。
+    * 控制台確認 0 JavaScript 錯誤，首屏毫秒秒開。
+
+---
+
+### 9. 階段九 (2026-10-18)：5 套書架構可行性深度論證、金字塔目錄結構與 5 份 00_Overview.md 正式落地 (✅ 完工)
+- **使用者核心探討與指導**：
+  1. 提出深度可行性疑問：「一本書一個 MD 檔會造成後續 AI 看整個 MD 檔困難嗎？還是應該分成 MD 檔書本資料夾下，每一課 1 個 MD 檔？但每一課一個 MD 也可能造成 AI 閱讀時沒有全面性，另外是否做一個整本書大綱的 MD 檔，就像書本中的前言跟課程介紹？」
+  2. 糾正教材實體清冊：「應該是 9 份 pdf 教材，五本書，你再仔細檢查一次 六年級上/課本 的 9 份教材：Oxford Discover_3 (82頁)、Oxford Discover Grammar 3 (86頁)、Reading with writing_6 系列 (4冊共117頁)、Write right 3 系列 (2冊共77頁)、discover 6_Read and discover_all about space (53頁)。」
+  3. 提出極具前瞻性的防呆機制：「是否應該在每一課單獨的 MD 裡面前面需要放入該書本的 Overview.md 檔案的內容，避免 AI 僅閱讀該課檔案，未閱讀 Overview.md？」
+- **AI 專家分析與重大技術決策**：
+  1. **實體 PDF 完整性驗證**：透過 PyMuPDF 全面掃描確認，實體完全吻合使用者的盤點（5 套書系、9 份 PDF、共 375 頁）。
+  2. **長文本困境與金字塔分層架構 (Hierarchical Retrieval)**：
+     - 若單書 1 個大 MD 檔（高達 5,000~6,000 行），會引發 Token 暴增、長文本注意力稀釋（Lost in the Middle）與工具單次讀取 800 行超限問題。
+     - 確立採納使用者的天才構想：**「書本獨立資料夾 ➔ 00_Overview.md（宏觀全貌）➔ 獨立單元 Unit_XX.md（精準微觀）」**。
+  3. **微縮版全書脈絡導航塊 (Book Context Header)**：
+     - 在每一課單獨 MD 開頭內嵌 15~20 行導航塊（含書名、年級、CEFR、全書總綱連結、單元進度、前後文法遞進線與出題約束），完美解決「單課閱讀缺乏大局觀」之痛點，且避免全文照抄造成巨大冗餘。
+- **具體落地執行成果**：
+  1. **建立 5 套書系獨立目錄與專屬圖庫**：
+     - `01_Oxford_Discover_3/` (圖庫 `images/`)
+     - `02_Oxford_Discover_Grammar_3/` (圖庫 `images/`)
+     - `03_Reading_with_Writing_6/` (圖庫 `images/`)
+     - `04_Write_Right_3/` (圖庫 `images/`)
+     - `05_Read_and_Discover_6_Space/` (圖庫 `images/`)
+  2. **高保真抽取目錄頁並產出 5 份全書總綱 00_Overview.md**：
+     - [01_Oxford_Discover_3/00_Overview.md](file:///C:/@植善課業/AI/英語學習網頁/六年級上/課本/01_Oxford_Discover_3/00_Overview.md)：完整收錄 8 大單元、BQ 1~4、閱讀體裁、核心單字、語法句型與文法遞進圖。
+     - [02_Oxford_Discover_Grammar_3/00_Overview.md](file:///C:/@植善課業/AI/英語學習網頁/六年級上/課本/02_Oxford_Discover_Grammar_3/00_Overview.md)：收錄 9 大模組、18 個 Unit、文法規則與易錯陷阱對應。
+     - [03_Reading_with_Writing_6/00_Overview.md](file:///C:/@植善課業/AI/英語學習網頁/六年級上/課本/03_Reading_with_Writing_6/00_Overview.md)：收錄 6 大 Topic、12 個 Unit 閱讀策略與寫作任務矩陣。
+     - [04_Write_Right_3/00_Overview.md](file:///C:/@植善課業/AI/英語學習網頁/六年級上/課本/04_Write_Right_3/00_Overview.md)：收錄 8 大寫作單元體裁、轉折詞技巧與期末專案。
+     - [05_Read_and_Discover_6_Space/00_Overview.md](file:///C:/@植善課業/AI/英語學習網頁/六年級上/課本/05_Read_and_Discover_6_Space/00_Overview.md)：收錄 8 大太空科學章節與 CLIL 跨領域詞彙。
+  3. **首課規範化注入 Book Context**：
+     - 將已驗收之 `OD3_Unit01_Having_Fun.md` 規範化遷移至 [01_Oxford_Discover_3/Unit_01_Having_Fun.md](file:///C:/@植善課業/AI/英語學習網頁/六年級上/課本/01_Oxford_Discover_3/Unit_01_Having_Fun.md)，開頭正式內嵌 `Book Context & Syllabus Anchor`。
+  4. **專案管理文件同步**：
+     - 更新 [source_manifest.log](file:///C:/@植善課業/AI/英語學習網頁/source_manifest.log) 為 5 套書系列 375 頁實體清冊。
+     - 更新 [ai_conversion_prompt.md](file:///C:/@植善課業/AI/英語學習網頁/ai_conversion_prompt.md) 將 Book Context 納入標準轉檔骨架。
+
+
+
+
+
+
+---
+
+### 10. 階段十 (2026-10-18 ~ 2026-10-19)：國小六上英語期中考範圍 10 大核心單元全數高保真轉錄完工 (✅ 100%)
+- **任務聚焦與推進策略**：
+  - 使用者指示：「我們先來完成最近期中考範圍的書本 md 檔」、「跳過缺失後半冊的 Oxford Discover 3 內容，後續補上；其餘已抽圖教材依序推進」、「先建立好這次要完成的 md 檔，避免一直按同意建立」。
+- **批次實體建立 10 個目標 MD 骨架**：
+  - 透過 init_exam_mds.py 一次性在磁碟建立好帶有 Frontmatter 與 Book Context 導航塊之 Markdown 檔案。
+- **全數高保真落地成果 (Ground Truth 100% 零遺漏 + AI_SPEC 教研出題規範)**：
+  1. **Oxford Discover Grammar Level 3 (文法專修)**：
+     - Unit_13_Making_History.md：瑪雅金字塔與車輪史、So / Too / Either / Neither 倒裝附和句。
+     - Unit_14_Success_Stories.md：萊特兄弟飛行史、副詞變化 (-ly)、副詞比較級與最高級 (more / most / better / best)。
+     - Unit_15_Tasty_Treats.md：迷你披薩食譜、可數與不可數名詞、14 組容器計量詞 (a bottle/slice/can/jar/carton of...)。
+  2. **Write Right Level 3 (寫作專攻)**：
+     - Unit_04_Around_My_Neighborhood.md：13 組社區設施、方位介系詞、現在完成式時態轉換與說明文引導。
+     - Unit_05_If_I_Had_a_Lot_of_Money.md：虛擬假設語氣 (If I had... I would...)、金額比例分配 (With the rest/some of the money)、動詞雙賓受詞 (buy something for someone)。
+  3. **Oxford Read and Discover Level 6: All About Space (科普長篇精讀)**：
+     - Chapter_04_Rocks_and_Ice.md：小行星帶、古柏帶、哈雷彗星、流星與隕石 (Meteors & Meteorites)、通古斯大爆炸與恐龍滅絕事件 + 課後 Activities 1~4 全題庫與詳解。
+     - Chapter_05_Astronomy.md：古代天文觀測、哥白尼伽利略牛頓日心說重力、銀河系、哈伯太空望遠鏡 (Hubble) 與無線電波/X射線深空觀測 + 課後 Activities 1~5 全題庫與解答。
+  4. **Reading with Writing Level 6 (讀寫雙軌進階)**：
+     - Unit_05_Travel_and_Transport.md：課文 Lost and Found、時空背景分析 (Identify and Analyze the Setting)、方位導航、燈塔科普。
+     - Unit_06_Amazing_Journeys.md：課文 The World of Orienteering、圖像輔助判讀 (Use Visuals 控制旗與打卡卡片)、尋寶遊戲。
+     - Unit_07_A_World_of_Words.md：課文 Languages We Use、長條圖解析 (Understand a Bar Graph 196 國官方語言統計)、母語 vs 官方語言、手語。
+     - Unit_08_Dictionaries_and_Search.md：課文 So Many Questions、情節推理預測 (Make Predictions)、雙語與多元文化。
+- **品質驗收狀態**：
+  - 10 份單元 Markdown 均通過零文字遺漏、插圖文字化、手寫筆跡分離、AI_SPEC 語法公式與常見 4 大盲點檢驗，期中考範圍教材全數到位。
+
+---
+
+### 11. 階段十一 (2026-10-19)：期中考特訓專區 (Midterm Sprint) 全功能實作、資料庫生成與 E2E 實機驗收 (✅ 完工)
+- **使用者核心需求確立**：
+  1. 「寫腳本將 10 個 MD 轉換為包含『分句句子庫、改錯題詞組、練習題解答』的 midterm_data.js。」
+  2. 「在前端 index.html 與 app.js 實現上述的『紙筆/語音雙模式』、『點詞抓錯』與『句子點擊精聽高亮』。」
+  3. 「嚴格堅持免鍵盤打字原則：小學生用紙筆寫完按翻牌核對答案，再自評 👍/❌；點詞抓錯不跳彈窗打字，而是以 Token 點擊劃錯並浮動更正；長篇課文不全文連播，切為獨立單句卡片點擊精聽跟讀。」
+  4. 「最後完成記得更新 log 檔案。」
+- **執行成果與具體交付資產**：
+  1. **資料轉換引擎升級 (uild_midterm_data.py)**：
+     - 支援 YAML 與 JSON 雙規格 AI_SPEC 深度解析，自動保護 U.S.、Dr. 等縮寫避免誤切句。
+     - 完整解析 11 個單元，產出純前端靜態資料庫 midterm_data.js：
+       * 24 篇分句課文精讀庫（乾淨無註腳、適合兒童跟讀）。
+       * 37 道神探點詞改錯題（自動切分 Tokens、計算錯誤單字索引與訂正替換對）。
+       * 188 道段考精選測驗題（二選一、句子改寫、是非題、閱讀理解、階梯挑戰題）。
+       * 78 組核心高頻片語與計量搭配詞庫。
+  2. **前端 HTML/CSS/JS 全模組落地實作**：
+     - 在頂部導覽列新增搶眼發光按鈕「🎯 六上期中考特訓 (Midterm Sprint)」作為預設載入視圖。
+     - **🎧 句子精聽跟讀 (Shadowing)**：每句獨立大字體卡片（#01、#02...），點擊產生黃金微光高亮（.active-sentence），原生 Web Speech API 朗讀；支援 1.0x/0.8x 雙速與「逐句自動跟讀模式 (念完停 3 秒倒數進度條)」。
+     - **🔍 神探點詞抓錯 (Mistake Buster)**：零鍵盤微互動，單句單詞化為點選 Chip，點擊紅色刪除線標記；核對後浮動徽章（如 Too ➔ So、will ➔ would）直覺展示，附帶正確句子發音與教研盲點破題思路，一鍵將錯題收納至【終身錯題本】。
+     - **✍️ 紙筆/語音雙軌測驗 (Dual Quiz)**：
+       * 📝 紙筆模式：螢幕只做提示，學生在紙上寫完後翻牌核對正解、自評 👍/❌。
+       * 🎙️ 語音模式：整合 SpeechRecognition / webkitSpeechRecognition，孩子口說唸出英文答案，即時轉錄文字並進行模糊匹配相似度計算（>=65% 綠色通過徽章），提供發音朗讀與終身錯題本同步。
+     - **🖨️ A4 期中全真模擬卷**：一鍵將 11 個單元組合生成標準 100 分制 A4 考卷排版（學生作答留白卷 / 教師紅字解答卷，自帶 QR Code 與得分欄）。
+  3. **E2E 瀏覽器端對端實機測試驗證**：
+     - 啟動 rowser_subagent 深入 http://localhost:8085/index.html 進行各視圖點擊。
+     - 完整驗收：單元切換、句子點擊高亮、TTS 雙速切換、Token 點詞刪除線與核對抽屜、雙軌測驗翻牌與麥克風介面、A4 考卷排版。
+     - 完整測試錄影存檔於 midterm_test_1792368222895.webp，主控台 0 JavaScript 報錯。
+
+
+---
+
+### 13. 階段十三 (2026-10-19)：國小六上 6 頁歷史考券標準四層分離數位化與教研總綱落地 (✅ 完工)
+- **使用者核心指示與防污染警示**：
+  1. 「現在就開始處理這 6 頁歷史考券，為每一頁產出標準四層分離的 Markdown 檔！」
+  2. 「紅筆的部分應該都不是學生寫的，要特別小心哪些是學生原本作答，哪些是後面修改的，哪些是學生在旁邊練習抄寫的。」
+  3. 特別引用範例示範：[Ryan, Michael - 95% on quiz / too]，學生原答為 Ryan 95% on quiz, Michael are too，後方 95% on his quiz, too 為老師紅筆批註，不可混為學生原答。
+- **高精度圖像處理與微觀筆跡剖析**：
+  - 將 6 頁高解析考券影像以 Python 裁切為局部特寫（crops/ 目錄），使用高對比檢驗灰黑純鉛筆、鮮紅中性筆與空白草稿。
+  - 確立四層隔離架構（Four-Layer Decoupling）：
+    * Layer 1:【原始空白題幹】（乾淨無手寫，直接作為出題引擎模板）。
+    * Layer 2:【學生原始作答（純鉛筆）】（真實手寫灰黑筆跡，無污染記錄真實語感）。
+    * Layer 3:【老師紅筆批改（紅筆）】（刪除線、補字、打勾、分數批寫）。
+    * Layer 4:【空白處草稿/試寫（鉛筆筆記）】（邊欄與題間試寫，如 Week 2 中間草稿與 Week 5 頂部 	he est 備忘）。
+- **具體交付成果 (6 份單頁 MD + 1 份總綱 MD)**：
+  1. [00_Overview_歷史考券.md](file:///c:/@植善課業/AI/英語學習網頁/六年級上/考券/六年級上_考券/00_Overview_歷史考券.md)：6 頁考券全景清查、得分率趨勢、學生強弱項盲點矩陣與 AI 出題規劃。
+  2. [考券_六上_Week02_Page01.md](file:///c:/@植善課業/AI/英語學習網頁/六年級上/考券/六年級上_考券/考券_六上_Week02_Page01.md)：Discover 3 U13 單字 (18/20) + Grammar 3 U13 倒裝附和句改寫 (5/12) + 中間草稿。
+  3. [考券_六上_Week02_Page02.md](file:///c:/@植善課業/AI/英語學習網頁/六年級上/考券/六年級上_考券/考券_六上_Week02_Page02.md)：Write Right 3 U4 社區環境擴寫作文 (15/16)。
+  4. [考券_六上_Week04_Page05.md](file:///c:/@植善課業/AI/英語學習網頁/六年級上/考券/六年級上_考券/考券_六上_Week04_Page05.md)：Discover 3 U14 單字 (19/20) + RWW6 U5&6 方位片語 (15/16)。
+  5. [考券_六上_Week04_Page06.md](file:///c:/@植善課業/AI/英語學習網頁/六年級上/考券/六年級上_考券/考券_六上_Week04_Page06.md)：Grammar 3 U14 副詞三級比較長句合成 (4/20，學生重大失分點)。
+  6. [考券_六上_Week05_Page07.md](file:///c:/@植善課業/AI/英語學習網頁/六年級上/考券/六年級上_考券/考券_六上_Week05_Page07.md)：RWW6 U6 課文長篇聽寫默寫 (25/25 滿分)。
+  7. [考券_六上_Week05_Page08.md](file:///c:/@植善課業/AI/英語學習網頁/六年級上/考券/六年級上_考券/考券_六上_Week05_Page08.md)：Grammar 3 U14 副詞比較 (10/12) + Write Right 3 U5 假設語氣作文 (15/16)。
+- **專案管理 Log 同步**：
+  - 更新 [source_manifest.log](file:///c:/@植善課業/AI/英語學習網頁/source_manifest.log) 與 [memory.log](file:///c:/@植善課業/AI/英語學習網頁/memory.log)。
+
+---
+
+### 14. 階段十四 (2026-10-19)：岱崙美語歷史考券錯題特訓專區、A4 紅黑批改對照卷與 AI 變式狙擊卷落地 (✅ 完工)
+- **使用者核心需求確立**：
+  1. 「開始編寫資料注入腳本並更新前端」
+  2. 將先前高精度萃取的 6 頁歷史考券（Week 2/4/5 真題）無縫整合至期中考特訓專區（Midterm Sprint）。
+  3. 實現四大前台互動功能：
+     - **錯題互動化 (Mistake Buster)**：將考券中學生真實【Layer 2 鉛筆原答】（如 wadge、furnes、are too、laughed more loud than）做成「點詞抓錯專屬題庫」，零鍵盤點選訂正。
+     - **歷史考券 1:1 重測卷一鍵生成**：以純淨【Layer 1 題幹】在前端 A4 出卷中心產出 16pt 留白重測卷。
+     - **考券紅黑批改對照卷**：精確以灰黑斜體（.contrast-pencil）呈現當年學生鉛筆原答，鮮紅底線（.contrast-redpen）標記老師批改與防坑教研解析。
+     - **AI 變式模擬卷生成**：依據 AI_SPEC 矩陣抽換人名與情境，生成 100% 相同語法考核內核的全新變式卷。
+- **具體實作與技術交付成果**：
+  1. **資料注入腳本與資料庫構建**：
+     - 建立 [exam_review_data.py](file:///c:/@植善課業/AI/英語學習網頁/exam_review_data.py)：收錄 28 句精讀句子（含地道繁中翻譯）、15 道真實手寫錯題（精確 Tokens 與 wrong_index）、20 題紙筆/語音測驗題、20 個高頻單字。
+     - 更新 [build_midterm_data.py](file:///c:/@植善課業/AI/英語學習網頁/build_midterm_data.py) 與重新編譯 [midterm_data.js](file:///c:/@植善課業/AI/英語學習網頁/midterm_data.js)，成功擴充期中考資料庫至 12 大單元。
+  2. **前端 HTML/CSS/JS 全模組落地升級**：
+     - [index.html](file:///c:/@植善課業/AI/英語學習網頁/index.html)：A4 出卷範圍新增「📄 岱崙美語歷史考券 1:1 復原重測卷」與「🎲 AI 變式狙擊模擬卷」；考卷模式新增「📝 考券紅黑批改對照卷」。
+     - [app.js](file:///c:/@植善課業/AI/英語學習網頁/app.js)：
+       * 在 initMidtermSprint 單元分組選單最頂端置頂「⭐ 歷史考券錯題特訓 (TEA 3C Quiz 真題)」。
+       * 在 renderMidtermA4Exam 實作 renderQuizOriginalExam 與 renderQuizVariantExam 兩大專屬出卷引擎，支援學生作答卷、教師解答卷與紅黑對照卷。
+     - [style.css](file:///c:/@植善課業/AI/英語學習網頁/style.css)：新增 .contrast-box、.contrast-pencil、.contrast-redpen、.contrast-explanation 專屬樣式，修復 @media print 確保在期中考專區列印時精確輸出 A4 試卷。
+  3. **E2E 瀏覽器實機端對端驗證**：
+     - 驗證單元下拉選單選取「歷史考券錯題特訓」即時切換。
+     - 驗證 3 篇課文（Orienteering 聽寫、My Neighborhood 作文、If I Had 6000 Dollars 作文）逐句精聽跟讀與中文對照。
+     - 驗證 15 道真實考場錯題點詞刪除線與核對浮動標籤（.token-floating-badge）。
+     - 驗證 A4 出卷中心 1:1 復原卷、紅黑批改對照卷與 AI 變式狙擊卷生成正常。
+- **專案管理 Log 同步**：
+  - 更新 [memory.log](file:///c:/@植善課業/AI/英語學習網頁/memory.log) 與 [goals_and_roadmap.log](file:///c:/@植善課業/AI/英語學習網頁/goals_and_roadmap.log)。
+
+---
+
+### 15. 階段十五 (2026-10-19)：全單元小考題庫爆量擴充、雙軌測驗題型膠囊分類、單字盲聽與三段式教研詳解全面落地 (✅ 完工)
+- **使用者核心需求確立**：
+  1. 「立刻動手進行代碼修改，題目可以多沒關係，重點是要讓小朋友可以熟悉內容」
+  2. 「整個期中考特訓不同的單元也都這樣做，參考目前小考考券模式跟邏輯演變出該 unit 可能出現的考題跟須熟悉的觀念讓小朋友練習」
+  3. 「我想要將期中考範圍的小考考券題目都加入到 "神探點詞抓錯" 跟 "紙筆語音雙軌測試"，這樣就不用一定要印出來才能作答」
+  4. 「可以增加填空跟選擇題題型 2 個標籤，用各種不同測試方式讓小朋友熟悉內容」
+  5. 「單字也可以考聽力，由電腦發音小朋友在紙上作答再對答案」
+  6. 「所有的答案都要有詳細說明，為什麼答案是這樣，題目主要在考什麼觀念，我看目前的 "核對答案與詳解" 裡面都沒有詳細說明」
+- **架構設計與資料庫重構升級**：
+  1. **全單元題庫爆量擴充至 300+ 題**：
+     - 重構 `build_midterm_data.py` 與 `exam_review_data.py`。
+     - 11 個課本單元 + 1 個歷史考券單元全面轉化為真實考券規格（Spelling 單字聽寫、課文/文法填空、文法選擇、倒裝與長句改寫、是非判斷）。
+  2. **題型分類膠囊篩選列 (Filter Pills Bar)**：
+     - 在 `#midterm-subtab-quiz` 植入 5 大專項篩選按鈕：`[🌟 全部題型]`、`[🎧 單字盲聽]`、`[✏️ 課文填空]`、`[🔘 文法選擇]`、`[✍️ 句子改寫]`。
+     - 各膠囊動態顯示該單元之題數徽章（如 `countPillListening`、`countPillFill` 等），切換單元時自動更新。
+  3. **單字盲聽測驗模式 (Spelling Listen Mode)**：
+     - 零螢幕題幹洩露：僅顯示中文詞義（如 `【單字聽寫】n. 森林、林地`）與音標，不洩露英文字元。
+     - 自動朗讀與慢速精聽：題目載入自動發音 1.0x，另設 `🐢 慢速精聽 (0.8x)` 與 `🔊 再次朗讀 (1.0x)` 雙按鈕。
+     - 翻牌核對標準拼寫、自然發音與音節拆解（如 `syl·la·ble`）。
+  4. **三段式硬核教研詳解 (Structured Explanations)**：
+     - 徹底杜絕空泛罐頭字，全題庫注入結構化物件：
+       * `🎯 核心考點 (expConcept)`：精確指出考核文法規則（如「副詞不規則三級比較變化」、「過去簡單式倒裝附和句」）。
+       * `🔑 破題公式 (expFormula)`：列出黃金答題公式（如「動詞原形 + 比較級副詞 + than + 比較對象」）。
+       * `⚠️ 考場致命盲點 (expTrap)`：直接點出小學生最容易寫錯的痛點（如「嚴禁寫成 more badly than 或 was went」）。
+- **具體實作與技術交付成果**：
+  1. **資料管線**：
+     - 更新 [exam_review_data.py](file:///c:/@植善課業/AI/英語學習網頁/exam_review_data.py)（20 組單字盲聽 + 結構化三段式詳解）。
+     - 更新 [build_midterm_data.py](file:///c:/@植善課業/AI/英語學習網頁/build_midterm_data.py)，重新編譯產生 [midterm_data.js](file:///c:/@植善課業/AI/英語學習網頁/midterm_data.js)，語法檢驗 0 錯誤。
+  2. **前端控制與視圖**：
+     - [index.html](file:///c:/@植善課業/AI/英語學習網頁/index.html)：植入膠囊篩選導航列、單字盲聽播放器、三色教研詳解抽屜。
+     - [style.css](file:///c:/@植善課業/AI/英語學習網頁/style.css)：美化膠囊按鈕狀態、播放器面板、藍/綠/紅三色解析卡。
+     - [app.js](file:///c:/@植善課業/AI/英語學習網頁/app.js)：實裝 `updateQuizFilterPillsCounts`、`getFilteredMidtermQuizzes`、`speakWordAudio` 與結構化詳解安全渲染邏輯。
+  3. **端對端 E2E 瀏覽器驗收**：
+     - 驗證「期中考特訓 ➔ 紙筆/語音雙軌測驗」各單元題數與膠囊篩選功能。
+     - 驗證單字盲聽隱藏拼寫、TTS 發音與翻牌核對。
+     - 驗證結構化詳解抽屜正確解析核心考點、破題公式與避坑指南。
+
+

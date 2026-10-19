@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+
+# Large PDF files (Raw Scanned Textbooks)
+六年級上/課本/*.pdf
+*.pdf
+
+# Intermediate Scanned Page Images (Extracted temporarily for OCR/LLM)
+六年級上/課本/*/images/
+六年級上/課本/OD3_pages/
+六年級上/課本/*.png
+六年級上/考券/六年級上_考券/*.HEIC
+六年級上/考券/六年級上_考券/*.heic
+六年級上/考券/六年級上_考券/crops/
+
+# System & Editor
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
