@@ -209,4 +209,17 @@
   2. 前端介面與互動完成：`index.html`、`style.css`、`app.js`（膠囊篩選列、盲聽播放器、三色解析抽屜）。
   3. E2E 瀏覽器端對端驗收全數通過。
 
+---
+
+### 16. 階段十六 (2026-10-20)：建立 GitHub 新儲存庫 tiger_english_6、代碼與數位教材極致輕量化推送、一鍵啟用 GitHub Pages 免費雲端在線練習 (✅ 完工)
+- **核心目標**：
+  1. 在使用者的 GitHub 帳號 (`ddd8836203`) 建立全新公開儲存庫 `tiger_english_6`。
+  2. 排除 300+ MB 之未壓縮臨時截圖與掃描 PDF，保持 Repo 純淨輕巧（約 11.95MB）。
+  3. 推送主分支並一鍵啟用 GitHub Pages 網頁託管服務。
+- **交付與驗收**：
+  1. GitHub 儲存庫：`https://github.com/ddd8836203/tiger_english_6`
+  2. GitHub Pages 線上練習網址：`https://ddd8836203.github.io/tiger_english_6/`
+  3. 本地 Git 遠端 URL 清理完畢，working tree clean。
+
+
 

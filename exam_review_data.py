@@ -111,8 +111,8 @@ EXAM_REVIEW_UNIT = {
         },
         {
             "trap_id": "W02_TRAP_NEGATIVE_PAST",
-            "sentence": "Ray are not pass quiz, and Jim didn't either.",
-            "tokens": ["Ray", "are", "not", "pass", "quiz,", "and", "Jim", "didn't", "either."],
+            "sentence": "Ray are not pass the quiz, and Jim didn't either.",
+            "tokens": ["Ray", "are not", "pass", "the", "quiz,", "and", "Jim", "didn't", "either."],
             "wrong_index": 1,
             "wrong_word": "are not",
             "correct_word": "didn't",
@@ -162,20 +162,20 @@ EXAM_REVIEW_UNIT = {
         {
             "trap_id": "W04_TRAP_IN_FRONT_OF",
             "sentence": "The cat was sleeping infront off the door.",
-            "tokens": ["The", "cat", "was", "sleeping", "infront", "off", "the", "door."],
+            "tokens": ["The", "cat", "was", "sleeping", "infront off", "the", "door."],
             "wrong_index": 4,
-            "wrong_word": "infront",
-            "correct_word": "in",
+            "wrong_word": "infront off",
+            "correct_word": "in front of",
             "fixed_sentence": "The cat was sleeping in front of the door.",
             "reason": "【介系詞片語連寫與錯字】in front of 是三個獨立單字，介系詞是 of（非雙 f 的 off）。"
         },
         {
             "trap_id": "W04_TRAP_DOUBLE_COMPARATIVE",
             "sentence": "A dog runs more faster than a person.",
-            "tokens": ["A", "dog", "runs", "more", "faster", "than", "a", "person."],
+            "tokens": ["A", "dog", "runs", "more faster", "than", "a", "person."],
             "wrong_index": 3,
-            "wrong_word": "more",
-            "correct_word": "",
+            "wrong_word": "more faster",
+            "correct_word": "faster",
             "fixed_sentence": "A dog runs faster than a person.",
             "reason": "【雙重比較級錯誤】fast 是單音節副詞，比較級直接加 -er (faster)，不可重複加 more！"
         },
@@ -201,13 +201,13 @@ EXAM_REVIEW_UNIT = {
         },
         {
             "trap_id": "W04_TRAP_ADVERB_LY_DROP",
-            "sentence": "Peter laugh loud when he heard the joke.",
-            "tokens": ["Peter", "laugh", "loud", "when", "he", "heard", "the", "joke."],
+            "sentence": "Peter laughed loud when he heard the joke.",
+            "tokens": ["Peter", "laughed", "loud", "when", "he", "heard", "the", "joke."],
             "wrong_index": 2,
             "wrong_word": "loud",
             "correct_word": "loudly",
             "fixed_sentence": "Peter laughed loudly when he heard the joke.",
-            "reason": "【形容詞副詞混淆】修飾動詞 laugh 必須使用副詞 loudly，不能使用形容詞 loud。"
+            "reason": "【形容詞副詞混淆】修飾動詞 laughed 必須使用副詞 loudly，不能使用形容詞 loud。"
         },
         {
             "trap_id": "W05_TRAP_THIRD_PERSON_S",
@@ -233,7 +233,7 @@ EXAM_REVIEW_UNIT = {
             "trap_id": "W05_TRAP_CONDITIONAL_WOULD",
             "sentence": "If I had 6000 dollars, I will buy a car.",
             "tokens": ["If", "I", "had", "6000", "dollars,", "I", "will", "buy", "a", "car."],
-            "wrong_index": 7,
+            "wrong_index": 6,
             "wrong_word": "will",
             "correct_word": "would",
             "fixed_sentence": "If I had 6000 dollars, I would buy a car.",
@@ -659,13 +659,13 @@ EXAM_REVIEW_UNIT = {
             "type": "choice",
             "category_tag": "choice",
             "question": "【附和句倒裝選擇】Brad did not play baseball, and ( ______ ).",
-            "options": ["Lisa didn't either", "neither did Lisa", "Lisa did too", "so did Lisa"],
-            "answer": "Lisa didn't either",
-            "hint": "前句是否定句，後句附和必須也是否定附和",
+            "options": ["Lisa didn't, either", "neither didn't Lisa", "Lisa did, too", "so did Lisa"],
+            "answer": "Lisa didn't, either",
+            "hint": "前句是否定句，後句附和必須也是否定附和（注意 neither 後不可用 didn't）",
             "explanation": {
                 "concept": "Grammar 3 Unit 13: 否定附和句",
-                "formula": "否定句附和有兩種標準形式：① and Lisa didn't either；② and neither did Lisa。",
-                "trap": "前句是否定 did not，絕不能選肯定附和的 too 或 so did！"
+                "formula": "否定句附和標準形式：① Lisa didn't, either；② neither did Lisa（助動詞必須為肯定形 did）。",
+                "trap": "neither didn't Lisa 犯了雙重否定錯誤 ❌；too 與 so did 則是肯定附和 ❌。"
             }
         },
         {

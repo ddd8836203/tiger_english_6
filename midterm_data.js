@@ -1,11 +1,11 @@
 // ============================================================================
 // 六年級上學期英語期中考特訓資料庫 (midterm_data.js)
-// 包含 4 套教材、11 個單元完整結構：
+// 包含 4 套教材、11 個單元 + 岱崙 3C 考卷真題特訓：
 // 1. 句子級 (Sentence-by-Sentence) 點擊朗讀庫 (含地道繁體中文翻譯)
-// 2. 零打字點詞抓錯 (Mistake Buster)
-// 3. 紙筆手寫對答案 / 語音作答測驗題庫
-// 4. 核心單字與容器計量片語庫
-// 更新日期: 2026-10-19
+// 2. 零打字點詞抓錯 (Mistake Buster) — 100% 精準單詞索引定位
+// 3. 紙筆手寫對答案 / 語音作答測驗題庫 (聽寫、填空、選擇、改寫)
+// 4. 核心單字與容器計量片語庫 (附音標、音節、例句與拼寫防呆提醒)
+// 更新日期: 2026-10-20
 // ============================================================================
 
 window.MIDTERM_DATABASE = [
@@ -139,109 +139,345 @@ window.MIDTERM_DATABASE = [
     ],
     "vocab": [
       {
-        "word": "Me too.",
-        "pos": "phrase",
-        "meaning": "我也是 (日常口語肯定附和)",
-        "example": "A: I like ice cream. B: Me too!"
+        "word": "invention",
+        "phonetic": "/ɪnˈvɛnʃən/",
+        "syllables": "in-ven-tion",
+        "pos": "n.",
+        "meaning": "發明；發明物",
+        "example": "On February 14, 1876, Gray's invention was ready.",
+        "note": "字尾為 -tion，動詞原形為 invent。"
       },
       {
-        "word": "So do I.",
-        "pos": "formula",
-        "meaning": "我也是 (一般動詞肯定倒裝附和)",
-        "example": "A: I play tennis. B: So do I."
+        "word": "scientist",
+        "phonetic": "/ˈsaɪəntɪst/",
+        "syllables": "sci-en-tist",
+        "pos": "n.",
+        "meaning": "科學家",
+        "example": "Other scientists were trying to invent telephones, too.",
+        "note": "注意開頭 sci- 的 c 不發音，切勿漏寫 c。"
       },
       {
-        "word": "So did he / she.",
-        "pos": "formula",
-        "meaning": "他/她也是 (過去式一般動詞倒裝附和)",
-        "example": "Bell invented a telephone. So did Gray."
+        "word": "patent",
+        "phonetic": "/ˈpætənt/",
+        "syllables": "pat-ent",
+        "pos": "n.",
+        "meaning": "專利；專利權",
+        "example": "Swan got a patent for his invention.",
+        "note": "搭配 get a patent for... (取得...的專利)。"
       },
       {
-        "word": "So was / were...",
-        "pos": "formula",
-        "meaning": "也是 (be動詞過去式肯定倒裝)",
-        "example": "Bell's mother was deaf. So was his wife."
+        "word": "licence",
+        "phonetic": "/ˈlaɪsəns/",
+        "syllables": "li-cence",
+        "pos": "n.",
+        "meaning": "許可證；執照",
+        "example": "Gray hurried to get a licence for his invention.",
+        "note": "英式拼法為 licence，美式常拼作 license。"
       },
       {
-        "word": "Neither do I.",
-        "pos": "formula",
-        "meaning": "我也不 (現在式否定倒裝附和)",
-        "example": "A: I don't like spiders. B: Neither do I."
+        "word": "experiment",
+        "phonetic": "/ɪkˈspɛrɪmənt/",
+        "syllables": "ex-per-i-ment",
+        "pos": "v./n.",
+        "meaning": "做實驗；實驗",
+        "example": "Other scientists were experimenting with light bulbs, too.",
+        "note": "搭配介系詞 experiment with (用...做實驗)。"
       },
       {
-        "word": "Neither did...",
-        "pos": "formula",
-        "meaning": "也不 (過去式否定倒裝附和)",
-        "example": "Meucci didn't become rich. Neither did Reis."
+        "word": "light bulb",
+        "phonetic": "/ˈlaɪt ˌbʌlb/",
+        "syllables": "light bulb",
+        "pos": "n.",
+        "meaning": "電燈泡",
+        "example": "Thomas Edison was trying to invent a light bulb.",
+        "note": "light 中的 gh 不發音；bulb 尾音為 b。"
       },
       {
-        "word": "...didn't, either.",
-        "pos": "formula",
-        "meaning": "也不 (句尾逗號後否定附和)",
-        "example": "They didn't have computers, either."
+        "word": "famous",
+        "phonetic": "/ˈfeɪməs/",
+        "syllables": "fa-mous",
+        "pos": "adj.",
+        "meaning": "著名的；出名的",
+        "example": "Gray did not become rich and famous.",
+        "note": "字尾為 -ous，勿拼成 famus。"
+      },
+      {
+        "word": "history",
+        "phonetic": "/ˈhɪstəri/",
+        "syllables": "his-to-ry",
+        "pos": "n.",
+        "meaning": "歷史",
+        "example": "They are important people in the history of the telephone.",
+        "note": "in the history of... (在...的歷史上)。"
+      },
+      {
+        "word": "either",
+        "phonetic": "/ˈiːðər/",
+        "syllables": "ei-ther",
+        "pos": "adv.",
+        "meaning": "也不（用於否定句尾）",
+        "example": "Meucci didn't become rich and famous, either.",
+        "note": "用於否定句尾，前面通常加逗號。"
+      },
+      {
+        "word": "neither",
+        "phonetic": "/ˈniːðər/",
+        "syllables": "nei-ther",
+        "pos": "adv.",
+        "meaning": "也不（用於否定倒裝句首）",
+        "example": "Meucci didn't become rich. Neither did Reis.",
+        "note": "n + either，放在句首時後面必須倒裝（Neither + 助動詞/be + 主詞）。"
       }
     ],
     "mistake_buster": [
       {
-        "trap_id": "ERR_SO_TOO_POSITION",
-        "sentence": "Too did Gray.",
+        "trap_id": "ODG13_ERR_1",
+        "sentence": "Antonio Meucci was an inventor, and so did Alexander Graham Bell.",
         "tokens": [
-          "Too",
+          "Antonio",
+          "Meucci",
+          "was",
+          "an",
+          "inventor,",
+          "and",
+          "so",
           "did",
-          "Gray."
+          "Alexander",
+          "Graham",
+          "Bell."
         ],
-        "wrong_index": 0,
-        "wrong_word": "Too",
-        "correct_word": "So",
-        "fixed_sentence": "So 必放句首倒裝；too 必放句尾逗號後。",
-        "reason": "小學生常將中文『也是』直譯，誤將 too 置於句首。"
+        "wrong_index": 7,
+        "wrong_word": "did",
+        "correct_word": "was",
+        "fixed_sentence": "Antonio Meucci was an inventor, and so was Alexander Graham Bell.",
+        "reason": "前句主要動詞是 be 動詞 was，後句肯定倒裝附和必須沿用 be 動詞『so was...』，絕對不可混用助動詞 did！"
       },
       {
-        "trap_id": "ERR_NEITHER_DOUBLE_NEGATIVE",
-        "sentence": "Neither didn't Reis.",
+        "trap_id": "ODG13_ERR_2",
+        "sentence": "Thomas Edison invented a light bulb, and Joseph Swan was, too.",
         "tokens": [
-          "Neither",
+          "Thomas",
+          "Edison",
+          "invented",
+          "a",
+          "light",
+          "bulb,",
+          "and",
+          "Joseph",
+          "Swan",
+          "was,",
+          "too."
+        ],
+        "wrong_index": 9,
+        "wrong_word": "was,",
+        "correct_word": "did,",
+        "fixed_sentence": "Thomas Edison invented a light bulb, and Joseph Swan did, too.",
+        "reason": "前句動詞 invented 是一般動詞過去式，後句附和必須請出助動詞『did, too』，不可用 be 動詞 was！"
+      },
+      {
+        "trap_id": "ODG13_ERR_3",
+        "sentence": "Elisha Gray did not become rich, and Meucci didn't, too.",
+        "tokens": [
+          "Elisha",
+          "Gray",
+          "did",
+          "not",
+          "become",
+          "rich,",
+          "and",
+          "Meucci",
+          "didn't,",
+          "too."
+        ],
+        "wrong_index": 9,
+        "wrong_word": "too.",
+        "correct_word": "either.",
+        "fixed_sentence": "Elisha Gray did not become rich, and Meucci didn't, either.",
+        "reason": "否定句尾（didn't 後方）表示「也不」必須用『either』；too 只能用在肯定句尾！"
+      },
+      {
+        "trap_id": "ODG13_ERR_4",
+        "sentence": "Meucci didn't get a telephone patent, and neither didn't Reis.",
+        "tokens": [
+          "Meucci",
+          "didn't",
+          "get",
+          "a",
+          "telephone",
+          "patent,",
+          "and",
+          "neither",
           "didn't",
           "Reis."
         ],
         "wrong_index": 1,
         "wrong_word": "didn't",
         "correct_word": "did",
-        "fixed_sentence": "Neither did Reis.",
-        "reason": "Neither 本身已包含否定含義 (not either)，後方助動詞必須使用肯定形式，嚴禁雙重否定。"
+        "fixed_sentence": "Meucci didn't get a telephone patent, and neither did Reis.",
+        "reason": "『Neither』本身已經包含否定（Not + either），後面的助動詞必須用肯定形『did』，寫成 neither didn't 會變成雙重否定錯誤！"
       },
       {
-        "trap_id": "ERR_EITHER_WITHOUT_NOT",
-        "sentence": "Reis did, either.",
+        "trap_id": "ODG13_ERR_5",
+        "sentence": "Olivia got 100% on her quiz, and 100% did Penny.",
         "tokens": [
+          "Olivia",
+          "got",
+          "100%",
+          "on",
+          "her",
+          "quiz,",
+          "and",
+          "100%",
+          "did",
+          "Penny."
+        ],
+        "wrong_index": 2,
+        "wrong_word": "100%",
+        "correct_word": "so",
+        "fixed_sentence": "Olivia got 100% on her quiz, and so did Penny.",
+        "reason": "【岱崙 W2 真題陷阱】肯定倒裝附和句開頭必須用連接副詞『so (and so did Penny)』，不可把受詞 100% 搬到助動詞前面！"
+      },
+      {
+        "trap_id": "ODG13_ERR_6",
+        "sentence": "Ryan got 95% on his quiz, and Michael are, too.",
+        "tokens": [
+          "Ryan",
+          "got",
+          "95%",
+          "on",
+          "his",
+          "quiz,",
+          "and",
+          "Michael",
+          "are,",
+          "too."
+        ],
+        "wrong_index": 8,
+        "wrong_word": "are,",
+        "correct_word": "did,",
+        "fixed_sentence": "Ryan got 95% on his quiz, and Michael did, too.",
+        "reason": "【岱崙 W2 真題陷阱】前句 got 是過去式一般動詞，後句附和必須用過去式助動詞『did, too』，不可用現在式 be 動詞 are！"
+      },
+      {
+        "trap_id": "ODG13_ERR_7",
+        "sentence": "Ray are not pass the quiz, and Jim didn't, either.",
+        "tokens": [
+          "Ray",
+          "are not",
+          "pass",
+          "the",
+          "quiz,",
+          "and",
+          "Jim",
+          "didn't,",
+          "either."
+        ],
+        "wrong_index": 1,
+        "wrong_word": "are not",
+        "correct_word": "didn't",
+        "fixed_sentence": "Ray didn't pass the quiz, and Jim didn't, either.",
+        "reason": "【岱崙 W2 真題陷阱】一般動詞 pass 的過去式否定必須用助動詞『didn't pass』，絕對不可寫成 are not pass！"
+      },
+      {
+        "trap_id": "ODG13_ERR_8",
+        "sentence": "Bell's mother was deaf, and so did his wife.",
+        "tokens": [
+          "Bell's",
+          "mother",
+          "was",
+          "deaf,",
+          "and",
+          "so",
+          "did",
+          "his",
+          "wife."
+        ],
+        "wrong_index": 6,
+        "wrong_word": "did",
+        "correct_word": "was",
+        "fixed_sentence": "Bell's mother was deaf, and so was his wife.",
+        "reason": "前句是『was deaf (be動詞 + 形容詞)』，後句倒裝附和必須對齊使用『so was his wife』，不可用 did！"
+      },
+      {
+        "trap_id": "ODG13_ERR_9",
+        "sentence": "Gray hurried to the Patent Office, and too did Bell.",
+        "tokens": [
+          "Gray",
+          "hurried",
+          "to",
+          "the",
+          "Patent",
+          "Office,",
+          "and",
+          "too",
+          "did",
+          "Bell."
+        ],
+        "wrong_index": 7,
+        "wrong_word": "too",
+        "correct_word": "so",
+        "fixed_sentence": "Gray hurried to the Patent Office, and so did Bell.",
+        "reason": "放在倒裝句首（助動詞 did 前面）表示「也是」必須用『so』；too 只能放在句尾逗號後面！"
+      },
+      {
+        "trap_id": "ODG13_ERR_10",
+        "sentence": "Houses didn't have telephones then, and neither were offices.",
+        "tokens": [
+          "Houses",
+          "didn't",
+          "have",
+          "telephones",
+          "then,",
+          "and",
+          "neither",
+          "were",
+          "offices."
+        ],
+        "wrong_index": 7,
+        "wrong_word": "were",
+        "correct_word": "did",
+        "fixed_sentence": "Houses didn't have telephones then, and neither did offices.",
+        "reason": "前句是『didn't have (一般動詞過去式否定)』，後句 neither 倒裝必須對齊助動詞『neither did offices』，不可用 were！"
+      },
+      {
+        "trap_id": "ODG13_ERR_11",
+        "sentence": "Swan wasn't happy about the patent, and Edison wasn't, too.",
+        "tokens": [
+          "Swan",
+          "wasn't",
+          "happy",
+          "about",
+          "the",
+          "patent,",
+          "and",
+          "Edison",
+          "wasn't,",
+          "too."
+        ],
+        "wrong_index": 9,
+        "wrong_word": "too.",
+        "correct_word": "either.",
+        "fixed_sentence": "Swan wasn't happy about the patent, and Edison wasn't, either.",
+        "reason": "前句與後句皆為否定（wasn't），句尾附和詞必須用『either』，不可用 too！"
+      },
+      {
+        "trap_id": "ODG13_ERR_12",
+        "sentence": "Meucci didn't become rich, and Reis did, either.",
+        "tokens": [
+          "Meucci",
+          "didn't",
+          "become",
+          "rich,",
+          "and",
           "Reis",
           "did,",
           "either."
         ],
-        "wrong_index": 1,
+        "wrong_index": 6,
         "wrong_word": "did,",
         "correct_word": "didn't,",
-        "fixed_sentence": "Reis didn't, either.",
-        "reason": "Either 放句尾時，前面的動詞必須帶有 not (didn't / wasn't / weren't)。"
-      },
-      {
-        "trap_id": "ERR_AUXILIARY_VERB_MISMATCH",
-        "sentence": "Bell was a scientist. -> So did Meucci.",
-        "tokens": [
-          "Bell",
-          "was",
-          "a",
-          "scientist.",
-          "->",
-          "So",
-          "did",
-          "Meucci."
-        ],
-        "wrong_index": 0,
-        "wrong_word": "Bell",
-        "correct_word": "前句",
-        "fixed_sentence": "前句 was ➔ 後句 was；前句 invented ➔ 後句 did。",
-        "reason": "最典型的台灣段考魔王陷阱：學生容易忽略前句是 be 動詞還是一般動詞，導致助動詞用錯。"
+        "fixed_sentence": "Meucci didn't become rich, and Reis didn't, either.",
+        "reason": "句尾有否定附和詞『either』時，前面的助動詞必須是否定形『didn't』！"
       }
     ],
     "quizzes": [
@@ -249,376 +485,782 @@ window.MIDTERM_DATABASE = [
         "id": "ODG3_U13_LIST_1",
         "type": "spelling_listen",
         "category_tag": "listening",
-        "question": "請聽電腦發音，在紙上拼寫出這個核心單字：",
-        "hint": "中文釋義：我也是 (日常口語肯定附和)",
-        "audio_word": "Me too.",
-        "phonetic": "",
-        "syllables": "Me too.",
-        "answer": "Me too.",
+        "question": "請聽電腦發音，在紙上拼寫出這個核心單字或片語：",
+        "hint": "詞性與中文：n. 發明；發明物",
+        "audio_word": "invention",
+        "phonetic": "/ɪnˈvɛnʃən/",
+        "syllables": "in-ven-tion",
+        "answer": "invention",
         "explanation": {
-          "concept": "Unit 13: Making History 核心字彙：Me too.",
-          "formula": "詞性與例句搭配：A: I like ice cream. B: Me too!",
-          "trap": "注意拼寫盲點：切記母音與子音字母對應，勿漏寫尾音或不發音字母。"
+          "concept": "【Unit 13: Making History】核心字彙：invention /ɪnˈvɛnʃən/ (n. 發明；發明物)",
+          "formula": "課文例句：On February 14, 1876, Gray's invention was ready.",
+          "trap": "拼寫與用法關鍵：字尾為 -tion，動詞原形為 invent。"
         }
       },
       {
         "id": "ODG3_U13_LIST_2",
         "type": "spelling_listen",
         "category_tag": "listening",
-        "question": "請聽電腦發音，在紙上拼寫出這個核心單字：",
-        "hint": "中文釋義：我也是 (一般動詞肯定倒裝附和)",
-        "audio_word": "So do I.",
-        "phonetic": "",
-        "syllables": "So do I.",
-        "answer": "So do I.",
+        "question": "請聽電腦發音，在紙上拼寫出這個核心單字或片語：",
+        "hint": "詞性與中文：n. 科學家",
+        "audio_word": "scientist",
+        "phonetic": "/ˈsaɪəntɪst/",
+        "syllables": "sci-en-tist",
+        "answer": "scientist",
         "explanation": {
-          "concept": "Unit 13: Making History 核心字彙：So do I.",
-          "formula": "詞性與例句搭配：A: I play tennis. B: So do I.",
-          "trap": "注意拼寫盲點：切記母音與子音字母對應，勿漏寫尾音或不發音字母。"
+          "concept": "【Unit 13: Making History】核心字彙：scientist /ˈsaɪəntɪst/ (n. 科學家)",
+          "formula": "課文例句：Other scientists were trying to invent telephones, too.",
+          "trap": "拼寫與用法關鍵：注意開頭 sci- 的 c 不發音，切勿漏寫 c。"
         }
       },
       {
         "id": "ODG3_U13_LIST_3",
         "type": "spelling_listen",
         "category_tag": "listening",
-        "question": "請聽電腦發音，在紙上拼寫出這個核心單字：",
-        "hint": "中文釋義：他/她也是 (過去式一般動詞倒裝附和)",
-        "audio_word": "So did he / she.",
-        "phonetic": "",
-        "syllables": "So did he / she.",
-        "answer": "So did he / she.",
+        "question": "請聽電腦發音，在紙上拼寫出這個核心單字或片語：",
+        "hint": "詞性與中文：n. 專利；專利權",
+        "audio_word": "patent",
+        "phonetic": "/ˈpætənt/",
+        "syllables": "pat-ent",
+        "answer": "patent",
         "explanation": {
-          "concept": "Unit 13: Making History 核心字彙：So did he / she.",
-          "formula": "詞性與例句搭配：Bell invented a telephone. So did Gray.",
-          "trap": "注意拼寫盲點：切記母音與子音字母對應，勿漏寫尾音或不發音字母。"
+          "concept": "【Unit 13: Making History】核心字彙：patent /ˈpætənt/ (n. 專利；專利權)",
+          "formula": "課文例句：Swan got a patent for his invention.",
+          "trap": "拼寫與用法關鍵：搭配 get a patent for... (取得...的專利)。"
         }
       },
       {
         "id": "ODG3_U13_LIST_4",
         "type": "spelling_listen",
         "category_tag": "listening",
-        "question": "請聽電腦發音，在紙上拼寫出這個核心單字：",
-        "hint": "中文釋義：也是 (be動詞過去式肯定倒裝)",
-        "audio_word": "So was / were...",
-        "phonetic": "",
-        "syllables": "So was / were...",
-        "answer": "So was / were...",
+        "question": "請聽電腦發音，在紙上拼寫出這個核心單字或片語：",
+        "hint": "詞性與中文：n. 許可證；執照",
+        "audio_word": "licence",
+        "phonetic": "/ˈlaɪsəns/",
+        "syllables": "li-cence",
+        "answer": "licence",
         "explanation": {
-          "concept": "Unit 13: Making History 核心字彙：So was / were...",
-          "formula": "詞性與例句搭配：Bell's mother was deaf. So was his wife.",
-          "trap": "注意拼寫盲點：切記母音與子音字母對應，勿漏寫尾音或不發音字母。"
+          "concept": "【Unit 13: Making History】核心字彙：licence /ˈlaɪsəns/ (n. 許可證；執照)",
+          "formula": "課文例句：Gray hurried to get a licence for his invention.",
+          "trap": "拼寫與用法關鍵：英式拼法為 licence，美式常拼作 license。"
         }
       },
       {
         "id": "ODG3_U13_LIST_5",
         "type": "spelling_listen",
         "category_tag": "listening",
-        "question": "請聽電腦發音，在紙上拼寫出這個核心單字：",
-        "hint": "中文釋義：我也不 (現在式否定倒裝附和)",
-        "audio_word": "Neither do I.",
-        "phonetic": "",
-        "syllables": "Neither do I.",
-        "answer": "Neither do I.",
+        "question": "請聽電腦發音，在紙上拼寫出這個核心單字或片語：",
+        "hint": "詞性與中文：v./n. 做實驗；實驗",
+        "audio_word": "experiment",
+        "phonetic": "/ɪkˈspɛrɪmənt/",
+        "syllables": "ex-per-i-ment",
+        "answer": "experiment",
         "explanation": {
-          "concept": "Unit 13: Making History 核心字彙：Neither do I.",
-          "formula": "詞性與例句搭配：A: I don't like spiders. B: Neither do I.",
-          "trap": "注意拼寫盲點：切記母音與子音字母對應，勿漏寫尾音或不發音字母。"
+          "concept": "【Unit 13: Making History】核心字彙：experiment /ɪkˈspɛrɪmənt/ (v./n. 做實驗；實驗)",
+          "formula": "課文例句：Other scientists were experimenting with light bulbs, too.",
+          "trap": "拼寫與用法關鍵：搭配介系詞 experiment with (用...做實驗)。"
         }
       },
       {
         "id": "ODG3_U13_LIST_6",
         "type": "spelling_listen",
         "category_tag": "listening",
-        "question": "請聽電腦發音，在紙上拼寫出這個核心單字：",
-        "hint": "中文釋義：也不 (過去式否定倒裝附和)",
-        "audio_word": "Neither did...",
-        "phonetic": "",
-        "syllables": "Neither did...",
-        "answer": "Neither did...",
+        "question": "請聽電腦發音，在紙上拼寫出這個核心單字或片語：",
+        "hint": "詞性與中文：n. 電燈泡",
+        "audio_word": "light bulb",
+        "phonetic": "/ˈlaɪt ˌbʌlb/",
+        "syllables": "light bulb",
+        "answer": "light bulb",
         "explanation": {
-          "concept": "Unit 13: Making History 核心字彙：Neither did...",
-          "formula": "詞性與例句搭配：Meucci didn't become rich. Neither did Reis.",
-          "trap": "注意拼寫盲點：切記母音與子音字母對應，勿漏寫尾音或不發音字母。"
+          "concept": "【Unit 13: Making History】核心字彙：light bulb /ˈlaɪt ˌbʌlb/ (n. 電燈泡)",
+          "formula": "課文例句：Thomas Edison was trying to invent a light bulb.",
+          "trap": "拼寫與用法關鍵：light 中的 gh 不發音；bulb 尾音為 b。"
         }
       },
       {
         "id": "ODG3_U13_LIST_7",
         "type": "spelling_listen",
         "category_tag": "listening",
-        "question": "請聽電腦發音，在紙上拼寫出這個核心單字：",
-        "hint": "中文釋義：也不 (句尾逗號後否定附和)",
-        "audio_word": "...didn't, either.",
-        "phonetic": "",
-        "syllables": "...didn't, either.",
-        "answer": "...didn't, either.",
+        "question": "請聽電腦發音，在紙上拼寫出這個核心單字或片語：",
+        "hint": "詞性與中文：adj. 著名的；出名的",
+        "audio_word": "famous",
+        "phonetic": "/ˈfeɪməs/",
+        "syllables": "fa-mous",
+        "answer": "famous",
         "explanation": {
-          "concept": "Unit 13: Making History 核心字彙：...didn't, either.",
-          "formula": "詞性與例句搭配：They didn't have computers, either.",
-          "trap": "注意拼寫盲點：切記母音與子音字母對應，勿漏寫尾音或不發音字母。"
+          "concept": "【Unit 13: Making History】核心字彙：famous /ˈfeɪməs/ (adj. 著名的；出名的)",
+          "formula": "課文例句：Gray did not become rich and famous.",
+          "trap": "拼寫與用法關鍵：字尾為 -ous，勿拼成 famus。"
         }
       },
       {
-        "id": "ODG3_U13_FILL_8",
-        "type": "fill",
-        "category_tag": "fill",
-        "question": "Bell was a scientist. Meucci was a scientist ( ______ )",
-        "answer": "too",
-        "hint": "二選一紙筆填答，在紙上寫出正確單字",
+        "id": "ODG3_U13_LIST_8",
+        "type": "spelling_listen",
+        "category_tag": "listening",
+        "question": "請聽電腦發音，在紙上拼寫出這個核心單字或片語：",
+        "hint": "詞性與中文：n. 歷史",
+        "audio_word": "history",
+        "phonetic": "/ˈhɪstəri/",
+        "syllables": "his-to-ry",
+        "answer": "history",
         "explanation": {
-          "concept": "Unit 13: Making History 語法搭配與詞性辨析",
-          "formula": "破題關鍵：正確搭配為『Bell was a scientist. Meucci was a scientist too』。",
-          "trap": "干擾項排除：其餘選項在詞性或語法時態上不符前後語境。"
+          "concept": "【Unit 13: Making History】核心字彙：history /ˈhɪstəri/ (n. 歷史)",
+          "formula": "課文例句：They are important people in the history of the telephone.",
+          "trap": "拼寫與用法關鍵：in the history of... (在...的歷史上)。"
         }
       },
       {
-        "id": "ODG3_U13_FILL_9",
-        "type": "fill",
-        "category_tag": "fill",
-        "question": "Bell invented a telephone. ** ( ______ )",
-        "answer": "So",
-        "hint": "二選一紙筆填答，在紙上寫出正確單字",
+        "id": "ODG3_U13_LIST_9",
+        "type": "spelling_listen",
+        "category_tag": "listening",
+        "question": "請聽電腦發音，在紙上拼寫出這個核心單字或片語：",
+        "hint": "詞性與中文：adv. 也不（用於否定句尾）",
+        "audio_word": "either",
+        "phonetic": "/ˈiːðər/",
+        "syllables": "ei-ther",
+        "answer": "either",
         "explanation": {
-          "concept": "Unit 13: Making History 語法搭配與詞性辨析",
-          "formula": "破題關鍵：正確搭配為『Bell invented a telephone. ** So』。",
-          "trap": "干擾項排除：其餘選項在詞性或語法時態上不符前後語境。"
+          "concept": "【Unit 13: Making History】核心字彙：either /ˈiːðər/ (adv. 也不（用於否定句尾）)",
+          "formula": "課文例句：Meucci didn't become rich and famous, either.",
+          "trap": "拼寫與用法關鍵：用於否定句尾，前面通常加逗號。"
         }
       },
       {
-        "id": "ODG3_U13_FILL_10",
-        "type": "fill",
-        "category_tag": "fill",
-        "question": "Meucci didn't go to the Patent Office. ( ______ )",
-        "answer": "Neither",
-        "hint": "二選一紙筆填答，在紙上寫出正確單字",
+        "id": "ODG3_U13_LIST_10",
+        "type": "spelling_listen",
+        "category_tag": "listening",
+        "question": "請聽電腦發音，在紙上拼寫出這個核心單字或片語：",
+        "hint": "詞性與中文：adv. 也不（用於否定倒裝句首）",
+        "audio_word": "neither",
+        "phonetic": "/ˈniːðər/",
+        "syllables": "nei-ther",
+        "answer": "neither",
         "explanation": {
-          "concept": "Unit 13: Making History 語法搭配與詞性辨析",
-          "formula": "破題關鍵：正確搭配為『Meucci didn't go to the Patent Office. Neither』。",
-          "trap": "干擾項排除：其餘選項在詞性或語法時態上不符前後語境。"
+          "concept": "【Unit 13: Making History】核心字彙：neither /ˈniːðər/ (adv. 也不（用於否定倒裝句首）)",
+          "formula": "課文例句：Meucci didn't become rich. Neither did Reis.",
+          "trap": "拼寫與用法關鍵：n + either，放在句首時後面必須倒裝（Neither + 助動詞/be + 主詞）。"
         }
       },
       {
         "id": "ODG3_U13_FILL_11",
         "type": "fill",
         "category_tag": "fill",
-        "question": "Gray didn't become rich from his invention. Reis didn't become rich, ** ( ______ )",
-        "answer": "either",
-        "hint": "二選一紙筆填答，在紙上寫出正確單字",
+        "question": "Bell was a scientist. Meucci was a scientist ( too / **so )",
+        "answer": "too",
+        "hint": "二選一填空：請判斷應填入 too 還是 **so",
         "explanation": {
-          "concept": "Unit 13: Making History 語法搭配與詞性辨析",
-          "formula": "破題關鍵：正確搭配為『Gray didn't become rich from his invention. Reis didn't become rich, ** either』。",
-          "trap": "干擾項排除：其餘選項在詞性或語法時態上不符前後語境。"
+          "concept": "Unit 13 附和句核心文法（Too / Either / So / Neither 助動詞與 Be 動詞對齊）",
+          "formula": "正確完整句：Bell was a scientist. Meucci was a scientist too. （正解：too，淘汰干擾項：**so）",
+          "trap": "必考陷阱：① 前句是 be 動詞 (was/were)，附和句必用 was/were，禁用 did；② 否定句尾必用 either，禁用 too；③ Neither 本身已否定，後面助動詞必用肯定形 (Neither did Reis)！"
         }
       },
       {
-        "id": "ODG3_U13_MC_12",
+        "id": "ODG3_U13_FILL_12",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "Bell invented a telephone. ** ( So / Too** )",
+        "answer": "So",
+        "hint": "二選一填空：請判斷應填入 So 還是 Too**",
+        "explanation": {
+          "concept": "Unit 13 附和句核心文法（Too / Either / So / Neither 助動詞與 Be 動詞對齊）",
+          "formula": "正確完整句：Bell invented a telephone. ** So. （正解：So，淘汰干擾項：Too**）",
+          "trap": "必考陷阱：① 前句是 be 動詞 (was/were)，附和句必用 was/were，禁用 did；② 否定句尾必用 either，禁用 too；③ Neither 本身已否定，後面助動詞必用肯定形 (Neither did Reis)！"
+        }
+      },
+      {
+        "id": "ODG3_U13_FILL_13",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "Meucci didn't go to the Patent Office. ( Neither / **Either )",
+        "answer": "Neither",
+        "hint": "二選一填空：請判斷應填入 Neither 還是 **Either",
+        "explanation": {
+          "concept": "Unit 13 附和句核心文法（Too / Either / So / Neither 助動詞與 Be 動詞對齊）",
+          "formula": "正確完整句：Meucci didn't go to the Patent Office. Neither. （正解：Neither，淘汰干擾項：**Either）",
+          "trap": "必考陷阱：① 前句是 be 動詞 (was/were)，附和句必用 was/were，禁用 did；② 否定句尾必用 either，禁用 too；③ Neither 本身已否定，後面助動詞必用肯定形 (Neither did Reis)！"
+        }
+      },
+      {
+        "id": "ODG3_U13_FILL_14",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "Gray didn't become rich from his invention. Reis didn't become rich, ** ( either / neither** )",
+        "answer": "either",
+        "hint": "二選一填空：請判斷應填入 either 還是 neither**",
+        "explanation": {
+          "concept": "Unit 13 附和句核心文法（Too / Either / So / Neither 助動詞與 Be 動詞對齊）",
+          "formula": "正確完整句：Gray didn't become rich from his invention. Reis didn't become rich, ** either. （正解：either，淘汰干擾項：neither**）",
+          "trap": "必考陷阱：① 前句是 be 動詞 (was/were)，附和句必用 was/were，禁用 did；② 否定句尾必用 either，禁用 too；③ Neither 本身已否定，後面助動詞必用肯定形 (Neither did Reis)！"
+        }
+      },
+      {
+        "id": "ODG3_U13_NB_15",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "His father helped deaf people, ______.",
+        "answer": "too",
+        "hint": "請填入正確的連接副詞或語法詞彙",
+        "explanation": {
+          "concept": "Unit 13 附和句核心文法（Too / Either / So / Neither 助動詞與 Be 動詞對齊）",
+          "formula": "空格應填入『too』。",
+          "trap": "必考陷阱：① 前句是 be 動詞 (was/were)，附和句必用 was/were，禁用 did；② 否定句尾必用 either，禁用 too；③ Neither 本身已否定，後面助動詞必用肯定形 (Neither did Reis)！"
+        }
+      },
+      {
+        "id": "ODG3_U13_NB_16",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "______ was his wife.",
+        "answer": "So",
+        "hint": "請填入正確的連接副詞或語法詞彙",
+        "explanation": {
+          "concept": "Unit 13 附和句核心文法（Too / Either / So / Neither 助動詞與 Be 動詞對齊）",
+          "formula": "空格應填入『So』。",
+          "trap": "必考陷阱：① 前句是 be 動詞 (was/were)，附和句必用 was/were，禁用 did；② 否定句尾必用 either，禁用 too；③ Neither 本身已否定，後面助動詞必用肯定形 (Neither did Reis)！"
+        }
+      },
+      {
+        "id": "ODG3_U13_NB_17",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "His father was a teacher, ______.",
+        "answer": "too",
+        "hint": "請填入正確的連接副詞或語法詞彙",
+        "explanation": {
+          "concept": "Unit 13 附和句核心文法（Too / Either / So / Neither 助動詞與 Be 動詞對齊）",
+          "formula": "空格應填入『too』。",
+          "trap": "必考陷阱：① 前句是 be 動詞 (was/were)，附和句必用 was/were，禁用 did；② 否定句尾必用 either，禁用 too；③ Neither 本身已否定，後面助動詞必用肯定形 (Neither did Reis)！"
+        }
+      },
+      {
+        "id": "ODG3_U13_NB_18",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "______ did his parents.",
+        "answer": "So",
+        "hint": "請填入正確的連接副詞或語法詞彙",
+        "explanation": {
+          "concept": "Unit 13 附和句核心文法（Too / Either / So / Neither 助動詞與 Be 動詞對齊）",
+          "formula": "空格應填入『So』。",
+          "trap": "必考陷阱：① 前句是 be 動詞 (was/were)，附和句必用 was/were，禁用 did；② 否定句尾必用 either，禁用 too；③ Neither 本身已否定，後面助動詞必用肯定形 (Neither did Reis)！"
+        }
+      },
+      {
+        "id": "ODG3_U13_NB_19",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "They didn't have computers, ______.",
+        "answer": "either",
+        "hint": "請填入正確的連接副詞或語法詞彙",
+        "explanation": {
+          "concept": "Unit 13 附和句核心文法（Too / Either / So / Neither 助動詞與 Be 動詞對齊）",
+          "formula": "空格應填入『either』。",
+          "trap": "必考陷阱：① 前句是 be 動詞 (was/were)，附和句必用 was/were，禁用 did；② 否定句尾必用 either，禁用 too；③ Neither 本身已否定，後面助動詞必用肯定形 (Neither did Reis)！"
+        }
+      },
+      {
+        "id": "ODG3_U13_NB_20",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "______ did offices.",
+        "answer": "Neither",
+        "hint": "請填入正確的連接副詞或語法詞彙",
+        "explanation": {
+          "concept": "Unit 13 附和句核心文法（Too / Either / So / Neither 助動詞與 Be 動詞對齊）",
+          "formula": "空格應填入『Neither』。",
+          "trap": "必考陷阱：① 前句是 be 動詞 (was/were)，附和句必用 was/were，禁用 did；② 否定句尾必用 either，禁用 too；③ Neither 本身已否定，後面助動詞必用肯定形 (Neither did Reis)！"
+        }
+      },
+      {
+        "id": "ODG3_U13_MC_21",
         "type": "choice",
         "category_tag": "choice",
         "question": "Antonio Meucci was an inventor. Johann Philipp Reis was an inventor, _______.",
         "options": [
           "so",
           "either",
-          ""
+          "too"
         ],
-        "answer": "so",
-        "hint": "三選一紙筆填答",
+        "answer": "too",
+        "hint": "三選一選擇題：請看選項在紙上寫下正確答案或代號",
         "explanation": {
-          "concept": "Unit 13: Making History 文法選擇考點",
-          "formula": "破題關鍵：題幹線索指定正確答案為『so』。",
-          "trap": "誘答陷阱：其餘選項在主詞單複數、時態或介系詞上有語法漏洞。"
+          "concept": "Unit 13 附和句核心文法（Too / Either / So / Neither 助動詞與 Be 動詞對齊）",
+          "formula": "題幹語境對應正解為『too』（選項：so / either / too）。",
+          "trap": "必考陷阱：① 前句是 be 動詞 (was/were)，附和句必用 was/were，禁用 did；② 否定句尾必用 either，禁用 too；③ Neither 本身已否定，後面助動詞必用肯定形 (Neither did Reis)！"
         }
       },
       {
-        "id": "ODG3_U13_MC_13",
+        "id": "ODG3_U13_MC_22",
         "type": "choice",
         "category_tag": "choice",
         "question": "Alexander Graham Bell didn't invent the television. He didn't invent the computer, _______.",
         "options": [
           "neither",
-          "either (正解：b)",
-          "s"
+          "either",
+          "so"
         ],
-        "answer": "either (正解：b)",
-        "hint": "三選一紙筆填答",
+        "answer": "either",
+        "hint": "三選一選擇題：請看選項在紙上寫下正確答案或代號",
         "explanation": {
-          "concept": "Unit 13: Making History 文法選擇考點",
-          "formula": "破題關鍵：題幹線索指定正確答案為『either (正解：b)』。",
-          "trap": "誘答陷阱：其餘選項在主詞單複數、時態或介系詞上有語法漏洞。"
+          "concept": "Unit 13 附和句核心文法（Too / Either / So / Neither 助動詞與 Be 動詞對齊）",
+          "formula": "題幹語境對應正解為『either』（選項：neither / either / so）。",
+          "trap": "必考陷阱：① 前句是 be 動詞 (was/were)，附和句必用 was/were，禁用 did；② 否定句尾必用 either，禁用 too；③ Neither 本身已否定，後面助動詞必用肯定形 (Neither did Reis)！"
         }
       },
       {
-        "id": "ODG3_U13_MC_14",
+        "id": "ODG3_U13_MC_23",
         "type": "choice",
         "category_tag": "choice",
         "question": "Elisha Gray did lots of experiments with telephone machines. _______ did Alexander Graham Bell.",
         "options": [
-          "So (正解：a)",
+          "So",
           "Either",
-          "N"
+          "Neither"
         ],
-        "answer": "So (正解：a)",
-        "hint": "三選一紙筆填答",
+        "answer": "So",
+        "hint": "三選一選擇題：請看選項在紙上寫下正確答案或代號",
         "explanation": {
-          "concept": "Unit 13: Making History 文法選擇考點",
-          "formula": "破題關鍵：題幹線索指定正確答案為『So (正解：a)』。",
-          "trap": "誘答陷阱：其餘選項在主詞單複數、時態或介系詞上有語法漏洞。"
+          "concept": "Unit 13 附和句核心文法（Too / Either / So / Neither 助動詞與 Be 動詞對齊）",
+          "formula": "題幹語境對應正解為『So』（選項：So / Either / Neither）。",
+          "trap": "必考陷阱：① 前句是 be 動詞 (was/were)，附和句必用 was/were，禁用 did；② 否定句尾必用 either，禁用 too；③ Neither 本身已否定，後面助動詞必用肯定形 (Neither did Reis)！"
         }
       },
       {
-        "id": "ODG3_U13_MC_15",
+        "id": "ODG3_U13_MC_24",
         "type": "choice",
         "category_tag": "choice",
         "question": "Johann Philipp Reis lived in the 19th century. Antonio Meucci lived in the 19th century, _______.",
         "options": [
           "so",
           "neither",
-          ""
+          "too"
         ],
-        "answer": "so",
-        "hint": "三選一紙筆填答",
+        "answer": "too",
+        "hint": "三選一選擇題：請看選項在紙上寫下正確答案或代號",
         "explanation": {
-          "concept": "Unit 13: Making History 文法選擇考點",
-          "formula": "破題關鍵：題幹線索指定正確答案為『so』。",
-          "trap": "誘答陷阱：其餘選項在主詞單複數、時態或介系詞上有語法漏洞。"
+          "concept": "Unit 13 附和句核心文法（Too / Either / So / Neither 助動詞與 Be 動詞對齊）",
+          "formula": "題幹語境對應正解為『too』（選項：so / neither / too）。",
+          "trap": "必考陷阱：① 前句是 be 動詞 (was/were)，附和句必用 was/were，禁用 did；② 否定句尾必用 either，禁用 too；③ Neither 本身已否定，後面助動詞必用肯定形 (Neither did Reis)！"
         }
       },
       {
-        "id": "ODG3_U13_MC_16",
+        "id": "ODG3_U13_MC_25",
         "type": "choice",
         "category_tag": "choice",
         "question": "Antonio Meucci wasn't from the U.K. _______ was Johann Philipp Reis.",
         "options": [
           "Too",
-          "Neither (正解：b)",
-          "S"
+          "Neither",
+          "So"
         ],
-        "answer": "Neither (正解：b)",
-        "hint": "三選一紙筆填答",
+        "answer": "Neither",
+        "hint": "三選一選擇題：請看選項在紙上寫下正確答案或代號",
         "explanation": {
-          "concept": "Unit 13: Making History 文法選擇考點",
-          "formula": "破題關鍵：題幹線索指定正確答案為『Neither (正解：b)』。",
-          "trap": "誘答陷阱：其餘選項在主詞單複數、時態或介系詞上有語法漏洞。"
+          "concept": "Unit 13 附和句核心文法（Too / Either / So / Neither 助動詞與 Be 動詞對齊）",
+          "formula": "題幹語境對應正解為『Neither』（選項：Too / Neither / So）。",
+          "trap": "必考陷阱：① 前句是 be 動詞 (was/were)，附和句必用 was/were，禁用 did；② 否定句尾必用 either，禁用 too；③ Neither 本身已否定，後面助動詞必用肯定形 (Neither did Reis)！"
         }
       },
       {
-        "id": "ODG3_U13_MC_17",
+        "id": "ODG3_U13_MC_26",
         "type": "choice",
         "category_tag": "choice",
         "question": "Elisha Gray invented other machines. _______ did Antonio Meucci.",
         "options": [
-          "So (正解：a)",
+          "So",
           "Either",
-          "T"
+          "Too"
         ],
-        "answer": "So (正解：a)",
-        "hint": "三選一紙筆填答",
+        "answer": "So",
+        "hint": "三選一選擇題：請看選項在紙上寫下正確答案或代號",
         "explanation": {
-          "concept": "Unit 13: Making History 文法選擇考點",
-          "formula": "破題關鍵：題幹線索指定正確答案為『So (正解：a)』。",
-          "trap": "誘答陷阱：其餘選項在主詞單複數、時態或介系詞上有語法漏洞。"
+          "concept": "Unit 13 附和句核心文法（Too / Either / So / Neither 助動詞與 Be 動詞對齊）",
+          "formula": "題幹語境對應正解為『So』（選項：So / Either / Too）。",
+          "trap": "必考陷阱：① 前句是 be 動詞 (was/were)，附和句必用 was/were，禁用 did；② 否定句尾必用 either，禁用 too；③ Neither 本身已否定，後面助動詞必用肯定形 (Neither did Reis)！"
         }
       },
       {
-        "id": "ODG3_U13_RW_18",
-        "type": "paper_rewrite",
-        "category_tag": "rewrite",
-        "question": "題目提示：Alexander Graham Bell was a teacher. So was his father.",
-        "answer": "His father was, too.",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
+        "id": "ODG3_U13_BFILL_27",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "Bell was a scientist. Meucci was a scientist ______.",
+        "answer": "so / [too]",
+        "hint": "課文重點句填空：請在紙上寫出空格處的單字",
         "explanation": {
-          "concept": "Unit 13: Making History 核心句型結構改寫",
-          "formula": "標準句型：His father was, too.",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
+          "concept": "Unit 13 附和句核心文法（Too / Either / So / Neither 助動詞與 Be 動詞對齊）",
+          "formula": "完整原句：Bell was a scientist. Meucci was a scientist so / [too].",
+          "trap": "必考陷阱：① 前句是 be 動詞 (was/were)，附和句必用 was/were，禁用 did；② 否定句尾必用 either，禁用 too；③ Neither 本身已否定，後面助動詞必用肯定形 (Neither did Reis)！"
         }
       },
       {
-        "id": "ODG3_U13_RW_19",
-        "type": "paper_rewrite",
-        "category_tag": "rewrite",
-        "question": "題目提示：Houses didn't have telephones in the 1870s. Offices didn't, either.",
-        "answer": "Neither did offices.",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
+        "id": "ODG3_U13_BFILL_28",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "Bell invented a telephone. ______ did Gray.",
+        "answer": "[So] / Too",
+        "hint": "課文重點句填空：請在紙上寫出空格處的單字",
         "explanation": {
-          "concept": "Unit 13: Making History 核心句型結構改寫",
-          "formula": "標準句型：Neither did offices.",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
+          "concept": "Unit 13 附和句核心文法（Too / Either / So / Neither 助動詞與 Be 動詞對齊）",
+          "formula": "完整原句：Bell invented a telephone. [So] / Too did Gray.",
+          "trap": "必考陷阱：① 前句是 be 動詞 (was/were)，附和句必用 was/were，禁用 did；② 否定句尾必用 either，禁用 too；③ Neither 本身已否定，後面助動詞必用肯定形 (Neither did Reis)！"
         }
       },
       {
-        "id": "ODG3_U13_RW_20",
+        "id": "ODG3_U13_BFILL_29",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "Meucci didn't go to the Patent Office. ______ did Reis.",
+        "answer": "Either / [Neither]",
+        "hint": "課文重點句填空：請在紙上寫出空格處的單字",
+        "explanation": {
+          "concept": "Unit 13 附和句核心文法（Too / Either / So / Neither 助動詞與 Be 動詞對齊）",
+          "formula": "完整原句：Meucci didn't go to the Patent Office. Either / [Neither] did Reis.",
+          "trap": "必考陷阱：① 前句是 be 動詞 (was/were)，附和句必用 was/were，禁用 did；② 否定句尾必用 either，禁用 too；③ Neither 本身已否定，後面助動詞必用肯定形 (Neither did Reis)！"
+        }
+      },
+      {
+        "id": "ODG3_U13_BFILL_30",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "Gray didn't become rich from his invention. Reis didn't become rich, ______.",
+        "answer": "[either] / neither",
+        "hint": "課文重點句填空：請在紙上寫出空格處的單字",
+        "explanation": {
+          "concept": "Unit 13 附和句核心文法（Too / Either / So / Neither 助動詞與 Be 動詞對齊）",
+          "formula": "完整原句：Gray didn't become rich from his invention. Reis didn't become rich, [either] / neither.",
+          "trap": "必考陷阱：① 前句是 be 動詞 (was/were)，附和句必用 was/were，禁用 did；② 否定句尾必用 either，禁用 too；③ Neither 本身已否定，後面助動詞必用肯定形 (Neither did Reis)！"
+        }
+      },
+      {
+        "id": "ODG3_U13_BFILL_31",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "Alexander Graham Bell was a teacher. ______",
+        "answer": "So was his father.",
+        "hint": "課文重點句填空：請在紙上寫出空格處的單字",
+        "explanation": {
+          "concept": "Unit 13 附和句核心文法（Too / Either / So / Neither 助動詞與 Be 動詞對齊）",
+          "formula": "完整原句：Alexander Graham Bell was a teacher. So was his father.",
+          "trap": "必考陷阱：① 前句是 be 動詞 (was/were)，附和句必用 was/were，禁用 did；② 否定句尾必用 either，禁用 too；③ Neither 本身已否定，後面助動詞必用肯定形 (Neither did Reis)！"
+        }
+      },
+      {
+        "id": "ODG3_U13_BFILL_32",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "Houses didn't have telephones in the 1870s. ______",
+        "answer": "Offices didn't, either.",
+        "hint": "課文重點句填空：請在紙上寫出空格處的單字",
+        "explanation": {
+          "concept": "Unit 13 附和句核心文法（Too / Either / So / Neither 助動詞與 Be 動詞對齊）",
+          "formula": "完整原句：Houses didn't have telephones in the 1870s. Offices didn't, either.",
+          "trap": "必考陷阱：① 前句是 be 動詞 (was/were)，附和句必用 was/were，禁用 did；② 否定句尾必用 either，禁用 too；③ Neither 本身已否定，後面助動詞必用肯定形 (Neither did Reis)！"
+        }
+      },
+      {
+        "id": "ODG3_U13_BFILL_33",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "Alexander Graham Bell's wife was deaf. ______",
+        "answer": "His mother was, too.",
+        "hint": "課文重點句填空：請在紙上寫出空格處的單字",
+        "explanation": {
+          "concept": "Unit 13 附和句核心文法（Too / Either / So / Neither 助動詞與 Be 動詞對齊）",
+          "formula": "完整原句：Alexander Graham Bell's wife was deaf. His mother was, too.",
+          "trap": "必考陷阱：① 前句是 be 動詞 (was/were)，附和句必用 was/were，禁用 did；② 否定句尾必用 either，禁用 too；③ Neither 本身已否定，後面助動詞必用肯定形 (Neither did Reis)！"
+        }
+      },
+      {
+        "id": "ODG3_U13_BFILL_34",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "Alexander Graham Bell didn't move to Australia. ______",
+        "answer": "Neither did his parents.",
+        "hint": "課文重點句填空：請在紙上寫出空格處的單字",
+        "explanation": {
+          "concept": "Unit 13 附和句核心文法（Too / Either / So / Neither 助動詞與 Be 動詞對齊）",
+          "formula": "完整原句：Alexander Graham Bell didn't move to Australia. Neither did his parents.",
+          "trap": "必考陷阱：① 前句是 be 動詞 (was/were)，附和句必用 was/were，禁用 did；② 否定句尾必用 either，禁用 too；③ Neither 本身已否定，後面助動詞必用肯定形 (Neither did Reis)！"
+        }
+      },
+      {
+        "id": "ODG3_U13_BFILL_35",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "Alexander Graham Bell wasn't a doctor. ______",
+        "answer": "His father wasn't, either.",
+        "hint": "課文重點句填空：請在紙上寫出空格處的單字",
+        "explanation": {
+          "concept": "Unit 13 附和句核心文法（Too / Either / So / Neither 助動詞與 Be 動詞對齊）",
+          "formula": "完整原句：Alexander Graham Bell wasn't a doctor. His father wasn't, either.",
+          "trap": "必考陷阱：① 前句是 be 動詞 (was/were)，附和句必用 was/were，禁用 did；② 否定句尾必用 either，禁用 too；③ Neither 本身已否定，後面助動詞必用肯定形 (Neither did Reis)！"
+        }
+      },
+      {
+        "id": "ODG3_U13_BFILL_36",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "Alexander Graham Bell was interested in language. ______",
+        "answer": "So was his father.",
+        "hint": "課文重點句填空：請在紙上寫出空格處的單字",
+        "explanation": {
+          "concept": "Unit 13 附和句核心文法（Too / Either / So / Neither 助動詞與 Be 動詞對齊）",
+          "formula": "完整原句：Alexander Graham Bell was interested in language. So was his father.",
+          "trap": "必考陷阱：① 前句是 be 動詞 (was/were)，附和句必用 was/were，禁用 did；② 否定句尾必用 either，禁用 too；③ Neither 本身已否定，後面助動詞必用肯定形 (Neither did Reis)！"
+        }
+      },
+      {
+        "id": "ODG3_U13_BFILL_37",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "Alexander Graham Bell wasn't from Canada. ______",
+        "answer": "Neither were his parents.",
+        "hint": "課文重點句填空：請在紙上寫出空格處的單字",
+        "explanation": {
+          "concept": "Unit 13 附和句核心文法（Too / Either / So / Neither 助動詞與 Be 動詞對齊）",
+          "formula": "完整原句：Alexander Graham Bell wasn't from Canada. Neither were his parents.",
+          "trap": "必考陷阱：① 前句是 be 動詞 (was/were)，附和句必用 was/were，禁用 did；② 否定句尾必用 either，禁用 too；③ Neither 本身已否定，後面助動詞必用肯定形 (Neither did Reis)！"
+        }
+      },
+      {
+        "id": "ODG3_U13_BFILL_38",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "Alexander Graham Bell helped deaf people. ______",
+        "answer": "His father did, too.",
+        "hint": "課文重點句填空：請在紙上寫出空格處的單字",
+        "explanation": {
+          "concept": "Unit 13 附和句核心文法（Too / Either / So / Neither 助動詞與 Be 動詞對齊）",
+          "formula": "完整原句：Alexander Graham Bell helped deaf people. His father did, too.",
+          "trap": "必考陷阱：① 前句是 be 動詞 (was/were)，附和句必用 was/were，禁用 did；② 否定句尾必用 either，禁用 too；③ Neither 本身已否定，後面助動詞必用肯定形 (Neither did Reis)！"
+        }
+      },
+      {
+        "id": "ODG3_U13_RW_39",
         "type": "paper_rewrite",
         "category_tag": "rewrite",
-        "question": "題目提示：Alexander Graham Bell's wife was deaf. His mother was, too.",
+        "question": "句型改寫與造句：Alexander Graham Bell's wife was deaf. His mother was, too.",
         "answer": "So was his mother.",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
+        "hint": "請在紙上寫出完整英文句子，再按「翻牌核對答案」",
         "explanation": {
-          "concept": "Unit 13: Making History 核心句型結構改寫",
-          "formula": "標準句型：So was his mother.",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
+          "concept": "Unit 13 附和句核心文法（Too / Either / So / Neither 助動詞與 Be 動詞對齊）",
+          "formula": "標準改寫句：So was his mother.",
+          "trap": "必考陷阱：① 前句是 be 動詞 (was/were)，附和句必用 was/were，禁用 did；② 否定句尾必用 either，禁用 too；③ Neither 本身已否定，後面助動詞必用肯定形 (Neither did Reis)！"
         }
       },
       {
-        "id": "ODG3_U13_RW_21",
+        "id": "ODG3_U13_RW_40",
         "type": "paper_rewrite",
         "category_tag": "rewrite",
-        "question": "題目提示：Alexander Graham Bell didn't move to Australia. Neither did his parents.",
+        "question": "句型改寫與造句：Alexander Graham Bell didn't move to Australia. Neither did his parents.",
         "answer": "His parents didn't, either.",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
+        "hint": "請在紙上寫出完整英文句子，再按「翻牌核對答案」",
         "explanation": {
-          "concept": "Unit 13: Making History 核心句型結構改寫",
-          "formula": "標準句型：His parents didn't, either.",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
+          "concept": "Unit 13 附和句核心文法（Too / Either / So / Neither 助動詞與 Be 動詞對齊）",
+          "formula": "標準改寫句：His parents didn't, either.",
+          "trap": "必考陷阱：① 前句是 be 動詞 (was/were)，附和句必用 was/were，禁用 did；② 否定句尾必用 either，禁用 too；③ Neither 本身已否定，後面助動詞必用肯定形 (Neither did Reis)！"
         }
       },
       {
-        "id": "ODG3_U13_RW_22",
+        "id": "ODG3_U13_RW_41",
         "type": "paper_rewrite",
         "category_tag": "rewrite",
-        "question": "題目提示：Alexander Graham Bell wasn't a doctor. His father wasn't, either.",
+        "question": "句型改寫與造句：Alexander Graham Bell wasn't a doctor. His father wasn't, either.",
         "answer": "Neither was his father.",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
+        "hint": "請在紙上寫出完整英文句子，再按「翻牌核對答案」",
         "explanation": {
-          "concept": "Unit 13: Making History 核心句型結構改寫",
-          "formula": "標準句型：Neither was his father.",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
+          "concept": "Unit 13 附和句核心文法（Too / Either / So / Neither 助動詞與 Be 動詞對齊）",
+          "formula": "標準改寫句：Neither was his father.",
+          "trap": "必考陷阱：① 前句是 be 動詞 (was/were)，附和句必用 was/were，禁用 did；② 否定句尾必用 either，禁用 too；③ Neither 本身已否定，後面助動詞必用肯定形 (Neither did Reis)！"
         }
       },
       {
-        "id": "ODG3_U13_RW_23",
+        "id": "ODG3_U13_RW_42",
         "type": "paper_rewrite",
         "category_tag": "rewrite",
-        "question": "題目提示：Alexander Graham Bell was interested in language. So was his father.",
+        "question": "句型改寫與造句：Alexander Graham Bell was interested in language. So was his father.",
         "answer": "His father was, too.",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
+        "hint": "請在紙上寫出完整英文句子，再按「翻牌核對答案」",
         "explanation": {
-          "concept": "Unit 13: Making History 核心句型結構改寫",
-          "formula": "標準句型：His father was, too.",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
+          "concept": "Unit 13 附和句核心文法（Too / Either / So / Neither 助動詞與 Be 動詞對齊）",
+          "formula": "標準改寫句：His father was, too.",
+          "trap": "必考陷阱：① 前句是 be 動詞 (was/were)，附和句必用 was/were，禁用 did；② 否定句尾必用 either，禁用 too；③ Neither 本身已否定，後面助動詞必用肯定形 (Neither did Reis)！"
         }
       },
       {
-        "id": "ODG3_U13_RW_24",
+        "id": "ODG3_U13_RW_43",
         "type": "paper_rewrite",
         "category_tag": "rewrite",
-        "question": "題目提示：Alexander Graham Bell wasn't from Canada. Neither were his parents.",
+        "question": "句型改寫與造句：Alexander Graham Bell wasn't from Canada. Neither were his parents.",
         "answer": "His parents weren't, either.",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
+        "hint": "請在紙上寫出完整英文句子，再按「翻牌核對答案」",
         "explanation": {
-          "concept": "Unit 13: Making History 核心句型結構改寫",
-          "formula": "標準句型：His parents weren't, either.",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
+          "concept": "Unit 13 附和句核心文法（Too / Either / So / Neither 助動詞與 Be 動詞對齊）",
+          "formula": "標準改寫句：His parents weren't, either.",
+          "trap": "必考陷阱：① 前句是 be 動詞 (was/were)，附和句必用 was/were，禁用 did；② 否定句尾必用 either，禁用 too；③ Neither 本身已否定，後面助動詞必用肯定形 (Neither did Reis)！"
         }
       },
       {
-        "id": "ODG3_U13_RW_25",
+        "id": "ODG3_U13_RW_44",
         "type": "paper_rewrite",
         "category_tag": "rewrite",
-        "question": "題目提示：Alexander Graham Bell helped deaf people. His father did, too.",
+        "question": "句型改寫與造句：Alexander Graham Bell helped deaf people. His father did, too.",
         "answer": "So did his father.",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
+        "hint": "請在紙上寫出完整英文句子，再按「翻牌核對答案」",
         "explanation": {
-          "concept": "Unit 13: Making History 核心句型結構改寫",
-          "formula": "標準句型：So did his father.",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
+          "concept": "Unit 13 附和句核心文法（Too / Either / So / Neither 助動詞與 Be 動詞對齊）",
+          "formula": "標準改寫句：So did his father.",
+          "trap": "必考陷阱：① 前句是 be 動詞 (was/were)，附和句必用 was/were，禁用 did；② 否定句尾必用 either，禁用 too；③ Neither 本身已否定，後面助動詞必用肯定形 (Neither did Reis)！"
+        }
+      },
+      {
+        "id": "ODG3_U13_EX_45",
+        "type": "paper_rewrite",
+        "category_tag": "rewrite",
+        "question": "【岱崙考券題型】[Olivia, Penny - 100% on quiz / so]（提示：使用過去簡單式，切勿漏寫動詞 got！）",
+        "options": [],
+        "answer": "Olivia got 100% on her quiz, and so did Penny.",
+        "hint": "公式：主詞 A + got 100% on her quiz, and so did + 主詞 B.",
+        "explanation": {
+          "concept": "Unit 13 肯定倒裝附和長句合成（so + did + 主詞）",
+          "formula": "Olivia got 100% on her quiz, and so did Penny.",
+          "trap": "考場真實失分：① 看到 100% on quiz 忘了補動詞 got；② 誤寫成 100% did Penny 或 Penny was so did ❌！"
+        }
+      },
+      {
+        "id": "ODG3_U13_EX_46",
+        "type": "paper_rewrite",
+        "category_tag": "rewrite",
+        "question": "【岱崙考券題型】[Ryan, Michael - 95% on quiz / too]（提示：使用過去簡單式，注意後句助動詞！）",
+        "options": [],
+        "answer": "Ryan got 95% on his quiz, and Michael did, too.",
+        "hint": "公式：主詞 A + got 95% on his quiz, and + 主詞 B + did, too.",
+        "explanation": {
+          "concept": "Unit 13 肯定句尾附和長句合成（主詞 + did, too）",
+          "formula": "Ryan got 95% on his quiz, and Michael did, too.",
+          "trap": "考場真實失分：前句動詞是過去式一般動詞 got，後句必須用『Michael did, too』，絕對不可寫 Michael are too ❌！"
+        }
+      },
+      {
+        "id": "ODG3_U13_EX_47",
+        "type": "paper_rewrite",
+        "category_tag": "rewrite",
+        "question": "【岱崙考券題型】[Brad, Lisa - did not play baseball / either]（提示：否定句尾附和）",
+        "options": [],
+        "answer": "Brad did not play baseball, and Lisa didn't, either.",
+        "hint": "公式：主詞 A + did not V..., and + 主詞 B + didn't, either.",
+        "explanation": {
+          "concept": "Unit 13 否定句尾附和長句合成（主詞 + didn't, either）",
+          "formula": "Brad did not play baseball, and Lisa didn't, either.",
+          "trap": "否定句尾必須搭配『didn't, either』，不可用 too 或 did, either！"
+        }
+      },
+      {
+        "id": "ODG3_U13_EX_48",
+        "type": "paper_rewrite",
+        "category_tag": "rewrite",
+        "question": "【岱崙考券題型】[Ray, Jim - not pass quiz / either]（提示：過去式否定必用 didn't pass！）",
+        "options": [],
+        "answer": "Ray didn't pass the quiz, and Jim didn't, either.",
+        "hint": "過去式一般動詞否定：Ray didn't pass the quiz（不可寫 Ray are not pass）",
+        "explanation": {
+          "concept": "Unit 13 過去簡單式否定與 either 附和",
+          "formula": "Ray didn't pass the quiz, and Jim didn't, either.",
+          "trap": "考場真實失分：看到題幹給 not pass quiz，誤寫成 Ray are not pass quiz ❌！一般動詞過去式否定必須請出 didn't！"
+        }
+      },
+      {
+        "id": "ODG3_U13_EX_49",
+        "type": "paper_rewrite",
+        "category_tag": "rewrite",
+        "question": "【岱崙變式題型】[Ray, Jim - not pass quiz / neither]（提示：改用 neither 倒裝附和！）",
+        "options": [],
+        "answer": "Ray didn't pass the quiz, and neither did Jim.",
+        "hint": "公式：Ray didn't pass the quiz, and neither did Jim.（neither 後接肯定助動詞 did）",
+        "explanation": {
+          "concept": "Unit 13 否定倒裝附和長句合成（neither + did + 主詞）",
+          "formula": "Ray didn't pass the quiz, and neither did Jim.",
+          "trap": "neither 本身已含 not，後面助動詞必須用肯定形『did』，嚴禁寫成 neither didn't Jim ❌！"
+        }
+      },
+      {
+        "id": "ODG3_U13_EX_50",
+        "type": "paper_rewrite",
+        "category_tag": "rewrite",
+        "question": "【岱崙變式題型】[Edison, Swan - a famous inventor / so]（提示：名詞身分無動作動詞，需用 be 動詞 was！）",
+        "options": [],
+        "answer": "Edison was a famous inventor, and so was Swan.",
+        "hint": "「是...發明家」用過去式 be 動詞 was，後句倒裝也必須用 so was Swan！",
+        "explanation": {
+          "concept": "Unit 13 Be 動詞過去式肯定倒裝（so + was/were + 主詞）",
+          "formula": "Edison was a famous inventor, and so was Swan.",
+          "trap": "前句是『was a famous inventor』，後句必須對齊 be 動詞寫『so was Swan』，不可慣性寫成 so did Swan ❌！"
+        }
+      },
+      {
+        "id": "ODG3_U13_EX_51",
+        "type": "paper_rewrite",
+        "category_tag": "rewrite",
+        "question": "【岱崙變式題型】[Meucci, Reis - not rich and famous / neither]（提示：形容詞狀態需用 wasn't，後句用 neither was！）",
+        "options": [],
+        "answer": "Meucci wasn't rich and famous, and neither was Reis.",
+        "hint": "rich and famous 是形容詞，前面動詞用 wasn't，倒裝用 neither was Reis",
+        "explanation": {
+          "concept": "Unit 13 Be 動詞過去式否定倒裝（neither + was/were + 主詞）",
+          "formula": "Meucci wasn't rich and famous, and neither was Reis.",
+          "trap": "形容詞 rich 前面沒有一般動詞，必須用 be 動詞 wasn't，後句倒裝對應寫 neither was Reis！"
+        }
+      },
+      {
+        "id": "ODG3_U13_EX_52",
+        "type": "paper_rewrite",
+        "category_tag": "rewrite",
+        "question": "【岱崙變式題型】[Swan, Edison - got a patent for his invention / too]（提示：一般動詞過去式 got，句尾用 did, too）",
+        "options": [],
+        "answer": "Swan got a patent for his invention, and Edison did, too.",
+        "hint": "前句動詞為 got，後句精簡附和為 and Edison did, too.",
+        "explanation": {
+          "concept": "Unit 13 一般動詞過去式肯定句尾附和",
+          "formula": "Swan got a patent for his invention, and Edison did, too.",
+          "trap": "切勿把 got 當成 be 動詞，後句必須用 Edison did, too。"
+        }
+      },
+      {
+        "id": "ODG3_U13_EX_53",
+        "type": "choice",
+        "category_tag": "choice",
+        "question": "Olivia got 100% on her quiz, and ( ______ ).",
+        "options": [
+          "so did Penny",
+          "Penny was, too",
+          "100% did Penny",
+          "so was Penny"
+        ],
+        "answer": "so did Penny",
+        "hint": "前句動詞是過去式一般動詞 got，肯定倒裝用 so did + 主詞",
+        "explanation": {
+          "concept": "Unit 13 倒裝附和助動詞判斷",
+          "formula": "got (一般動詞過去式) ➔ so did Penny / Penny did, too。",
+          "trap": "不可選 so was Penny 或 100% did Penny。"
+        }
+      },
+      {
+        "id": "ODG3_U13_EX_54",
+        "type": "choice",
+        "category_tag": "choice",
+        "question": "Bell's mother was deaf, and ( ______ ).",
+        "options": [
+          "so was his wife",
+          "so did his wife",
+          "his wife did, too",
+          "neither was his wife"
+        ],
+        "answer": "so was his wife",
+        "hint": "前句是肯定的 was deaf (be動詞)，附和必須沿用 was",
+        "explanation": {
+          "concept": "Unit 13 Be 動詞與一般動詞附和辨析",
+          "formula": "was deaf ➔ so was his wife / his wife was, too。",
+          "trap": "看到前句是 was，後句絕對不能選 did！"
         }
       }
     ]
@@ -741,99 +1383,362 @@ window.MIDTERM_DATABASE = [
     ],
     "vocab": [
       {
-        "word": "well",
-        "pos": "measure",
-        "meaning": "搭配: **better**",
-        "example": "well **better**"
+        "word": "glider",
+        "phonetic": "/ˈɡlaɪdər/",
+        "syllables": "glid-er",
+        "pos": "n.",
+        "meaning": "滑翔機",
+        "example": "In 1900, the Wright brothers built a glider.",
+        "note": "源自動詞 glide (滑翔) + r。"
       },
       {
-        "word": "badly",
-        "pos": "measure",
-        "meaning": "搭配: **worse**",
-        "example": "badly **worse**"
+        "word": "telescope",
+        "phonetic": "/ˈtɛlɪˌskoʊp/",
+        "syllables": "tel-e-scope",
+        "pos": "n.",
+        "meaning": "望遠鏡",
+        "example": "Hans Lippershey invented the first telescope in 1608.",
+        "note": "tele- (遠距離) + scope (觀測鏡)。"
       },
       {
-        "word": "far",
-        "pos": "measure",
-        "meaning": "搭配: **further**",
-        "example": "far **further**"
+        "word": "surface",
+        "phonetic": "/ˈsɜːrfɪs/",
+        "syllables": "sur-face",
+        "pos": "n.",
+        "meaning": "表面",
+        "example": "Galileo could see the surface of the moon!",
+        "note": "sur- + face，指物體或星球的表面。"
       },
       {
-        "word": "bike (腳踏車)",
-        "pos": "measure",
-        "meaning": "搭配: ★",
-        "example": "bike (腳踏車) ★"
+        "word": "quickly",
+        "phonetic": "/ˈkwɪkli/",
+        "syllables": "quick-ly",
+        "pos": "adv.",
+        "meaning": "快速地",
+        "example": "Their plane flew more quickly than the glider.",
+        "note": "比較級 more quickly，最高級 the most quickly。"
       },
       {
-        "word": "car (汽車)",
-        "pos": "measure",
-        "meaning": "搭配: ★★",
-        "example": "car (汽車) ★★"
+        "word": "clearly",
+        "phonetic": "/ˈklɪrli/",
+        "syllables": "clear-ly",
+        "pos": "adv.",
+        "meaning": "清楚地；清晰地",
+        "example": "Galileo could see things more clearly with his telescope.",
+        "note": "clear + ly，比較級為 more clearly。"
       },
       {
-        "word": "plane (飛機)",
-        "pos": "measure",
-        "meaning": "搭配: ★★★",
-        "example": "plane (飛機) ★★★"
+        "word": "easily",
+        "phonetic": "/ˈiːzəli/",
+        "syllables": "eas-i-ly",
+        "pos": "adv.",
+        "meaning": "容易地；輕鬆地",
+        "example": "Today we can communicate more easily than in the past.",
+        "note": "easy 去 y 改 i 加 -ly，比較級為 more easily。"
+      },
+      {
+        "word": "carefully",
+        "phonetic": "/ˈkɛrfəli/",
+        "syllables": "care-ful-ly",
+        "pos": "adv.",
+        "meaning": "仔細地；小心地",
+        "example": "She painted the picture more carefully than her brother.",
+        "note": "careful + ly（有兩個 l），比較級為 more carefully。"
+      },
+      {
+        "word": "happily",
+        "phonetic": "/ˈhæpɪli/",
+        "syllables": "hap-pi-ly",
+        "pos": "adv.",
+        "meaning": "快樂地；開心地",
+        "example": "The children played happily in the park.",
+        "note": "happy 去 y 改 i 加 -ly。"
+      },
+      {
+        "word": "further",
+        "phonetic": "/ˈfɜːrðər/",
+        "syllables": "fur-ther",
+        "pos": "adv.",
+        "meaning": "更遠地（far 的不規則比較級）",
+        "example": "Their plane flew further than the glider.",
+        "note": "far 的比較級可寫作 further 或 farther，不可加 more！"
+      },
+      {
+        "word": "furthest",
+        "phonetic": "/ˈfɜːrðɪst/",
+        "syllables": "fur-thest",
+        "pos": "adv.",
+        "meaning": "最遠地（far 的不規則最高級）",
+        "example": "With Newton's telescope, he could see the furthest of all.",
+        "note": "far 的最高級為 the furthest 或 the farthest。"
       }
     ],
     "mistake_buster": [
       {
-        "trap_id": "ERR_ADVERB_ADJECTIVE_CONFUSION",
-        "sentence": "He ran quick.",
+        "trap_id": "ODG14_ERR_1",
+        "sentence": "The Wright brothers' plane flew more further than the glider.",
         "tokens": [
-          "He",
-          "ran",
-          "quick."
-        ],
-        "wrong_index": 2,
-        "wrong_word": "quick.",
-        "correct_word": "quickly.",
-        "fixed_sentence": "He ran quickly.",
-        "reason": "修飾動詞動作必須用副詞 (-ly)，修飾名詞才用形容詞。"
-      },
-      {
-        "trap_id": "ERR_FAST_HARD_WITH_LY",
-        "sentence": "He drives fastly.",
-        "tokens": [
-          "He",
-          "drives",
-          "fastly."
-        ],
-        "wrong_index": 2,
-        "wrong_word": "fastly.",
-        "correct_word": "fast.",
-        "fixed_sentence": "He drives fast.",
-        "reason": "fast 沒有 fastly！hardly 是『幾乎不』而非『努力地』，是段考極經典陷阱。"
-      },
-      {
-        "trap_id": "ERR_DOUBLE_COMPARATIVE_ADVERB",
-        "sentence": "more faster than",
-        "tokens": [
+          "The",
+          "Wright",
+          "brothers'",
+          "plane",
+          "flew",
           "more",
-          "faster",
-          "than"
+          "further",
+          "than",
+          "the",
+          "glider."
         ],
-        "wrong_index": 0,
+        "wrong_index": 5,
         "wrong_word": "more",
-        "correct_word": "faster",
-        "fixed_sentence": "faster than",
-        "reason": "不能在 -er 比較級前重複加 more。"
+        "correct_word": "much",
+        "fixed_sentence": "The Wright brothers' plane flew much further than the glider.",
+        "reason": "『further』本身已經是 far 的不規則比較級，前面絕對不可再加 more（雙重比較級錯誤），若要加強語氣可用 much！"
       },
       {
-        "trap_id": "ERR_GOOD_WELL_CONFUSION",
-        "sentence": "He plays tennis good.",
+        "trap_id": "ODG14_ERR_2",
+        "sentence": "Galileo could see things clearlier with his new telescope.",
         "tokens": [
-          "He",
-          "plays",
-          "tennis",
-          "good."
+          "Galileo",
+          "could",
+          "see",
+          "things",
+          "clearlier",
+          "with",
+          "his",
+          "new",
+          "telescope."
+        ],
+        "wrong_index": 4,
+        "wrong_word": "clearlier",
+        "correct_word": "more clearly",
+        "fixed_sentence": "Galileo could see things more clearly with his new telescope.",
+        "reason": "由形容詞加 -ly 構成的多音節副詞（clearly），比較級必須在前面加『more (more clearly)』，不可字尾加 -er！"
+      },
+      {
+        "trap_id": "ODG14_ERR_3",
+        "sentence": "In 1908, their best airplane flew the faster of all.",
+        "tokens": [
+          "In",
+          "1908,",
+          "their",
+          "best",
+          "airplane",
+          "flew",
+          "the",
+          "faster",
+          "of",
+          "all."
+        ],
+        "wrong_index": 7,
+        "wrong_word": "faster",
+        "correct_word": "fastest",
+        "fixed_sentence": "In 1908, their best airplane flew the fastest of all.",
+        "reason": "句尾有『of all（在全部之中）』且前面有定冠詞 the，必須使用最高級『fastest』！"
+      },
+      {
+        "trap_id": "ODG14_ERR_4",
+        "sentence": "A witch laughs horribly, and a vampire laughs horribly than a witch.",
+        "tokens": [
+          "A",
+          "witch",
+          "laughs",
+          "horribly,",
+          "and",
+          "a",
+          "vampire",
+          "laughs",
+          "horribly",
+          "than",
+          "a",
+          "witch."
+        ],
+        "wrong_index": 8,
+        "wrong_word": "horribly",
+        "correct_word": "more horribly",
+        "fixed_sentence": "A witch laughs horribly, and a vampire laughs more horribly than a witch.",
+        "reason": "【岱崙 W4 真題陷阱】後面有比較連詞『than』，多音節副詞 horribly 前面必須加上『more (more horribly than)』，不可漏掉 more！"
+      },
+      {
+        "trap_id": "ODG14_ERR_5",
+        "sentence": "An eight year old can walk more than a five year old.",
+        "tokens": [
+          "An",
+          "eight",
+          "year",
+          "old",
+          "can",
+          "walk",
+          "more",
+          "than",
+          "a",
+          "five",
+          "year",
+          "old."
+        ],
+        "wrong_index": 6,
+        "wrong_word": "more",
+        "correct_word": "more quickly",
+        "fixed_sentence": "An eight year old can walk more quickly than a five year old.",
+        "reason": "【岱崙 W5 真題陷阱】比較「走得多快 (How quickly)」時，不能只寫 walk more than，必須把副詞本體寫出來：『walk more quickly than』！"
+      },
+      {
+        "trap_id": "ODG14_ERR_6",
+        "sentence": "A dog runs faster than a person, but a lion runs fastest.",
+        "tokens": [
+          "A",
+          "dog",
+          "runs",
+          "faster",
+          "than",
+          "a",
+          "person,",
+          "but",
+          "a",
+          "lion",
+          "runs",
+          "fastest."
+        ],
+        "wrong_index": 11,
+        "wrong_word": "fastest.",
+        "correct_word": "the fastest.",
+        "fixed_sentence": "A dog runs faster than a person, but a lion runs the fastest.",
+        "reason": "【岱崙 W5 真題陷阱】三級比較長句的最後一段最高級，前面務必加上定冠詞『the (the fastest)』！"
+      },
+      {
+        "trap_id": "ODG14_ERR_7",
+        "sentence": "A frog can jump far, but kangaroo can jump the farthest.",
+        "tokens": [
+          "A",
+          "frog",
+          "can",
+          "jump",
+          "far,",
+          "but",
+          "kangaroo",
+          "can",
+          "jump",
+          "the",
+          "farthest."
+        ],
+        "wrong_index": 6,
+        "wrong_word": "kangaroo",
+        "correct_word": "a kangaroo",
+        "fixed_sentence": "A frog can jump far, but a kangaroo can jump the farthest.",
+        "reason": "【岱崙 W5 真題陷阱】可數單數動物名詞『kangaroo / lion / dog』當主詞時，前面絕對不可漏掉不定冠詞『a / an』！"
+      },
+      {
+        "trap_id": "ODG14_ERR_8",
+        "sentence": "Jerome did badly in the quiz, and Ivan did more badly than Jerome.",
+        "tokens": [
+          "Jerome",
+          "did",
+          "badly",
+          "in",
+          "the",
+          "quiz,",
+          "and",
+          "Ivan",
+          "did",
+          "more badly",
+          "than",
+          "Jerome."
+        ],
+        "wrong_index": 9,
+        "wrong_word": "more badly",
+        "correct_word": "worse",
+        "fixed_sentence": "Jerome did badly in the quiz, and Ivan did worse than Jerome.",
+        "reason": "【岱崙 W4 真題陷阱】『badly（糟糕地）』是不規則變化副詞：badly ➔ worse ➔ the worst，絕對不可寫成 more badly！"
+      },
+      {
+        "trap_id": "ODG14_ERR_9",
+        "sentence": "Eric did well in his quiz, and Penny did more well than Eric.",
+        "tokens": [
+          "Eric",
+          "did",
+          "well",
+          "in",
+          "his",
+          "quiz,",
+          "and",
+          "Penny",
+          "did",
+          "more well",
+          "than",
+          "Eric."
+        ],
+        "wrong_index": 9,
+        "wrong_word": "more well",
+        "correct_word": "better",
+        "fixed_sentence": "Eric did well in his quiz, and Penny did better than Eric.",
+        "reason": "【岱崙 W4 真題陷阱】『well（表現好地）』是不規則變化副詞：well ➔ better ➔ the best，絕對不可寫成 more well！"
+      },
+      {
+        "trap_id": "ODG14_ERR_10",
+        "sentence": "Peter laughs loudly, Helen laughs more loud than Peter, but Jack laughs the most loudly.",
+        "tokens": [
+          "Peter",
+          "laughs",
+          "loudly,",
+          "Helen",
+          "laughs",
+          "more loud",
+          "than",
+          "Peter,",
+          "but",
+          "Jack",
+          "laughs",
+          "the",
+          "most",
+          "loudly."
+        ],
+        "wrong_index": 5,
+        "wrong_word": "more loud",
+        "correct_word": "more loudly",
+        "fixed_sentence": "Peter laughs loudly, Helen laughs more loudly than Peter, but Jack laughs the most loudly.",
+        "reason": "【岱崙 W4 真題陷阱】修飾一般動詞 laughs 必須全程使用副詞『loudly (more loudly than)』，不可半路退回形容詞 loud！"
+      },
+      {
+        "trap_id": "ODG14_ERR_11",
+        "sentence": "A dog runs more faster than a person in the park.",
+        "tokens": [
+          "A",
+          "dog",
+          "runs",
+          "more faster",
+          "than",
+          "a",
+          "person",
+          "in",
+          "the",
+          "park."
         ],
         "wrong_index": 3,
-        "wrong_word": "good.",
-        "correct_word": "well.",
-        "fixed_sentence": "He plays tennis well.",
-        "reason": "good 是形容詞，well 是副詞修飾動詞 plays。"
+        "wrong_word": "more faster",
+        "correct_word": "faster",
+        "fixed_sentence": "A dog runs faster than a person in the park.",
+        "reason": "【岱崙 W4 真題陷阱】『fast』是單音節同形副詞，比較級直接加 -er 變成『faster』，前面不可重複加 more！"
+      },
+      {
+        "trap_id": "ODG14_ERR_12",
+        "sentence": "A duck flew farther then an eagle in the sky.",
+        "tokens": [
+          "A",
+          "duck",
+          "flew",
+          "farther",
+          "then",
+          "an",
+          "eagle",
+          "in",
+          "the",
+          "sky."
+        ],
+        "wrong_index": 4,
+        "wrong_word": "then",
+        "correct_word": "than",
+        "fixed_sentence": "A duck flew farther than an eagle in the sky.",
+        "reason": "【岱崙 W4 真題陷阱】比較級後面連接比較對象的介系詞是『than（比）』，切勿拼成副詞 then（然後）！"
       }
     ],
     "quizzes": [
@@ -841,174 +1746,717 @@ window.MIDTERM_DATABASE = [
         "id": "ODG3_U14_LIST_1",
         "type": "spelling_listen",
         "category_tag": "listening",
-        "question": "請聽電腦發音，在紙上拼寫出這個核心單字：",
-        "hint": "中文釋義：搭配: **better**",
-        "audio_word": "well",
-        "phonetic": "",
-        "syllables": "well",
-        "answer": "well",
+        "question": "請聽電腦發音，在紙上拼寫出這個核心單字或片語：",
+        "hint": "詞性與中文：n. 滑翔機",
+        "audio_word": "glider",
+        "phonetic": "/ˈɡlaɪdər/",
+        "syllables": "glid-er",
+        "answer": "glider",
         "explanation": {
-          "concept": "Unit 14: Success Stories 核心字彙：well",
-          "formula": "詞性與例句搭配：well **better**",
-          "trap": "注意拼寫盲點：切記母音與子音字母對應，勿漏寫尾音或不發音字母。"
+          "concept": "【Unit 14: Success Stories】核心字彙：glider /ˈɡlaɪdər/ (n. 滑翔機)",
+          "formula": "課文例句：In 1900, the Wright brothers built a glider.",
+          "trap": "拼寫與用法關鍵：源自動詞 glide (滑翔) + r。"
         }
       },
       {
         "id": "ODG3_U14_LIST_2",
         "type": "spelling_listen",
         "category_tag": "listening",
-        "question": "請聽電腦發音，在紙上拼寫出這個核心單字：",
-        "hint": "中文釋義：搭配: **worse**",
-        "audio_word": "badly",
-        "phonetic": "",
-        "syllables": "badly",
-        "answer": "badly",
+        "question": "請聽電腦發音，在紙上拼寫出這個核心單字或片語：",
+        "hint": "詞性與中文：n. 望遠鏡",
+        "audio_word": "telescope",
+        "phonetic": "/ˈtɛlɪˌskoʊp/",
+        "syllables": "tel-e-scope",
+        "answer": "telescope",
         "explanation": {
-          "concept": "Unit 14: Success Stories 核心字彙：badly",
-          "formula": "詞性與例句搭配：badly **worse**",
-          "trap": "注意拼寫盲點：切記母音與子音字母對應，勿漏寫尾音或不發音字母。"
+          "concept": "【Unit 14: Success Stories】核心字彙：telescope /ˈtɛlɪˌskoʊp/ (n. 望遠鏡)",
+          "formula": "課文例句：Hans Lippershey invented the first telescope in 1608.",
+          "trap": "拼寫與用法關鍵：tele- (遠距離) + scope (觀測鏡)。"
         }
       },
       {
         "id": "ODG3_U14_LIST_3",
         "type": "spelling_listen",
         "category_tag": "listening",
-        "question": "請聽電腦發音，在紙上拼寫出這個核心單字：",
-        "hint": "中文釋義：搭配: **further**",
-        "audio_word": "far",
-        "phonetic": "",
-        "syllables": "far",
-        "answer": "far",
+        "question": "請聽電腦發音，在紙上拼寫出這個核心單字或片語：",
+        "hint": "詞性與中文：n. 表面",
+        "audio_word": "surface",
+        "phonetic": "/ˈsɜːrfɪs/",
+        "syllables": "sur-face",
+        "answer": "surface",
         "explanation": {
-          "concept": "Unit 14: Success Stories 核心字彙：far",
-          "formula": "詞性與例句搭配：far **further**",
-          "trap": "注意拼寫盲點：切記母音與子音字母對應，勿漏寫尾音或不發音字母。"
+          "concept": "【Unit 14: Success Stories】核心字彙：surface /ˈsɜːrfɪs/ (n. 表面)",
+          "formula": "課文例句：Galileo could see the surface of the moon!",
+          "trap": "拼寫與用法關鍵：sur- + face，指物體或星球的表面。"
         }
       },
       {
         "id": "ODG3_U14_LIST_4",
         "type": "spelling_listen",
         "category_tag": "listening",
-        "question": "請聽電腦發音，在紙上拼寫出這個核心單字：",
-        "hint": "中文釋義：搭配: ★",
-        "audio_word": "bike (腳踏車)",
-        "phonetic": "",
-        "syllables": "bike (腳踏車)",
-        "answer": "bike (腳踏車)",
+        "question": "請聽電腦發音，在紙上拼寫出這個核心單字或片語：",
+        "hint": "詞性與中文：adv. 快速地",
+        "audio_word": "quickly",
+        "phonetic": "/ˈkwɪkli/",
+        "syllables": "quick-ly",
+        "answer": "quickly",
         "explanation": {
-          "concept": "Unit 14: Success Stories 核心字彙：bike (腳踏車)",
-          "formula": "詞性與例句搭配：bike (腳踏車) ★",
-          "trap": "注意拼寫盲點：切記母音與子音字母對應，勿漏寫尾音或不發音字母。"
+          "concept": "【Unit 14: Success Stories】核心字彙：quickly /ˈkwɪkli/ (adv. 快速地)",
+          "formula": "課文例句：Their plane flew more quickly than the glider.",
+          "trap": "拼寫與用法關鍵：比較級 more quickly，最高級 the most quickly。"
         }
       },
       {
         "id": "ODG3_U14_LIST_5",
         "type": "spelling_listen",
         "category_tag": "listening",
-        "question": "請聽電腦發音，在紙上拼寫出這個核心單字：",
-        "hint": "中文釋義：搭配: ★★",
-        "audio_word": "car (汽車)",
-        "phonetic": "",
-        "syllables": "car (汽車)",
-        "answer": "car (汽車)",
+        "question": "請聽電腦發音，在紙上拼寫出這個核心單字或片語：",
+        "hint": "詞性與中文：adv. 清楚地；清晰地",
+        "audio_word": "clearly",
+        "phonetic": "/ˈklɪrli/",
+        "syllables": "clear-ly",
+        "answer": "clearly",
         "explanation": {
-          "concept": "Unit 14: Success Stories 核心字彙：car (汽車)",
-          "formula": "詞性與例句搭配：car (汽車) ★★",
-          "trap": "注意拼寫盲點：切記母音與子音字母對應，勿漏寫尾音或不發音字母。"
+          "concept": "【Unit 14: Success Stories】核心字彙：clearly /ˈklɪrli/ (adv. 清楚地；清晰地)",
+          "formula": "課文例句：Galileo could see things more clearly with his telescope.",
+          "trap": "拼寫與用法關鍵：clear + ly，比較級為 more clearly。"
         }
       },
       {
         "id": "ODG3_U14_LIST_6",
         "type": "spelling_listen",
         "category_tag": "listening",
-        "question": "請聽電腦發音，在紙上拼寫出這個核心單字：",
-        "hint": "中文釋義：搭配: ★★★",
-        "audio_word": "plane (飛機)",
-        "phonetic": "",
-        "syllables": "plane (飛機)",
-        "answer": "plane (飛機)",
+        "question": "請聽電腦發音，在紙上拼寫出這個核心單字或片語：",
+        "hint": "詞性與中文：adv. 容易地；輕鬆地",
+        "audio_word": "easily",
+        "phonetic": "/ˈiːzəli/",
+        "syllables": "eas-i-ly",
+        "answer": "easily",
         "explanation": {
-          "concept": "Unit 14: Success Stories 核心字彙：plane (飛機)",
-          "formula": "詞性與例句搭配：plane (飛機) ★★★",
-          "trap": "注意拼寫盲點：切記母音與子音字母對應，勿漏寫尾音或不發音字母。"
+          "concept": "【Unit 14: Success Stories】核心字彙：easily /ˈiːzəli/ (adv. 容易地；輕鬆地)",
+          "formula": "課文例句：Today we can communicate more easily than in the past.",
+          "trap": "拼寫與用法關鍵：easy 去 y 改 i 加 -ly，比較級為 more easily。"
         }
       },
       {
-        "id": "ODG3_U14_RW_7",
-        "type": "paper_rewrite",
-        "category_tag": "rewrite",
-        "question": "題目提示：quickly / car / bike",
-        "answer": "You can travel more quickly by car than by bike.",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
+        "id": "ODG3_U14_LIST_7",
+        "type": "spelling_listen",
+        "category_tag": "listening",
+        "question": "請聽電腦發音，在紙上拼寫出這個核心單字或片語：",
+        "hint": "詞性與中文：adv. 仔細地；小心地",
+        "audio_word": "carefully",
+        "phonetic": "/ˈkɛrfəli/",
+        "syllables": "care-ful-ly",
+        "answer": "carefully",
         "explanation": {
-          "concept": "Unit 14: Success Stories 核心句型結構改寫",
-          "formula": "標準句型：You can travel more quickly by car than by bike.",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
+          "concept": "【Unit 14: Success Stories】核心字彙：carefully /ˈkɛrfəli/ (adv. 仔細地；小心地)",
+          "formula": "課文例句：She painted the picture more carefully than her brother.",
+          "trap": "拼寫與用法關鍵：careful + ly（有兩個 l），比較級為 more carefully。"
         }
       },
       {
-        "id": "ODG3_U14_RW_8",
+        "id": "ODG3_U14_LIST_8",
+        "type": "spelling_listen",
+        "category_tag": "listening",
+        "question": "請聽電腦發音，在紙上拼寫出這個核心單字或片語：",
+        "hint": "詞性與中文：adv. 快樂地；開心地",
+        "audio_word": "happily",
+        "phonetic": "/ˈhæpɪli/",
+        "syllables": "hap-pi-ly",
+        "answer": "happily",
+        "explanation": {
+          "concept": "【Unit 14: Success Stories】核心字彙：happily /ˈhæpɪli/ (adv. 快樂地；開心地)",
+          "formula": "課文例句：The children played happily in the park.",
+          "trap": "拼寫與用法關鍵：happy 去 y 改 i 加 -ly。"
+        }
+      },
+      {
+        "id": "ODG3_U14_LIST_9",
+        "type": "spelling_listen",
+        "category_tag": "listening",
+        "question": "請聽電腦發音，在紙上拼寫出這個核心單字或片語：",
+        "hint": "詞性與中文：adv. 更遠地（far 的不規則比較級）",
+        "audio_word": "further",
+        "phonetic": "/ˈfɜːrðər/",
+        "syllables": "fur-ther",
+        "answer": "further",
+        "explanation": {
+          "concept": "【Unit 14: Success Stories】核心字彙：further /ˈfɜːrðər/ (adv. 更遠地（far 的不規則比較級）)",
+          "formula": "課文例句：Their plane flew further than the glider.",
+          "trap": "拼寫與用法關鍵：far 的比較級可寫作 further 或 farther，不可加 more！"
+        }
+      },
+      {
+        "id": "ODG3_U14_LIST_10",
+        "type": "spelling_listen",
+        "category_tag": "listening",
+        "question": "請聽電腦發音，在紙上拼寫出這個核心單字或片語：",
+        "hint": "詞性與中文：adv. 最遠地（far 的不規則最高級）",
+        "audio_word": "furthest",
+        "phonetic": "/ˈfɜːrðɪst/",
+        "syllables": "fur-thest",
+        "answer": "furthest",
+        "explanation": {
+          "concept": "【Unit 14: Success Stories】核心字彙：furthest /ˈfɜːrðɪst/ (adv. 最遠地（far 的不規則最高級）)",
+          "formula": "課文例句：With Newton's telescope, he could see the furthest of all.",
+          "trap": "拼寫與用法關鍵：far 的最高級為 the furthest 或 the farthest。"
+        }
+      },
+      {
+        "id": "ODG3_U14_NB_11",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "They shook hands ______ (nervous) as Orville got into the plane.",
+        "answer": "nervously",
+        "hint": "提示詞：(nervous)",
+        "explanation": {
+          "concept": "Unit 14 副詞比較級與最高級（Comparative & Superlative Adverbs）",
+          "formula": "空格應填入『nervously』。",
+          "trap": "必考陷阱：① 字尾 -ly 多音節副詞比較級加 more / the most (more clearly)；② 單音節 fast/hard 直接加 -er/-est；③ far 的不規則變化為 further / the furthest，絕不可加 more！"
+        }
+      },
+      {
+        "id": "ODG3_U14_NB_12",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "The plane started to move ______ (slow) along the ground.",
+        "answer": "slowly",
+        "hint": "提示詞：(slow)",
+        "explanation": {
+          "concept": "Unit 14 副詞比較級與最高級（Comparative & Superlative Adverbs）",
+          "formula": "空格應填入『slowly』。",
+          "trap": "必考陷阱：① 字尾 -ly 多音節副詞比較級加 more / the most (more clearly)；② 單音節 fast/hard 直接加 -er/-est；③ far 的不規則變化為 further / the furthest，絕不可加 more！"
+        }
+      },
+      {
+        "id": "ODG3_U14_NB_13",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "Then the plane started to move quickly (quick) and after a moment, it ______ (sudden) lifted up into the air.",
+        "answer": "suddenly",
+        "hint": "提示詞：(sudden)",
+        "explanation": {
+          "concept": "Unit 14 副詞比較級與最高級（Comparative & Superlative Adverbs）",
+          "formula": "空格應填入『suddenly』。",
+          "trap": "必考陷阱：① 字尾 -ly 多音節副詞比較級加 more / the most (more clearly)；② 單音節 fast/hard 直接加 -er/-est；③ far 的不規則變化為 further / the furthest，絕不可加 more！"
+        }
+      },
+      {
+        "id": "ODG3_U14_NB_14",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "He was holding onto the plane ______ (tight) and he was watching the people on the ground.",
+        "answer": "tightly",
+        "hint": "提示詞：(tight)",
+        "explanation": {
+          "concept": "Unit 14 副詞比較級與最高級（Comparative & Superlative Adverbs）",
+          "formula": "空格應填入『tightly』。",
+          "trap": "必考陷阱：① 字尾 -ly 多音節副詞比較級加 more / the most (more clearly)；② 單音節 fast/hard 直接加 -er/-est；③ far 的不規則變化為 further / the furthest，絕不可加 more！"
+        }
+      },
+      {
+        "id": "ODG3_U14_NB_15",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "The people were cheering loudly (loud) and waving at Orville ______ (excited).",
+        "answer": "excitedly",
+        "hint": "提示詞：(excited)",
+        "explanation": {
+          "concept": "Unit 14 副詞比較級與最高級（Comparative & Superlative Adverbs）",
+          "formula": "空格應填入『excitedly』。",
+          "trap": "必考陷阱：① 字尾 -ly 多音節副詞比較級加 more / the most (more clearly)；② 單音節 fast/hard 直接加 -er/-est；③ far 的不規則變化為 further / the furthest，絕不可加 more！"
+        }
+      },
+      {
+        "id": "ODG3_U14_NB_16",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "Orville stood up ______ (proud) and Wilbur ran to him.",
+        "answer": "proudly",
+        "hint": "提示詞：(proud)",
+        "explanation": {
+          "concept": "Unit 14 副詞比較級與最高級（Comparative & Superlative Adverbs）",
+          "formula": "空格應填入『proudly』。",
+          "trap": "必考陷阱：① 字尾 -ly 多音節副詞比較級加 more / the most (more clearly)；② 單音節 fast/hard 直接加 -er/-est；③ far 的不規則變化為 further / the furthest，絕不可加 more！"
+        }
+      },
+      {
+        "id": "ODG3_U14_NB_17",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "He couldn't see very far with his telescope, but he could see things quite ______.",
+        "answer": "clearly",
+        "hint": "請填入正確的連接副詞或語法詞彙",
+        "explanation": {
+          "concept": "Unit 14 副詞比較級與最高級（Comparative & Superlative Adverbs）",
+          "formula": "空格應填入『clearly』。",
+          "trap": "必考陷阱：① 字尾 -ly 多音節副詞比較級加 more / the most (more clearly)；② 單音節 fast/hard 直接加 -er/-est；③ far 的不規則變化為 further / the furthest，絕不可加 more！"
+        }
+      },
+      {
+        "id": "ODG3_U14_NB_18",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "Galileo could see things ______ with his telescope than he could with Lippershey's telescope.",
+        "answer": "more clearly",
+        "hint": "請填入正確的連接副詞或語法詞彙",
+        "explanation": {
+          "concept": "Unit 14 副詞比較級與最高級（Comparative & Superlative Adverbs）",
+          "formula": "空格應填入『more clearly』。",
+          "trap": "必考陷阱：① 字尾 -ly 多音節副詞比較級加 more / the most (more clearly)；② 單音節 fast/hard 直接加 -er/-est；③ far 的不規則變化為 further / the furthest，絕不可加 more！"
+        }
+      },
+      {
+        "id": "ODG3_U14_NB_19",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "Galileo could see ______ with his telescope, too.",
+        "answer": "further",
+        "hint": "請填入正確的連接副詞或語法詞彙",
+        "explanation": {
+          "concept": "Unit 14 副詞比較級與最高級（Comparative & Superlative Adverbs）",
+          "formula": "空格應填入『further』。",
+          "trap": "必考陷阱：① 字尾 -ly 多音節副詞比較級加 more / the most (more clearly)；② 單音節 fast/hard 直接加 -er/-est；③ far 的不規則變化為 further / the furthest，絕不可加 more！"
+        }
+      },
+      {
+        "id": "ODG3_U14_NB_20",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "With his new telescope, he could see the furthest of all, and he could see things ______.",
+        "answer": "the most clearly",
+        "hint": "請填入正確的連接副詞或語法詞彙",
+        "explanation": {
+          "concept": "Unit 14 副詞比較級與最高級（Comparative & Superlative Adverbs）",
+          "formula": "空格應填入『the most clearly』。",
+          "trap": "必考陷阱：① 字尾 -ly 多音節副詞比較級加 more / the most (more clearly)；② 單音節 fast/hard 直接加 -er/-est；③ far 的不規則變化為 further / the furthest，絕不可加 more！"
+        }
+      },
+      {
+        "id": "ODG3_U14_CLOZE_21",
+        "type": "choice",
+        "category_tag": "choice",
+        "question": "克漏字第 1 題：請選出正確的語法形式填入空格",
+        "options": [
+          "most easier",
+          "more than easily",
+          "more easily"
+        ],
+        "answer": "more easily",
+        "hint": "克漏字三選一：比較各選項的詞性、比較級/最高級或量詞搭配",
+        "explanation": {
+          "concept": "Unit 14 副詞比較級與最高級（Comparative & Superlative Adverbs）",
+          "formula": "空格填入『more easily』使全句結構完整：克漏字第 1 題：請選出正確的語法形式填入空格",
+          "trap": "必考陷阱：① 字尾 -ly 多音節副詞比較級加 more / the most (more clearly)；② 單音節 fast/hard 直接加 -er/-est；③ far 的不規則變化為 further / the furthest，絕不可加 more！"
+        }
+      },
+      {
+        "id": "ODG3_U14_CLOZE_22",
+        "type": "choice",
+        "category_tag": "choice",
+        "question": "克漏字第 2 題：請選出正確的語法形式填入空格",
+        "options": [
+          "more slowly",
+          "more slower",
+          "most slowly"
+        ],
+        "answer": "more slowly",
+        "hint": "克漏字三選一：比較各選項的詞性、比較級/最高級或量詞搭配",
+        "explanation": {
+          "concept": "Unit 14 副詞比較級與最高級（Comparative & Superlative Adverbs）",
+          "formula": "空格填入『more slowly』使全句結構完整：克漏字第 2 題：請選出正確的語法形式填入空格",
+          "trap": "必考陷阱：① 字尾 -ly 多音節副詞比較級加 more / the most (more clearly)；② 單音節 fast/hard 直接加 -er/-est；③ far 的不規則變化為 further / the furthest，絕不可加 more！"
+        }
+      },
+      {
+        "id": "ODG3_U14_CLOZE_23",
+        "type": "choice",
+        "category_tag": "choice",
+        "question": "克漏字第 3 題：請選出正確的語法形式填入空格",
+        "options": [
+          "most quickly",
+          "more quicker",
+          "more quickly"
+        ],
+        "answer": "more quickly",
+        "hint": "克漏字三選一：比較各選項的詞性、比較級/最高級或量詞搭配",
+        "explanation": {
+          "concept": "Unit 14 副詞比較級與最高級（Comparative & Superlative Adverbs）",
+          "formula": "空格填入『more quickly』使全句結構完整：克漏字第 3 題：請選出正確的語法形式填入空格",
+          "trap": "必考陷阱：① 字尾 -ly 多音節副詞比較級加 more / the most (more clearly)；② 單音節 fast/hard 直接加 -er/-est；③ far 的不規則變化為 further / the furthest，絕不可加 more！"
+        }
+      },
+      {
+        "id": "ODG3_U14_CLOZE_24",
+        "type": "choice",
+        "category_tag": "choice",
+        "question": "克漏字第 4 題：請選出正確的語法形式填入空格",
+        "options": [
+          "more regularly",
+          "most regularly",
+          "more regular"
+        ],
+        "answer": "more regularly",
+        "hint": "克漏字三選一：比較各選項的詞性、比較級/最高級或量詞搭配",
+        "explanation": {
+          "concept": "Unit 14 副詞比較級與最高級（Comparative & Superlative Adverbs）",
+          "formula": "空格填入『more regularly』使全句結構完整：克漏字第 4 題：請選出正確的語法形式填入空格",
+          "trap": "必考陷阱：① 字尾 -ly 多音節副詞比較級加 more / the most (more clearly)；② 單音節 fast/hard 直接加 -er/-est；③ far 的不規則變化為 further / the furthest，絕不可加 more！"
+        }
+      },
+      {
+        "id": "ODG3_U14_CLOZE_25",
+        "type": "choice",
+        "category_tag": "choice",
+        "question": "克漏字第 5 題：請選出正確的語法形式填入空格",
+        "options": [
+          "the more regularly",
+          "the most regularly",
+          "most regularly than"
+        ],
+        "answer": "the most regularly",
+        "hint": "克漏字三選一：比較各選項的詞性、比較級/最高級或量詞搭配",
+        "explanation": {
+          "concept": "Unit 14 副詞比較級與最高級（Comparative & Superlative Adverbs）",
+          "formula": "空格填入『the most regularly』使全句結構完整：克漏字第 5 題：請選出正確的語法形式填入空格",
+          "trap": "必考陷阱：① 字尾 -ly 多音節副詞比較級加 more / the most (more clearly)；② 單音節 fast/hard 直接加 -er/-est；③ far 的不規則變化為 further / the furthest，絕不可加 more！"
+        }
+      },
+      {
+        "id": "ODG3_U14_CLOZE_26",
+        "type": "choice",
+        "category_tag": "choice",
+        "question": "克漏字第 6 題：請選出正確的語法形式填入空格",
+        "options": [
+          "the fastest",
+          "faster than",
+          "the faster"
+        ],
+        "answer": "the fastest",
+        "hint": "克漏字三選一：比較各選項的詞性、比較級/最高級或量詞搭配",
+        "explanation": {
+          "concept": "Unit 14 副詞比較級與最高級（Comparative & Superlative Adverbs）",
+          "formula": "空格填入『the fastest』使全句結構完整：克漏字第 6 題：請選出正確的語法形式填入空格",
+          "trap": "必考陷阱：① 字尾 -ly 多音節副詞比較級加 more / the most (more clearly)；② 單音節 fast/hard 直接加 -er/-est；③ far 的不規則變化為 further / the furthest，絕不可加 more！"
+        }
+      },
+      {
+        "id": "ODG3_U14_BFILL_27",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "a most easier / b more than easily / ______ *(正解：c)*",
+        "answer": "c more easily",
+        "hint": "課文重點句填空：請在紙上寫出空格處的單字",
+        "explanation": {
+          "concept": "Unit 14 副詞比較級與最高級（Comparative & Superlative Adverbs）",
+          "formula": "完整原句：a most easier / b more than easily / c more easily *(正解：c)*",
+          "trap": "必考陷阱：① 字尾 -ly 多音節副詞比較級加 more / the most (more clearly)；② 單音節 fast/hard 直接加 -er/-est；③ far 的不規則變化為 further / the furthest，絕不可加 more！"
+        }
+      },
+      {
+        "id": "ODG3_U14_BFILL_28",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "a most quickly / b more quicker / ______ *(正解：c)*",
+        "answer": "c more quickly",
+        "hint": "課文重點句填空：請在紙上寫出空格處的單字",
+        "explanation": {
+          "concept": "Unit 14 副詞比較級與最高級（Comparative & Superlative Adverbs）",
+          "formula": "完整原句：a most quickly / b more quicker / c more quickly *(正解：c)*",
+          "trap": "必考陷阱：① 字尾 -ly 多音節副詞比較級加 more / the most (more clearly)；② 單音節 fast/hard 直接加 -er/-est；③ far 的不規則變化為 further / the furthest，絕不可加 more！"
+        }
+      },
+      {
+        "id": "ODG3_U14_BFILL_29",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "a the more regularly / ______ / c most regularly than *(正解：b)*",
+        "answer": "b the most regularly",
+        "hint": "課文重點句填空：請在紙上寫出空格處的單字",
+        "explanation": {
+          "concept": "Unit 14 副詞比較級與最高級（Comparative & Superlative Adverbs）",
+          "formula": "完整原句：a the more regularly / b the most regularly / c most regularly than *(正解：b)*",
+          "trap": "必考陷阱：① 字尾 -ly 多音節副詞比較級加 more / the most (more clearly)；② 單音節 fast/hard 直接加 -er/-est；③ far 的不規則變化為 further / the furthest，絕不可加 more！"
+        }
+      },
+      {
+        "id": "ODG3_U14_BFILL_30",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "You can carry a tablet ______ than a PC. *(範例)*",
+        "answer": "more easily",
+        "hint": "課文重點句填空：請在紙上寫出空格處的單字",
+        "explanation": {
+          "concept": "Unit 14 副詞比較級與最高級（Comparative & Superlative Adverbs）",
+          "formula": "完整原句：You can carry a tablet more easily than a PC. *(範例)*",
+          "trap": "必考陷阱：① 字尾 -ly 多音節副詞比較級加 more / the most (more clearly)；② 單音節 fast/hard 直接加 -er/-est；③ far 的不規則變化為 further / the furthest，絕不可加 more！"
+        }
+      },
+      {
+        "id": "ODG3_U14_BFILL_31",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "You can buy a smartphone ______ than a PC.",
+        "answer": "more cheaply",
+        "hint": "課文重點句填空：請在紙上寫出空格處的單字",
+        "explanation": {
+          "concept": "Unit 14 副詞比較級與最高級（Comparative & Superlative Adverbs）",
+          "formula": "完整原句：You can buy a smartphone more cheaply than a PC.",
+          "trap": "必考陷阱：① 字尾 -ly 多音節副詞比較級加 more / the most (more clearly)；② 單音節 fast/hard 直接加 -er/-est；③ far 的不規則變化為 further / the furthest，絕不可加 more！"
+        }
+      },
+      {
+        "id": "ODG3_U14_BFILL_32",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "You can read books ______ on a tablet than on a smartphone.",
+        "answer": "more clearly",
+        "hint": "課文重點句填空：請在紙上寫出空格處的單字",
+        "explanation": {
+          "concept": "Unit 14 副詞比較級與最高級（Comparative & Superlative Adverbs）",
+          "formula": "完整原句：You can read books more clearly on a tablet than on a smartphone.",
+          "trap": "必考陷阱：① 字尾 -ly 多音節副詞比較級加 more / the most (more clearly)；② 單音節 fast/hard 直接加 -er/-est；③ far 的不規則變化為 further / the furthest，絕不可加 more！"
+        }
+      },
+      {
+        "id": "ODG3_U14_BFILL_33",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "You can send messages ______ with a smartphone.",
+        "answer": "the most quickly",
+        "hint": "課文重點句填空：請在紙上寫出空格處的單字",
+        "explanation": {
+          "concept": "Unit 14 副詞比較級與最高級（Comparative & Superlative Adverbs）",
+          "formula": "完整原句：You can send messages the most quickly with a smartphone.",
+          "trap": "必考陷阱：① 字尾 -ly 多音節副詞比較級加 more / the most (more clearly)；② 單音節 fast/hard 直接加 -er/-est；③ far 的不規則變化為 further / the furthest，絕不可加 more！"
+        }
+      },
+      {
+        "id": "ODG3_U14_BFILL_34",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "You can get online ______ with a PC.",
+        "answer": "the fastest",
+        "hint": "課文重點句填空：請在紙上寫出空格處的單字",
+        "explanation": {
+          "concept": "Unit 14 副詞比較級與最高級（Comparative & Superlative Adverbs）",
+          "formula": "完整原句：You can get online the fastest with a PC.",
+          "trap": "必考陷阱：① 字尾 -ly 多音節副詞比較級加 more / the most (more clearly)；② 單音節 fast/hard 直接加 -er/-est；③ far 的不規則變化為 further / the furthest，絕不可加 more！"
+        }
+      },
+      {
+        "id": "ODG3_U14_RW_35",
         "type": "paper_rewrite",
         "category_tag": "rewrite",
-        "question": "題目提示：quickly / plane",
+        "question": "句型改寫與造句：quickly / plane",
         "answer": "You can travel the most quickly by plane.",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
+        "hint": "請在紙上寫出完整英文句子，再按「翻牌核對答案」",
         "explanation": {
-          "concept": "Unit 14: Success Stories 核心句型結構改寫",
-          "formula": "標準句型：You can travel the most quickly by plane.",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
+          "concept": "Unit 14 副詞比較級與最高級（Comparative & Superlative Adverbs）",
+          "formula": "標準改寫句：You can travel the most quickly by plane.",
+          "trap": "必考陷阱：① 字尾 -ly 多音節副詞比較級加 more / the most (more clearly)；② 單音節 fast/hard 直接加 -er/-est；③ far 的不規則變化為 further / the furthest，絕不可加 more！"
         }
       },
       {
-        "id": "ODG3_U14_RW_9",
+        "id": "ODG3_U14_RW_36",
         "type": "paper_rewrite",
         "category_tag": "rewrite",
-        "question": "題目提示：far / plane",
+        "question": "句型改寫與造句：far / plane",
         "answer": "You can travel the furthest by plane.",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
+        "hint": "請在紙上寫出完整英文句子，再按「翻牌核對答案」",
         "explanation": {
-          "concept": "Unit 14: Success Stories 核心句型結構改寫",
-          "formula": "標準句型：You can travel the furthest by plane.",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
+          "concept": "Unit 14 副詞比較級與最高級（Comparative & Superlative Adverbs）",
+          "formula": "標準改寫句：You can travel the furthest by plane.",
+          "trap": "必考陷阱：① 字尾 -ly 多音節副詞比較級加 more / the most (more clearly)；② 單音節 fast/hard 直接加 -er/-est；③ far 的不規則變化為 further / the furthest，絕不可加 more！"
         }
       },
       {
-        "id": "ODG3_U14_RW_10",
+        "id": "ODG3_U14_RW_37",
         "type": "paper_rewrite",
         "category_tag": "rewrite",
-        "question": "題目提示：cheaply / car / plane",
+        "question": "句型改寫與造句：cheaply / car / plane",
         "answer": "You can travel more cheaply by car than by plane.",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
+        "hint": "請在紙上寫出完整英文句子，再按「翻牌核對答案」",
         "explanation": {
-          "concept": "Unit 14: Success Stories 核心句型結構改寫",
-          "formula": "標準句型：You can travel more cheaply by car than by plane.",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
+          "concept": "Unit 14 副詞比較級與最高級（Comparative & Superlative Adverbs）",
+          "formula": "標準改寫句：You can travel more cheaply by car than by plane.",
+          "trap": "必考陷阱：① 字尾 -ly 多音節副詞比較級加 more / the most (more clearly)；② 單音節 fast/hard 直接加 -er/-est；③ far 的不規則變化為 further / the furthest，絕不可加 more！"
         }
       },
       {
-        "id": "ODG3_U14_RW_11",
+        "id": "ODG3_U14_RW_38",
         "type": "paper_rewrite",
         "category_tag": "rewrite",
-        "question": "題目提示：cheaply / bike",
+        "question": "句型改寫與造句：cheaply / bike",
         "answer": "You can travel the most cheaply by bike.",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
+        "hint": "請在紙上寫出完整英文句子，再按「翻牌核對答案」",
         "explanation": {
-          "concept": "Unit 14: Success Stories 核心句型結構改寫",
-          "formula": "標準句型：You can travel the most cheaply by bike.",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
+          "concept": "Unit 14 副詞比較級與最高級（Comparative & Superlative Adverbs）",
+          "formula": "標準改寫句：You can travel the most cheaply by bike.",
+          "trap": "必考陷阱：① 字尾 -ly 多音節副詞比較級加 more / the most (more clearly)；② 單音節 fast/hard 直接加 -er/-est；③ far 的不規則變化為 further / the furthest，絕不可加 more！"
         }
       },
       {
-        "id": "ODG3_U14_RW_12",
+        "id": "ODG3_U14_RW_39",
         "type": "paper_rewrite",
         "category_tag": "rewrite",
-        "question": "題目提示：far / car / bike",
+        "question": "句型改寫與造句：far / car / bike",
         "answer": "You can travel further by car than by bike.",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
+        "hint": "請在紙上寫出完整英文句子，再按「翻牌核對答案」",
         "explanation": {
-          "concept": "Unit 14: Success Stories 核心句型結構改寫",
-          "formula": "標準句型：You can travel further by car than by bike.",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
+          "concept": "Unit 14 副詞比較級與最高級（Comparative & Superlative Adverbs）",
+          "formula": "標準改寫句：You can travel further by car than by bike.",
+          "trap": "必考陷阱：① 字尾 -ly 多音節副詞比較級加 more / the most (more clearly)；② 單音節 fast/hard 直接加 -er/-est；③ far 的不規則變化為 further / the furthest，絕不可加 more！"
+        }
+      },
+      {
+        "id": "ODG3_U14_EX_40",
+        "type": "paper_rewrite",
+        "category_tag": "rewrite",
+        "question": "【岱崙 W4 真題】How did they do in their quiz? Anne: 100%, Penny: 95% & Eric: 90%（用 well 寫出三級比較長句，注意從 90% 的 Eric 寫起！）",
+        "options": [],
+        "answer": "Eric did well in his quiz, Penny did better than Eric, but Anne did the best.",
+        "hint": "三段式公式：<原級子句>, <比較級子句>, but <最高級子句>. (well ➔ better ➔ the best)",
+        "explanation": {
+          "concept": "Unit 14 不規則副詞三級比較長句合成（well ➔ better ➔ the best）",
+          "formula": "Eric did well in his quiz, Penny did better than Eric, but Anne did the best.",
+          "trap": "考場 0 分慘痛陷阱：① 絕對不能漏掉第一句原級（Eric did well in his quiz,）；② 因為比較 well（好 ➔ 更好 ➔ 最好），順序必須從 90% (Eric) ➔ 95% (Penny) ➔ 100% (Anne)！"
+        }
+      },
+      {
+        "id": "ODG3_U14_EX_41",
+        "type": "paper_rewrite",
+        "category_tag": "rewrite",
+        "question": "【岱崙 W4 真題】How did they do in their quiz? Jerome: 65%, Ivan: 55% & Nate: 45%（用 badly 寫出三級比較長句，注意 badly ➔ worse ➔ the worst！）",
+        "options": [],
+        "answer": "Jerome did badly in his quiz, Ivan did worse than Jerome, but Nate did the worst.",
+        "hint": "因為比較 badly（差 ➔ 更差 ➔ 最差），從 65% (Jerome) ➔ 55% (Ivan) ➔ 45% (Nate)！",
+        "explanation": {
+          "concept": "Unit 14 不規則副詞三級比較長句合成（badly ➔ worse ➔ the worst）",
+          "formula": "Jerome did badly in his quiz, Ivan did worse than Jerome, but Nate did the worst.",
+          "trap": "考場真實失分：第一句原級『Jerome did badly in his quiz,』不可漏寫；Ivan did worse 後方不可漏寫『than Jerome』！"
+        }
+      },
+      {
+        "id": "ODG3_U14_EX_42",
+        "type": "paper_rewrite",
+        "category_tag": "rewrite",
+        "question": "【岱崙 W4 真題】The distance they flew: eagle: 41km, duck: 91km & pigeon: 282km（用過去式 flew 與 far 寫出三級比較長句）",
+        "options": [],
+        "answer": "An eagle flew far, a duck flew farther than an eagle, but a pigeon flew the farthest.",
+        "hint": "注意 eagle 母音開頭用 An eagle；far ➔ farther (或 further) than ➔ the farthest (或 the furthest)",
+        "explanation": {
+          "concept": "Unit 14 距離副詞三級比較長句合成（far ➔ farther/further ➔ the farthest/furthest）",
+          "formula": "An eagle flew far, a duck flew farther than an eagle, but a pigeon flew the farthest.",
+          "trap": "考場真實失分：① 切勿漏寫第一句『An eagle flew far,』；② eagle 前冠詞必須用 an；③ flew 拼寫是 f-l-e-w 不是 frew！"
+        }
+      },
+      {
+        "id": "ODG3_U14_EX_43",
+        "type": "paper_rewrite",
+        "category_tag": "rewrite",
+        "question": "【岱崙 W4 真題】How do they laugh? witch, vampire & zombie（用 horribly 寫出三級比較長句，注意現在式 do ➔ laughs！）",
+        "options": [],
+        "answer": "A witch laughs horribly, a vampire laughs more horribly than a witch, but a zombie laughs the most horribly.",
+        "hint": "問句是 How do they laugh (現在式)！三單主詞動詞必加 -s (laughs)，比較級必加 more！",
+        "explanation": {
+          "concept": "Unit 14 多音節副詞三級比較 + 現在簡單式第三人稱單數動詞 (-s)",
+          "formula": "A witch laughs horribly, a vampire laughs more horribly than a witch, but a zombie laughs the most horribly.",
+          "trap": "考場 4 重陷阱：① 必寫第一句 A witch laughs horribly；② 現在式必加 -s (laughs，不可寫 laughed)；③ 比較級必加 more (more horribly than)；④ zombie 勿拼成 zoobie！"
+        }
+      },
+      {
+        "id": "ODG3_U14_EX_44",
+        "type": "paper_rewrite",
+        "category_tag": "rewrite",
+        "question": "【岱崙 W4 真題】How did they move? snail, tortoise & the old man（用過去式 moved 與 slowly 寫出三級比較長句，從 the old man 寫起！）",
+        "options": [],
+        "answer": "The old man moved slowly, a tortoise moved more slowly than the old man, but a snail moved the most slowly.",
+        "hint": "比誰移動得「更慢 (more slowly)」，順序：the old man (慢) ➔ a tortoise (更慢) ➔ a snail (最慢)",
+        "explanation": {
+          "concept": "Unit 14 多音節副詞三級比較 + 常識邏輯排序（slowly ➔ more slowly ➔ the most slowly）",
+          "formula": "The old man moved slowly, a tortoise moved more slowly than the old man, but a snail moved the most slowly.",
+          "trap": "注意題目雖然把 snail 寫在第一個，但因為要比「誰更慢、誰最慢」，必須把最慢的 a snail 放在最後壓軸（the most slowly）！"
+        }
+      },
+      {
+        "id": "ODG3_U14_EX_45",
+        "type": "paper_rewrite",
+        "category_tag": "rewrite",
+        "question": "【岱崙 W5 真題】How fast do they run? person, dog & lion（注意題幹是現在式 do they run，單數名詞記得加 a，最高級加 the！）",
+        "options": [],
+        "answer": "A person runs fast, a dog runs faster than a person, but a lion runs the fastest.",
+        "hint": "現在式三單動詞 runs；fast ➔ faster than ➔ the fastest",
+        "explanation": {
+          "concept": "Unit 14 單音節副詞三級比較（fast ➔ faster ➔ the fastest）",
+          "formula": "A person runs fast, a dog runs faster than a person, but a lion runs the fastest.",
+          "trap": "考場真實失分：① 漏寫第一句 A person runs fast；② lion 前面漏寫 a；③ fastest 前面漏寫 the；④ 題幹問 do they run，不要自己亂加 can！"
+        }
+      },
+      {
+        "id": "ODG3_U14_EX_46",
+        "type": "paper_rewrite",
+        "category_tag": "rewrite",
+        "question": "【岱崙 W5 真題】How quickly can they walk? five year old, eight year old & adult（注意 eight 與 adult 前面冠詞用 an！）",
+        "options": [],
+        "answer": "A five year old can walk quickly, an eight year old can walk more quickly than a five year old, but an adult can walk the most quickly.",
+        "hint": "比較級必須寫完整：can walk more quickly than（不可漏掉 quickly！）",
+        "explanation": {
+          "concept": "Unit 14 助動詞 can + 多音節副詞三級比較（quickly ➔ more quickly ➔ the most quickly）",
+          "formula": "A five year old can walk quickly, an eight year old can walk more quickly than a five year old, but an adult can walk the most quickly.",
+          "trap": "考場真實失分：中間句誤寫成 can walk more than ❌（漏了 quickly）；且 eight 與 adult 為母音開頭，冠詞必須用 an！"
+        }
+      },
+      {
+        "id": "ODG3_U14_EX_47",
+        "type": "paper_rewrite",
+        "category_tag": "rewrite",
+        "question": "【岱崙 W5 真題】How far can they jump? frog, rabbit & kangaroo（注意 a kangaroo 冠詞與 the farthest 最高級！）",
+        "options": [],
+        "answer": "A frog can jump far, a rabbit can jump farther than a frog, but a kangaroo can jump the farthest.",
+        "hint": "far ➔ farther (或 further) than ➔ the farthest (或 the furthest)",
+        "explanation": {
+          "concept": "Unit 14 助動詞 can + 不規則副詞三級比較",
+          "formula": "A frog can jump far, a rabbit can jump farther than a frog, but a kangaroo can jump the farthest.",
+          "trap": "考場真實失分：but 後面的單數名詞『a kangaroo』千萬別漏掉冠詞 a，最高級別漏掉 the！"
+        }
+      },
+      {
+        "id": "ODG3_U14_EX_48",
+        "type": "choice",
+        "category_tag": "choice",
+        "question": "A witch laughs horribly, a vampire laughs ( ______ ) than a witch, but a zombie laughs the most horribly.",
+        "options": [
+          "more horribly",
+          "horribly",
+          "horriblier",
+          "most horribly"
+        ],
+        "answer": "more horribly",
+        "hint": "後面有 than，多音節副詞 horribly 比較級前面必須加 more",
+        "explanation": {
+          "concept": "Unit 14 多音節副詞比較級",
+          "formula": "more + 多音節副詞 (horribly) + than。",
+          "trap": "考場真實失分：漏寫 more 直接寫 horribly than ❌。"
+        }
+      },
+      {
+        "id": "ODG3_U14_EX_49",
+        "type": "choice",
+        "category_tag": "choice",
+        "question": "Jerome did badly in his quiz, Ivan did ( ______ ) than Jerome, but Nate did the worst.",
+        "options": [
+          "worse",
+          "more badly",
+          "badlier",
+          "worst"
+        ],
+        "answer": "worse",
+        "hint": "badly 的不規則比較級是 worse",
+        "explanation": {
+          "concept": "Unit 14 不規則副詞比較級（badly ➔ worse ➔ the worst）",
+          "formula": "did badly ➔ did worse than ➔ did the worst。",
+          "trap": "badly 是不規則變化，不可選 more badly 或 badlier！"
         }
       }
     ]
@@ -1087,148 +2535,221 @@ window.MIDTERM_DATABASE = [
     ],
     "vocab": [
       {
-        "word": "a bottle of",
-        "pos": "measure",
-        "meaning": "搭配: water / olive oil / lemonade",
-        "example": "a bottle of water"
+        "word": "dough",
+        "phonetic": "/doʊ/",
+        "syllables": "dough",
+        "pos": "n.",
+        "meaning": "麵團（不可數名詞）",
+        "example": "People in Naples started to put tomatoes on their dough.",
+        "note": "結尾 gh 不發音，發 /doʊ/，屬於不可數名詞。"
       },
       {
-        "word": "a packet of",
-        "pos": "measure",
-        "meaning": "搭配: sugar / biscuits / crisps",
-        "example": "a packet of sugar"
+        "word": "flour",
+        "phonetic": "/ˈflaʊər/",
+        "syllables": "flour",
+        "pos": "n.",
+        "meaning": "麵粉（不可數名詞）",
+        "example": "There is a bag of flour in the cupboard.",
+        "note": "發音與 flower 相同，通常搭配 a bag of flour。"
       },
       {
-        "word": "a bag of",
-        "pos": "measure",
-        "meaning": "搭配: flour / rice / apples",
-        "example": "a bag of flour"
+        "word": "olive oil",
+        "phonetic": "/ˈɑːlɪv ˌɔɪl/",
+        "syllables": "ol-ive oil",
+        "pos": "n.",
+        "meaning": "橄欖油（不可數名詞）",
+        "example": "People ate flat bread with olive oil and herbs.",
+        "note": "液體為不可數名詞，搭配 a bottle of olive oil。"
       },
       {
-        "word": "a carton of",
-        "pos": "measure",
-        "meaning": "搭配: milk / juice / eggs",
-        "example": "a carton of milk"
-      },
-      {
-        "word": "a cup of",
-        "pos": "measure",
-        "meaning": "搭配: coffee / tea *(食譜中: sugar / butter)*",
-        "example": "a cup of coffee"
-      },
-      {
-        "word": "a bar of",
-        "pos": "measure",
-        "meaning": "搭配: chocolate / soap",
-        "example": "a bar of chocolate"
-      },
-      {
-        "word": "a glass of",
-        "pos": "measure",
-        "meaning": "搭配: water / milk / cola / juice",
-        "example": "a glass of water"
-      },
-      {
-        "word": "a can of",
-        "pos": "measure",
-        "meaning": "搭配: cola / tomatoes / soup",
-        "example": "a can of cola"
-      },
-      {
-        "word": "a bowl of",
-        "pos": "measure",
-        "meaning": "搭配: soup / rice / apples",
-        "example": "a bowl of soup"
-      },
-      {
-        "word": "a box of",
-        "pos": "measure",
-        "meaning": "搭配: cereal / chocolates / cookies",
-        "example": "a box of cereal"
-      },
-      {
-        "word": "a jar of",
-        "pos": "measure",
-        "meaning": "搭配: honey / jam",
-        "example": "a jar of honey"
-      },
-      {
-        "word": "a pound / kilo of",
-        "pos": "measure",
-        "meaning": "搭配: meat / cheese / potatoes",
-        "example": "a pound / kilo of meat"
+        "word": "a loaf of",
+        "phonetic": "/ə ˈloʊf əv/",
+        "syllables": "a loaf of",
+        "pos": "phrase",
+        "meaning": "一條（麵包）",
+        "example": "My mom bought a loaf of bread at the bakery.",
+        "note": "複數時 loaf 去 f 改 ves：two loaves of bread！"
       },
       {
         "word": "a slice of",
-        "pos": "measure",
-        "meaning": "搭配: tomato / bread / cheese",
-        "example": "a slice of tomato"
+        "phonetic": "/ə ˈslaɪs əv/",
+        "syllables": "a slice of",
+        "pos": "phrase",
+        "meaning": "一片（披薩、起司、麵包、肉）",
+        "example": "There are some slices of bread on a plate.",
+        "note": "專門搭配薄片狀食物：bread, pizza, cheese, meat。"
       },
       {
-        "word": "a piece of",
-        "pos": "measure",
-        "meaning": "搭配: cake / pizza / cheese",
-        "example": "a piece of cake"
+        "word": "a jar of",
+        "phonetic": "/ə ˈdʒɑːr əv/",
+        "syllables": "a jar of",
+        "pos": "phrase",
+        "meaning": "一罐（廣口玻璃罐：果醬、蜂蜜、橄欖）",
+        "example": "There is a jar of honey in the cupboard.",
+        "note": "搭配黏稠或醃漬物：jam, honey, olives, peanut butter。"
+      },
+      {
+        "word": "a carton of",
+        "phonetic": "/ə ˈkɑːrtən əv/",
+        "syllables": "a car-ton of",
+        "pos": "phrase",
+        "meaning": "一紙盒（牛奶、果汁、雞蛋）",
+        "example": "There is a carton of milk in the fridge.",
+        "note": "指紙盒或塑膠盒裝：a carton of milk / juice / eggs。"
+      },
+      {
+        "word": "a bar of",
+        "phonetic": "/ə ˈbɑːr əv/",
+        "syllables": "a bar of",
+        "pos": "phrase",
+        "meaning": "一塊／一條（巧克力、肥皂）",
+        "example": "There is a bar of chocolate on the table.",
+        "note": "專門搭配塊狀硬物：a bar of chocolate / soap。"
+      },
+      {
+        "word": "a bowl of",
+        "phonetic": "/ə ˈboʊl əv/",
+        "syllables": "a bowl of",
+        "pos": "phrase",
+        "meaning": "一碗（湯、米飯、麥片、義大利麵、蘋果）",
+        "example": "There is a bowl of apples on the table.",
+        "note": "可搭配不可數飲食 (soup, rice) 或可數複數名詞 (apples, strawberries)。"
+      },
+      {
+        "word": "a glass of",
+        "phonetic": "/ə ˈɡlæs əv/",
+        "syllables": "a glass of",
+        "pos": "phrase",
+        "meaning": "一玻璃杯（水、牛奶、果汁）",
+        "example": "Emily drinks a glass of milk before she starts cooking.",
+        "note": "複數加 es：two glasses of water / juice / milk。"
       }
     ],
     "mistake_buster": [
       {
-        "trap_id": "ERR_NONCOUNT_WITH_S",
-        "sentence": "two breads",
+        "trap_id": "ODG15_ERR_1",
+        "sentence": "We need to buy two loafs of bread at the bakery.",
         "tokens": [
+          "We",
+          "need",
+          "to",
+          "buy",
           "two",
-          "breads"
-        ],
-        "wrong_index": 1,
-        "wrong_word": "breads",
-        "correct_word": "slices",
-        "fixed_sentence": "two slices of bread",
-        "reason": "小學生常受中文思維影響，直接在不可數名詞後方加 s。"
-      },
-      {
-        "trap_id": "ERR_DOUBLE_PLURAL_MEASURE",
-        "sentence": "two glasses of milks",
-        "tokens": [
-          "two",
-          "glasses",
+          "loafs",
           "of",
-          "milks"
+          "bread",
+          "at",
+          "the",
+          "bakery."
         ],
-        "wrong_index": 3,
-        "wrong_word": "milks",
-        "correct_word": "milk",
-        "fixed_sentence": "two glasses of milk",
-        "reason": "複數 s 只能加在量詞 (glasses, slices) 上，介系詞 of 後方名詞不可加 s。"
+        "wrong_index": 5,
+        "wrong_word": "loafs",
+        "correct_word": "loaves",
+        "fixed_sentence": "We need to buy two loaves of bread at the bakery.",
+        "reason": "量詞『loaf（一條）』字尾是 f，變成複數時必須去 f 改 ves 成為『loaves』！"
       },
       {
-        "trap_id": "ERR_HOW_MANY_MUCH_CONFUSION",
-        "sentence": "How many water do you drink?",
+        "trap_id": "ODG15_ERR_2",
+        "sentence": "How many olive oil did the baker put on the dough?",
         "tokens": [
           "How",
           "many",
-          "water",
-          "do",
-          "you",
-          "drink?"
+          "olive",
+          "oil",
+          "did",
+          "the",
+          "baker",
+          "put",
+          "on",
+          "the",
+          "dough?"
         ],
         "wrong_index": 1,
         "wrong_word": "many",
         "correct_word": "much",
-        "fixed_sentence": "How much water do you drink?",
-        "reason": "段考高頻選擇題陷阱：看清楚受詞是可數名詞複數還是不可數名詞。"
+        "fixed_sentence": "How much olive oil did the baker put on the dough?",
+        "reason": "『olive oil（橄欖油）』是液體不可數名詞，詢問數量必須用『How much』，不可用 How many！"
       },
       {
-        "trap_id": "ERR_BREAD_PAPER_COUNTABLE",
-        "sentence": "a bread",
+        "trap_id": "ODG15_ERR_3",
+        "sentence": "There are three bottles of milks in the refrigerator.",
         "tokens": [
-          "a",
-          "bread"
+          "There",
+          "are",
+          "three",
+          "bottles",
+          "of",
+          "milks",
+          "in",
+          "the",
+          "refrigerator."
         ],
-        "wrong_index": 1,
-        "wrong_word": "bread",
-        "correct_word": "piece",
-        "fixed_sentence": "a piece",
-        "reason": "英語中 bread 與 paper 本質為物質名詞，不可加不定冠詞 a。"
+        "wrong_index": 5,
+        "wrong_word": "milks",
+        "correct_word": "milk",
+        "fixed_sentence": "There are three bottles of milk in the refrigerator.",
+        "reason": "『milk（牛奶）』是不可數名詞，複數標記已經加在容器『bottles』上，後面的 milk 永遠不可加 s！"
+      },
+      {
+        "trap_id": "ODG15_ERR_4",
+        "sentence": "Emily ate two slices of pizzas for lunch yesterday.",
+        "tokens": [
+          "Emily",
+          "ate",
+          "two",
+          "slices",
+          "of",
+          "pizzas",
+          "for",
+          "lunch",
+          "yesterday."
+        ],
+        "wrong_index": 5,
+        "wrong_word": "pizzas",
+        "correct_word": "pizza",
+        "fixed_sentence": "Emily ate two slices of pizza for lunch yesterday.",
+        "reason": "在量詞片語『two slices of...』後方，當物質看待的 pizza 不加 s，複數已經體現在 slices 上！"
+      },
+      {
+        "trap_id": "ODG15_ERR_5",
+        "sentence": "Is there any flours left in the kitchen cupboard?",
+        "tokens": [
+          "Is",
+          "there",
+          "any",
+          "flours",
+          "left",
+          "in",
+          "the",
+          "kitchen",
+          "cupboard?"
+        ],
+        "wrong_index": 3,
+        "wrong_word": "flours",
+        "correct_word": "flour",
+        "fixed_sentence": "Is there any flour left in the kitchen cupboard?",
+        "reason": "『flour（麵粉）』屬於粉末狀不可數名詞，沒有複數形，不可加 s！"
+      },
+      {
+        "trap_id": "ODG15_ERR_6",
+        "sentence": "My mom bought a jar of chocolates for my birthday.",
+        "tokens": [
+          "My",
+          "mom",
+          "bought",
+          "a",
+          "jar",
+          "of",
+          "chocolates",
+          "for",
+          "my",
+          "birthday."
+        ],
+        "wrong_index": 4,
+        "wrong_word": "jar",
+        "correct_word": "bar",
+        "fixed_sentence": "My mom bought a bar of chocolate for my birthday.",
+        "reason": "塊狀巧克力標準容器量詞為『a bar of chocolate』；a jar of 是用來裝果醬 (jam) 或蜂蜜 (honey) 的玻璃罐！"
       }
     ],
     "quizzes": [
@@ -1236,228 +2757,337 @@ window.MIDTERM_DATABASE = [
         "id": "ODG3_U15_LIST_1",
         "type": "spelling_listen",
         "category_tag": "listening",
-        "question": "請聽電腦發音，在紙上拼寫出這個核心單字：",
-        "hint": "中文釋義：搭配: water / olive oil / lemonade",
-        "audio_word": "a bottle of",
-        "phonetic": "",
-        "syllables": "a bottle of",
-        "answer": "a bottle of",
+        "question": "請聽電腦發音，在紙上拼寫出這個核心單字或片語：",
+        "hint": "詞性與中文：n. 麵團（不可數名詞）",
+        "audio_word": "dough",
+        "phonetic": "/doʊ/",
+        "syllables": "dough",
+        "answer": "dough",
         "explanation": {
-          "concept": "Unit 15: Tasty Treats 核心字彙：a bottle of",
-          "formula": "詞性與例句搭配：a bottle of water",
-          "trap": "注意拼寫盲點：切記母音與子音字母對應，勿漏寫尾音或不發音字母。"
+          "concept": "【Unit 15: Tasty Treats】核心字彙：dough /doʊ/ (n. 麵團（不可數名詞）)",
+          "formula": "課文例句：People in Naples started to put tomatoes on their dough.",
+          "trap": "拼寫與用法關鍵：結尾 gh 不發音，發 /doʊ/，屬於不可數名詞。"
         }
       },
       {
         "id": "ODG3_U15_LIST_2",
         "type": "spelling_listen",
         "category_tag": "listening",
-        "question": "請聽電腦發音，在紙上拼寫出這個核心單字：",
-        "hint": "中文釋義：搭配: sugar / biscuits / crisps",
-        "audio_word": "a packet of",
-        "phonetic": "",
-        "syllables": "a packet of",
-        "answer": "a packet of",
+        "question": "請聽電腦發音，在紙上拼寫出這個核心單字或片語：",
+        "hint": "詞性與中文：n. 麵粉（不可數名詞）",
+        "audio_word": "flour",
+        "phonetic": "/ˈflaʊər/",
+        "syllables": "flour",
+        "answer": "flour",
         "explanation": {
-          "concept": "Unit 15: Tasty Treats 核心字彙：a packet of",
-          "formula": "詞性與例句搭配：a packet of sugar",
-          "trap": "注意拼寫盲點：切記母音與子音字母對應，勿漏寫尾音或不發音字母。"
+          "concept": "【Unit 15: Tasty Treats】核心字彙：flour /ˈflaʊər/ (n. 麵粉（不可數名詞）)",
+          "formula": "課文例句：There is a bag of flour in the cupboard.",
+          "trap": "拼寫與用法關鍵：發音與 flower 相同，通常搭配 a bag of flour。"
         }
       },
       {
         "id": "ODG3_U15_LIST_3",
         "type": "spelling_listen",
         "category_tag": "listening",
-        "question": "請聽電腦發音，在紙上拼寫出這個核心單字：",
-        "hint": "中文釋義：搭配: flour / rice / apples",
-        "audio_word": "a bag of",
-        "phonetic": "",
-        "syllables": "a bag of",
-        "answer": "a bag of",
+        "question": "請聽電腦發音，在紙上拼寫出這個核心單字或片語：",
+        "hint": "詞性與中文：n. 橄欖油（不可數名詞）",
+        "audio_word": "olive oil",
+        "phonetic": "/ˈɑːlɪv ˌɔɪl/",
+        "syllables": "ol-ive oil",
+        "answer": "olive oil",
         "explanation": {
-          "concept": "Unit 15: Tasty Treats 核心字彙：a bag of",
-          "formula": "詞性與例句搭配：a bag of flour",
-          "trap": "注意拼寫盲點：切記母音與子音字母對應，勿漏寫尾音或不發音字母。"
+          "concept": "【Unit 15: Tasty Treats】核心字彙：olive oil /ˈɑːlɪv ˌɔɪl/ (n. 橄欖油（不可數名詞）)",
+          "formula": "課文例句：People ate flat bread with olive oil and herbs.",
+          "trap": "拼寫與用法關鍵：液體為不可數名詞，搭配 a bottle of olive oil。"
         }
       },
       {
         "id": "ODG3_U15_LIST_4",
         "type": "spelling_listen",
         "category_tag": "listening",
-        "question": "請聽電腦發音，在紙上拼寫出這個核心單字：",
-        "hint": "中文釋義：搭配: milk / juice / eggs",
-        "audio_word": "a carton of",
-        "phonetic": "",
-        "syllables": "a carton of",
-        "answer": "a carton of",
+        "question": "請聽電腦發音，在紙上拼寫出這個核心單字或片語：",
+        "hint": "詞性與中文：phrase 一條（麵包）",
+        "audio_word": "a loaf of",
+        "phonetic": "/ə ˈloʊf əv/",
+        "syllables": "a loaf of",
+        "answer": "a loaf of",
         "explanation": {
-          "concept": "Unit 15: Tasty Treats 核心字彙：a carton of",
-          "formula": "詞性與例句搭配：a carton of milk",
-          "trap": "注意拼寫盲點：切記母音與子音字母對應，勿漏寫尾音或不發音字母。"
+          "concept": "【Unit 15: Tasty Treats】核心字彙：a loaf of /ə ˈloʊf əv/ (phrase 一條（麵包）)",
+          "formula": "課文例句：My mom bought a loaf of bread at the bakery.",
+          "trap": "拼寫與用法關鍵：複數時 loaf 去 f 改 ves：two loaves of bread！"
         }
       },
       {
         "id": "ODG3_U15_LIST_5",
         "type": "spelling_listen",
         "category_tag": "listening",
-        "question": "請聽電腦發音，在紙上拼寫出這個核心單字：",
-        "hint": "中文釋義：搭配: coffee / tea *(食譜中: sugar / butter)*",
-        "audio_word": "a cup of",
-        "phonetic": "",
-        "syllables": "a cup of",
-        "answer": "a cup of",
+        "question": "請聽電腦發音，在紙上拼寫出這個核心單字或片語：",
+        "hint": "詞性與中文：phrase 一片（披薩、起司、麵包、肉）",
+        "audio_word": "a slice of",
+        "phonetic": "/ə ˈslaɪs əv/",
+        "syllables": "a slice of",
+        "answer": "a slice of",
         "explanation": {
-          "concept": "Unit 15: Tasty Treats 核心字彙：a cup of",
-          "formula": "詞性與例句搭配：a cup of coffee",
-          "trap": "注意拼寫盲點：切記母音與子音字母對應，勿漏寫尾音或不發音字母。"
+          "concept": "【Unit 15: Tasty Treats】核心字彙：a slice of /ə ˈslaɪs əv/ (phrase 一片（披薩、起司、麵包、肉）)",
+          "formula": "課文例句：There are some slices of bread on a plate.",
+          "trap": "拼寫與用法關鍵：專門搭配薄片狀食物：bread, pizza, cheese, meat。"
         }
       },
       {
         "id": "ODG3_U15_LIST_6",
         "type": "spelling_listen",
         "category_tag": "listening",
-        "question": "請聽電腦發音，在紙上拼寫出這個核心單字：",
-        "hint": "中文釋義：搭配: chocolate / soap",
-        "audio_word": "a bar of",
-        "phonetic": "",
-        "syllables": "a bar of",
-        "answer": "a bar of",
+        "question": "請聽電腦發音，在紙上拼寫出這個核心單字或片語：",
+        "hint": "詞性與中文：phrase 一罐（廣口玻璃罐：果醬、蜂蜜、橄欖）",
+        "audio_word": "a jar of",
+        "phonetic": "/ə ˈdʒɑːr əv/",
+        "syllables": "a jar of",
+        "answer": "a jar of",
         "explanation": {
-          "concept": "Unit 15: Tasty Treats 核心字彙：a bar of",
-          "formula": "詞性與例句搭配：a bar of chocolate",
-          "trap": "注意拼寫盲點：切記母音與子音字母對應，勿漏寫尾音或不發音字母。"
+          "concept": "【Unit 15: Tasty Treats】核心字彙：a jar of /ə ˈdʒɑːr əv/ (phrase 一罐（廣口玻璃罐：果醬、蜂蜜、橄欖）)",
+          "formula": "課文例句：There is a jar of honey in the cupboard.",
+          "trap": "拼寫與用法關鍵：搭配黏稠或醃漬物：jam, honey, olives, peanut butter。"
         }
       },
       {
         "id": "ODG3_U15_LIST_7",
         "type": "spelling_listen",
         "category_tag": "listening",
-        "question": "請聽電腦發音，在紙上拼寫出這個核心單字：",
-        "hint": "中文釋義：搭配: water / milk / cola / juice",
-        "audio_word": "a glass of",
-        "phonetic": "",
-        "syllables": "a glass of",
-        "answer": "a glass of",
+        "question": "請聽電腦發音，在紙上拼寫出這個核心單字或片語：",
+        "hint": "詞性與中文：phrase 一紙盒（牛奶、果汁、雞蛋）",
+        "audio_word": "a carton of",
+        "phonetic": "/ə ˈkɑːrtən əv/",
+        "syllables": "a car-ton of",
+        "answer": "a carton of",
         "explanation": {
-          "concept": "Unit 15: Tasty Treats 核心字彙：a glass of",
-          "formula": "詞性與例句搭配：a glass of water",
-          "trap": "注意拼寫盲點：切記母音與子音字母對應，勿漏寫尾音或不發音字母。"
+          "concept": "【Unit 15: Tasty Treats】核心字彙：a carton of /ə ˈkɑːrtən əv/ (phrase 一紙盒（牛奶、果汁、雞蛋）)",
+          "formula": "課文例句：There is a carton of milk in the fridge.",
+          "trap": "拼寫與用法關鍵：指紙盒或塑膠盒裝：a carton of milk / juice / eggs。"
         }
       },
       {
         "id": "ODG3_U15_LIST_8",
         "type": "spelling_listen",
         "category_tag": "listening",
-        "question": "請聽電腦發音，在紙上拼寫出這個核心單字：",
-        "hint": "中文釋義：搭配: cola / tomatoes / soup",
-        "audio_word": "a can of",
-        "phonetic": "",
-        "syllables": "a can of",
-        "answer": "a can of",
+        "question": "請聽電腦發音，在紙上拼寫出這個核心單字或片語：",
+        "hint": "詞性與中文：phrase 一塊／一條（巧克力、肥皂）",
+        "audio_word": "a bar of",
+        "phonetic": "/ə ˈbɑːr əv/",
+        "syllables": "a bar of",
+        "answer": "a bar of",
         "explanation": {
-          "concept": "Unit 15: Tasty Treats 核心字彙：a can of",
-          "formula": "詞性與例句搭配：a can of cola",
-          "trap": "注意拼寫盲點：切記母音與子音字母對應，勿漏寫尾音或不發音字母。"
+          "concept": "【Unit 15: Tasty Treats】核心字彙：a bar of /ə ˈbɑːr əv/ (phrase 一塊／一條（巧克力、肥皂）)",
+          "formula": "課文例句：There is a bar of chocolate on the table.",
+          "trap": "拼寫與用法關鍵：專門搭配塊狀硬物：a bar of chocolate / soap。"
         }
       },
       {
         "id": "ODG3_U15_LIST_9",
         "type": "spelling_listen",
         "category_tag": "listening",
-        "question": "請聽電腦發音，在紙上拼寫出這個核心單字：",
-        "hint": "中文釋義：搭配: soup / rice / apples",
+        "question": "請聽電腦發音，在紙上拼寫出這個核心單字或片語：",
+        "hint": "詞性與中文：phrase 一碗（湯、米飯、麥片、義大利麵、蘋果）",
         "audio_word": "a bowl of",
-        "phonetic": "",
+        "phonetic": "/ə ˈboʊl əv/",
         "syllables": "a bowl of",
         "answer": "a bowl of",
         "explanation": {
-          "concept": "Unit 15: Tasty Treats 核心字彙：a bowl of",
-          "formula": "詞性與例句搭配：a bowl of soup",
-          "trap": "注意拼寫盲點：切記母音與子音字母對應，勿漏寫尾音或不發音字母。"
+          "concept": "【Unit 15: Tasty Treats】核心字彙：a bowl of /ə ˈboʊl əv/ (phrase 一碗（湯、米飯、麥片、義大利麵、蘋果）)",
+          "formula": "課文例句：There is a bowl of apples on the table.",
+          "trap": "拼寫與用法關鍵：可搭配不可數飲食 (soup, rice) 或可數複數名詞 (apples, strawberries)。"
         }
       },
       {
         "id": "ODG3_U15_LIST_10",
         "type": "spelling_listen",
         "category_tag": "listening",
-        "question": "請聽電腦發音，在紙上拼寫出這個核心單字：",
-        "hint": "中文釋義：搭配: cereal / chocolates / cookies",
-        "audio_word": "a box of",
-        "phonetic": "",
-        "syllables": "a box of",
-        "answer": "a box of",
+        "question": "請聽電腦發音，在紙上拼寫出這個核心單字或片語：",
+        "hint": "詞性與中文：phrase 一玻璃杯（水、牛奶、果汁）",
+        "audio_word": "a glass of",
+        "phonetic": "/ə ˈɡlæs əv/",
+        "syllables": "a glass of",
+        "answer": "a glass of",
         "explanation": {
-          "concept": "Unit 15: Tasty Treats 核心字彙：a box of",
-          "formula": "詞性與例句搭配：a box of cereal",
-          "trap": "注意拼寫盲點：切記母音與子音字母對應，勿漏寫尾音或不發音字母。"
+          "concept": "【Unit 15: Tasty Treats】核心字彙：a glass of /ə ˈɡlæs əv/ (phrase 一玻璃杯（水、牛奶、果汁）)",
+          "formula": "課文例句：Emily drinks a glass of milk before she starts cooking.",
+          "trap": "拼寫與用法關鍵：複數加 es：two glasses of water / juice / milk。"
         }
       },
       {
-        "id": "ODG3_U15_LIST_11",
-        "type": "spelling_listen",
-        "category_tag": "listening",
-        "question": "請聽電腦發音，在紙上拼寫出這個核心單字：",
-        "hint": "中文釋義：搭配: honey / jam",
-        "audio_word": "a jar of",
-        "phonetic": "",
-        "syllables": "a jar of",
-        "answer": "a jar of",
+        "id": "ODG3_U15_NB_11",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "There's a bowl of apples on the table and there's a ______ of chocolate on the table, too.",
+        "answer": "bar",
+        "hint": "請填入正確的連接副詞或語法詞彙",
         "explanation": {
-          "concept": "Unit 15: Tasty Treats 核心字彙：a jar of",
-          "formula": "詞性與例句搭配：a jar of honey",
-          "trap": "注意拼寫盲點：切記母音與子音字母對應，勿漏寫尾音或不發音字母。"
+          "concept": "Unit 15 可數與不可數名詞及容器計量片語（Measure Words & How much/many）",
+          "formula": "空格應填入『bar』。",
+          "trap": "必考陷阱：① 液體/粉末/麵團 (milk, water, flour, dough, olive oil) 為不可數，訊問用 How much；② 複數加在容器上 (two loaves of bread)，不可數名詞本身絕不可加 -s！"
         }
       },
       {
-        "id": "ODG3_U15_LIST_12",
-        "type": "spelling_listen",
-        "category_tag": "listening",
-        "question": "請聽電腦發音，在紙上拼寫出這個核心單字：",
-        "hint": "中文釋義：搭配: meat / cheese / potatoes",
-        "audio_word": "a pound / kilo of",
-        "phonetic": "",
-        "syllables": "a pound / kilo of",
-        "answer": "a pound / kilo of",
+        "id": "ODG3_U15_NB_12",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "There are some ______ of bread on a plate.",
+        "answer": "slices",
+        "hint": "請填入正確的連接副詞或語法詞彙",
         "explanation": {
-          "concept": "Unit 15: Tasty Treats 核心字彙：a pound / kilo of",
-          "formula": "詞性與例句搭配：a pound / kilo of meat",
-          "trap": "注意拼寫盲點：切記母音與子音字母對應，勿漏寫尾音或不發音字母。"
+          "concept": "Unit 15 可數與不可數名詞及容器計量片語（Measure Words & How much/many）",
+          "formula": "空格應填入『slices』。",
+          "trap": "必考陷阱：① 液體/粉末/麵團 (milk, water, flour, dough, olive oil) 為不可數，訊問用 How much；② 複數加在容器上 (two loaves of bread)，不可數名詞本身絕不可加 -s！"
         }
       },
       {
-        "id": "ODG3_U15_LIST_13",
-        "type": "spelling_listen",
-        "category_tag": "listening",
-        "question": "請聽電腦發音，在紙上拼寫出這個核心單字：",
-        "hint": "中文釋義：搭配: tomato / bread / cheese",
-        "audio_word": "a slice of",
-        "phonetic": "",
-        "syllables": "a slice of",
-        "answer": "a slice of",
+        "id": "ODG3_U15_NB_13",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "There's a bag of flour and a ______ of honey in the cupboard.",
+        "answer": "jar",
+        "hint": "請填入正確的連接副詞或語法詞彙",
         "explanation": {
-          "concept": "Unit 15: Tasty Treats 核心字彙：a slice of",
-          "formula": "詞性與例句搭配：a slice of tomato",
-          "trap": "注意拼寫盲點：切記母音與子音字母對應，勿漏寫尾音或不發音字母。"
+          "concept": "Unit 15 可數與不可數名詞及容器計量片語（Measure Words & How much/many）",
+          "formula": "空格應填入『jar』。",
+          "trap": "必考陷阱：① 液體/粉末/麵團 (milk, water, flour, dough, olive oil) 為不可數，訊問用 How much；② 複數加在容器上 (two loaves of bread)，不可數名詞本身絕不可加 -s！"
         }
       },
       {
-        "id": "ODG3_U15_LIST_14",
-        "type": "spelling_listen",
-        "category_tag": "listening",
-        "question": "請聽電腦發音，在紙上拼寫出這個核心單字：",
-        "hint": "中文釋義：搭配: cake / pizza / cheese",
-        "audio_word": "a piece of",
-        "phonetic": "",
-        "syllables": "a piece of",
-        "answer": "a piece of",
+        "id": "ODG3_U15_NB_14",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "There's a bottle of water in the fridge and there's a ______ of milk in the fridge, too.",
+        "answer": "carton",
+        "hint": "請填入正確的連接副詞或語法詞彙",
         "explanation": {
-          "concept": "Unit 15: Tasty Treats 核心字彙：a piece of",
-          "formula": "詞性與例句搭配：a piece of cake",
-          "trap": "注意拼寫盲點：切記母音與子音字母對應，勿漏寫尾音或不發音字母。"
+          "concept": "Unit 15 可數與不可數名詞及容器計量片語（Measure Words & How much/many）",
+          "formula": "空格應填入『carton』。",
+          "trap": "必考陷阱：① 液體/粉末/麵團 (milk, water, flour, dough, olive oil) 為不可數，訊問用 How much；② 複數加在容器上 (two loaves of bread)，不可數名詞本身絕不可加 -s！"
         }
       },
       {
-        "id": "ODG3_U15_CN_15",
+        "id": "ODG3_U15_NB_15",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "Emily is drinking a ______ of milk because she's thirsty.",
+        "answer": "glass",
+        "hint": "請填入正確的連接副詞或語法詞彙",
+        "explanation": {
+          "concept": "Unit 15 可數與不可數名詞及容器計量片語（Measure Words & How much/many）",
+          "formula": "空格應填入『glass』。",
+          "trap": "必考陷阱：① 液體/粉末/麵團 (milk, water, flour, dough, olive oil) 為不可數，訊問用 How much；② 複數加在容器上 (two loaves of bread)，不可數名詞本身絕不可加 -s！"
+        }
+      },
+      {
+        "id": "ODG3_U15_CLOZE_16",
+        "type": "choice",
+        "category_tag": "choice",
+        "question": "克漏字第 1 題：請選出正確的語法形式填入空格",
+        "options": [
+          "carton",
+          "jar",
+          "bottle"
+        ],
+        "answer": "carton",
+        "hint": "克漏字三選一：比較各選項的詞性、比較級/最高級或量詞搭配",
+        "explanation": {
+          "concept": "Unit 15 可數與不可數名詞及容器計量片語（Measure Words & How much/many）",
+          "formula": "空格填入『carton』使全句結構完整：克漏字第 1 題：請選出正確的語法形式填入空格",
+          "trap": "必考陷阱：① 液體/粉末/麵團 (milk, water, flour, dough, olive oil) 為不可數，訊問用 How much；② 複數加在容器上 (two loaves of bread)，不可數名詞本身絕不可加 -s！"
+        }
+      },
+      {
+        "id": "ODG3_U15_CLOZE_17",
+        "type": "choice",
+        "category_tag": "choice",
+        "question": "克漏字第 2 題：請選出正確的語法形式填入空格",
+        "options": [
+          "bag",
+          "bar",
+          "jar"
+        ],
+        "answer": "bag",
+        "hint": "克漏字三選一：比較各選項的詞性、比較級/最高級或量詞搭配",
+        "explanation": {
+          "concept": "Unit 15 可數與不可數名詞及容器計量片語（Measure Words & How much/many）",
+          "formula": "空格填入『bag』使全句結構完整：克漏字第 2 題：請選出正確的語法形式填入空格",
+          "trap": "必考陷阱：① 液體/粉末/麵團 (milk, water, flour, dough, olive oil) 為不可數，訊問用 How much；② 複數加在容器上 (two loaves of bread)，不可數名詞本身絕不可加 -s！"
+        }
+      },
+      {
+        "id": "ODG3_U15_CLOZE_18",
+        "type": "choice",
+        "category_tag": "choice",
+        "question": "克漏字第 3 題：請選出正確的語法形式填入空格",
+        "options": [
+          "jar",
+          "bar",
+          "can"
+        ],
+        "answer": "bar",
+        "hint": "克漏字三選一：比較各選項的詞性、比較級/最高級或量詞搭配",
+        "explanation": {
+          "concept": "Unit 15 可數與不可數名詞及容器計量片語（Measure Words & How much/many）",
+          "formula": "空格填入『bar』使全句結構完整：克漏字第 3 題：請選出正確的語法形式填入空格",
+          "trap": "必考陷阱：① 液體/粉末/麵團 (milk, water, flour, dough, olive oil) 為不可數，訊問用 How much；② 複數加在容器上 (two loaves of bread)，不可數名詞本身絕不可加 -s！"
+        }
+      },
+      {
+        "id": "ODG3_U15_CLOZE_19",
+        "type": "choice",
+        "category_tag": "choice",
+        "question": "克漏字第 4 題：請選出正確的語法形式填入空格",
+        "options": [
+          "pound",
+          "box",
+          "carton"
+        ],
+        "answer": "carton",
+        "hint": "克漏字三選一：比較各選項的詞性、比較級/最高級或量詞搭配",
+        "explanation": {
+          "concept": "Unit 15 可數與不可數名詞及容器計量片語（Measure Words & How much/many）",
+          "formula": "空格填入『carton』使全句結構完整：克漏字第 4 題：請選出正確的語法形式填入空格",
+          "trap": "必考陷阱：① 液體/粉末/麵團 (milk, water, flour, dough, olive oil) 為不可數，訊問用 How much；② 複數加在容器上 (two loaves of bread)，不可數名詞本身絕不可加 -s！"
+        }
+      },
+      {
+        "id": "ODG3_U15_CLOZE_20",
+        "type": "choice",
+        "category_tag": "choice",
+        "question": "克漏字第 5 題：請選出正確的語法形式填入空格",
+        "options": [
+          "bag",
+          "bottle",
+          "cup"
+        ],
+        "answer": "cup",
+        "hint": "克漏字三選一：比較各選項的詞性、比較級/最高級或量詞搭配",
+        "explanation": {
+          "concept": "Unit 15 可數與不可數名詞及容器計量片語（Measure Words & How much/many）",
+          "formula": "空格填入『cup』使全句結構完整：克漏字第 5 題：請選出正確的語法形式填入空格",
+          "trap": "必考陷阱：① 液體/粉末/麵團 (milk, water, flour, dough, olive oil) 為不可數，訊問用 How much；② 複數加在容器上 (two loaves of bread)，不可數名詞本身絕不可加 -s！"
+        }
+      },
+      {
+        "id": "ODG3_U15_CLOZE_21",
+        "type": "choice",
+        "category_tag": "choice",
+        "question": "克漏字第 6 題：請選出正確的語法形式填入空格",
+        "options": [
+          "piece",
+          "bowl",
+          "glass"
+        ],
+        "answer": "piece",
+        "hint": "克漏字三選一：比較各選項的詞性、比較級/最高級或量詞搭配",
+        "explanation": {
+          "concept": "Unit 15 可數與不可數名詞及容器計量片語（Measure Words & How much/many）",
+          "formula": "空格填入『piece』使全句結構完整：克漏字第 6 題：請選出正確的語法形式填入空格",
+          "trap": "必考陷阱：① 液體/粉末/麵團 (milk, water, flour, dough, olive oil) 為不可數，訊問用 How much；② 複數加在容器上 (two loaves of bread)，不可數名詞本身絕不可加 -s！"
+        }
+      },
+      {
+        "id": "ODG3_U15_CN_22",
         "type": "choice",
         "category_tag": "choice",
         "question": "判斷可數 (C: Count) 或不可數 (N: Noncount)：【 paper 】",
@@ -1465,16 +3095,16 @@ window.MIDTERM_DATABASE = [
           "C (可數名詞)",
           "N (不可數名詞)"
         ],
-        "answer": "N",
-        "hint": "中文意思：紙張",
+        "answer": "N (不可數名詞)",
+        "hint": "提示：紙張",
         "explanation": {
-          "concept": "名詞分類：可數 (C) vs 不可數 (N)",
-          "formula": "名詞『paper』特性：N。不可數名詞計量需搭配容器（如 a slice of, a cup of）。",
-          "trap": "注意固體、液體與抽象概念通常為不可數名詞，不可加 -s 或直接接 a/an。"
+          "concept": "名詞可數性辨析：Count (可數名詞) vs. Noncount (不可數名詞)",
+          "formula": "名詞『paper』屬於【N (不可數名詞)】（紙張）。",
+          "trap": "液體 (water, milk, olive oil, juice)、粉末 (flour)、麵團 (dough) 與肉類起司麵包 (meat, cheese, bread) 皆為不可數名詞！"
         }
       },
       {
-        "id": "ODG3_U15_CN_16",
+        "id": "ODG3_U15_CN_23",
         "type": "choice",
         "category_tag": "choice",
         "question": "判斷可數 (C: Count) 或不可數 (N: Noncount)：【 cheese 】",
@@ -1482,16 +3112,16 @@ window.MIDTERM_DATABASE = [
           "C (可數名詞)",
           "N (不可數名詞)"
         ],
-        "answer": "N",
-        "hint": "中文意思：起司",
+        "answer": "N (不可數名詞)",
+        "hint": "提示：起司",
         "explanation": {
-          "concept": "名詞分類：可數 (C) vs 不可數 (N)",
-          "formula": "名詞『cheese』特性：N。不可數名詞計量需搭配容器（如 a slice of, a cup of）。",
-          "trap": "注意固體、液體與抽象概念通常為不可數名詞，不可加 -s 或直接接 a/an。"
+          "concept": "名詞可數性辨析：Count (可數名詞) vs. Noncount (不可數名詞)",
+          "formula": "名詞『cheese』屬於【N (不可數名詞)】（起司）。",
+          "trap": "液體 (water, milk, olive oil, juice)、粉末 (flour)、麵團 (dough) 與肉類起司麵包 (meat, cheese, bread) 皆為不可數名詞！"
         }
       },
       {
-        "id": "ODG3_U15_CN_17",
+        "id": "ODG3_U15_CN_24",
         "type": "choice",
         "category_tag": "choice",
         "question": "判斷可數 (C: Count) 或不可數 (N: Noncount)：【 tomato 】",
@@ -1499,33 +3129,16 @@ window.MIDTERM_DATABASE = [
           "C (可數名詞)",
           "N (不可數名詞)"
         ],
-        "answer": "C",
-        "hint": "中文意思：番茄",
+        "answer": "C (可數名詞)",
+        "hint": "提示：番茄",
         "explanation": {
-          "concept": "名詞分類：可數 (C) vs 不可數 (N)",
-          "formula": "名詞『tomato』特性：C。不可數名詞計量需搭配容器（如 a slice of, a cup of）。",
-          "trap": "注意固體、液體與抽象概念通常為不可數名詞，不可加 -s 或直接接 a/an。"
+          "concept": "名詞可數性辨析：Count (可數名詞) vs. Noncount (不可數名詞)",
+          "formula": "名詞『tomato』屬於【C (可數名詞)】（番茄）。",
+          "trap": "液體 (water, milk, olive oil, juice)、粉末 (flour)、麵團 (dough) 與肉類起司麵包 (meat, cheese, bread) 皆為不可數名詞！"
         }
       },
       {
-        "id": "ODG3_U15_CN_18",
-        "type": "choice",
-        "category_tag": "choice",
-        "question": "判斷可數 (C: Count) 或不可數 (N: Noncount)：【 pizza 】",
-        "options": [
-          "C (可數名詞)",
-          "N (不可數名詞)"
-        ],
-        "answer": "N / C",
-        "hint": "中文意思：整塊為 C，切片為 N；此處填 N",
-        "explanation": {
-          "concept": "名詞分類：可數 (C) vs 不可數 (N)",
-          "formula": "名詞『pizza』特性：N / C。不可數名詞計量需搭配容器（如 a slice of, a cup of）。",
-          "trap": "注意固體、液體與抽象概念通常為不可數名詞，不可加 -s 或直接接 a/an。"
-        }
-      },
-      {
-        "id": "ODG3_U15_CN_19",
+        "id": "ODG3_U15_CN_25",
         "type": "choice",
         "category_tag": "choice",
         "question": "判斷可數 (C: Count) 或不可數 (N: Noncount)：【 water 】",
@@ -1533,16 +3146,16 @@ window.MIDTERM_DATABASE = [
           "C (可數名詞)",
           "N (不可數名詞)"
         ],
-        "answer": "N",
-        "hint": "中文意思：水",
+        "answer": "N (不可數名詞)",
+        "hint": "提示：水",
         "explanation": {
-          "concept": "名詞分類：可數 (C) vs 不可數 (N)",
-          "formula": "名詞『water』特性：N。不可數名詞計量需搭配容器（如 a slice of, a cup of）。",
-          "trap": "注意固體、液體與抽象概念通常為不可數名詞，不可加 -s 或直接接 a/an。"
+          "concept": "名詞可數性辨析：Count (可數名詞) vs. Noncount (不可數名詞)",
+          "formula": "名詞『water』屬於【N (不可數名詞)】（水）。",
+          "trap": "液體 (water, milk, olive oil, juice)、粉末 (flour)、麵團 (dough) 與肉類起司麵包 (meat, cheese, bread) 皆為不可數名詞！"
         }
       },
       {
-        "id": "ODG3_U15_CN_20",
+        "id": "ODG3_U15_CN_26",
         "type": "choice",
         "category_tag": "choice",
         "question": "判斷可數 (C: Count) 或不可數 (N: Noncount)：【 juice 】",
@@ -1550,16 +3163,16 @@ window.MIDTERM_DATABASE = [
           "C (可數名詞)",
           "N (不可數名詞)"
         ],
-        "answer": "N",
-        "hint": "中文意思：果汁",
+        "answer": "N (不可數名詞)",
+        "hint": "提示：果汁",
         "explanation": {
-          "concept": "名詞分類：可數 (C) vs 不可數 (N)",
-          "formula": "名詞『juice』特性：N。不可數名詞計量需搭配容器（如 a slice of, a cup of）。",
-          "trap": "注意固體、液體與抽象概念通常為不可數名詞，不可加 -s 或直接接 a/an。"
+          "concept": "名詞可數性辨析：Count (可數名詞) vs. Noncount (不可數名詞)",
+          "formula": "名詞『juice』屬於【N (不可數名詞)】（果汁）。",
+          "trap": "液體 (water, milk, olive oil, juice)、粉末 (flour)、麵團 (dough) 與肉類起司麵包 (meat, cheese, bread) 皆為不可數名詞！"
         }
       },
       {
-        "id": "ODG3_U15_CN_21",
+        "id": "ODG3_U15_CN_27",
         "type": "choice",
         "category_tag": "choice",
         "question": "判斷可數 (C: Count) 或不可數 (N: Noncount)：【 lemon 】",
@@ -1567,16 +3180,16 @@ window.MIDTERM_DATABASE = [
           "C (可數名詞)",
           "N (不可數名詞)"
         ],
-        "answer": "C",
-        "hint": "中文意思：檸檬",
+        "answer": "C (可數名詞)",
+        "hint": "提示：檸檬",
         "explanation": {
-          "concept": "名詞分類：可數 (C) vs 不可數 (N)",
-          "formula": "名詞『lemon』特性：C。不可數名詞計量需搭配容器（如 a slice of, a cup of）。",
-          "trap": "注意固體、液體與抽象概念通常為不可數名詞，不可加 -s 或直接接 a/an。"
+          "concept": "名詞可數性辨析：Count (可數名詞) vs. Noncount (不可數名詞)",
+          "formula": "名詞『lemon』屬於【C (可數名詞)】（檸檬）。",
+          "trap": "液體 (water, milk, olive oil, juice)、粉末 (flour)、麵團 (dough) 與肉類起司麵包 (meat, cheese, bread) 皆為不可數名詞！"
         }
       },
       {
-        "id": "ODG3_U15_CN_22",
+        "id": "ODG3_U15_CN_28",
         "type": "choice",
         "category_tag": "choice",
         "question": "判斷可數 (C: Count) 或不可數 (N: Noncount)：【 honey 】",
@@ -1584,16 +3197,16 @@ window.MIDTERM_DATABASE = [
           "C (可數名詞)",
           "N (不可數名詞)"
         ],
-        "answer": "N",
-        "hint": "中文意思：蜂蜜",
+        "answer": "N (不可數名詞)",
+        "hint": "提示：蜂蜜",
         "explanation": {
-          "concept": "名詞分類：可數 (C) vs 不可數 (N)",
-          "formula": "名詞『honey』特性：N。不可數名詞計量需搭配容器（如 a slice of, a cup of）。",
-          "trap": "注意固體、液體與抽象概念通常為不可數名詞，不可加 -s 或直接接 a/an。"
+          "concept": "名詞可數性辨析：Count (可數名詞) vs. Noncount (不可數名詞)",
+          "formula": "名詞『honey』屬於【N (不可數名詞)】（蜂蜜）。",
+          "trap": "液體 (water, milk, olive oil, juice)、粉末 (flour)、麵團 (dough) 與肉類起司麵包 (meat, cheese, bread) 皆為不可數名詞！"
         }
       },
       {
-        "id": "ODG3_U15_CN_23",
+        "id": "ODG3_U15_CN_29",
         "type": "choice",
         "category_tag": "choice",
         "question": "判斷可數 (C: Count) 或不可數 (N: Noncount)：【 bread 】",
@@ -1601,16 +3214,16 @@ window.MIDTERM_DATABASE = [
           "C (可數名詞)",
           "N (不可數名詞)"
         ],
-        "answer": "N",
-        "hint": "中文意思：麵包，小學生最常錯之不可數名詞",
+        "answer": "N (不可數名詞)",
+        "hint": "提示：麵包，小學生最常錯之不可數名詞",
         "explanation": {
-          "concept": "名詞分類：可數 (C) vs 不可數 (N)",
-          "formula": "名詞『bread』特性：N。不可數名詞計量需搭配容器（如 a slice of, a cup of）。",
-          "trap": "注意固體、液體與抽象概念通常為不可數名詞，不可加 -s 或直接接 a/an。"
+          "concept": "名詞可數性辨析：Count (可數名詞) vs. Noncount (不可數名詞)",
+          "formula": "名詞『bread』屬於【N (不可數名詞)】（麵包，小學生最常錯之不可數名詞）。",
+          "trap": "液體 (water, milk, olive oil, juice)、粉末 (flour)、麵團 (dough) 與肉類起司麵包 (meat, cheese, bread) 皆為不可數名詞！"
         }
       },
       {
-        "id": "ODG3_U15_CN_24",
+        "id": "ODG3_U15_CN_30",
         "type": "choice",
         "category_tag": "choice",
         "question": "判斷可數 (C: Count) 或不可數 (N: Noncount)：【 cookie 】",
@@ -1618,16 +3231,16 @@ window.MIDTERM_DATABASE = [
           "C (可數名詞)",
           "N (不可數名詞)"
         ],
-        "answer": "C",
-        "hint": "中文意思：餅乾",
+        "answer": "C (可數名詞)",
+        "hint": "提示：餅乾",
         "explanation": {
-          "concept": "名詞分類：可數 (C) vs 不可數 (N)",
-          "formula": "名詞『cookie』特性：C。不可數名詞計量需搭配容器（如 a slice of, a cup of）。",
-          "trap": "注意固體、液體與抽象概念通常為不可數名詞，不可加 -s 或直接接 a/an。"
+          "concept": "名詞可數性辨析：Count (可數名詞) vs. Noncount (不可數名詞)",
+          "formula": "名詞『cookie』屬於【C (可數名詞)】（餅乾）。",
+          "trap": "液體 (water, milk, olive oil, juice)、粉末 (flour)、麵團 (dough) 與肉類起司麵包 (meat, cheese, bread) 皆為不可數名詞！"
         }
       },
       {
-        "id": "ODG3_U15_CN_25",
+        "id": "ODG3_U15_CN_31",
         "type": "choice",
         "category_tag": "choice",
         "question": "判斷可數 (C: Count) 或不可數 (N: Noncount)：【 milk 】",
@@ -1635,16 +3248,16 @@ window.MIDTERM_DATABASE = [
           "C (可數名詞)",
           "N (不可數名詞)"
         ],
-        "answer": "N",
-        "hint": "中文意思：牛奶",
+        "answer": "N (不可數名詞)",
+        "hint": "提示：牛奶",
         "explanation": {
-          "concept": "名詞分類：可數 (C) vs 不可數 (N)",
-          "formula": "名詞『milk』特性：N。不可數名詞計量需搭配容器（如 a slice of, a cup of）。",
-          "trap": "注意固體、液體與抽象概念通常為不可數名詞，不可加 -s 或直接接 a/an。"
+          "concept": "名詞可數性辨析：Count (可數名詞) vs. Noncount (不可數名詞)",
+          "formula": "名詞『milk』屬於【N (不可數名詞)】（牛奶）。",
+          "trap": "液體 (water, milk, olive oil, juice)、粉末 (flour)、麵團 (dough) 與肉類起司麵包 (meat, cheese, bread) 皆為不可數名詞！"
         }
       },
       {
-        "id": "ODG3_U15_CN_26",
+        "id": "ODG3_U15_CN_32",
         "type": "choice",
         "category_tag": "choice",
         "question": "判斷可數 (C: Count) 或不可數 (N: Noncount)：【 carrot 】",
@@ -1652,129 +3265,197 @@ window.MIDTERM_DATABASE = [
           "C (可數名詞)",
           "N (不可數名詞)"
         ],
-        "answer": "C",
-        "hint": "中文意思：胡蘿蔔",
+        "answer": "C (可數名詞)",
+        "hint": "提示：胡蘿蔔",
         "explanation": {
-          "concept": "名詞分類：可數 (C) vs 不可數 (N)",
-          "formula": "名詞『carrot』特性：C。不可數名詞計量需搭配容器（如 a slice of, a cup of）。",
-          "trap": "注意固體、液體與抽象概念通常為不可數名詞，不可加 -s 或直接接 a/an。"
-        }
-      },
-      {
-        "id": "ODG3_U15_HOW_27",
-        "type": "fill",
-        "category_tag": "fill",
-        "question": "_______ butter do we need? (填入 How much 或 How many)",
-        "answer": "How much",
-        "hint": "注意受詞是可數名詞複數還是不可數名詞",
-        "explanation": {
-          "concept": "疑問詞片語：How much vs How many",
-          "formula": "『How many + 可數複數名詞』；『How much + 不可數名詞』。本題受詞判定正解為『How much』。",
-          "trap": "切勿僅看有沒有加 s，需注意不規則複數或不可數名詞。"
-        }
-      },
-      {
-        "id": "ODG3_U15_HOW_28",
-        "type": "fill",
-        "category_tag": "fill",
-        "question": "_______ apples are in the bag? (填入 How much 或 How many)",
-        "answer": "How many",
-        "hint": "注意受詞是可數名詞複數還是不可數名詞",
-        "explanation": {
-          "concept": "疑問詞片語：How much vs How many",
-          "formula": "『How many + 可數複數名詞』；『How much + 不可數名詞』。本題受詞判定正解為『How many』。",
-          "trap": "切勿僅看有沒有加 s，需注意不規則複數或不可數名詞。"
-        }
-      },
-      {
-        "id": "ODG3_U15_HOW_29",
-        "type": "fill",
-        "category_tag": "fill",
-        "question": "_______ sugar is in this cake? (填入 How much 或 How many)",
-        "answer": "How much",
-        "hint": "注意受詞是可數名詞複數還是不可數名詞",
-        "explanation": {
-          "concept": "疑問詞片語：How much vs How many",
-          "formula": "『How many + 可數複數名詞』；『How much + 不可數名詞』。本題受詞判定正解為『How much』。",
-          "trap": "切勿僅看有沒有加 s，需注意不規則複數或不可數名詞。"
-        }
-      },
-      {
-        "id": "ODG3_U15_HOW_30",
-        "type": "fill",
-        "category_tag": "fill",
-        "question": "_______ sandwiches do you want? (填入 How much 或 How many)",
-        "answer": "How many",
-        "hint": "注意受詞是可數名詞複數還是不可數名詞",
-        "explanation": {
-          "concept": "疑問詞片語：How much vs How many",
-          "formula": "『How many + 可數複數名詞』；『How much + 不可數名詞』。本題受詞判定正解為『How many』。",
-          "trap": "切勿僅看有沒有加 s，需注意不規則複數或不可數名詞。"
-        }
-      },
-      {
-        "id": "ODG3_U15_HOW_31",
-        "type": "fill",
-        "category_tag": "fill",
-        "question": "_______ cola do you drink? (填入 How much 或 How many)",
-        "answer": "How much",
-        "hint": "注意受詞是可數名詞複數還是不可數名詞",
-        "explanation": {
-          "concept": "疑問詞片語：How much vs How many",
-          "formula": "『How many + 可數複數名詞』；『How much + 不可數名詞』。本題受詞判定正解為『How much』。",
-          "trap": "切勿僅看有沒有加 s，需注意不規則複數或不可數名詞。"
-        }
-      },
-      {
-        "id": "ODG3_U15_HOW_32",
-        "type": "fill",
-        "category_tag": "fill",
-        "question": "_______ pizzas should we make? (填入 How much 或 How many)",
-        "answer": "How many",
-        "hint": "注意受詞是可數名詞複數還是不可數名詞",
-        "explanation": {
-          "concept": "疑問詞片語：How much vs How many",
-          "formula": "『How many + 可數複數名詞』；『How much + 不可數名詞』。本題受詞判定正解為『How many』。",
-          "trap": "切勿僅看有沒有加 s，需注意不規則複數或不可數名詞。"
+          "concept": "名詞可數性辨析：Count (可數名詞) vs. Noncount (不可數名詞)",
+          "formula": "名詞『carrot』屬於【C (可數名詞)】（胡蘿蔔）。",
+          "trap": "液體 (water, milk, olive oil, juice)、粉末 (flour)、麵團 (dough) 與肉類起司麵包 (meat, cheese, bread) 皆為不可數名詞！"
         }
       },
       {
         "id": "ODG3_U15_HOW_33",
         "type": "fill",
         "category_tag": "fill",
-        "question": "_______ olive oil do we have? (填入 How much 或 How many)",
+        "question": "_______ butter do we need? (請填入 How much 或 How many)",
         "answer": "How much",
-        "hint": "注意受詞是可數名詞複數還是不可數名詞",
+        "hint": "觀察後面緊接的名詞是「可數複數名詞 (-s)」還是「不可數名詞」",
         "explanation": {
-          "concept": "疑問詞片語：How much vs How many",
-          "formula": "『How many + 可數複數名詞』；『How much + 不可數名詞』。本題受詞判定正解為『How much』。",
-          "trap": "切勿僅看有沒有加 s，需注意不規則複數或不可數名詞。"
+          "concept": "數量疑問詞：How many + 可數複數名詞 vs. How much + 不可數名詞",
+          "formula": "完整問句：How much butter do we need?",
+          "trap": "即使詢問不可數名詞，若加上複數容器（如 How many loaves of bread），則要改用 How many！"
         }
       },
       {
         "id": "ODG3_U15_HOW_34",
         "type": "fill",
         "category_tag": "fill",
-        "question": "_______ olives are in the bowl? (填入 How much 或 How many)",
+        "question": "_______ apples are in the bag? (請填入 How much 或 How many)",
         "answer": "How many",
-        "hint": "注意受詞是可數名詞複數還是不可數名詞",
+        "hint": "觀察後面緊接的名詞是「可數複數名詞 (-s)」還是「不可數名詞」",
         "explanation": {
-          "concept": "疑問詞片語：How much vs How many",
-          "formula": "『How many + 可數複數名詞』；『How much + 不可數名詞』。本題受詞判定正解為『How many』。",
-          "trap": "切勿僅看有沒有加 s，需注意不規則複數或不可數名詞。"
+          "concept": "數量疑問詞：How many + 可數複數名詞 vs. How much + 不可數名詞",
+          "formula": "完整問句：How many apples are in the bag?",
+          "trap": "即使詢問不可數名詞，若加上複數容器（如 How many loaves of bread），則要改用 How many！"
         }
       },
       {
-        "id": "ODG3_U15_RW_35",
+        "id": "ODG3_U15_HOW_35",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "_______ sugar is in this cake? (請填入 How much 或 How many)",
+        "answer": "How much",
+        "hint": "觀察後面緊接的名詞是「可數複數名詞 (-s)」還是「不可數名詞」",
+        "explanation": {
+          "concept": "數量疑問詞：How many + 可數複數名詞 vs. How much + 不可數名詞",
+          "formula": "完整問句：How much sugar is in this cake?",
+          "trap": "即使詢問不可數名詞，若加上複數容器（如 How many loaves of bread），則要改用 How many！"
+        }
+      },
+      {
+        "id": "ODG3_U15_HOW_36",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "_______ sandwiches do you want? (請填入 How much 或 How many)",
+        "answer": "How many",
+        "hint": "觀察後面緊接的名詞是「可數複數名詞 (-s)」還是「不可數名詞」",
+        "explanation": {
+          "concept": "數量疑問詞：How many + 可數複數名詞 vs. How much + 不可數名詞",
+          "formula": "完整問句：How many sandwiches do you want?",
+          "trap": "即使詢問不可數名詞，若加上複數容器（如 How many loaves of bread），則要改用 How many！"
+        }
+      },
+      {
+        "id": "ODG3_U15_HOW_37",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "_______ cola do you drink? (請填入 How much 或 How many)",
+        "answer": "How much",
+        "hint": "觀察後面緊接的名詞是「可數複數名詞 (-s)」還是「不可數名詞」",
+        "explanation": {
+          "concept": "數量疑問詞：How many + 可數複數名詞 vs. How much + 不可數名詞",
+          "formula": "完整問句：How much cola do you drink?",
+          "trap": "即使詢問不可數名詞，若加上複數容器（如 How many loaves of bread），則要改用 How many！"
+        }
+      },
+      {
+        "id": "ODG3_U15_HOW_38",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "_______ pizzas should we make? (請填入 How much 或 How many)",
+        "answer": "How many",
+        "hint": "觀察後面緊接的名詞是「可數複數名詞 (-s)」還是「不可數名詞」",
+        "explanation": {
+          "concept": "數量疑問詞：How many + 可數複數名詞 vs. How much + 不可數名詞",
+          "formula": "完整問句：How many pizzas should we make?",
+          "trap": "即使詢問不可數名詞，若加上複數容器（如 How many loaves of bread），則要改用 How many！"
+        }
+      },
+      {
+        "id": "ODG3_U15_HOW_39",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "_______ olive oil do we have? (請填入 How much 或 How many)",
+        "answer": "How much",
+        "hint": "觀察後面緊接的名詞是「可數複數名詞 (-s)」還是「不可數名詞」",
+        "explanation": {
+          "concept": "數量疑問詞：How many + 可數複數名詞 vs. How much + 不可數名詞",
+          "formula": "完整問句：How much olive oil do we have?",
+          "trap": "即使詢問不可數名詞，若加上複數容器（如 How many loaves of bread），則要改用 How many！"
+        }
+      },
+      {
+        "id": "ODG3_U15_HOW_40",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "_______ olives are in the bowl? (請填入 How much 或 How many)",
+        "answer": "How many",
+        "hint": "觀察後面緊接的名詞是「可數複數名詞 (-s)」還是「不可數名詞」",
+        "explanation": {
+          "concept": "數量疑問詞：How many + 可數複數名詞 vs. How much + 不可數名詞",
+          "formula": "完整問句：How many olives are in the bowl?",
+          "trap": "即使詢問不可數名詞，若加上複數容器（如 How many loaves of bread），則要改用 How many！"
+        }
+      },
+      {
+        "id": "ODG3_U15_BFILL_41",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "a jar / ______ / c can *(正解：b)*",
+        "answer": "b bar",
+        "hint": "課文重點句填空：請在紙上寫出空格處的單字",
+        "explanation": {
+          "concept": "Unit 15 可數與不可數名詞及容器計量片語（Measure Words & How much/many）",
+          "formula": "完整原句：a jar / b bar / c can *(正解：b)*",
+          "trap": "必考陷阱：① 液體/粉末/麵團 (milk, water, flour, dough, olive oil) 為不可數，訊問用 How much；② 複數加在容器上 (two loaves of bread)，不可數名詞本身絕不可加 -s！"
+        }
+      },
+      {
+        "id": "ODG3_U15_BFILL_42",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "a pound / b box / ______ *(正解：c)*",
+        "answer": "c carton",
+        "hint": "課文重點句填空：請在紙上寫出空格處的單字",
+        "explanation": {
+          "concept": "Unit 15 可數與不可數名詞及容器計量片語（Measure Words & How much/many）",
+          "formula": "完整原句：a pound / b box / c carton *(正解：c)*",
+          "trap": "必考陷阱：① 液體/粉末/麵團 (milk, water, flour, dough, olive oil) 為不可數，訊問用 How much；② 複數加在容器上 (two loaves of bread)，不可數名詞本身絕不可加 -s！"
+        }
+      },
+      {
+        "id": "ODG3_U15_BFILL_43",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "a bag / b bottle / ______ *(正解：c)*",
+        "answer": "c cup",
+        "hint": "課文重點句填空：請在紙上寫出空格處的單字",
+        "explanation": {
+          "concept": "Unit 15 可數與不可數名詞及容器計量片語（Measure Words & How much/many）",
+          "formula": "完整原句：a bag / b bottle / c cup *(正解：c)*",
+          "trap": "必考陷阱：① 液體/粉末/麵團 (milk, water, flour, dough, olive oil) 為不可數，訊問用 How much；② 複數加在容器上 (two loaves of bread)，不可數名詞本身絕不可加 -s！"
+        }
+      },
+      {
+        "id": "ODG3_U15_EX_44",
         "type": "paper_rewrite",
         "category_tag": "rewrite",
-        "question": "題目提示：pizza",
-        "answer": "[N / C]",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
+        "question": "句型造句：用 How much 與 olive oil 造出詢問數量的疑問句（need / for the pizza）",
+        "options": [],
+        "answer": "How much olive oil do we need for the pizza?",
+        "hint": "olive oil 為不可數名詞，疑問詞用 How much",
         "explanation": {
-          "concept": "Unit 15: Tasty Treats 核心句型結構改寫",
-          "formula": "標準句型：[N / C]",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
+          "concept": "Unit 15 可數與不可數名詞及容器計量片語（Measure Words & How much/many）",
+          "formula": "標準解答：How much olive oil do we need for the pizza?",
+          "trap": "必考陷阱：① 液體/粉末/麵團 (milk, water, flour, dough, olive oil) 為不可數，訊問用 How much；② 複數加在容器上 (two loaves of bread)，不可數名詞本身絕不可加 -s！"
+        }
+      },
+      {
+        "id": "ODG3_U15_EX_45",
+        "type": "paper_rewrite",
+        "category_tag": "rewrite",
+        "question": "句型改寫：There is one loaf of bread on the table.（將 one 改為 three 並改寫全句）",
+        "options": [],
+        "answer": "There are three loaves of bread on the table.",
+        "hint": "注意 is 改為 are，loaf 複數去 f 改 ves (loaves)，bread 不可加 s！",
+        "explanation": {
+          "concept": "Unit 15 可數與不可數名詞及容器計量片語（Measure Words & How much/many）",
+          "formula": "標準解答：There are three loaves of bread on the table.",
+          "trap": "必考陷阱：① 液體/粉末/麵團 (milk, water, flour, dough, olive oil) 為不可數，訊問用 How much；② 複數加在容器上 (two loaves of bread)，不可數名詞本身絕不可加 -s！"
+        }
+      },
+      {
+        "id": "ODG3_U15_EX_46",
+        "type": "paper_rewrite",
+        "category_tag": "rewrite",
+        "question": "看圖造句：用 Emily / drink / a glass of milk / before cooking 造出完整現在簡單式句子",
+        "options": [],
+        "answer": "Emily drinks a glass of milk before cooking.",
+        "hint": "主詞 Emily 為第三人稱單數，動詞 drink 記得加 -s",
+        "explanation": {
+          "concept": "Unit 15 可數與不可數名詞及容器計量片語（Measure Words & How much/many）",
+          "formula": "標準解答：Emily drinks a glass of milk before cooking.",
+          "trap": "必考陷阱：① 液體/粉末/麵團 (milk, water, flour, dough, olive oil) 為不可數，訊問用 How much；② 複數加在容器上 (two loaves of bread)，不可數名詞本身絕不可加 -s！"
         }
       }
     ]
@@ -1826,608 +3507,741 @@ window.MIDTERM_DATABASE = [
         ]
       }
     ],
-    "vocab": [],
-    "mistake_buster": [
+    "vocab": [
       {
-        "trap_id": "ERR_BY_FOOT_CHINGLISH",
-        "sentence": "I go to school by foot.",
-        "tokens": [
-          "I",
-          "go",
-          "to",
-          "school",
-          "by",
-          "foot."
-        ],
-        "wrong_index": 4,
-        "wrong_word": "by",
-        "correct_word": "on",
-        "fixed_sentence": "I go to school on foot.",
-        "reason": "最典型的台灣學生中式英語錯誤：搭車用 by，走路用 on foot。"
+        "word": "neighborhood",
+        "phonetic": "/ˈneɪbərˌhʊd/",
+        "syllables": "neigh-bor-hood",
+        "pos": "n.",
+        "meaning": "社區；街坊鄰里",
+        "example": "I have lived in my neighborhood for three years.",
+        "note": "neigh- 中 gh 不發音，字尾 -hood 表區域或狀態。"
       },
       {
-        "trap_id": "ERR_HAVE_LIVED_WITH_AGO",
-        "sentence": "I have lived here for three years ago.",
+        "word": "grocery store",
+        "phonetic": "/ˈɡroʊsəri ˌstɔːr/",
+        "syllables": "gro-cer-y store",
+        "pos": "n.",
+        "meaning": "食品雜貨店；超市",
+        "example": "My mom buys fresh fruit at the grocery store.",
+        "note": "gro-cer-y 拼寫注意中間是 c 不是 s。"
+      },
+      {
+        "word": "stationery store",
+        "phonetic": "/ˈsteɪʃəˌnɛri ˌstɔːr/",
+        "syllables": "sta-tion-er-y store",
+        "pos": "n.",
+        "meaning": "文具店",
+        "example": "I buy notebooks and pens at the stationery store.",
+        "note": "必考拼寫：文具是 station-er-y (e 代表 pen)，勿拼成 stationary！"
+      },
+      {
+        "word": "convenience store",
+        "phonetic": "/kənˈviːnjəns ˌstɔːr/",
+        "syllables": "con-ven-ience store",
+        "pos": "n.",
+        "meaning": "便利商店",
+        "example": "There is a bakery next to the convenience store.",
+        "note": "con-ven-i-ence 字尾為 -ence。"
+      },
+      {
+        "word": "pharmacy",
+        "phonetic": "/ˈfɑːrməsi/",
+        "syllables": "phar-ma-cy",
+        "pos": "n.",
+        "meaning": "藥局；藥房",
+        "example": "The pharmacy is across the street from the hospital.",
+        "note": "開頭 ph 發 /f/ 音，字尾為 -cy。"
+      },
+      {
+        "word": "hair salon",
+        "phonetic": "/ˈhɛr səˌlɑːn/",
+        "syllables": "hair sa-lon",
+        "pos": "n.",
+        "meaning": "美髮院；髮廊",
+        "example": "The hair salon is around the corner from my house.",
+        "note": "salon 只有一個 l，重音在第二音節。"
+      },
+      {
+        "word": "dry cleaner's",
+        "phonetic": "/ˌdraɪ ˈkliːnərz/",
+        "syllables": "dry clean-er's",
+        "pos": "n.",
+        "meaning": "乾洗店",
+        "example": "The dry cleaner's is between the bakery and the bank.",
+        "note": "習慣加上所有格 's，省略了 shop/store。"
+      },
+      {
+        "word": "bakery",
+        "phonetic": "/ˈbeɪkəri/",
+        "syllables": "bak-er-y",
+        "pos": "n.",
+        "meaning": "麵包店；烘焙坊",
+        "example": "There is a bakery next to the convenience store.",
+        "note": "bake 去 e 加 -ery。"
+      },
+      {
+        "word": "subway station",
+        "phonetic": "/ˈsʌbweɪ ˌsteɪʃən/",
+        "syllables": "sub-way sta-tion",
+        "pos": "n.",
+        "meaning": "地鐵站；捷運站",
+        "example": "The subway station is very close to my house.",
+        "note": "Close to the subway station, there is a department store."
+      },
+      {
+        "word": "across from",
+        "phonetic": "/əˈkrɔːs frəm/",
+        "syllables": "a-cross from",
+        "pos": "prep.",
+        "meaning": "在...的對面",
+        "example": "The park is across the street from my house.",
+        "note": "across 只有一個 c、兩個 s；不可寫成 cross from。"
+      }
+    ],
+    "mistake_buster": [
+      {
+        "trap_id": "WR04_ERR_1",
+        "sentence": "I have lived in this neighborhood since three years.",
         "tokens": [
           "I",
           "have",
           "lived",
-          "here",
-          "for",
+          "in",
+          "this",
+          "neighborhood",
+          "since",
           "three",
+          "years."
+        ],
+        "wrong_index": 6,
+        "wrong_word": "since",
+        "correct_word": "for",
+        "fixed_sentence": "I have lived in this neighborhood for three years.",
+        "reason": "『three years（三年）』是一段持續的時間長度，現在完成式必須搭配介系詞『for』；since 後面只能接過去時間起點（如 since 2021）！"
+      },
+      {
+        "trap_id": "WR04_ERR_2",
+        "sentence": "My family has lived in this house for five years ago.",
+        "tokens": [
+          "My",
+          "family",
+          "has",
+          "lived",
+          "in",
+          "this",
+          "house",
+          "for",
+          "five",
           "years",
           "ago."
         ],
-        "wrong_index": 0,
-        "wrong_word": "I",
-        "correct_word": "I",
-        "fixed_sentence": "I have lived here for three years.",
-        "reason": "現在完成式表持續時間用 for + 一段時間，不能加上 ago。"
+        "wrong_index": 10,
+        "wrong_word": "ago.",
+        "correct_word": "now.",
+        "fixed_sentence": "My family has lived in this house for five years now.",
+        "reason": "『ago（...以前）』專屬於過去簡單式（如 I moved here five years ago），絕對不可與現在完成式『have/has lived + for...』連用！"
       },
       {
-        "trap_id": "ERR_THERE_HAVE_CHINGLISH",
-        "sentence": "There have many stores in my neighborhood.",
+        "trap_id": "WR04_ERR_3",
+        "sentence": "The grocery store is cross the street from my house.",
+        "tokens": [
+          "The",
+          "grocery",
+          "store",
+          "is",
+          "cross",
+          "the",
+          "street",
+          "from",
+          "my",
+          "house."
+        ],
+        "wrong_index": 4,
+        "wrong_word": "cross",
+        "correct_word": "across",
+        "fixed_sentence": "The grocery store is across the street from my house.",
+        "reason": "『cross』是動詞（穿越馬路）；前面已經有 be 動詞 is，必須用介系詞『across (在...對面)』！"
+      },
+      {
+        "trap_id": "WR04_ERR_4",
+        "sentence": "Close the subway station, there is a big department store.",
+        "tokens": [
+          "Close",
+          "the",
+          "subway",
+          "station,",
+          "there",
+          "is",
+          "a",
+          "big",
+          "department",
+          "store."
+        ],
+        "wrong_index": 0,
+        "wrong_word": "Close",
+        "correct_word": "Close to",
+        "fixed_sentence": "Close to the subway station, there is a big department store.",
+        "reason": "表示「離...很近」必須加上介系詞 to，寫成『Close to + 地點』；單寫 Close 會變成動詞「關門」！"
+      },
+      {
+        "trap_id": "WR04_ERR_5",
+        "sentence": "There are a bakery and a pharmacy around the corner.",
         "tokens": [
           "There",
-          "have",
-          "many",
-          "stores",
-          "in",
-          "my",
-          "neighborhood."
+          "are",
+          "a",
+          "bakery",
+          "and",
+          "a",
+          "pharmacy",
+          "around",
+          "the",
+          "corner."
         ],
         "wrong_index": 1,
-        "wrong_word": "have",
-        "correct_word": "are",
-        "fixed_sentence": "There are many stores in my neighborhood.",
-        "reason": "中文『有很多人/店』常被誤翻為 there have，英語存在句必須用 There is / There are。"
+        "wrong_word": "are",
+        "correct_word": "is",
+        "fixed_sentence": "There is a bakery and a pharmacy around the corner.",
+        "reason": "『There is / There are』採「就近原則」，緊鄰的第一個名詞『a bakery』是單數，因此必須用『There is』！"
+      },
+      {
+        "trap_id": "WR04_ERR_6",
+        "sentence": "The dry cleaner's is between the bank or the hair salon.",
+        "tokens": [
+          "The",
+          "dry",
+          "cleaner's",
+          "is",
+          "between",
+          "the",
+          "bank",
+          "or",
+          "the",
+          "hair",
+          "salon."
+        ],
+        "wrong_index": 7,
+        "wrong_word": "or",
+        "correct_word": "and",
+        "fixed_sentence": "The dry cleaner's is between the bank and the hair salon.",
+        "reason": "表示「在 A 與 B 兩者之間」固定搭配為『between A and B』，連接詞必須用 and！"
       }
     ],
     "quizzes": [
       {
-        "id": "WR3_U04_RW_1",
-        "type": "paper_rewrite",
-        "category_tag": "rewrite",
-        "question": "題目提示：How long has Cynthia lived in her neighborhood?",
-        "answer": "She has lived in her neighborhood for three years.",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
+        "id": "WR3_U04_LIST_1",
+        "type": "spelling_listen",
+        "category_tag": "listening",
+        "question": "請聽電腦發音，在紙上拼寫出這個核心單字或片語：",
+        "hint": "詞性與中文：n. 社區；街坊鄰里",
+        "audio_word": "neighborhood",
+        "phonetic": "/ˈneɪbərˌhʊd/",
+        "syllables": "neigh-bor-hood",
+        "answer": "neighborhood",
         "explanation": {
-          "concept": "Unit 4: Around My Neighborhood 核心句型結構改寫",
-          "formula": "標準句型：She has lived in her neighborhood for three years.",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
+          "concept": "【Unit 4: Around My Neighborhood】核心字彙：neighborhood /ˈneɪbərˌhʊd/ (n. 社區；街坊鄰里)",
+          "formula": "課文例句：I have lived in my neighborhood for three years.",
+          "trap": "拼寫與用法關鍵：neigh- 中 gh 不發音，字尾 -hood 表區域或狀態。"
         }
       },
       {
-        "id": "WR3_U04_RW_2",
-        "type": "paper_rewrite",
-        "category_tag": "rewrite",
-        "question": "題目提示：What do Cynthia and her friends do at the park?",
-        "answer": "They often have lunch there.",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
+        "id": "WR3_U04_LIST_2",
+        "type": "spelling_listen",
+        "category_tag": "listening",
+        "question": "請聽電腦發音，在紙上拼寫出這個核心單字或片語：",
+        "hint": "詞性與中文：n. 食品雜貨店；超市",
+        "audio_word": "grocery store",
+        "phonetic": "/ˈɡroʊsəri ˌstɔːr/",
+        "syllables": "gro-cer-y store",
+        "answer": "grocery store",
         "explanation": {
-          "concept": "Unit 4: Around My Neighborhood 核心句型結構改寫",
-          "formula": "標準句型：They often have lunch there.",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
+          "concept": "【Unit 4: Around My Neighborhood】核心字彙：grocery store /ˈɡroʊsəri ˌstɔːr/ (n. 食品雜貨店；超市)",
+          "formula": "課文例句：My mom buys fresh fruit at the grocery store.",
+          "trap": "拼寫與用法關鍵：gro-cer-y 拼寫注意中間是 c 不是 s。"
         }
       },
       {
-        "id": "WR3_U04_RW_3",
-        "type": "paper_rewrite",
-        "category_tag": "rewrite",
-        "question": "題目提示：[grocery store]",
-        "answer": "There is a grocery store.",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
+        "id": "WR3_U04_LIST_3",
+        "type": "spelling_listen",
+        "category_tag": "listening",
+        "question": "請聽電腦發音，在紙上拼寫出這個核心單字或片語：",
+        "hint": "詞性與中文：n. 文具店",
+        "audio_word": "stationery store",
+        "phonetic": "/ˈsteɪʃəˌnɛri ˌstɔːr/",
+        "syllables": "sta-tion-er-y store",
+        "answer": "stationery store",
         "explanation": {
-          "concept": "Unit 4: Around My Neighborhood 核心句型結構改寫",
-          "formula": "標準句型：There is a grocery store.",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
+          "concept": "【Unit 4: Around My Neighborhood】核心字彙：stationery store /ˈsteɪʃəˌnɛri ˌstɔːr/ (n. 文具店)",
+          "formula": "課文例句：I buy notebooks and pens at the stationery store.",
+          "trap": "拼寫與用法關鍵：必考拼寫：文具是 station-er-y (e 代表 pen)，勿拼成 stationary！"
         }
       },
       {
-        "id": "WR3_U04_RW_4",
-        "type": "paper_rewrite",
-        "category_tag": "rewrite",
-        "question": "題目提示：[hair salon]",
-        "answer": "There is a hair salon.",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
+        "id": "WR3_U04_LIST_4",
+        "type": "spelling_listen",
+        "category_tag": "listening",
+        "question": "請聽電腦發音，在紙上拼寫出這個核心單字或片語：",
+        "hint": "詞性與中文：n. 便利商店",
+        "audio_word": "convenience store",
+        "phonetic": "/kənˈviːnjəns ˌstɔːr/",
+        "syllables": "con-ven-ience store",
+        "answer": "convenience store",
         "explanation": {
-          "concept": "Unit 4: Around My Neighborhood 核心句型結構改寫",
-          "formula": "標準句型：There is a hair salon.",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
+          "concept": "【Unit 4: Around My Neighborhood】核心字彙：convenience store /kənˈviːnjəns ˌstɔːr/ (n. 便利商店)",
+          "formula": "課文例句：There is a bakery next to the convenience store.",
+          "trap": "拼寫與用法關鍵：con-ven-i-ence 字尾為 -ence。"
         }
       },
       {
-        "id": "WR3_U04_RW_5",
-        "type": "paper_rewrite",
-        "category_tag": "rewrite",
-        "question": "題目提示：[Internet café]",
-        "answer": "There is an Internet café.",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
+        "id": "WR3_U04_LIST_5",
+        "type": "spelling_listen",
+        "category_tag": "listening",
+        "question": "請聽電腦發音，在紙上拼寫出這個核心單字或片語：",
+        "hint": "詞性與中文：n. 藥局；藥房",
+        "audio_word": "pharmacy",
+        "phonetic": "/ˈfɑːrməsi/",
+        "syllables": "phar-ma-cy",
+        "answer": "pharmacy",
         "explanation": {
-          "concept": "Unit 4: Around My Neighborhood 核心句型結構改寫",
-          "formula": "標準句型：There is an Internet café.",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
+          "concept": "【Unit 4: Around My Neighborhood】核心字彙：pharmacy /ˈfɑːrməsi/ (n. 藥局；藥房)",
+          "formula": "課文例句：The pharmacy is across the street from the hospital.",
+          "trap": "拼寫與用法關鍵：開頭 ph 發 /f/ 音，字尾為 -cy。"
         }
       },
       {
-        "id": "WR3_U04_RW_6",
-        "type": "paper_rewrite",
-        "category_tag": "rewrite",
-        "question": "題目提示：[dry cleaner's]",
-        "answer": "There is a dry cleaner's.",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
+        "id": "WR3_U04_LIST_6",
+        "type": "spelling_listen",
+        "category_tag": "listening",
+        "question": "請聽電腦發音，在紙上拼寫出這個核心單字或片語：",
+        "hint": "詞性與中文：n. 美髮院；髮廊",
+        "audio_word": "hair salon",
+        "phonetic": "/ˈhɛr səˌlɑːn/",
+        "syllables": "hair sa-lon",
+        "answer": "hair salon",
         "explanation": {
-          "concept": "Unit 4: Around My Neighborhood 核心句型結構改寫",
-          "formula": "標準句型：There is a dry cleaner's.",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
+          "concept": "【Unit 4: Around My Neighborhood】核心字彙：hair salon /ˈhɛr səˌlɑːn/ (n. 美髮院；髮廊)",
+          "formula": "課文例句：The hair salon is around the corner from my house.",
+          "trap": "拼寫與用法關鍵：salon 只有一個 l，重音在第二音節。"
         }
       },
       {
-        "id": "WR3_U04_RW_7",
-        "type": "paper_rewrite",
-        "category_tag": "rewrite",
-        "question": "題目提示：[convenience store]",
-        "answer": "There is a convenience store.",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
+        "id": "WR3_U04_LIST_7",
+        "type": "spelling_listen",
+        "category_tag": "listening",
+        "question": "請聽電腦發音，在紙上拼寫出這個核心單字或片語：",
+        "hint": "詞性與中文：n. 乾洗店",
+        "audio_word": "dry cleaner's",
+        "phonetic": "/ˌdraɪ ˈkliːnərz/",
+        "syllables": "dry clean-er's",
+        "answer": "dry cleaner's",
         "explanation": {
-          "concept": "Unit 4: Around My Neighborhood 核心句型結構改寫",
-          "formula": "標準句型：There is a convenience store.",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
+          "concept": "【Unit 4: Around My Neighborhood】核心字彙：dry cleaner's /ˌdraɪ ˈkliːnərz/ (n. 乾洗店)",
+          "formula": "課文例句：The dry cleaner's is between the bakery and the bank.",
+          "trap": "拼寫與用法關鍵：習慣加上所有格 's，省略了 shop/store。"
         }
       },
       {
-        "id": "WR3_U04_RW_8",
-        "type": "paper_rewrite",
-        "category_tag": "rewrite",
-        "question": "題目提示：[pharmacy]",
-        "answer": "There is a pharmacy.",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
+        "id": "WR3_U04_LIST_8",
+        "type": "spelling_listen",
+        "category_tag": "listening",
+        "question": "請聽電腦發音，在紙上拼寫出這個核心單字或片語：",
+        "hint": "詞性與中文：n. 麵包店；烘焙坊",
+        "audio_word": "bakery",
+        "phonetic": "/ˈbeɪkəri/",
+        "syllables": "bak-er-y",
+        "answer": "bakery",
         "explanation": {
-          "concept": "Unit 4: Around My Neighborhood 核心句型結構改寫",
-          "formula": "標準句型：There is a pharmacy.",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
+          "concept": "【Unit 4: Around My Neighborhood】核心字彙：bakery /ˈbeɪkəri/ (n. 麵包店；烘焙坊)",
+          "formula": "課文例句：There is a bakery next to the convenience store.",
+          "trap": "拼寫與用法關鍵：bake 去 e 加 -ery。"
         }
       },
       {
-        "id": "WR3_U04_RW_9",
-        "type": "paper_rewrite",
-        "category_tag": "rewrite",
-        "question": "題目提示：[gas station]",
-        "answer": "There is a gas station.",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
+        "id": "WR3_U04_LIST_9",
+        "type": "spelling_listen",
+        "category_tag": "listening",
+        "question": "請聽電腦發音，在紙上拼寫出這個核心單字或片語：",
+        "hint": "詞性與中文：n. 地鐵站；捷運站",
+        "audio_word": "subway station",
+        "phonetic": "/ˈsʌbweɪ ˌsteɪʃən/",
+        "syllables": "sub-way sta-tion",
+        "answer": "subway station",
         "explanation": {
-          "concept": "Unit 4: Around My Neighborhood 核心句型結構改寫",
-          "formula": "標準句型：There is a gas station.",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
+          "concept": "【Unit 4: Around My Neighborhood】核心字彙：subway station /ˈsʌbweɪ ˌsteɪʃən/ (n. 地鐵站；捷運站)",
+          "formula": "課文例句：The subway station is very close to my house.",
+          "trap": "拼寫與用法關鍵：Close to the subway station, there is a department store."
         }
       },
       {
-        "id": "WR3_U04_RW_10",
-        "type": "paper_rewrite",
-        "category_tag": "rewrite",
-        "question": "題目提示：[stationery store]",
-        "answer": "There is a stationery store.",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
+        "id": "WR3_U04_LIST_10",
+        "type": "spelling_listen",
+        "category_tag": "listening",
+        "question": "請聽電腦發音，在紙上拼寫出這個核心單字或片語：",
+        "hint": "詞性與中文：prep. 在...的對面",
+        "audio_word": "across from",
+        "phonetic": "/əˈkrɔːs frəm/",
+        "syllables": "a-cross from",
+        "answer": "across from",
         "explanation": {
-          "concept": "Unit 4: Around My Neighborhood 核心句型結構改寫",
-          "formula": "標準句型：There is a stationery store.",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
+          "concept": "【Unit 4: Around My Neighborhood】核心字彙：across from /əˈkrɔːs frəm/ (prep. 在...的對面)",
+          "formula": "課文例句：The park is across the street from my house.",
+          "trap": "拼寫與用法關鍵：across 只有一個 c、兩個 s；不可寫成 cross from。"
         }
       },
       {
-        "id": "WR3_U04_RW_11",
-        "type": "paper_rewrite",
-        "category_tag": "rewrite",
-        "question": "題目提示：(the stationery store / the gas station)",
-        "answer": "The stationery store is next to the gas station.",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
+        "id": "WR3_U04_BFILL_11",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "______ ➔ ______ *(範例)*",
+        "answer": "[grocery store] / There is a grocery store.",
+        "hint": "課文重點句填空：請在紙上寫出空格處的單字",
         "explanation": {
-          "concept": "Unit 4: Around My Neighborhood 核心句型結構改寫",
-          "formula": "標準句型：The stationery store is next to the gas station.",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
+          "concept": "Unit 4 社區導覽寫作：現在完成式 (have lived... for) 與方位介系詞",
+          "formula": "完整原句：[grocery store] ➔ There is a grocery store. *(範例)*",
+          "trap": "必考陷阱：① have lived + for + 一段時間，句尾絕對不可加 ago；② 在對面是 is across from（不可寫 cross）；③ 靠近某地是 Close to + 地點（不可漏寫 to）！"
         }
       },
       {
-        "id": "WR3_U04_RW_12",
-        "type": "paper_rewrite",
-        "category_tag": "rewrite",
-        "question": "題目提示：(the hair salon / the dry cleaner's)",
-        "answer": "The hair salon is across the street from the dry cleaner's.",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
+        "id": "WR3_U04_BFILL_12",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "______ ➔ ______",
+        "answer": "[hair salon] / There is a hair salon.",
+        "hint": "課文重點句填空：請在紙上寫出空格處的單字",
         "explanation": {
-          "concept": "Unit 4: Around My Neighborhood 核心句型結構改寫",
-          "formula": "標準句型：The hair salon is across the street from the dry cleaner's.",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
+          "concept": "Unit 4 社區導覽寫作：現在完成式 (have lived... for) 與方位介系詞",
+          "formula": "完整原句：[hair salon] ➔ There is a hair salon.",
+          "trap": "必考陷阱：① have lived + for + 一段時間，句尾絕對不可加 ago；② 在對面是 is across from（不可寫 cross）；③ 靠近某地是 Close to + 地點（不可漏寫 to）！"
         }
       },
       {
-        "id": "WR3_U04_RW_13",
-        "type": "paper_rewrite",
-        "category_tag": "rewrite",
-        "question": "題目提示：(the Internet café / the grocery store)",
-        "answer": "The Internet café is down the street from the grocery store.",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
+        "id": "WR3_U04_BFILL_13",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "______ ➔ ______ *(注意冠詞 an)*",
+        "answer": "[Internet café] / There is an Internet café.",
+        "hint": "課文重點句填空：請在紙上寫出空格處的單字",
         "explanation": {
-          "concept": "Unit 4: Around My Neighborhood 核心句型結構改寫",
-          "formula": "標準句型：The Internet café is down the street from the grocery store.",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
+          "concept": "Unit 4 社區導覽寫作：現在完成式 (have lived... for) 與方位介系詞",
+          "formula": "完整原句：[Internet café] ➔ There is an Internet café. *(注意冠詞 an)*",
+          "trap": "必考陷阱：① have lived + for + 一段時間，句尾絕對不可加 ago；② 在對面是 is across from（不可寫 cross）；③ 靠近某地是 Close to + 地點（不可漏寫 to）！"
         }
       },
       {
-        "id": "WR3_U04_RW_14",
-        "type": "paper_rewrite",
-        "category_tag": "rewrite",
-        "question": "題目提示：(the coffee shop / the hair salon)",
-        "answer": "The coffee shop is around the corner from the hair salon.",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
+        "id": "WR3_U04_BFILL_14",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "______ ➔ ______",
+        "answer": "[dry cleaner's] / There is a dry cleaner's.",
+        "hint": "課文重點句填空：請在紙上寫出空格處的單字",
         "explanation": {
-          "concept": "Unit 4: Around My Neighborhood 核心句型結構改寫",
-          "formula": "標準句型：The coffee shop is around the corner from the hair salon.",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
+          "concept": "Unit 4 社區導覽寫作：現在完成式 (have lived... for) 與方位介系詞",
+          "formula": "完整原句：[dry cleaner's] ➔ There is a dry cleaner's.",
+          "trap": "必考陷阱：① have lived + for + 一段時間，句尾絕對不可加 ago；② 在對面是 is across from（不可寫 cross）；③ 靠近某地是 Close to + 地點（不可漏寫 to）！"
         }
       },
       {
-        "id": "WR3_U04_RW_15",
-        "type": "paper_rewrite",
-        "category_tag": "rewrite",
-        "question": "題目提示：(the bus stop / the park)",
-        "answer": "The bus stop is in front of the park.",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
+        "id": "WR3_U04_BFILL_15",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "______ ➔ ______",
+        "answer": "[convenience store] / There is a convenience store.",
+        "hint": "課文重點句填空：請在紙上寫出空格處的單字",
         "explanation": {
-          "concept": "Unit 4: Around My Neighborhood 核心句型結構改寫",
-          "formula": "標準句型：The bus stop is in front of the park.",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
+          "concept": "Unit 4 社區導覽寫作：現在完成式 (have lived... for) 與方位介系詞",
+          "formula": "完整原句：[convenience store] ➔ There is a convenience store.",
+          "trap": "必考陷阱：① have lived + for + 一段時間，句尾絕對不可加 ago；② 在對面是 is across from（不可寫 cross）；③ 靠近某地是 Close to + 地點（不可漏寫 to）！"
         }
       },
       {
-        "id": "WR3_U04_RW_16",
-        "type": "paper_rewrite",
-        "category_tag": "rewrite",
-        "question": "題目提示：(the pharmacy / the convenience store)",
-        "answer": "The pharmacy is down the street from the convenience store.",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
+        "id": "WR3_U04_BFILL_16",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "______ ➔ ______",
+        "answer": "[pharmacy] / There is a pharmacy.",
+        "hint": "課文重點句填空：請在紙上寫出空格處的單字",
         "explanation": {
-          "concept": "Unit 4: Around My Neighborhood 核心句型結構改寫",
-          "formula": "標準句型：The pharmacy is down the street from the convenience store.",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
+          "concept": "Unit 4 社區導覽寫作：現在完成式 (have lived... for) 與方位介系詞",
+          "formula": "完整原句：[pharmacy] ➔ There is a pharmacy.",
+          "trap": "必考陷阱：① have lived + for + 一段時間，句尾絕對不可加 ago；② 在對面是 is across from（不可寫 cross）；③ 靠近某地是 Close to + 地點（不可漏寫 to）！"
         }
       },
       {
-        "id": "WR3_U04_RW_17",
-        "type": "paper_rewrite",
-        "category_tag": "rewrite",
-        "question": "題目提示：I moved here two years ago.",
-        "answer": "I have lived here for two years.",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
+        "id": "WR3_U04_BFILL_17",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "______ ➔ ______",
+        "answer": "[gas station] / There is a gas station.",
+        "hint": "課文重點句填空：請在紙上寫出空格處的單字",
         "explanation": {
-          "concept": "Unit 4: Around My Neighborhood 核心句型結構改寫",
-          "formula": "標準句型：I have lived here for two years.",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
+          "concept": "Unit 4 社區導覽寫作：現在完成式 (have lived... for) 與方位介系詞",
+          "formula": "完整原句：[gas station] ➔ There is a gas station.",
+          "trap": "必考陷阱：① have lived + for + 一段時間，句尾絕對不可加 ago；② 在對面是 is across from（不可寫 cross）；③ 靠近某地是 Close to + 地點（不可漏寫 to）！"
         }
       },
       {
-        "id": "WR3_U04_RW_18",
-        "type": "paper_rewrite",
-        "category_tag": "rewrite",
-        "question": "題目提示：My grandparents moved here 20 years ago.",
-        "answer": "My grandparents have lived here for 20 years.",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
+        "id": "WR3_U04_BFILL_18",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "______ ➔ ______",
+        "answer": "[stationery store] / There is a stationery store.",
+        "hint": "課文重點句填空：請在紙上寫出空格處的單字",
         "explanation": {
-          "concept": "Unit 4: Around My Neighborhood 核心句型結構改寫",
-          "formula": "標準句型：My grandparents have lived here for 20 years.",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
+          "concept": "Unit 4 社區導覽寫作：現在完成式 (have lived... for) 與方位介系詞",
+          "formula": "完整原句：[stationery store] ➔ There is a stationery store.",
+          "trap": "必考陷阱：① have lived + for + 一段時間，句尾絕對不可加 ago；② 在對面是 is across from（不可寫 cross）；③ 靠近某地是 Close to + 地點（不可漏寫 to）！"
         }
       },
       {
         "id": "WR3_U04_RW_19",
         "type": "paper_rewrite",
         "category_tag": "rewrite",
-        "question": "題目提示：Mr. and Mrs. Beck moved here six years ago.",
-        "answer": "Mr. and Mrs. Beck have lived here for six years.",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
+        "question": "句型改寫與造句：How long has Cynthia lived in her neighborhood?",
+        "answer": "She has lived in her neighborhood for three years.",
+        "hint": "請在紙上寫出完整英文句子，再按「翻牌核對答案」",
         "explanation": {
-          "concept": "Unit 4: Around My Neighborhood 核心句型結構改寫",
-          "formula": "標準句型：Mr. and Mrs. Beck have lived here for six years.",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
+          "concept": "Unit 4 社區導覽寫作：現在完成式 (have lived... for) 與方位介系詞",
+          "formula": "標準改寫句：She has lived in her neighborhood for three years.",
+          "trap": "必考陷阱：① have lived + for + 一段時間，句尾絕對不可加 ago；② 在對面是 is across from（不可寫 cross）；③ 靠近某地是 Close to + 地點（不可漏寫 to）！"
         }
       },
       {
         "id": "WR3_U04_RW_20",
         "type": "paper_rewrite",
         "category_tag": "rewrite",
-        "question": "題目提示：Daniel moved here 10 years ago.",
-        "answer": "Daniel has lived here for 10 years.",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
+        "question": "句型改寫與造句：What do Cynthia and her friends do at the park?",
+        "answer": "They often have lunch there.",
+        "hint": "請在紙上寫出完整英文句子，再按「翻牌核對答案」",
         "explanation": {
-          "concept": "Unit 4: Around My Neighborhood 核心句型結構改寫",
-          "formula": "標準句型：Daniel has lived here for 10 years.",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
+          "concept": "Unit 4 社區導覽寫作：現在完成式 (have lived... for) 與方位介系詞",
+          "formula": "標準改寫句：They often have lunch there.",
+          "trap": "必考陷阱：① have lived + for + 一段時間，句尾絕對不可加 ago；② 在對面是 is across from（不可寫 cross）；③ 靠近某地是 Close to + 地點（不可漏寫 to）！"
         }
       },
       {
         "id": "WR3_U04_RW_21",
         "type": "paper_rewrite",
         "category_tag": "rewrite",
-        "question": "題目提示：My uncle moved here two months ago.",
-        "answer": "My uncle has lived here for two months.",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
+        "question": "句型改寫與造句：(the stationery store / the gas station)",
+        "answer": "The stationery store is next to the gas station.",
+        "hint": "請在紙上寫出完整英文句子，再按「翻牌核對答案」",
         "explanation": {
-          "concept": "Unit 4: Around My Neighborhood 核心句型結構改寫",
-          "formula": "標準句型：My uncle has lived here for two months.",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
+          "concept": "Unit 4 社區導覽寫作：現在完成式 (have lived... for) 與方位介系詞",
+          "formula": "標準改寫句：The stationery store is next to the gas station.",
+          "trap": "必考陷阱：① have lived + for + 一段時間，句尾絕對不可加 ago；② 在對面是 is across from（不可寫 cross）；③ 靠近某地是 Close to + 地點（不可漏寫 to）！"
         }
       },
       {
         "id": "WR3_U04_RW_22",
         "type": "paper_rewrite",
         "category_tag": "rewrite",
-        "question": "題目提示：(the park / 15 minutes / by bicycle)",
-        "answer": "I can get to the park in 15 minutes by bicycle.",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
+        "question": "句型改寫與造句：(the hair salon / the dry cleaner's)",
+        "answer": "The hair salon is across the street from the dry cleaner's.",
+        "hint": "請在紙上寫出完整英文句子，再按「翻牌核對答案」",
         "explanation": {
-          "concept": "Unit 4: Around My Neighborhood 核心句型結構改寫",
-          "formula": "標準句型：I can get to the park in 15 minutes by bicycle.",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
+          "concept": "Unit 4 社區導覽寫作：現在完成式 (have lived... for) 與方位介系詞",
+          "formula": "標準改寫句：The hair salon is across the street from the dry cleaner's.",
+          "trap": "必考陷阱：① have lived + for + 一段時間，句尾絕對不可加 ago；② 在對面是 is across from（不可寫 cross）；③ 靠近某地是 Close to + 地點（不可漏寫 to）！"
         }
       },
       {
         "id": "WR3_U04_RW_23",
         "type": "paper_rewrite",
         "category_tag": "rewrite",
-        "question": "題目提示：(the shopping mall / 30 minutes / by subway)",
-        "answer": "I can get to the shopping mall in 30 minutes by subway.",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
+        "question": "句型改寫與造句：(the Internet café / the grocery store)",
+        "answer": "The Internet café is down the street from the grocery store.",
+        "hint": "請在紙上寫出完整英文句子，再按「翻牌核對答案」",
         "explanation": {
-          "concept": "Unit 4: Around My Neighborhood 核心句型結構改寫",
-          "formula": "標準句型：I can get to the shopping mall in 30 minutes by subway.",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
+          "concept": "Unit 4 社區導覽寫作：現在完成式 (have lived... for) 與方位介系詞",
+          "formula": "標準改寫句：The Internet café is down the street from the grocery store.",
+          "trap": "必考陷阱：① have lived + for + 一段時間，句尾絕對不可加 ago；② 在對面是 is across from（不可寫 cross）；③ 靠近某地是 Close to + 地點（不可漏寫 to）！"
         }
       },
       {
         "id": "WR3_U04_RW_24",
         "type": "paper_rewrite",
         "category_tag": "rewrite",
-        "question": "題目提示：(the movie theater / an hour / by car)",
-        "answer": "I can get to the movie theater in an hour by car.",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
+        "question": "句型改寫與造句：(the coffee shop / the hair salon)",
+        "answer": "The coffee shop is around the corner from the hair salon.",
+        "hint": "請在紙上寫出完整英文句子，再按「翻牌核對答案」",
         "explanation": {
-          "concept": "Unit 4: Around My Neighborhood 核心句型結構改寫",
-          "formula": "標準句型：I can get to the movie theater in an hour by car.",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
+          "concept": "Unit 4 社區導覽寫作：現在完成式 (have lived... for) 與方位介系詞",
+          "formula": "標準改寫句：The coffee shop is around the corner from the hair salon.",
+          "trap": "必考陷阱：① have lived + for + 一段時間，句尾絕對不可加 ago；② 在對面是 is across from（不可寫 cross）；③ 靠近某地是 Close to + 地點（不可漏寫 to）！"
         }
       },
       {
         "id": "WR3_U04_RW_25",
         "type": "paper_rewrite",
         "category_tag": "rewrite",
-        "question": "題目提示：(my school / 10 minutes / on foot)",
-        "answer": "I can get to my school in 10 minutes on foot.",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
+        "question": "句型改寫與造句：(the bus stop / the park)",
+        "answer": "The bus stop is in front of the park.",
+        "hint": "請在紙上寫出完整英文句子，再按「翻牌核對答案」",
         "explanation": {
-          "concept": "Unit 4: Around My Neighborhood 核心句型結構改寫",
-          "formula": "標準句型：I can get to my school in 10 minutes on foot.",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
+          "concept": "Unit 4 社區導覽寫作：現在完成式 (have lived... for) 與方位介系詞",
+          "formula": "標準改寫句：The bus stop is in front of the park.",
+          "trap": "必考陷阱：① have lived + for + 一段時間，句尾絕對不可加 ago；② 在對面是 is across from（不可寫 cross）；③ 靠近某地是 Close to + 地點（不可漏寫 to）！"
         }
       },
       {
         "id": "WR3_U04_RW_26",
         "type": "paper_rewrite",
         "category_tag": "rewrite",
-        "question": "題目提示：(my best friend's house / 20 minutes / on foot)",
-        "answer": "I can get to my best friend's house in 20 minutes on foot.",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
+        "question": "句型改寫與造句：(the pharmacy / the convenience store)",
+        "answer": "The pharmacy is down the street from the convenience store.",
+        "hint": "提示：或 around the corner from...",
         "explanation": {
-          "concept": "Unit 4: Around My Neighborhood 核心句型結構改寫",
-          "formula": "標準句型：I can get to my best friend's house in 20 minutes on foot.",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
+          "concept": "Unit 4 社區導覽寫作：現在完成式 (have lived... for) 與方位介系詞",
+          "formula": "標準改寫句：The pharmacy is down the street from the convenience store.",
+          "trap": "或 around the corner from...；必考陷阱：① have lived + for + 一段時間，句尾絕對不可加 ago；② 在對面是 is across from（不可寫 cross）；③ 靠近某地是 Close to + 地點（不可漏寫 to）！"
         }
       },
       {
         "id": "WR3_U04_RW_27",
         "type": "paper_rewrite",
         "category_tag": "rewrite",
-        "question": "題目提示：My friends and I have lunch",
-        "answer": "at the park.",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
+        "question": "句型改寫與造句：I moved here two years ago.",
+        "answer": "I have lived here for two years.",
+        "hint": "請在紙上寫出完整英文句子，再按「翻牌核對答案」",
         "explanation": {
-          "concept": "Unit 4: Around My Neighborhood 核心句型結構改寫",
-          "formula": "標準句型：at the park.",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
+          "concept": "Unit 4 社區導覽寫作：現在完成式 (have lived... for) 與方位介系詞",
+          "formula": "標準改寫句：I have lived here for two years.",
+          "trap": "必考陷阱：① have lived + for + 一段時間，句尾絕對不可加 ago；② 在對面是 is across from（不可寫 cross）；③ 靠近某地是 Close to + 地點（不可漏寫 to）！"
         }
       },
       {
         "id": "WR3_U04_RW_28",
         "type": "paper_rewrite",
         "category_tag": "rewrite",
-        "question": "題目提示：I keep my money",
-        "answer": "at the bank.",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
+        "question": "句型改寫與造句：My grandparents moved here 20 years ago.",
+        "answer": "My grandparents have lived here for 20 years.",
+        "hint": "請在紙上寫出完整英文句子，再按「翻牌核對答案」",
         "explanation": {
-          "concept": "Unit 4: Around My Neighborhood 核心句型結構改寫",
-          "formula": "標準句型：at the bank.",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
+          "concept": "Unit 4 社區導覽寫作：現在完成式 (have lived... for) 與方位介系詞",
+          "formula": "標準改寫句：My grandparents have lived here for 20 years.",
+          "trap": "必考陷阱：① have lived + for + 一段時間，句尾絕對不可加 ago；② 在對面是 is across from（不可寫 cross）；③ 靠近某地是 Close to + 地點（不可漏寫 to）！"
         }
       },
       {
         "id": "WR3_U04_RW_29",
         "type": "paper_rewrite",
         "category_tag": "rewrite",
-        "question": "題目提示：I get my hair cut",
-        "answer": "at the hair salon.",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
+        "question": "句型改寫與造句：Mr. and Mrs. Beck moved here six years ago.",
+        "answer": "Mr. and Mrs. Beck have lived here for six years.",
+        "hint": "請在紙上寫出完整英文句子，再按「翻牌核對答案」",
         "explanation": {
-          "concept": "Unit 4: Around My Neighborhood 核心句型結構改寫",
-          "formula": "標準句型：at the hair salon.",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
+          "concept": "Unit 4 社區導覽寫作：現在完成式 (have lived... for) 與方位介系詞",
+          "formula": "標準改寫句：Mr. and Mrs. Beck have lived here for six years.",
+          "trap": "必考陷阱：① have lived + for + 一段時間，句尾絕對不可加 ago；② 在對面是 is across from（不可寫 cross）；③ 靠近某地是 Close to + 地點（不可漏寫 to）！"
         }
       },
       {
         "id": "WR3_U04_RW_30",
         "type": "paper_rewrite",
         "category_tag": "rewrite",
-        "question": "題目提示：I buy my school supplies",
-        "answer": "at the stationery store.",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
+        "question": "句型改寫與造句：Daniel moved here 10 years ago.",
+        "answer": "Daniel has lived here for 10 years.",
+        "hint": "提示：注意單數 has",
         "explanation": {
-          "concept": "Unit 4: Around My Neighborhood 核心句型結構改寫",
-          "formula": "標準句型：at the stationery store.",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
+          "concept": "Unit 4 社區導覽寫作：現在完成式 (have lived... for) 與方位介系詞",
+          "formula": "標準改寫句：Daniel has lived here for 10 years.",
+          "trap": "注意單數 has；必考陷阱：① have lived + for + 一段時間，句尾絕對不可加 ago；② 在對面是 is across from（不可寫 cross）；③ 靠近某地是 Close to + 地點（不可漏寫 to）！"
         }
       },
       {
-        "id": "WR3_U04_RW_31",
-        "type": "paper_rewrite",
-        "category_tag": "rewrite",
-        "question": "題目提示：My mother buys food",
-        "answer": "at the grocery store.",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
+        "id": "WR3_U04_EX_31",
+        "type": "choice",
+        "category_tag": "choice",
+        "question": "I have lived in my neighborhood ( ______ ) three years.",
+        "options": [
+          "for",
+          "since",
+          "ago",
+          "in"
+        ],
+        "answer": "for",
+        "hint": "現在完成式搭配「一段時間長度 (three years)」必用介系詞 for",
         "explanation": {
-          "concept": "Unit 4: Around My Neighborhood 核心句型結構改寫",
-          "formula": "標準句型：at the grocery store.",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
+          "concept": "Unit 4 社區導覽寫作：現在完成式 (have lived... for) 與方位介系詞",
+          "formula": "標準解答：for",
+          "trap": "必考陷阱：① have lived + for + 一段時間，句尾絕對不可加 ago；② 在對面是 is across from（不可寫 cross）；③ 靠近某地是 Close to + 地點（不可漏寫 to）！"
         }
       },
       {
-        "id": "WR3_U04_RW_32",
-        "type": "paper_rewrite",
-        "category_tag": "rewrite",
-        "question": "題目提示：My father has his suits cleaned",
-        "answer": "at the dry cleaner's.",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
+        "id": "WR3_U04_EX_32",
+        "type": "choice",
+        "category_tag": "choice",
+        "question": "I can get to my school ( ______ ) ten minutes on foot.",
+        "options": [
+          "in",
+          "for",
+          "at",
+          "by"
+        ],
+        "answer": "in",
+        "hint": "表示「在...時間之內可以抵達」使用介系詞 in + 時間",
         "explanation": {
-          "concept": "Unit 4: Around My Neighborhood 核心句型結構改寫",
-          "formula": "標準句型：at the dry cleaner's.",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
+          "concept": "Unit 4 社區導覽寫作：現在完成式 (have lived... for) 與方位介系詞",
+          "formula": "標準解答：in",
+          "trap": "必考陷阱：① have lived + for + 一段時間，句尾絕對不可加 ago；② 在對面是 is across from（不可寫 cross）；③ 靠近某地是 Close to + 地點（不可漏寫 to）！"
         }
       },
       {
-        "id": "WR3_U04_RW_33",
-        "type": "paper_rewrite",
-        "category_tag": "rewrite",
-        "question": "題目提示：My neighborhood has a park.",
-        "answer": "My friends and I have lunch there.",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
+        "id": "WR3_U04_EX_33",
+        "type": "choice",
+        "category_tag": "choice",
+        "question": "There are many stores ( ______ ) the street from my house.",
+        "options": [
+          "across",
+          "cross",
+          "between",
+          "next"
+        ],
+        "answer": "across",
+        "hint": "across the street from...（在...的對街）",
         "explanation": {
-          "concept": "Unit 4: Around My Neighborhood 核心句型結構改寫",
-          "formula": "標準句型：My friends and I have lunch there.",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
+          "concept": "Unit 4 社區導覽寫作：現在完成式 (have lived... for) 與方位介系詞",
+          "formula": "標準解答：across",
+          "trap": "必考陷阱：① have lived + for + 一段時間，句尾絕對不可加 ago；② 在對面是 is across from（不可寫 cross）；③ 靠近某地是 Close to + 地點（不可漏寫 to）！"
         }
       },
       {
-        "id": "WR3_U04_RW_34",
-        "type": "paper_rewrite",
-        "category_tag": "rewrite",
-        "question": "題目提示：My neighborhood has a grocery store.",
-        "answer": "My mother buys food there.",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
+        "id": "WR3_U04_EX_34",
+        "type": "choice",
+        "category_tag": "choice",
+        "question": "The bakery is ( ______ ) the bank and the pharmacy.",
+        "options": [
+          "between",
+          "across",
+          "around",
+          "next"
+        ],
+        "answer": "between",
+        "hint": "between A and B（在 A 與 B 兩者之間）",
         "explanation": {
-          "concept": "Unit 4: Around My Neighborhood 核心句型結構改寫",
-          "formula": "標準句型：My mother buys food there.",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
+          "concept": "Unit 4 社區導覽寫作：現在完成式 (have lived... for) 與方位介系詞",
+          "formula": "標準解答：between",
+          "trap": "必考陷阱：① have lived + for + 一段時間，句尾絕對不可加 ago；② 在對面是 is across from（不可寫 cross）；③ 靠近某地是 Close to + 地點（不可漏寫 to）！"
         }
       },
       {
-        "id": "WR3_U04_RW_35",
-        "type": "paper_rewrite",
-        "category_tag": "rewrite",
-        "question": "題目提示：My neighborhood has a bank.",
-        "answer": "I keep my money there.",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
+        "id": "WR3_U04_EX_35",
+        "type": "choice",
+        "category_tag": "choice",
+        "question": "Where do you buy notebooks, pens, and school supplies?",
+        "options": [
+          "At the stationery store.",
+          "At the grocery store.",
+          "At the dry cleaner's.",
+          "At the hair salon."
+        ],
+        "answer": "At the stationery store.",
+        "hint": "購買文具與學用品的商店是 stationery store（文具店）",
         "explanation": {
-          "concept": "Unit 4: Around My Neighborhood 核心句型結構改寫",
-          "formula": "標準句型：I keep my money there.",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
-        }
-      },
-      {
-        "id": "WR3_U04_RW_36",
-        "type": "paper_rewrite",
-        "category_tag": "rewrite",
-        "question": "題目提示：My neighborhood has a hair salon.",
-        "answer": "I get my hair cut there.",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
-        "explanation": {
-          "concept": "Unit 4: Around My Neighborhood 核心句型結構改寫",
-          "formula": "標準句型：I get my hair cut there.",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
-        }
-      },
-      {
-        "id": "WR3_U04_RW_37",
-        "type": "paper_rewrite",
-        "category_tag": "rewrite",
-        "question": "題目提示：My neighborhood has a dry cleaner's.",
-        "answer": "My father has his suits cleaned there.",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
-        "explanation": {
-          "concept": "Unit 4: Around My Neighborhood 核心句型結構改寫",
-          "formula": "標準句型：My father has his suits cleaned there.",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
-        }
-      },
-      {
-        "id": "WR3_U04_RW_38",
-        "type": "paper_rewrite",
-        "category_tag": "rewrite",
-        "question": "題目提示：My neighborhood has a stationery store.",
-        "answer": "I buy my school supplies there.",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
-        "explanation": {
-          "concept": "Unit 4: Around My Neighborhood 核心句型結構改寫",
-          "formula": "標準句型：I buy my school supplies there.",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
-        }
-      },
-      {
-        "id": "WR3_U04_RW_39",
-        "type": "paper_rewrite",
-        "category_tag": "rewrite",
-        "question": "題目提示：ever been / my / to / Have / neighborhood / you / ?",
-        "answer": "Have you ever been to my neighborhood?",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
-        "explanation": {
-          "concept": "Unit 4: Around My Neighborhood 核心句型結構改寫",
-          "formula": "標準句型：Have you ever been to my neighborhood?",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
-        }
-      },
-      {
-        "id": "WR3_U04_RW_40",
-        "type": "paper_rewrite",
-        "category_tag": "rewrite",
-        "question": "題目提示：are / the bus stop / close, / and / The subway station / too / very / .",
-        "answer": "The subway station and the bus stop are very close, too.",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
-        "explanation": {
-          "concept": "Unit 4: Around My Neighborhood 核心句型結構改寫",
-          "formula": "標準句型：The subway station and the bus stop are very close, too.",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
-        }
-      },
-      {
-        "id": "WR3_U04_RW_41",
-        "type": "paper_rewrite",
-        "category_tag": "rewrite",
-        "question": "題目提示：are / neighborhood / in / stores / There / my / many / .",
-        "answer": "There are many stores in my neighborhood.",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
-        "explanation": {
-          "concept": "Unit 4: Around My Neighborhood 核心句型結構改寫",
-          "formula": "標準句型：There are many stores in my neighborhood.",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
-        }
-      },
-      {
-        "id": "WR3_U04_RW_42",
-        "type": "paper_rewrite",
-        "category_tag": "rewrite",
-        "question": "題目提示：really / living / I / my neighborhood / like / in / .",
-        "answer": "I really like living in my neighborhood!",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
-        "explanation": {
-          "concept": "Unit 4: Around My Neighborhood 核心句型結構改寫",
-          "formula": "標準句型：I really like living in my neighborhood!",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
+          "concept": "Unit 4 社區導覽寫作：現在完成式 (have lived... for) 與方位介系詞",
+          "formula": "標準解答：At the stationery store.",
+          "trap": "必考陷阱：① have lived + for + 一段時間，句尾絕對不可加 ago；② 在對面是 is across from（不可寫 cross）；③ 靠近某地是 Close to + 地點（不可漏寫 to）！"
         }
       }
     ]
@@ -2477,58 +4291,124 @@ window.MIDTERM_DATABASE = [
     ],
     "vocab": [
       {
-        "word": "donate",
-        "pos": "verb",
-        "meaning": "捐贈",
-        "example": "donate money to a charity group"
-      },
-      {
-        "word": "charity",
-        "pos": "noun",
-        "meaning": "慈善機構",
-        "example": "charity group / charity event"
-      },
-      {
-        "word": "homeless",
-        "pos": "adj",
-        "meaning": "無家可歸的",
-        "example": "a homeless person"
-      },
-      {
-        "word": "fancy",
-        "pos": "adj",
-        "meaning": "高級華麗的",
-        "example": "fancy restaurant / fancy clothes"
-      },
-      {
-        "word": "treat",
-        "pos": "verb",
-        "meaning": "請客、款待",
-        "example": "treat my friends to lunch / treat someone to a movie"
+        "word": "allowance",
+        "phonetic": "/əˈlaʊəns/",
+        "syllables": "al-low-ance",
+        "pos": "n.",
+        "meaning": "零用錢",
+        "example": "I save my weekly allowance in a piggy bank.",
+        "note": "allow (允許) + ance，注意有兩個 l。"
       },
       {
         "word": "bank account",
-        "pos": "noun_phrase",
+        "phonetic": "/ˈbæŋk əˌkaʊnt/",
+        "syllables": "bank ac-count",
+        "pos": "n.",
         "meaning": "銀行帳戶",
-        "example": "open up a bank account"
+        "example": "I would open up a bank account and save the money.",
+        "note": "account 中間有兩個 c；搭配動詞 open up (開戶)。"
       },
       {
-        "word": "accessories",
-        "pos": "noun_plural",
-        "meaning": "飾品、配件",
-        "example": "spend money on accessories"
+        "word": "expensive",
+        "phonetic": "/ɪkˈspɛnsɪv/",
+        "syllables": "ex-pen-sive",
+        "pos": "adj.",
+        "meaning": "昂貴的",
+        "example": "If I had a lot of money, I would buy an expensive watch.",
+        "note": "ex-pen-sive，反義詞為 cheap。"
       },
       {
-        "word": "glove",
-        "pos": "noun",
-        "meaning": "手套",
-        "example": "baseball glove"
+        "word": "delicious",
+        "phonetic": "/dɪˈlɪʃəs/",
+        "syllables": "de-li-cious",
+        "pos": "adj.",
+        "meaning": "美味的；可口的",
+        "example": "We ate a delicious meal at the restaurant.",
+        "note": "字尾 -cious 發 /ʃəs/ 音。"
+      },
+      {
+        "word": "necklace",
+        "phonetic": "/ˈnɛkləs/",
+        "syllables": "neck-lace",
+        "pos": "n.",
+        "meaning": "項鍊",
+        "example": "I would buy a pretty necklace for my mom.",
+        "note": "複合字：neck (脖子) + lace (蕾絲/帶子)。"
+      },
+      {
+        "word": "bracelet",
+        "phonetic": "/ˈbreɪslət/",
+        "syllables": "brace-let",
+        "pos": "n.",
+        "meaning": "手鍊；手環",
+        "example": "She wore a silver bracelet on her wrist.",
+        "note": "中間 c 發 /s/ 音。"
+      },
+      {
+        "word": "skateboard",
+        "phonetic": "/ˈskeɪtˌbɔːrd/",
+        "syllables": "skate-board",
+        "pos": "n.",
+        "meaning": "滑板",
+        "example": "If I had 100 dollars, I would buy a new skateboard.",
+        "note": "複合字：skate (溜冰/滑行) + board (板子)。"
+      },
+      {
+        "word": "sunglasses",
+        "phonetic": "/ˈsʌnˌɡlæsɪz/",
+        "syllables": "sun-glass-es",
+        "pos": "n.",
+        "meaning": "太陽眼鏡（恆用複數）",
+        "example": "He bought a cool pair of sunglasses.",
+        "note": "鏡片有兩片，字尾永遠加 -es，量詞用 a pair of。"
+      },
+      {
+        "word": "sneakers",
+        "phonetic": "/ˈsniːkərz/",
+        "syllables": "sneak-ers",
+        "pos": "n.",
+        "meaning": "運動鞋；球鞋（常用複數）",
+        "example": "I need a new pair of sneakers for gym class.",
+        "note": "雙腳穿的鞋子常加 -s，搭配 a pair of sneakers。"
+      },
+      {
+        "word": "wisely",
+        "phonetic": "/ˈwaɪzli/",
+        "syllables": "wise-ly",
+        "pos": "adv.",
+        "meaning": "明智地；聰明地",
+        "example": "If I had 300 dollars, I would spend the money wisely.",
+        "note": "wise (聰明的) + ly，修飾動詞 spend。"
       }
     ],
     "mistake_buster": [
       {
-        "trap_id": "MISTAKE_UNREAL_TENSE",
-        "sentence": "If I had 300 dollars, I will buy a bike.",
+        "trap_id": "WR05_ERR_1",
+        "sentence": "If I have a lot of money, I would buy a big house.",
+        "tokens": [
+          "If",
+          "I",
+          "have",
+          "a",
+          "lot",
+          "of",
+          "money,",
+          "I",
+          "would",
+          "buy",
+          "a",
+          "big",
+          "house."
+        ],
+        "wrong_index": 2,
+        "wrong_word": "have",
+        "correct_word": "had",
+        "fixed_sentence": "If I had a lot of money, I would buy a big house.",
+        "reason": "「與現在事實相反」的第二條件句（假設語氣），If 子句動詞必須退一位改用過去式『had』！"
+      },
+      {
+        "trap_id": "WR05_ERR_2",
+        "sentence": "If I had 300 dollars, I will save it in a bank account.",
         "tokens": [
           "If",
           "I",
@@ -2537,152 +4417,105 @@ window.MIDTERM_DATABASE = [
           "dollars,",
           "I",
           "will",
-          "buy",
+          "save",
+          "it",
+          "in",
           "a",
-          "bike."
+          "bank",
+          "account."
         ],
         "wrong_index": 6,
         "wrong_word": "will",
         "correct_word": "would",
-        "fixed_sentence": "If I had 300 dollars, I would buy a bike.",
-        "reason": "If 子句使用過去式 had 表示與現在事實相反的假設，主要子句助動詞必須對應過去型態 would，不可用 will。"
+        "fixed_sentence": "If I had 300 dollars, I would save it in a bank account.",
+        "reason": "前面 If 子句為過去式『had』（虛擬假設），主要子句的助動詞必須對應使用過去式型態『would』，不可用 will！"
       },
       {
-        "trap_id": "MISTAKE_PREP_BUY_FOR",
-        "sentence": "I would buy a nice present to my mom.",
-        "tokens": [
-          "I",
-          "would",
-          "buy",
-          "a",
-          "nice",
-          "present",
-          "to",
-          "my",
-          "mom."
-        ],
-        "wrong_index": 6,
-        "wrong_word": "to",
-        "correct_word": "for",
-        "fixed_sentence": "I would buy a nice present for my mom.",
-        "reason": "動詞 buy 的受益者介系詞應為 for，不可誤用 to。"
-      },
-      {
-        "trap_id": "MISTAKE_PLURAL_DOLLARS",
-        "sentence": "I would donate 100 dollar to a charity group.",
-        "tokens": [
-          "I",
-          "would",
-          "donate",
-          "100",
-          "dollar",
-          "to",
-          "a",
-          "charity",
-          "group."
-        ],
-        "wrong_index": 4,
-        "wrong_word": "dollar",
-        "correct_word": "dollars",
-        "fixed_sentence": "I would donate 100 dollars to a charity group.",
-        "reason": "超過 1 的金額計量名詞 dollar 必須以複數型態 dollars 呈現。"
-      },
-      {
-        "trap_id": "MISTAKE_WOULDNT_BE",
-        "sentence": "Wouldn't it great to have 300 dollars?",
-        "tokens": [
-          "Wouldn't",
-          "it",
-          "great",
-          "to",
-          "have",
-          "300",
-          "dollars?"
-        ],
-        "wrong_index": 2,
-        "wrong_word": "great",
-        "correct_word": "be",
-        "fixed_sentence": "Wouldn't it be great to have 300 dollars?",
-        "reason": "助動詞 would 後接形容詞 great，必須保留原形動詞 be (Wouldn't it be great...)。"
-      },
-      {
-        "trap_id": "PRACTICE_ERR_1",
-        "sentence": "If I had 300 dollars, I will do three things.",
+        "trap_id": "WR05_ERR_3",
+        "sentence": "If I was a millionaire, I would travel around the world.",
         "tokens": [
           "If",
           "I",
-          "had",
-          "300",
-          "dollars,",
-          "I",
-          "will",
-          "do",
-          "three",
-          "things."
-        ],
-        "wrong_index": 6,
-        "wrong_word": "will",
-        "correct_word": "would",
-        "fixed_sentence": "If I had 300 dollars, I would do three things.",
-        "reason": "(will 改為 would，虛擬語氣主要子句一致性)"
-      },
-      {
-        "trap_id": "PRACTICE_ERR_2",
-        "sentence": "I would buy a nice present to my mom.",
-        "tokens": [
+          "was",
+          "a",
+          "millionaire,",
           "I",
           "would",
-          "buy",
-          "a",
-          "nice",
-          "present",
-          "to",
-          "my",
-          "mom."
-        ],
-        "wrong_index": 6,
-        "wrong_word": "to",
-        "correct_word": "for",
-        "fixed_sentence": "I would buy a nice present for my mom.",
-        "reason": "(buy 某物「給」某人用介系詞 for)"
-      },
-      {
-        "trap_id": "PRACTICE_ERR_3",
-        "sentence": "I would donate 100 dollar to a charity group.",
-        "tokens": [
-          "I",
-          "would",
-          "donate",
-          "100",
-          "dollar",
-          "to",
-          "a",
-          "charity",
-          "group."
-        ],
-        "wrong_index": 4,
-        "wrong_word": "dollar",
-        "correct_word": "dollars",
-        "fixed_sentence": "I would donate 100 dollars to a charity group.",
-        "reason": "(超過 1 元的複數單位名詞須加 s: dollars)"
-      },
-      {
-        "trap_id": "PRACTICE_ERR_4",
-        "sentence": "Wouldn't it great to have 300 dollars?",
-        "tokens": [
-          "Wouldn't",
-          "it",
-          "great",
-          "to",
-          "have",
-          "300",
-          "dollars?"
+          "travel",
+          "around",
+          "the",
+          "world."
         ],
         "wrong_index": 2,
-        "wrong_word": "great",
-        "correct_word": "be",
-        "fixed_sentence": "Wouldn't it be great to have 300 dollars?",
-        "reason": "(情態助動詞 would 後接形容詞 great 時，必須補上原形 be 動詞)"
+        "wrong_word": "was",
+        "correct_word": "were",
+        "fixed_sentence": "If I were a millionaire, I would travel around the world.",
+        "reason": "在正式英文寫作的與現在事實相反假設語氣中，無論主詞是 I / he / she，be 動詞一律使用『were (If I were...)』！"
+      },
+      {
+        "trap_id": "WR05_ERR_4",
+        "sentence": "With some of the money, I would bought a baseball glove.",
+        "tokens": [
+          "With",
+          "some",
+          "of",
+          "the",
+          "money,",
+          "I",
+          "would",
+          "bought",
+          "a",
+          "baseball",
+          "glove."
+        ],
+        "wrong_index": 7,
+        "wrong_word": "bought",
+        "correct_word": "buy",
+        "fixed_sentence": "With some of the money, I would buy a baseball glove.",
+        "reason": "情態助動詞『would』後面必須接「原形動詞 buy」，不可接過去式 bought！"
+      },
+      {
+        "trap_id": "WR05_ERR_5",
+        "sentence": "The skateboard and sneakers would cost I about 80 dollars.",
+        "tokens": [
+          "The",
+          "skateboard",
+          "and",
+          "sneakers",
+          "would",
+          "cost",
+          "I",
+          "about",
+          "80",
+          "dollars."
+        ],
+        "wrong_index": 6,
+        "wrong_word": "I",
+        "correct_word": "me",
+        "fixed_sentence": "The skateboard and sneakers would cost me about 80 dollars.",
+        "reason": "動詞『cost』後面必須接「受格代名詞 me（cost + 人 + 金錢）」，不可接主格 I！"
+      },
+      {
+        "trap_id": "WR05_ERR_6",
+        "sentence": "I would treat my best friends for lunch at a restaurant.",
+        "tokens": [
+          "I",
+          "would",
+          "treat",
+          "my",
+          "best",
+          "friends",
+          "for",
+          "lunch",
+          "at",
+          "a",
+          "restaurant."
+        ],
+        "wrong_index": 6,
+        "wrong_word": "for",
+        "correct_word": "to",
+        "fixed_sentence": "I would treat my best friends to lunch at a restaurant.",
+        "reason": "「請某人吃某物」固定片語為『treat + 人 + to + 食物/餐點』，介系詞必須用 to！"
       }
     ],
     "quizzes": [
@@ -2690,258 +4523,422 @@ window.MIDTERM_DATABASE = [
         "id": "WR3_U05_LIST_1",
         "type": "spelling_listen",
         "category_tag": "listening",
-        "question": "請聽電腦發音，在紙上拼寫出這個核心單字：",
-        "hint": "中文釋義：捐贈",
-        "audio_word": "donate",
-        "phonetic": "",
-        "syllables": "donate",
-        "answer": "donate",
+        "question": "請聽電腦發音，在紙上拼寫出這個核心單字或片語：",
+        "hint": "詞性與中文：n. 零用錢",
+        "audio_word": "allowance",
+        "phonetic": "/əˈlaʊəns/",
+        "syllables": "al-low-ance",
+        "answer": "allowance",
         "explanation": {
-          "concept": "Unit 5: If I Had a Lot of Money 核心字彙：donate",
-          "formula": "詞性與例句搭配：donate money to a charity group",
-          "trap": "注意拼寫盲點：切記母音與子音字母對應，勿漏寫尾音或不發音字母。"
+          "concept": "【Unit 5: If I Had a Lot of Money】核心字彙：allowance /əˈlaʊəns/ (n. 零用錢)",
+          "formula": "課文例句：I save my weekly allowance in a piggy bank.",
+          "trap": "拼寫與用法關鍵：allow (允許) + ance，注意有兩個 l。"
         }
       },
       {
         "id": "WR3_U05_LIST_2",
         "type": "spelling_listen",
         "category_tag": "listening",
-        "question": "請聽電腦發音，在紙上拼寫出這個核心單字：",
-        "hint": "中文釋義：慈善機構",
-        "audio_word": "charity",
-        "phonetic": "",
-        "syllables": "charity",
-        "answer": "charity",
+        "question": "請聽電腦發音，在紙上拼寫出這個核心單字或片語：",
+        "hint": "詞性與中文：n. 銀行帳戶",
+        "audio_word": "bank account",
+        "phonetic": "/ˈbæŋk əˌkaʊnt/",
+        "syllables": "bank ac-count",
+        "answer": "bank account",
         "explanation": {
-          "concept": "Unit 5: If I Had a Lot of Money 核心字彙：charity",
-          "formula": "詞性與例句搭配：charity group / charity event",
-          "trap": "注意拼寫盲點：切記母音與子音字母對應，勿漏寫尾音或不發音字母。"
+          "concept": "【Unit 5: If I Had a Lot of Money】核心字彙：bank account /ˈbæŋk əˌkaʊnt/ (n. 銀行帳戶)",
+          "formula": "課文例句：I would open up a bank account and save the money.",
+          "trap": "拼寫與用法關鍵：account 中間有兩個 c；搭配動詞 open up (開戶)。"
         }
       },
       {
         "id": "WR3_U05_LIST_3",
         "type": "spelling_listen",
         "category_tag": "listening",
-        "question": "請聽電腦發音，在紙上拼寫出這個核心單字：",
-        "hint": "中文釋義：無家可歸的",
-        "audio_word": "homeless",
-        "phonetic": "",
-        "syllables": "homeless",
-        "answer": "homeless",
+        "question": "請聽電腦發音，在紙上拼寫出這個核心單字或片語：",
+        "hint": "詞性與中文：adj. 昂貴的",
+        "audio_word": "expensive",
+        "phonetic": "/ɪkˈspɛnsɪv/",
+        "syllables": "ex-pen-sive",
+        "answer": "expensive",
         "explanation": {
-          "concept": "Unit 5: If I Had a Lot of Money 核心字彙：homeless",
-          "formula": "詞性與例句搭配：a homeless person",
-          "trap": "注意拼寫盲點：切記母音與子音字母對應，勿漏寫尾音或不發音字母。"
+          "concept": "【Unit 5: If I Had a Lot of Money】核心字彙：expensive /ɪkˈspɛnsɪv/ (adj. 昂貴的)",
+          "formula": "課文例句：If I had a lot of money, I would buy an expensive watch.",
+          "trap": "拼寫與用法關鍵：ex-pen-sive，反義詞為 cheap。"
         }
       },
       {
         "id": "WR3_U05_LIST_4",
         "type": "spelling_listen",
         "category_tag": "listening",
-        "question": "請聽電腦發音，在紙上拼寫出這個核心單字：",
-        "hint": "中文釋義：高級華麗的",
-        "audio_word": "fancy",
-        "phonetic": "",
-        "syllables": "fancy",
-        "answer": "fancy",
+        "question": "請聽電腦發音，在紙上拼寫出這個核心單字或片語：",
+        "hint": "詞性與中文：adj. 美味的；可口的",
+        "audio_word": "delicious",
+        "phonetic": "/dɪˈlɪʃəs/",
+        "syllables": "de-li-cious",
+        "answer": "delicious",
         "explanation": {
-          "concept": "Unit 5: If I Had a Lot of Money 核心字彙：fancy",
-          "formula": "詞性與例句搭配：fancy restaurant / fancy clothes",
-          "trap": "注意拼寫盲點：切記母音與子音字母對應，勿漏寫尾音或不發音字母。"
+          "concept": "【Unit 5: If I Had a Lot of Money】核心字彙：delicious /dɪˈlɪʃəs/ (adj. 美味的；可口的)",
+          "formula": "課文例句：We ate a delicious meal at the restaurant.",
+          "trap": "拼寫與用法關鍵：字尾 -cious 發 /ʃəs/ 音。"
         }
       },
       {
         "id": "WR3_U05_LIST_5",
         "type": "spelling_listen",
         "category_tag": "listening",
-        "question": "請聽電腦發音，在紙上拼寫出這個核心單字：",
-        "hint": "中文釋義：請客、款待",
-        "audio_word": "treat",
-        "phonetic": "",
-        "syllables": "treat",
-        "answer": "treat",
+        "question": "請聽電腦發音，在紙上拼寫出這個核心單字或片語：",
+        "hint": "詞性與中文：n. 項鍊",
+        "audio_word": "necklace",
+        "phonetic": "/ˈnɛkləs/",
+        "syllables": "neck-lace",
+        "answer": "necklace",
         "explanation": {
-          "concept": "Unit 5: If I Had a Lot of Money 核心字彙：treat",
-          "formula": "詞性與例句搭配：treat my friends to lunch / treat someone to a movie",
-          "trap": "注意拼寫盲點：切記母音與子音字母對應，勿漏寫尾音或不發音字母。"
+          "concept": "【Unit 5: If I Had a Lot of Money】核心字彙：necklace /ˈnɛkləs/ (n. 項鍊)",
+          "formula": "課文例句：I would buy a pretty necklace for my mom.",
+          "trap": "拼寫與用法關鍵：複合字：neck (脖子) + lace (蕾絲/帶子)。"
         }
       },
       {
         "id": "WR3_U05_LIST_6",
         "type": "spelling_listen",
         "category_tag": "listening",
-        "question": "請聽電腦發音，在紙上拼寫出這個核心單字：",
-        "hint": "中文釋義：銀行帳戶",
-        "audio_word": "bank account",
-        "phonetic": "",
-        "syllables": "bank account",
-        "answer": "bank account",
+        "question": "請聽電腦發音，在紙上拼寫出這個核心單字或片語：",
+        "hint": "詞性與中文：n. 手鍊；手環",
+        "audio_word": "bracelet",
+        "phonetic": "/ˈbreɪslət/",
+        "syllables": "brace-let",
+        "answer": "bracelet",
         "explanation": {
-          "concept": "Unit 5: If I Had a Lot of Money 核心字彙：bank account",
-          "formula": "詞性與例句搭配：open up a bank account",
-          "trap": "注意拼寫盲點：切記母音與子音字母對應，勿漏寫尾音或不發音字母。"
+          "concept": "【Unit 5: If I Had a Lot of Money】核心字彙：bracelet /ˈbreɪslət/ (n. 手鍊；手環)",
+          "formula": "課文例句：She wore a silver bracelet on her wrist.",
+          "trap": "拼寫與用法關鍵：中間 c 發 /s/ 音。"
         }
       },
       {
         "id": "WR3_U05_LIST_7",
         "type": "spelling_listen",
         "category_tag": "listening",
-        "question": "請聽電腦發音，在紙上拼寫出這個核心單字：",
-        "hint": "中文釋義：飾品、配件",
-        "audio_word": "accessories",
-        "phonetic": "",
-        "syllables": "accessories",
-        "answer": "accessories",
+        "question": "請聽電腦發音，在紙上拼寫出這個核心單字或片語：",
+        "hint": "詞性與中文：n. 滑板",
+        "audio_word": "skateboard",
+        "phonetic": "/ˈskeɪtˌbɔːrd/",
+        "syllables": "skate-board",
+        "answer": "skateboard",
         "explanation": {
-          "concept": "Unit 5: If I Had a Lot of Money 核心字彙：accessories",
-          "formula": "詞性與例句搭配：spend money on accessories",
-          "trap": "注意拼寫盲點：切記母音與子音字母對應，勿漏寫尾音或不發音字母。"
+          "concept": "【Unit 5: If I Had a Lot of Money】核心字彙：skateboard /ˈskeɪtˌbɔːrd/ (n. 滑板)",
+          "formula": "課文例句：If I had 100 dollars, I would buy a new skateboard.",
+          "trap": "拼寫與用法關鍵：複合字：skate (溜冰/滑行) + board (板子)。"
         }
       },
       {
         "id": "WR3_U05_LIST_8",
         "type": "spelling_listen",
         "category_tag": "listening",
-        "question": "請聽電腦發音，在紙上拼寫出這個核心單字：",
-        "hint": "中文釋義：手套",
-        "audio_word": "glove",
-        "phonetic": "",
-        "syllables": "glove",
-        "answer": "glove",
+        "question": "請聽電腦發音，在紙上拼寫出這個核心單字或片語：",
+        "hint": "詞性與中文：n. 太陽眼鏡（恆用複數）",
+        "audio_word": "sunglasses",
+        "phonetic": "/ˈsʌnˌɡlæsɪz/",
+        "syllables": "sun-glass-es",
+        "answer": "sunglasses",
         "explanation": {
-          "concept": "Unit 5: If I Had a Lot of Money 核心字彙：glove",
-          "formula": "詞性與例句搭配：baseball glove",
-          "trap": "注意拼寫盲點：切記母音與子音字母對應，勿漏寫尾音或不發音字母。"
+          "concept": "【Unit 5: If I Had a Lot of Money】核心字彙：sunglasses /ˈsʌnˌɡlæsɪz/ (n. 太陽眼鏡（恆用複數）)",
+          "formula": "課文例句：He bought a cool pair of sunglasses.",
+          "trap": "拼寫與用法關鍵：鏡片有兩片，字尾永遠加 -es，量詞用 a pair of。"
         }
       },
       {
-        "id": "WR3_U05_RW_9",
-        "type": "paper_rewrite",
-        "category_tag": "rewrite",
-        "question": "題目提示：`I would give a present to my mom.`",
-        "answer": "I think you should make your family happy.",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
+        "id": "WR3_U05_LIST_9",
+        "type": "spelling_listen",
+        "category_tag": "listening",
+        "question": "請聽電腦發音，在紙上拼寫出這個核心單字或片語：",
+        "hint": "詞性與中文：n. 運動鞋；球鞋（常用複數）",
+        "audio_word": "sneakers",
+        "phonetic": "/ˈsniːkərz/",
+        "syllables": "sneak-ers",
+        "answer": "sneakers",
         "explanation": {
-          "concept": "Unit 5: If I Had a Lot of Money 核心句型結構改寫",
-          "formula": "標準句型：I think you should make your family happy.",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
+          "concept": "【Unit 5: If I Had a Lot of Money】核心字彙：sneakers /ˈsniːkərz/ (n. 運動鞋；球鞋（常用複數）)",
+          "formula": "課文例句：I need a new pair of sneakers for gym class.",
+          "trap": "拼寫與用法關鍵：雙腳穿的鞋子常加 -s，搭配 a pair of sneakers。"
         }
       },
       {
-        "id": "WR3_U05_RW_10",
-        "type": "paper_rewrite",
-        "category_tag": "rewrite",
-        "question": "題目提示：`I would open up a bank account.`",
-        "answer": "I think you should save your money.",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
+        "id": "WR3_U05_LIST_10",
+        "type": "spelling_listen",
+        "category_tag": "listening",
+        "question": "請聽電腦發音，在紙上拼寫出這個核心單字或片語：",
+        "hint": "詞性與中文：adv. 明智地；聰明地",
+        "audio_word": "wisely",
+        "phonetic": "/ˈwaɪzli/",
+        "syllables": "wise-ly",
+        "answer": "wisely",
         "explanation": {
-          "concept": "Unit 5: If I Had a Lot of Money 核心句型結構改寫",
-          "formula": "標準句型：I think you should save your money.",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
+          "concept": "【Unit 5: If I Had a Lot of Money】核心字彙：wisely /ˈwaɪzli/ (adv. 明智地；聰明地)",
+          "formula": "課文例句：If I had 300 dollars, I would spend the money wisely.",
+          "trap": "拼寫與用法關鍵：wise (聰明的) + ly，修飾動詞 spend。"
         }
       },
       {
         "id": "WR3_U05_RW_11",
         "type": "paper_rewrite",
         "category_tag": "rewrite",
-        "question": "題目提示：`I would go to a nice restaurant.`",
-        "answer": "I think you should enjoy good food.",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
+        "question": "句型改寫與造句：`I would give a present to my mom.`",
+        "answer": "I think you should make your family happy.",
+        "hint": "請在紙上寫出完整英文句子，再按「翻牌核對答案」",
         "explanation": {
-          "concept": "Unit 5: If I Had a Lot of Money 核心句型結構改寫",
-          "formula": "標準句型：I think you should enjoy good food.",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
+          "concept": "Unit 5 與現在事實相反之第二條件句（If + 過去式, S + would + 原形動詞）",
+          "formula": "標準改寫句：I think you should make your family happy.",
+          "trap": "必考陷阱：① If 子句動詞必須用過去式 (If I had / If I were)；② 主句必須用 would + 原形動詞 (would buy / would save)，不可用 will 或 would bought！"
         }
       },
       {
         "id": "WR3_U05_RW_12",
         "type": "paper_rewrite",
         "category_tag": "rewrite",
-        "question": "題目提示：`I would treat my friends to a movie.`",
-        "answer": "I think you should be nice to your friends.",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
+        "question": "句型改寫與造句：`I would open up a bank account.`",
+        "answer": "I think you should save your money.",
+        "hint": "請在紙上寫出完整英文句子，再按「翻牌核對答案」",
         "explanation": {
-          "concept": "Unit 5: If I Had a Lot of Money 核心句型結構改寫",
-          "formula": "標準句型：I think you should be nice to your friends.",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
+          "concept": "Unit 5 與現在事實相反之第二條件句（If + 過去式, S + would + 原形動詞）",
+          "formula": "標準改寫句：I think you should save your money.",
+          "trap": "必考陷阱：① If 子句動詞必須用過去式 (If I had / If I were)；② 主句必須用 would + 原形動詞 (would buy / would save)，不可用 will 或 would bought！"
         }
       },
       {
         "id": "WR3_U05_RW_13",
         "type": "paper_rewrite",
         "category_tag": "rewrite",
-        "question": "題目提示：`I would take a trip to the U.S.`",
-        "answer": "I think you should learn about different cultures.",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
+        "question": "句型改寫與造句：`I would go to a nice restaurant.`",
+        "answer": "I think you should enjoy good food.",
+        "hint": "請在紙上寫出完整英文句子，再按「翻牌核對答案」",
         "explanation": {
-          "concept": "Unit 5: If I Had a Lot of Money 核心句型結構改寫",
-          "formula": "標準句型：I think you should learn about different cultures.",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
+          "concept": "Unit 5 與現在事實相反之第二條件句（If + 過去式, S + would + 原形動詞）",
+          "formula": "標準改寫句：I think you should enjoy good food.",
+          "trap": "必考陷阱：① If 子句動詞必須用過去式 (If I had / If I were)；② 主句必須用 would + 原形動詞 (would buy / would save)，不可用 will 或 would bought！"
         }
       },
       {
         "id": "WR3_U05_RW_14",
         "type": "paper_rewrite",
         "category_tag": "rewrite",
-        "question": "題目提示：(some / treat my friends to lunch)",
-        "answer": "With some of the money, I would treat my friends to lunch.",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
+        "question": "句型改寫與造句：`I would treat my friends to a movie.`",
+        "answer": "I think you should be nice to your friends.",
+        "hint": "請在紙上寫出完整英文句子，再按「翻牌核對答案」",
         "explanation": {
-          "concept": "Unit 5: If I Had a Lot of Money 核心句型結構改寫",
-          "formula": "標準句型：With some of the money, I would treat my friends to lunch.",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
+          "concept": "Unit 5 與現在事實相反之第二條件句（If + 過去式, S + would + 原形動詞）",
+          "formula": "標準改寫句：I think you should be nice to your friends.",
+          "trap": "必考陷阱：① If 子句動詞必須用過去式 (If I had / If I were)；② 主句必須用 would + 原形動詞 (would buy / would save)，不可用 will 或 would bought！"
         }
       },
       {
         "id": "WR3_U05_RW_15",
         "type": "paper_rewrite",
         "category_tag": "rewrite",
-        "question": "題目提示：(most / open up a bank account)",
-        "answer": "With most of the money, I would open up a bank account.",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
+        "question": "句型改寫與造句：`I would take a trip to the U.S.`",
+        "answer": "I think you should learn about different cultures.",
+        "hint": "請在紙上寫出完整英文句子，再按「翻牌核對答案」",
         "explanation": {
-          "concept": "Unit 5: If I Had a Lot of Money 核心句型結構改寫",
-          "formula": "標準句型：With most of the money, I would open up a bank account.",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
+          "concept": "Unit 5 與現在事實相反之第二條件句（If + 過去式, S + would + 原形動詞）",
+          "formula": "標準改寫句：I think you should learn about different cultures.",
+          "trap": "必考陷阱：① If 子句動詞必須用過去式 (If I had / If I were)；② 主句必須用 would + 原形動詞 (would buy / would save)，不可用 will 或 would bought！"
         }
       },
       {
         "id": "WR3_U05_RW_16",
         "type": "paper_rewrite",
         "category_tag": "rewrite",
-        "question": "題目提示：(all / buy school supplies)",
-        "answer": "With all of the money, I would buy school supplies.",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
+        "question": "句型改寫與造句：(some / treat my friends to lunch)",
+        "answer": "With some of the money, I would treat my friends to lunch.",
+        "hint": "請在紙上寫出完整英文句子，再按「翻牌核對答案」",
         "explanation": {
-          "concept": "Unit 5: If I Had a Lot of Money 核心句型結構改寫",
-          "formula": "標準句型：With all of the money, I would buy school supplies.",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
+          "concept": "Unit 5 與現在事實相反之第二條件句（If + 過去式, S + would + 原形動詞）",
+          "formula": "標準改寫句：With some of the money, I would treat my friends to lunch.",
+          "trap": "必考陷阱：① If 子句動詞必須用過去式 (If I had / If I were)；② 主句必須用 would + 原形動詞 (would buy / would save)，不可用 will 或 would bought！"
         }
       },
       {
         "id": "WR3_U05_RW_17",
         "type": "paper_rewrite",
         "category_tag": "rewrite",
-        "question": "題目提示：(half / buy dinner for my family)",
-        "answer": "With half of the money, I would buy dinner for my family.",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
+        "question": "句型改寫與造句：(most / open up a bank account)",
+        "answer": "With most of the money, I would open up a bank account.",
+        "hint": "請在紙上寫出完整英文句子，再按「翻牌核對答案」",
         "explanation": {
-          "concept": "Unit 5: If I Had a Lot of Money 核心句型結構改寫",
-          "formula": "標準句型：With half of the money, I would buy dinner for my family.",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
+          "concept": "Unit 5 與現在事實相反之第二條件句（If + 過去式, S + would + 原形動詞）",
+          "formula": "標準改寫句：With most of the money, I would open up a bank account.",
+          "trap": "必考陷阱：① If 子句動詞必須用過去式 (If I had / If I were)；② 主句必須用 would + 原形動詞 (would buy / would save)，不可用 will 或 would bought！"
         }
       },
       {
         "id": "WR3_U05_RW_18",
         "type": "paper_rewrite",
         "category_tag": "rewrite",
-        "question": "題目提示：(a third / get a new book bag)",
-        "answer": "With a third of the money, I would get a new book bag.",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
+        "question": "句型改寫與造句：(all / buy school supplies)",
+        "answer": "With all of the money, I would buy school supplies.",
+        "hint": "請在紙上寫出完整英文句子，再按「翻牌核對答案」",
         "explanation": {
-          "concept": "Unit 5: If I Had a Lot of Money 核心句型結構改寫",
-          "formula": "標準句型：With a third of the money, I would get a new book bag.",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
+          "concept": "Unit 5 與現在事實相反之第二條件句（If + 過去式, S + would + 原形動詞）",
+          "formula": "標準改寫句：With all of the money, I would buy school supplies.",
+          "trap": "必考陷阱：① If 子句動詞必須用過去式 (If I had / If I were)；② 主句必須用 would + 原形動詞 (would buy / would save)，不可用 will 或 would bought！"
+        }
+      },
+      {
+        "id": "WR3_U05_RW_19",
+        "type": "paper_rewrite",
+        "category_tag": "rewrite",
+        "question": "句型改寫與造句：(half / buy dinner for my family)",
+        "answer": "With half of the money, I would buy dinner for my family.",
+        "hint": "請在紙上寫出完整英文句子，再按「翻牌核對答案」",
+        "explanation": {
+          "concept": "Unit 5 與現在事實相反之第二條件句（If + 過去式, S + would + 原形動詞）",
+          "formula": "標準改寫句：With half of the money, I would buy dinner for my family.",
+          "trap": "必考陷阱：① If 子句動詞必須用過去式 (If I had / If I were)；② 主句必須用 would + 原形動詞 (would buy / would save)，不可用 will 或 would bought！"
+        }
+      },
+      {
+        "id": "WR3_U05_RW_20",
+        "type": "paper_rewrite",
+        "category_tag": "rewrite",
+        "question": "句型改寫與造句：(a third / get a new book bag)",
+        "answer": "With a third of the money, I would get a new book bag.",
+        "hint": "請在紙上寫出完整英文句子，再按「翻牌核對答案」",
+        "explanation": {
+          "concept": "Unit 5 與現在事實相反之第二條件句（If + 過去式, S + would + 原形動詞）",
+          "formula": "標準改寫句：With a third of the money, I would get a new book bag.",
+          "trap": "必考陷阱：① If 子句動詞必須用過去式 (If I had / If I were)；② 主句必須用 would + 原形動詞 (would buy / would save)，不可用 will 或 would bought！"
+        }
+      },
+      {
+        "id": "WR3_U05_EX_21",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "If I ( ______ ) 300 dollars, I would spend the money wisely. (填入 have 的正確假設語氣時態)",
+        "options": [],
+        "answer": "had",
+        "hint": "與現在事實相反的 If 條件句，動詞需用過去式 had",
+        "explanation": {
+          "concept": "Unit 5 與現在事實相反之第二條件句（If + 過去式, S + would + 原形動詞）",
+          "formula": "標準解答：had",
+          "trap": "必考陷阱：① If 子句動詞必須用過去式 (If I had / If I were)；② 主句必須用 would + 原形動詞 (would buy / would save)，不可用 will 或 would bought！"
+        }
+      },
+      {
+        "id": "WR3_U05_EX_22",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "With the rest of the money, I ( ______ ) open up a bank account and save it.",
+        "options": [],
+        "answer": "would",
+        "hint": "假設語氣主要子句助動詞用 would + 原形動詞",
+        "explanation": {
+          "concept": "Unit 5 與現在事實相反之第二條件句（If + 過去式, S + would + 原形動詞）",
+          "formula": "標準解答：would",
+          "trap": "必考陷阱：① If 子句動詞必須用過去式 (If I had / If I were)；② 主句必須用 would + 原形動詞 (would buy / would save)，不可用 will 或 would bought！"
+        }
+      },
+      {
+        "id": "WR3_U05_EX_23",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "A baseball glove and some comic books would cost ( ______ ) about 70 dollars. (填入 I 的正確代名詞格)",
+        "options": [],
+        "answer": "me",
+        "hint": "動詞 cost 後方接人時須用受格 me",
+        "explanation": {
+          "concept": "Unit 5 與現在事實相反之第二條件句（If + 過去式, S + would + 原形動詞）",
+          "formula": "標準解答：me",
+          "trap": "必考陷阱：① If 子句動詞必須用過去式 (If I had / If I were)；② 主句必須用 would + 原形動詞 (would buy / would save)，不可用 will 或 would bought！"
+        }
+      },
+      {
+        "id": "WR3_U05_EX_24",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "I would treat my best friends ( ______ ) lunch at a hamburger restaurant. (填入正確介系詞)",
+        "options": [],
+        "answer": "to",
+        "hint": "treat + 人 + to + 餐點（請某人吃...）",
+        "explanation": {
+          "concept": "Unit 5 與現在事實相反之第二條件句（If + 過去式, S + would + 原形動詞）",
+          "formula": "標準解答：to",
+          "trap": "必考陷阱：① If 子句動詞必須用過去式 (If I had / If I were)；② 主句必須用 would + 原形動詞 (would buy / would save)，不可用 will 或 would bought！"
+        }
+      },
+      {
+        "id": "WR3_U05_EX_25",
+        "type": "choice",
+        "category_tag": "choice",
+        "question": "If I ( ______ ) a millionaire, I would donate money to a charity group.",
+        "options": [
+          "were",
+          "am",
+          "will be",
+          "be"
+        ],
+        "answer": "were",
+        "hint": "與現在事實相反的假設語氣，be 動詞一律用 were",
+        "explanation": {
+          "concept": "Unit 5 與現在事實相反之第二條件句（If + 過去式, S + would + 原形動詞）",
+          "formula": "標準解答：were",
+          "trap": "必考陷阱：① If 子句動詞必須用過去式 (If I had / If I were)；② 主句必須用 would + 原形動詞 (would buy / would save)，不可用 will 或 would bought！"
+        }
+      },
+      {
+        "id": "WR3_U05_EX_26",
+        "type": "choice",
+        "category_tag": "choice",
+        "question": "I would buy a nice warm scarf ( ______ ) my mom.",
+        "options": [
+          "for",
+          "to",
+          "with",
+          "at"
+        ],
+        "answer": "for",
+        "hint": "buy + 禮物 + for + 人（買某物給某人，介系詞用 for）",
+        "explanation": {
+          "concept": "Unit 5 與現在事實相反之第二條件句（If + 過去式, S + would + 原形動詞）",
+          "formula": "標準解答：for",
+          "trap": "必考陷阱：① If 子句動詞必須用過去式 (If I had / If I were)；② 主句必須用 would + 原形動詞 (would buy / would save)，不可用 will 或 would bought！"
+        }
+      },
+      {
+        "id": "WR3_U05_EX_27",
+        "type": "choice",
+        "category_tag": "choice",
+        "question": "Wouldn't it ( ______ ) great to have 300 dollars?",
+        "options": [
+          "be",
+          "is",
+          "was",
+          "been"
+        ],
+        "answer": "be",
+        "hint": "助動詞 Wouldn't 後面必須接原形 be 動詞",
+        "explanation": {
+          "concept": "Unit 5 與現在事實相反之第二條件句（If + 過去式, S + would + 原形動詞）",
+          "formula": "標準解答：be",
+          "trap": "必考陷阱：① If 子句動詞必須用過去式 (If I had / If I were)；② 主句必須用 would + 原形動詞 (would buy / would save)，不可用 will 或 would bought！"
+        }
+      },
+      {
+        "id": "WR3_U05_EX_28",
+        "type": "choice",
+        "category_tag": "choice",
+        "question": "With ( ______ ) of the money, I would open up a bank account.",
+        "options": [
+          "the rest",
+          "rest",
+          "many",
+          "a few"
+        ],
+        "answer": "the rest",
+        "hint": "with the rest of the money（用剩下的錢）",
+        "explanation": {
+          "concept": "Unit 5 與現在事實相反之第二條件句（If + 過去式, S + would + 原形動詞）",
+          "formula": "標準解答：the rest",
+          "trap": "必考陷阱：① If 子句動詞必須用過去式 (If I had / If I were)；② 主句必須用 would + 原形動詞 (would buy / would save)，不可用 will 或 would bought！"
         }
       }
     ]
@@ -2996,109 +4993,209 @@ window.MIDTERM_DATABASE = [
     "vocab": [
       {
         "word": "asteroid",
-        "pos": "noun",
+        "phonetic": "/ˈæstəˌrɔɪd/",
+        "syllables": "as-ter-oid",
+        "pos": "n.",
         "meaning": "小行星",
-        "example": "a rock that orbits the Sun, mainly between Mars and Jupiter"
+        "example": "The asteroid belt is between Mars and Jupiter.",
+        "note": "位於火星與木星之間、環繞太陽運行的岩石天體。"
       },
       {
         "word": "comet",
-        "pos": "noun",
+        "phonetic": "/ˈkɑːmɪt/",
+        "syllables": "com-et",
+        "pos": "n.",
         "meaning": "彗星",
-        "example": "a huge piece of ice and dust that orbits the Sun with a glowing tail"
+        "example": "Comets are huge pieces of ice and dust.",
+        "note": "由冰與塵埃組成，靠近太陽時會受熱產生數百萬公里長的彗尾 (tail)。"
       },
       {
         "word": "meteor",
-        "pos": "noun",
+        "phonetic": "/ˈmiːtiər/",
+        "syllables": "me-te-or",
+        "pos": "n.",
         "meaning": "流星",
-        "example": "a piece of rock or dust burning as it enters a planet's atmosphere"
+        "example": "Most meteors burn when they enter the atmosphere.",
+        "note": "進入行星大氣層時摩擦燃燒發光的天體碎片（尚未撞擊地面）。"
       },
       {
         "word": "meteorite",
-        "pos": "noun",
+        "phonetic": "/ˈmiːtiəˌraɪt/",
+        "syllables": "me-te-or-ite",
+        "pos": "n.",
         "meaning": "隕石",
-        "example": "a piece of rock or metal from space that hits a planet's surface"
+        "example": "Sometimes big meteorites hit Earth and make a crater.",
+        "note": "meteor + -ite (礦石字尾)，指沒有燒光並實際撞擊星球表面的隕石！"
       },
       {
         "word": "crater",
-        "pos": "noun",
-        "meaning": "撞擊坑、隕石坑",
-        "example": "a large bowl-shaped cavity in the ground caused by an impact"
+        "phonetic": "/ˈkreɪtər/",
+        "syllables": "cra-ter",
+        "pos": "n.",
+        "meaning": "隕石坑；撞擊坑",
+        "example": "The Chicxulub meteorite crater is 180 kilometers across.",
+        "note": "大型隕石撞擊地面所留下的巨大碗狀凹坑。"
       },
       {
         "word": "atmosphere",
-        "pos": "noun",
+        "phonetic": "/ˈætməˌsfɪr/",
+        "syllables": "at-mos-phere",
+        "pos": "n.",
         "meaning": "大氣層",
-        "example": "the envelope of gases surrounding a planet"
+        "example": "Meteors are pieces of rock that enter a planet's atmosphere.",
+        "note": "at-mos-phere，注意 ph 發 /f/ 音。"
       },
       {
         "word": "Kuiper belt",
-        "pos": "noun_proper",
+        "phonetic": "/ˈkaɪpər ˌbɛlt/",
+        "syllables": "Kui-per belt",
+        "pos": "n.",
         "meaning": "古柏帶",
-        "example": "a region of the solar system beyond Neptune containing icy bodies"
+        "example": "The Kuiper belt is further away than Neptune.",
+        "note": "位於海王星軌道外側、由無數冰塊組成的環狀區域，是許多彗星的故鄉。"
+      },
+      {
+        "word": "explosion",
+        "phonetic": "/ɪkˈsploʊʒən/",
+        "syllables": "ex-plo-sion",
+        "pos": "n.",
+        "meaning": "爆炸",
+        "example": "When the meteorite hit Earth, there was a huge explosion.",
+        "note": "動詞 explode 去 de 加 -sion。"
+      },
+      {
+        "word": "dinosaur",
+        "phonetic": "/ˈdaɪnəˌsɔːr/",
+        "syllables": "di-no-saur",
+        "pos": "n.",
+        "meaning": "恐龍",
+        "example": "About 65 million years ago, the dinosaurs died.",
+        "note": "di-no-saur，字尾是 -saur 而不是 -sour。"
       }
     ],
     "mistake_buster": [
       {
-        "trap_id": "MISTAKE_METEOR_TERMS",
-        "sentence": "A meteorite burns in the sky and a meteor hits the ground.",
+        "trap_id": "SP04_ERR_1",
+        "sentence": "The asteroid belt is located between Earth and Jupiter.",
+        "tokens": [
+          "The",
+          "asteroid",
+          "belt",
+          "is",
+          "located",
+          "between",
+          "Earth",
+          "and",
+          "Jupiter."
+        ],
+        "wrong_index": 6,
+        "wrong_word": "Earth",
+        "correct_word": "Mars",
+        "fixed_sentence": "The asteroid belt is located between Mars and Jupiter.",
+        "reason": "根據課文第 16 頁，小行星帶（asteroid belt）精確位置介於『火星 (Mars) 與木星 (Jupiter)』之間！"
+      },
+      {
+        "trap_id": "SP04_ERR_2",
+        "sentence": "A lot of icy comets come from the asteroid belt.",
+        "tokens": [
+          "A",
+          "lot",
+          "of",
+          "icy",
+          "comets",
+          "come",
+          "from",
+          "the",
+          "asteroid",
+          "belt."
+        ],
+        "wrong_index": 8,
+        "wrong_word": "asteroid",
+        "correct_word": "Kuiper",
+        "fixed_sentence": "A lot of icy comets come from the Kuiper belt.",
+        "reason": "由冰與塵埃組成的彗星（comets）主要來自海王星外側的『古柏帶 (Kuiper belt)』，而非岩石組成的小行星帶！"
+      },
+      {
+        "trap_id": "SP04_ERR_3",
+        "sentence": "Comets become colder when they travel near the Sun.",
+        "tokens": [
+          "Comets",
+          "become",
+          "colder",
+          "when",
+          "they",
+          "travel",
+          "near",
+          "the",
+          "Sun."
+        ],
+        "wrong_index": 2,
+        "wrong_word": "colder",
+        "correct_word": "hotter",
+        "fixed_sentence": "Comets become hotter when they travel near the Sun.",
+        "reason": "當彗星靠近太陽時會變得『更熱 (hotter)』，使冰與塵埃散逸形成數百萬公里長的彗尾！"
+      },
+      {
+        "trap_id": "SP04_ERR_4",
+        "sentence": "A meteorite burns up in the sky before hitting the ground.",
         "tokens": [
           "A",
           "meteorite",
           "burns",
+          "up",
           "in",
           "the",
           "sky",
-          "and",
-          "a",
-          "meteor",
-          "hits",
+          "before",
+          "hitting",
           "the",
           "ground."
         ],
         "wrong_index": 1,
         "wrong_word": "meteorite",
         "correct_word": "meteor",
-        "fixed_sentence": "A meteor burns in the sky and a meteorite hits the ground.",
-        "reason": "混淆 meteor 與 meteorite：進入大氣層燃燒的光跡為 meteor（流星）；撞到地面留存的岩石才是 meteorite（隕石，字尾 -ite 具礦石意涵）。"
+        "fixed_sentence": "A meteor burns up in the sky before hitting the ground.",
+        "reason": "進入大氣層燃燒發光的是『流星 (meteor)』；沒有燒完並成功撞擊星球地面的石塊才叫『隕石 (meteorite)』！"
       },
       {
-        "trap_id": "MISTAKE_BELT_LOCATION",
-        "sentence": "The asteroid belt is between Venus and Mars.",
+        "trap_id": "SP04_ERR_5",
+        "sentence": "In 1994, twenty-one pieces of a comet hit the Moon.",
         "tokens": [
-          "The",
-          "asteroid",
-          "belt",
-          "is",
-          "between",
-          "Venus",
-          "and",
-          "Mars."
+          "In",
+          "1994,",
+          "twenty-one",
+          "pieces",
+          "of",
+          "a",
+          "comet",
+          "hit",
+          "the Moon."
         ],
-        "wrong_index": 5,
-        "wrong_word": "Venus",
-        "correct_word": "Mars",
-        "fixed_sentence": "The asteroid belt is between Mars and Jupiter.",
-        "reason": "小行星帶位置精確介於類地行星火星與氣體巨行星木星之間。"
+        "wrong_index": 8,
+        "wrong_word": "the Moon.",
+        "correct_word": "Jupiter.",
+        "fixed_sentence": "In 1994, twenty-one pieces of a comet hit Jupiter.",
+        "reason": "1994 年 21 塊彗星碎片撞擊的是氣體巨行星『木星 (Jupiter)』，部分爆炸規模甚至比地球還大！"
       },
       {
-        "trap_id": "MISTAKE_CHICXULUB_VS_TUNGUSKA",
-        "sentence": "The Tunguska event caused the extinction of the dinosaurs.",
+        "trap_id": "SP04_ERR_6",
+        "sentence": "The Tunguska meteorite impact caused the dinosaurs to die.",
         "tokens": [
           "The",
           "Tunguska",
-          "event",
+          "meteorite",
+          "impact",
           "caused",
           "the",
-          "extinction",
-          "of",
-          "the",
-          "dinosaurs."
+          "dinosaurs",
+          "to",
+          "die."
         ],
         "wrong_index": 1,
         "wrong_word": "Tunguska",
         "correct_word": "Chicxulub",
-        "fixed_sentence": "The Chicxulub meteorite impact caused the extinction of the dinosaurs.",
-        "reason": "通古斯事件發生於 1908 年俄羅斯，為空中爆炸；造成恐龍滅絕的是 6500 萬年前墨西哥尤卡坦半島的希克蘇魯伯撞擊事件。"
+        "fixed_sentence": "The Chicxulub meteorite impact caused the dinosaurs to die.",
+        "reason": "造成 6500 萬年前恐龍滅絕的是墨西哥尤卡坦半島的『希克蘇魯伯 (Chicxulub)』隕石；通古斯事件發生於 1908 年俄羅斯！"
       }
     ],
     "quizzes": [
@@ -3106,362 +5203,449 @@ window.MIDTERM_DATABASE = [
         "id": "SPACE_CH04_LIST_1",
         "type": "spelling_listen",
         "category_tag": "listening",
-        "question": "請聽電腦發音，在紙上拼寫出這個核心單字：",
-        "hint": "中文釋義：小行星",
+        "question": "請聽電腦發音，在紙上拼寫出這個核心單字或片語：",
+        "hint": "詞性與中文：n. 小行星",
         "audio_word": "asteroid",
-        "phonetic": "",
-        "syllables": "asteroid",
+        "phonetic": "/ˈæstəˌrɔɪd/",
+        "syllables": "as-ter-oid",
         "answer": "asteroid",
         "explanation": {
-          "concept": "Chapter 4: Rocks and Ice 核心字彙：asteroid",
-          "formula": "詞性與例句搭配：a rock that orbits the Sun, mainly between Mars and Jupiter",
-          "trap": "注意拼寫盲點：切記母音與子音字母對應，勿漏寫尾音或不發音字母。"
+          "concept": "【Chapter 4: Rocks and Ice】核心字彙：asteroid /ˈæstəˌrɔɪd/ (n. 小行星)",
+          "formula": "課文例句：The asteroid belt is between Mars and Jupiter.",
+          "trap": "拼寫與用法關鍵：位於火星與木星之間、環繞太陽運行的岩石天體。"
         }
       },
       {
         "id": "SPACE_CH04_LIST_2",
         "type": "spelling_listen",
         "category_tag": "listening",
-        "question": "請聽電腦發音，在紙上拼寫出這個核心單字：",
-        "hint": "中文釋義：彗星",
+        "question": "請聽電腦發音，在紙上拼寫出這個核心單字或片語：",
+        "hint": "詞性與中文：n. 彗星",
         "audio_word": "comet",
-        "phonetic": "",
-        "syllables": "comet",
+        "phonetic": "/ˈkɑːmɪt/",
+        "syllables": "com-et",
         "answer": "comet",
         "explanation": {
-          "concept": "Chapter 4: Rocks and Ice 核心字彙：comet",
-          "formula": "詞性與例句搭配：a huge piece of ice and dust that orbits the Sun with a glowing tail",
-          "trap": "注意拼寫盲點：切記母音與子音字母對應，勿漏寫尾音或不發音字母。"
+          "concept": "【Chapter 4: Rocks and Ice】核心字彙：comet /ˈkɑːmɪt/ (n. 彗星)",
+          "formula": "課文例句：Comets are huge pieces of ice and dust.",
+          "trap": "拼寫與用法關鍵：由冰與塵埃組成，靠近太陽時會受熱產生數百萬公里長的彗尾 (tail)。"
         }
       },
       {
         "id": "SPACE_CH04_LIST_3",
         "type": "spelling_listen",
         "category_tag": "listening",
-        "question": "請聽電腦發音，在紙上拼寫出這個核心單字：",
-        "hint": "中文釋義：流星",
+        "question": "請聽電腦發音，在紙上拼寫出這個核心單字或片語：",
+        "hint": "詞性與中文：n. 流星",
         "audio_word": "meteor",
-        "phonetic": "",
-        "syllables": "meteor",
+        "phonetic": "/ˈmiːtiər/",
+        "syllables": "me-te-or",
         "answer": "meteor",
         "explanation": {
-          "concept": "Chapter 4: Rocks and Ice 核心字彙：meteor",
-          "formula": "詞性與例句搭配：a piece of rock or dust burning as it enters a planet's atmosphere",
-          "trap": "注意拼寫盲點：切記母音與子音字母對應，勿漏寫尾音或不發音字母。"
+          "concept": "【Chapter 4: Rocks and Ice】核心字彙：meteor /ˈmiːtiər/ (n. 流星)",
+          "formula": "課文例句：Most meteors burn when they enter the atmosphere.",
+          "trap": "拼寫與用法關鍵：進入行星大氣層時摩擦燃燒發光的天體碎片（尚未撞擊地面）。"
         }
       },
       {
         "id": "SPACE_CH04_LIST_4",
         "type": "spelling_listen",
         "category_tag": "listening",
-        "question": "請聽電腦發音，在紙上拼寫出這個核心單字：",
-        "hint": "中文釋義：隕石",
+        "question": "請聽電腦發音，在紙上拼寫出這個核心單字或片語：",
+        "hint": "詞性與中文：n. 隕石",
         "audio_word": "meteorite",
-        "phonetic": "",
-        "syllables": "meteorite",
+        "phonetic": "/ˈmiːtiəˌraɪt/",
+        "syllables": "me-te-or-ite",
         "answer": "meteorite",
         "explanation": {
-          "concept": "Chapter 4: Rocks and Ice 核心字彙：meteorite",
-          "formula": "詞性與例句搭配：a piece of rock or metal from space that hits a planet's surface",
-          "trap": "注意拼寫盲點：切記母音與子音字母對應，勿漏寫尾音或不發音字母。"
+          "concept": "【Chapter 4: Rocks and Ice】核心字彙：meteorite /ˈmiːtiəˌraɪt/ (n. 隕石)",
+          "formula": "課文例句：Sometimes big meteorites hit Earth and make a crater.",
+          "trap": "拼寫與用法關鍵：meteor + -ite (礦石字尾)，指沒有燒光並實際撞擊星球表面的隕石！"
         }
       },
       {
         "id": "SPACE_CH04_LIST_5",
         "type": "spelling_listen",
         "category_tag": "listening",
-        "question": "請聽電腦發音，在紙上拼寫出這個核心單字：",
-        "hint": "中文釋義：撞擊坑、隕石坑",
+        "question": "請聽電腦發音，在紙上拼寫出這個核心單字或片語：",
+        "hint": "詞性與中文：n. 隕石坑；撞擊坑",
         "audio_word": "crater",
-        "phonetic": "",
-        "syllables": "crater",
+        "phonetic": "/ˈkreɪtər/",
+        "syllables": "cra-ter",
         "answer": "crater",
         "explanation": {
-          "concept": "Chapter 4: Rocks and Ice 核心字彙：crater",
-          "formula": "詞性與例句搭配：a large bowl-shaped cavity in the ground caused by an impact",
-          "trap": "注意拼寫盲點：切記母音與子音字母對應，勿漏寫尾音或不發音字母。"
+          "concept": "【Chapter 4: Rocks and Ice】核心字彙：crater /ˈkreɪtər/ (n. 隕石坑；撞擊坑)",
+          "formula": "課文例句：The Chicxulub meteorite crater is 180 kilometers across.",
+          "trap": "拼寫與用法關鍵：大型隕石撞擊地面所留下的巨大碗狀凹坑。"
         }
       },
       {
         "id": "SPACE_CH04_LIST_6",
         "type": "spelling_listen",
         "category_tag": "listening",
-        "question": "請聽電腦發音，在紙上拼寫出這個核心單字：",
-        "hint": "中文釋義：大氣層",
+        "question": "請聽電腦發音，在紙上拼寫出這個核心單字或片語：",
+        "hint": "詞性與中文：n. 大氣層",
         "audio_word": "atmosphere",
-        "phonetic": "",
-        "syllables": "atmosphere",
+        "phonetic": "/ˈætməˌsfɪr/",
+        "syllables": "at-mos-phere",
         "answer": "atmosphere",
         "explanation": {
-          "concept": "Chapter 4: Rocks and Ice 核心字彙：atmosphere",
-          "formula": "詞性與例句搭配：the envelope of gases surrounding a planet",
-          "trap": "注意拼寫盲點：切記母音與子音字母對應，勿漏寫尾音或不發音字母。"
+          "concept": "【Chapter 4: Rocks and Ice】核心字彙：atmosphere /ˈætməˌsfɪr/ (n. 大氣層)",
+          "formula": "課文例句：Meteors are pieces of rock that enter a planet's atmosphere.",
+          "trap": "拼寫與用法關鍵：at-mos-phere，注意 ph 發 /f/ 音。"
         }
       },
       {
         "id": "SPACE_CH04_LIST_7",
         "type": "spelling_listen",
         "category_tag": "listening",
-        "question": "請聽電腦發音，在紙上拼寫出這個核心單字：",
-        "hint": "中文釋義：古柏帶",
+        "question": "請聽電腦發音，在紙上拼寫出這個核心單字或片語：",
+        "hint": "詞性與中文：n. 古柏帶",
         "audio_word": "Kuiper belt",
-        "phonetic": "",
-        "syllables": "Kuiper belt",
+        "phonetic": "/ˈkaɪpər ˌbɛlt/",
+        "syllables": "Kui-per belt",
         "answer": "Kuiper belt",
         "explanation": {
-          "concept": "Chapter 4: Rocks and Ice 核心字彙：Kuiper belt",
-          "formula": "詞性與例句搭配：a region of the solar system beyond Neptune containing icy bodies",
-          "trap": "注意拼寫盲點：切記母音與子音字母對應，勿漏寫尾音或不發音字母。"
+          "concept": "【Chapter 4: Rocks and Ice】核心字彙：Kuiper belt /ˈkaɪpər ˌbɛlt/ (n. 古柏帶)",
+          "formula": "課文例句：The Kuiper belt is further away than Neptune.",
+          "trap": "拼寫與用法關鍵：位於海王星軌道外側、由無數冰塊組成的環狀區域，是許多彗星的故鄉。"
         }
       },
       {
-        "id": "SPACE_CH04_RW_8",
-        "type": "paper_rewrite",
-        "category_tag": "rewrite",
-        "question": "題目提示：This is made of ice and dust.",
+        "id": "SPACE_CH04_LIST_8",
+        "type": "spelling_listen",
+        "category_tag": "listening",
+        "question": "請聽電腦發音，在紙上拼寫出這個核心單字或片語：",
+        "hint": "詞性與中文：n. 爆炸",
+        "audio_word": "explosion",
+        "phonetic": "/ɪkˈsploʊʒən/",
+        "syllables": "ex-plo-sion",
+        "answer": "explosion",
+        "explanation": {
+          "concept": "【Chapter 4: Rocks and Ice】核心字彙：explosion /ɪkˈsploʊʒən/ (n. 爆炸)",
+          "formula": "課文例句：When the meteorite hit Earth, there was a huge explosion.",
+          "trap": "拼寫與用法關鍵：動詞 explode 去 de 加 -sion。"
+        }
+      },
+      {
+        "id": "SPACE_CH04_LIST_9",
+        "type": "spelling_listen",
+        "category_tag": "listening",
+        "question": "請聽電腦發音，在紙上拼寫出這個核心單字或片語：",
+        "hint": "詞性與中文：n. 恐龍",
+        "audio_word": "dinosaur",
+        "phonetic": "/ˈdaɪnəˌsɔːr/",
+        "syllables": "di-no-saur",
+        "answer": "dinosaur",
+        "explanation": {
+          "concept": "【Chapter 4: Rocks and Ice】核心字彙：dinosaur /ˈdaɪnəˌsɔːr/ (n. 恐龍)",
+          "formula": "課文例句：About 65 million years ago, the dinosaurs died.",
+          "trap": "拼寫與用法關鍵：di-no-saur，字尾是 -saur 而不是 -sour。"
+        }
+      },
+      {
+        "id": "SPACE_CH04_CT_10",
+        "type": "choice",
+        "category_tag": "choice",
+        "question": "判斷下列特徵屬於哪一場歷史隕石事件：This meteorite hit Earth millions of years ago.",
+        "options": [
+          "C (Chicxulub 希克蘇魯伯隕石)",
+          "T (Tunguska 通古斯隕石)"
+        ],
+        "answer": "C (Chicxulub 希克蘇魯伯隕石)",
+        "hint": "選 C (6500萬年前墨西哥恐龍滅絕隕石) 或 T (1908年俄羅斯西伯利亞空中爆炸隕石)",
+        "explanation": {
+          "concept": "Space Ch.4 兩大歷史隕石撞擊事件對比（Chicxulub vs. Tunguska）",
+          "formula": "正解：C (Chicxulub 希克蘇魯伯隕石) — 約 6500 萬年前",
+          "trap": "希克蘇魯伯 (Chicxulub) 發生於 6500 萬年前墨西哥、長 20 公里、造成 180 公里隕石坑與恐龍滅絕；通古斯 (Tunguska) 發生於 1908 年俄羅斯空中爆炸、燒毀 8000 萬棵樹。"
+        }
+      },
+      {
+        "id": "SPACE_CH04_CT_11",
+        "type": "choice",
+        "category_tag": "choice",
+        "question": "判斷下列特徵屬於哪一場歷史隕石事件：This meteorite destroyed a forest.",
+        "options": [
+          "C (Chicxulub 希克蘇魯伯隕石)",
+          "T (Tunguska 通古斯隕石)"
+        ],
+        "answer": "T (Tunguska 通古斯隕石)",
+        "hint": "選 C (6500萬年前墨西哥恐龍滅絕隕石) 或 T (1908年俄羅斯西伯利亞空中爆炸隕石)",
+        "explanation": {
+          "concept": "Space Ch.4 兩大歷史隕石撞擊事件對比（Chicxulub vs. Tunguska）",
+          "formula": "正解：T (Tunguska 通古斯隕石) — 燒毀西伯利亞 8000 萬棵樹木",
+          "trap": "希克蘇魯伯 (Chicxulub) 發生於 6500 萬年前墨西哥、長 20 公里、造成 180 公里隕石坑與恐龍滅絕；通古斯 (Tunguska) 發生於 1908 年俄羅斯空中爆炸、燒毀 8000 萬棵樹。"
+        }
+      },
+      {
+        "id": "SPACE_CH04_CT_12",
+        "type": "choice",
+        "category_tag": "choice",
+        "question": "判斷下列特徵屬於哪一場歷史隕石事件：This meteorite was about 20 kilometers long.",
+        "options": [
+          "C (Chicxulub 希克蘇魯伯隕石)",
+          "T (Tunguska 通古斯隕石)"
+        ],
+        "answer": "C (Chicxulub 希克蘇魯伯隕石)",
+        "hint": "選 C (6500萬年前墨西哥恐龍滅絕隕石) 或 T (1908年俄羅斯西伯利亞空中爆炸隕石)",
+        "explanation": {
+          "concept": "Space Ch.4 兩大歷史隕石撞擊事件對比（Chicxulub vs. Tunguska）",
+          "formula": "正解：C (Chicxulub 希克蘇魯伯隕石) — 撞擊碎片約 20 公里長",
+          "trap": "希克蘇魯伯 (Chicxulub) 發生於 6500 萬年前墨西哥、長 20 公里、造成 180 公里隕石坑與恐龍滅絕；通古斯 (Tunguska) 發生於 1908 年俄羅斯空中爆炸、燒毀 8000 萬棵樹。"
+        }
+      },
+      {
+        "id": "SPACE_CH04_CT_13",
+        "type": "choice",
+        "category_tag": "choice",
+        "question": "判斷下列特徵屬於哪一場歷史隕石事件：This meteorite killed a lot of animals.",
+        "options": [
+          "C (Chicxulub 希克蘇魯伯隕石)",
+          "T (Tunguska 通古斯隕石)"
+        ],
+        "answer": "C (Chicxulub 希克蘇魯伯隕石)",
+        "hint": "選 C (6500萬年前墨西哥恐龍滅絕隕石) 或 T (1908年俄羅斯西伯利亞空中爆炸隕石)",
+        "explanation": {
+          "concept": "Space Ch.4 兩大歷史隕石撞擊事件對比（Chicxulub vs. Tunguska）",
+          "formula": "正解：C (Chicxulub 希克蘇魯伯隕石) — 滅絕恐龍與 70% 動植物",
+          "trap": "希克蘇魯伯 (Chicxulub) 發生於 6500 萬年前墨西哥、長 20 公里、造成 180 公里隕石坑與恐龍滅絕；通古斯 (Tunguska) 發生於 1908 年俄羅斯空中爆炸、燒毀 8000 萬棵樹。"
+        }
+      },
+      {
+        "id": "SPACE_CH04_CT_14",
+        "type": "choice",
+        "category_tag": "choice",
+        "question": "判斷下列特徵屬於哪一場歷史隕石事件：This meteorite exploded in the sky.",
+        "options": [
+          "C (Chicxulub 希克蘇魯伯隕石)",
+          "T (Tunguska 通古斯隕石)"
+        ],
+        "answer": "T (Tunguska 通古斯隕石)",
+        "hint": "選 C (6500萬年前墨西哥恐龍滅絕隕石) 或 T (1908年俄羅斯西伯利亞空中爆炸隕石)",
+        "explanation": {
+          "concept": "Space Ch.4 兩大歷史隕石撞擊事件對比（Chicxulub vs. Tunguska）",
+          "formula": "正解：T (Tunguska 通古斯隕石) — 在通古斯河上空爆炸",
+          "trap": "希克蘇魯伯 (Chicxulub) 發生於 6500 萬年前墨西哥、長 20 公里、造成 180 公里隕石坑與恐龍滅絕；通古斯 (Tunguska) 發生於 1908 年俄羅斯空中爆炸、燒毀 8000 萬棵樹。"
+        }
+      },
+      {
+        "id": "SPACE_CH04_CT_15",
+        "type": "choice",
+        "category_tag": "choice",
+        "question": "判斷下列特徵屬於哪一場歷史隕石事件：This meteorite changed the weather for a long time.",
+        "options": [
+          "C (Chicxulub 希克蘇魯伯隕石)",
+          "T (Tunguska 通古斯隕石)"
+        ],
+        "answer": "C (Chicxulub 希克蘇魯伯隕石)",
+        "hint": "選 C (6500萬年前墨西哥恐龍滅絕隕石) 或 T (1908年俄羅斯西伯利亞空中爆炸隕石)",
+        "explanation": {
+          "concept": "Space Ch.4 兩大歷史隕石撞擊事件對比（Chicxulub vs. Tunguska）",
+          "formula": "正解：C (Chicxulub 希克蘇魯伯隕石) — 塵埃蔽日，多年嚴寒",
+          "trap": "希克蘇魯伯 (Chicxulub) 發生於 6500 萬年前墨西哥、長 20 公里、造成 180 公里隕石坑與恐龍滅絕；通古斯 (Tunguska) 發生於 1908 年俄羅斯空中爆炸、燒毀 8000 萬棵樹。"
+        }
+      },
+      {
+        "id": "SPACE_CH04_CT_16",
+        "type": "choice",
+        "category_tag": "choice",
+        "question": "判斷下列特徵屬於哪一場歷史隕石事件：This meteorite hit Russia about 100 years ago.",
+        "options": [
+          "C (Chicxulub 希克蘇魯伯隕石)",
+          "T (Tunguska 通古斯隕石)"
+        ],
+        "answer": "T (Tunguska 通古斯隕石)",
+        "hint": "選 C (6500萬年前墨西哥恐龍滅絕隕石) 或 T (1908年俄羅斯西伯利亞空中爆炸隕石)",
+        "explanation": {
+          "concept": "Space Ch.4 兩大歷史隕石撞擊事件對比（Chicxulub vs. Tunguska）",
+          "formula": "正解：T (Tunguska 通古斯隕石) — 1908 年發生於俄羅斯西伯利亞",
+          "trap": "希克蘇魯伯 (Chicxulub) 發生於 6500 萬年前墨西哥、長 20 公里、造成 180 公里隕石坑與恐龍滅絕；通古斯 (Tunguska) 發生於 1908 年俄羅斯空中爆炸、燒毀 8000 萬棵樹。"
+        }
+      },
+      {
+        "id": "SPACE_CH04_DEF_17",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "根據英文定義拼寫出核心字彙：This is made of ice and dust.",
         "answer": "comet",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
+        "hint": "請根據定義在紙上拼寫出正確單字",
         "explanation": {
-          "concept": "Chapter 4: Rocks and Ice 核心句型結構改寫",
-          "formula": "標準句型：comet",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
+          "concept": "Chapter 4: Rocks and Ice 英英定義與字彙配對",
+          "formula": "『This is made of ice and dust.』對應的精確單字為：comet",
+          "trap": "科學定義辨析：asteroid (火星與木星間的岩石)、comet (古柏帶的冰與塵埃，靠近太陽有長尾巴)、meteor (大氣層中燃燒的流星) vs. meteorite (撞擊地面的隕石)！"
         }
       },
       {
-        "id": "SPACE_CH04_RW_9",
-        "type": "paper_rewrite",
-        "category_tag": "rewrite",
-        "question": "題目提示：This is a big rock.",
+        "id": "SPACE_CH04_DEF_18",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "根據英文定義拼寫出核心字彙：This is a big rock.",
         "answer": "asteroid",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
+        "hint": "請根據定義在紙上拼寫出正確單字",
         "explanation": {
-          "concept": "Chapter 4: Rocks and Ice 核心句型結構改寫",
-          "formula": "標準句型：asteroid",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
+          "concept": "Chapter 4: Rocks and Ice 英英定義與字彙配對",
+          "formula": "『This is a big rock.』對應的精確單字為：asteroid",
+          "trap": "科學定義辨析：asteroid (火星與木星間的岩石)、comet (古柏帶的冰與塵埃，靠近太陽有長尾巴)、meteor (大氣層中燃燒的流星) vs. meteorite (撞擊地面的隕石)！"
         }
       },
       {
-        "id": "SPACE_CH04_RW_10",
-        "type": "paper_rewrite",
-        "category_tag": "rewrite",
-        "question": "題目提示：This is a piece of rock, dust, or ice that enters the atmosphere.",
+        "id": "SPACE_CH04_DEF_19",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "根據英文定義拼寫出核心字彙：This is a piece of rock, dust, or ice that enters the atmosphere.",
         "answer": "meteor",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
+        "hint": "請根據定義在紙上拼寫出正確單字",
         "explanation": {
-          "concept": "Chapter 4: Rocks and Ice 核心句型結構改寫",
-          "formula": "標準句型：meteor",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
+          "concept": "Chapter 4: Rocks and Ice 英英定義與字彙配對",
+          "formula": "『This is a piece of rock, dust, or ice that enters the atmosphere.』對應的精確單字為：meteor",
+          "trap": "科學定義辨析：asteroid (火星與木星間的岩石)、comet (古柏帶的冰與塵埃，靠近太陽有長尾巴)、meteor (大氣層中燃燒的流星) vs. meteorite (撞擊地面的隕石)！"
         }
       },
       {
-        "id": "SPACE_CH04_RW_11",
+        "id": "SPACE_CH04_DEF_20",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "根據英文定義拼寫出核心字彙：This is a piece of ice or rock that hits a planet.",
+        "answer": "meteorite",
+        "hint": "請根據定義在紙上拼寫出正確單字",
+        "explanation": {
+          "concept": "Chapter 4: Rocks and Ice 英英定義與字彙配對",
+          "formula": "『This is a piece of ice or rock that hits a planet.』對應的精確單字為：meteorite",
+          "trap": "科學定義辨析：asteroid (火星與木星間的岩石)、comet (古柏帶的冰與塵埃，靠近太陽有長尾巴)、meteor (大氣層中燃燒的流星) vs. meteorite (撞擊地面的隕石)！"
+        }
+      },
+      {
+        "id": "SPACE_CH04_BFILL_21",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "There are two ______ around the Sun.",
+        "answer": "rings",
+        "hint": "課文重點句填空：請在紙上寫出空格處的單字",
+        "explanation": {
+          "concept": "Space Ch.4 小行星帶、古柏帶、彗星、流星與隕石撞擊史",
+          "formula": "完整原句：There are two rings around the Sun.",
+          "trap": "科學定義辨析：asteroid (火星與木星間的岩石)、comet (古柏帶的冰與塵埃，靠近太陽有長尾巴)、meteor (大氣層中燃燒的流星) vs. meteorite (撞擊地面的隕石)！"
+        }
+      },
+      {
+        "id": "SPACE_CH04_BFILL_22",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "The asteroid belt is made of ______.",
+        "answer": "rocks",
+        "hint": "課文重點句填空：請在紙上寫出空格處的單字",
+        "explanation": {
+          "concept": "Space Ch.4 小行星帶、古柏帶、彗星、流星與隕石撞擊史",
+          "formula": "完整原句：The asteroid belt is made of rocks.",
+          "trap": "科學定義辨析：asteroid (火星與木星間的岩石)、comet (古柏帶的冰與塵埃，靠近太陽有長尾巴)、meteor (大氣層中燃燒的流星) vs. meteorite (撞擊地面的隕石)！"
+        }
+      },
+      {
+        "id": "SPACE_CH04_BFILL_23",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "The Kuiper belt is made of pieces of ______.",
+        "answer": "ice",
+        "hint": "課文重點句填空：請在紙上寫出空格處的單字",
+        "explanation": {
+          "concept": "Space Ch.4 小行星帶、古柏帶、彗星、流星與隕石撞擊史",
+          "formula": "完整原句：The Kuiper belt is made of pieces of ice.",
+          "trap": "科學定義辨析：asteroid (火星與木星間的岩石)、comet (古柏帶的冰與塵埃，靠近太陽有長尾巴)、meteor (大氣層中燃燒的流星) vs. meteorite (撞擊地面的隕石)！"
+        }
+      },
+      {
+        "id": "SPACE_CH04_BFILL_24",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "When a comet comes near the Sun, it has a ______.",
+        "answer": "tail",
+        "hint": "課文重點句填空：請在紙上寫出空格處的單字",
+        "explanation": {
+          "concept": "Space Ch.4 小行星帶、古柏帶、彗星、流星與隕石撞擊史",
+          "formula": "完整原句：When a comet comes near the Sun, it has a tail.",
+          "trap": "科學定義辨析：asteroid (火星與木星間的岩石)、comet (古柏帶的冰與塵埃，靠近太陽有長尾巴)、meteor (大氣層中燃燒的流星) vs. meteorite (撞擊地面的隕石)！"
+        }
+      },
+      {
+        "id": "SPACE_CH04_BFILL_25",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "Most meteors ______ when they enter the atmosphere.",
+        "answer": "burn",
+        "hint": "課文重點句填空：請在紙上寫出空格處的單字",
+        "explanation": {
+          "concept": "Space Ch.4 小行星帶、古柏帶、彗星、流星與隕石撞擊史",
+          "formula": "完整原句：Most meteors burn when they enter the atmosphere.",
+          "trap": "科學定義辨析：asteroid (火星與木星間的岩石)、comet (古柏帶的冰與塵埃，靠近太陽有長尾巴)、meteor (大氣層中燃燒的流星) vs. meteorite (撞擊地面的隕石)！"
+        }
+      },
+      {
+        "id": "SPACE_CH04_BFILL_26",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "A big meteorite can make a ______ on Earth.",
+        "answer": "crater",
+        "hint": "課文重點句填空：請在紙上寫出空格處的單字",
+        "explanation": {
+          "concept": "Space Ch.4 小行星帶、古柏帶、彗星、流星與隕石撞擊史",
+          "formula": "完整原句：A big meteorite can make a crater on Earth.",
+          "trap": "科學定義辨析：asteroid (火星與木星間的岩石)、comet (古柏帶的冰與塵埃，靠近太陽有長尾巴)、meteor (大氣層中燃燒的流星) vs. meteorite (撞擊地面的隕石)！"
+        }
+      },
+      {
+        "id": "SPACE_CH04_BFILL_27",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "The ______ were big animals that lived a long time ago.",
+        "answer": "dinosaurs",
+        "hint": "課文重點句填空：請在紙上寫出空格處的單字",
+        "explanation": {
+          "concept": "Space Ch.4 小行星帶、古柏帶、彗星、流星與隕石撞擊史",
+          "formula": "完整原句：The dinosaurs were big animals that lived a long time ago.",
+          "trap": "科學定義辨析：asteroid (火星與木星間的岩石)、comet (古柏帶的冰與塵埃，靠近太陽有長尾巴)、meteor (大氣層中燃燒的流星) vs. meteorite (撞擊地面的隕石)！"
+        }
+      },
+      {
+        "id": "SPACE_CH04_EX_28",
         "type": "paper_rewrite",
         "category_tag": "rewrite",
-        "question": "題目提示：hit Earth millions of years ago.",
-        "answer": "C",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
+        "question": "科學事實改錯重寫：The asteroid belt is between Earth and the Sun.",
+        "options": [],
+        "answer": "The asteroid belt is between Mars and Jupiter.",
+        "hint": "小行星帶位於火星 (Mars) 與木星 (Jupiter) 之間",
         "explanation": {
-          "concept": "Chapter 4: Rocks and Ice 核心句型結構改寫",
-          "formula": "標準句型：C",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
+          "concept": "Space Ch.4 小行星帶、古柏帶、彗星、流星與隕石撞擊史",
+          "formula": "標準解答：The asteroid belt is between Mars and Jupiter.",
+          "trap": "科學定義辨析：asteroid (火星與木星間的岩石)、comet (古柏帶的冰與塵埃，靠近太陽有長尾巴)、meteor (大氣層中燃燒的流星) vs. meteorite (撞擊地面的隕石)！"
         }
       },
       {
-        "id": "SPACE_CH04_RW_12",
+        "id": "SPACE_CH04_EX_29",
         "type": "paper_rewrite",
         "category_tag": "rewrite",
-        "question": "題目提示：destroyed a forest.",
-        "answer": "T",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
+        "question": "科學事實改錯重寫：Comets become colder when they are near the Sun.",
+        "options": [],
+        "answer": "Comets become hotter when they are near the Sun.",
+        "hint": "彗星靠近太陽時會變得更熱 (hotter) 並產生彗尾",
         "explanation": {
-          "concept": "Chapter 4: Rocks and Ice 核心句型結構改寫",
-          "formula": "標準句型：T",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
+          "concept": "Space Ch.4 小行星帶、古柏帶、彗星、流星與隕石撞擊史",
+          "formula": "標準解答：Comets become hotter when they are near the Sun.",
+          "trap": "科學定義辨析：asteroid (火星與木星間的岩石)、comet (古柏帶的冰與塵埃，靠近太陽有長尾巴)、meteor (大氣層中燃燒的流星) vs. meteorite (撞擊地面的隕石)！"
         }
       },
       {
-        "id": "SPACE_CH04_RW_13",
+        "id": "SPACE_CH04_EX_30",
         "type": "paper_rewrite",
         "category_tag": "rewrite",
-        "question": "題目提示：was about 20 kilometers long.",
-        "answer": "C",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
+        "question": "科學事實改錯重寫：Some meteorites hit the Moon in 1994.",
+        "options": [],
+        "answer": "Twenty-one pieces of a comet hit Jupiter in 1994.",
+        "hint": "1994 年是 21 塊彗星碎片撞擊木星 (Jupiter)",
         "explanation": {
-          "concept": "Chapter 4: Rocks and Ice 核心句型結構改寫",
-          "formula": "標準句型：C",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
+          "concept": "Space Ch.4 小行星帶、古柏帶、彗星、流星與隕石撞擊史",
+          "formula": "標準解答：Twenty-one pieces of a comet hit Jupiter in 1994.",
+          "trap": "科學定義辨析：asteroid (火星與木星間的岩石)、comet (古柏帶的冰與塵埃，靠近太陽有長尾巴)、meteor (大氣層中燃燒的流星) vs. meteorite (撞擊地面的隕石)！"
         }
-      },
-      {
-        "id": "SPACE_CH04_RW_14",
-        "type": "paper_rewrite",
-        "category_tag": "rewrite",
-        "question": "題目提示：killed a lot of animals.",
-        "answer": "C",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
-        "explanation": {
-          "concept": "Chapter 4: Rocks and Ice 核心句型結構改寫",
-          "formula": "標準句型：C",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
-        }
-      },
-      {
-        "id": "SPACE_CH04_RW_15",
-        "type": "paper_rewrite",
-        "category_tag": "rewrite",
-        "question": "題目提示：exploded in the sky.",
-        "answer": "T",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
-        "explanation": {
-          "concept": "Chapter 4: Rocks and Ice 核心句型結構改寫",
-          "formula": "標準句型：T",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
-        }
-      },
-      {
-        "id": "SPACE_CH04_RW_16",
-        "type": "paper_rewrite",
-        "category_tag": "rewrite",
-        "question": "題目提示：changed the weather for a long time.",
-        "answer": "C",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
-        "explanation": {
-          "concept": "Chapter 4: Rocks and Ice 核心句型結構改寫",
-          "formula": "標準句型：C",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
-        }
-      },
-      {
-        "id": "SPACE_CH04_RW_17",
-        "type": "paper_rewrite",
-        "category_tag": "rewrite",
-        "question": "題目提示：hit Russia about 100 years ago.",
-        "answer": "T",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
-        "explanation": {
-          "concept": "Chapter 4: Rocks and Ice 核心句型結構改寫",
-          "formula": "標準句型：T",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
-        }
-      },
-      {
-        "id": "SPACE_CH04_TF_18",
-        "type": "choice",
-        "category_tag": "choice",
-        "question": "hit Earth millions of years ago.",
-        "options": [
-          "True (正確)",
-          "False (錯誤)"
-        ],
-        "answer": "C",
-        "explanation": {
-          "concept": "Chapter 4: Rocks and Ice 課文事實與文法判斷",
-          "formula": "正解分析：(約 6500 萬年前)",
-          "trap": "審題注意細節數字、專有名詞與時態限定詞。"
-        },
-        "hint": "判斷 True 還是 False"
-      },
-      {
-        "id": "SPACE_CH04_TF_19",
-        "type": "choice",
-        "category_tag": "choice",
-        "question": "destroyed a forest.",
-        "options": [
-          "True (正確)",
-          "False (錯誤)"
-        ],
-        "answer": "True (正確)",
-        "explanation": {
-          "concept": "Chapter 4: Rocks and Ice 課文事實與文法判斷",
-          "formula": "正解分析：(燒毀西伯利亞 8000 萬棵樹木)",
-          "trap": "審題注意細節數字、專有名詞與時態限定詞。"
-        },
-        "hint": "判斷 True 還是 False"
-      },
-      {
-        "id": "SPACE_CH04_TF_20",
-        "type": "choice",
-        "category_tag": "choice",
-        "question": "was about 20 kilometers long.",
-        "options": [
-          "True (正確)",
-          "False (錯誤)"
-        ],
-        "answer": "C",
-        "explanation": {
-          "concept": "Chapter 4: Rocks and Ice 課文事實與文法判斷",
-          "formula": "正解分析：(撞擊碎片約 20 公里長)",
-          "trap": "審題注意細節數字、專有名詞與時態限定詞。"
-        },
-        "hint": "判斷 True 還是 False"
-      },
-      {
-        "id": "SPACE_CH04_TF_21",
-        "type": "choice",
-        "category_tag": "choice",
-        "question": "killed a lot of animals.",
-        "options": [
-          "True (正確)",
-          "False (錯誤)"
-        ],
-        "answer": "C",
-        "explanation": {
-          "concept": "Chapter 4: Rocks and Ice 課文事實與文法判斷",
-          "formula": "正解分析：(滅絕恐龍與 70% 動植物)",
-          "trap": "審題注意細節數字、專有名詞與時態限定詞。"
-        },
-        "hint": "判斷 True 還是 False"
-      },
-      {
-        "id": "SPACE_CH04_TF_22",
-        "type": "choice",
-        "category_tag": "choice",
-        "question": "exploded in the sky.",
-        "options": [
-          "True (正確)",
-          "False (錯誤)"
-        ],
-        "answer": "True (正確)",
-        "explanation": {
-          "concept": "Chapter 4: Rocks and Ice 課文事實與文法判斷",
-          "formula": "正解分析：(在通古斯河上空爆炸)",
-          "trap": "審題注意細節數字、專有名詞與時態限定詞。"
-        },
-        "hint": "判斷 True 還是 False"
-      },
-      {
-        "id": "SPACE_CH04_TF_23",
-        "type": "choice",
-        "category_tag": "choice",
-        "question": "changed the weather for a long time.",
-        "options": [
-          "True (正確)",
-          "False (錯誤)"
-        ],
-        "answer": "C",
-        "explanation": {
-          "concept": "Chapter 4: Rocks and Ice 課文事實與文法判斷",
-          "formula": "正解分析：(塵埃蔽日，多年嚴寒)",
-          "trap": "審題注意細節數字、專有名詞與時態限定詞。"
-        },
-        "hint": "判斷 True 還是 False"
-      },
-      {
-        "id": "SPACE_CH04_TF_24",
-        "type": "choice",
-        "category_tag": "choice",
-        "question": "hit Russia about 100 years ago.",
-        "options": [
-          "True (正確)",
-          "False (錯誤)"
-        ],
-        "answer": "True (正確)",
-        "explanation": {
-          "concept": "Chapter 4: Rocks and Ice 課文事實與文法判斷",
-          "formula": "正解分析：(1908 年發生於俄羅斯西伯利亞)",
-          "trap": "審題注意細節數字、專有名詞與時態限定詞。"
-        },
-        "hint": "判斷 True 還是 False"
       }
     ]
   },
@@ -3511,91 +5695,183 @@ window.MIDTERM_DATABASE = [
     "vocab": [
       {
         "word": "astronomy",
-        "pos": "noun",
+        "phonetic": "/əˈstrɑːnəmi/",
+        "syllables": "as-tron-o-my",
+        "pos": "n.",
         "meaning": "天文學",
-        "example": "the scientific study of stars, planets, and outer space"
+        "example": "Astronomy is studying the planets and the stars.",
+        "note": "astro- (星體) + -nomy (學科)。"
       },
       {
         "word": "astronomer",
-        "pos": "noun",
+        "phonetic": "/əˈstrɑːnəmər/",
+        "syllables": "as-tron-o-mer",
+        "pos": "n.",
         "meaning": "天文學家",
-        "example": "a scientist who studies stars and planets"
+        "example": "People who study astronomy are called astronomers.",
+        "note": "字尾 -er 代表從事該學科研究的科學家。"
       },
       {
         "word": "telescope",
-        "pos": "noun",
+        "phonetic": "/ˈtɛlɪˌskoʊp/",
+        "syllables": "tel-e-scope",
+        "pos": "n.",
         "meaning": "望遠鏡",
-        "example": "an optical instrument designed to make distant objects appear nearer"
+        "example": "In 1609, Galileo used one of the first telescopes.",
+        "note": "伽利略用望遠鏡發現月球坑洞與木星的四顆衛星。"
       },
       {
         "word": "gravity",
-        "pos": "noun",
-        "meaning": "地心引力、重力",
-        "example": "the force that attracts objects toward each other"
+        "phonetic": "/ˈɡrævəti/",
+        "syllables": "grav-i-ty",
+        "pos": "n.",
+        "meaning": "萬有引力；地心引力",
+        "example": "Isaac Newton discovered the force of gravity.",
+        "note": "重力讓物體掉落地面，也讓行星繞著太陽公轉。"
       },
       {
         "word": "galaxy",
-        "pos": "noun",
+        "phonetic": "/ˈɡæləksi/",
+        "syllables": "gal-ax-y",
+        "pos": "n.",
         "meaning": "星系",
-        "example": "a system of millions or billions of stars, together with gas and dust"
+        "example": "In 1930, Edwin Hubble discovered another galaxy.",
+        "note": "複數為 galaxies（去 y 改 ies）；宇宙中有數十億個星系。"
       },
       {
         "word": "Milky Way",
-        "pos": "noun_proper",
+        "phonetic": "/ˌmɪlki ˈweɪ/",
+        "syllables": "Milk-y Way",
+        "pos": "n.",
         "meaning": "銀河系",
-        "example": "the galaxy of which our solar system is a part"
+        "example": "The Milky Way is the galaxy where our solar system lives.",
+        "note": "專有名詞首字母需大寫，前面常加定冠詞 the。"
       },
       {
         "word": "spacecraft",
-        "pos": "noun",
-        "meaning": "太空船、太空載具",
-        "example": "a vehicle used for traveling in space"
+        "phonetic": "/ˈspeɪsˌkræft/",
+        "syllables": "space-craft",
+        "pos": "n.",
+        "meaning": "太空船；太空探測器（單複數同形）",
+        "example": "Astronomers use spacecraft to explore our solar system.",
+        "note": "單複數同形，不可加 -s！"
       },
       {
         "word": "calculate",
-        "pos": "verb",
-        "meaning": "計算",
-        "example": "to determine mathematically using numbers"
+        "phonetic": "/ˈkælkjəˌleɪt/",
+        "syllables": "cal-cu-late",
+        "pos": "v.",
+        "meaning": "計算；推算",
+        "example": "Ancient people used the stars to calculate the seasons.",
+        "note": "use numbers to find out something (用數字推算某事)。"
+      },
+      {
+        "word": "universe",
+        "phonetic": "/ˈjuːnɪˌvɜːrs/",
+        "syllables": "u-ni-verse",
+        "pos": "n.",
+        "meaning": "宇宙",
+        "example": "There are billions of galaxies in the universe.",
+        "note": "uni- (單一整體)，整個宇宙只有一個，包含數十億個星系 (galaxies)。"
+      },
+      {
+        "word": "prove",
+        "phonetic": "/pruːv/",
+        "syllables": "prove",
+        "pos": "v.",
+        "meaning": "證明；證實",
+        "example": "Isaac Newton proved that Earth orbits the Sun.",
+        "note": "過去式為 proved，意為 show that something is correct。"
       }
     ],
     "mistake_buster": [
       {
-        "trap_id": "MISTAKE_GALAXY_VS_UNIVERSE",
-        "sentence": "Edwin Hubble discovered another universe in 1930.",
+        "trap_id": "SP05_ERR_1",
+        "sentence": "In 1543, Copernicus said that Earth was at the center.",
         "tokens": [
+          "In",
+          "1543,",
+          "Copernicus",
+          "said",
+          "that",
+          "Earth",
+          "was",
+          "at",
+          "the",
+          "center."
+        ],
+        "wrong_index": 5,
+        "wrong_word": "Earth",
+        "correct_word": "the Sun",
+        "fixed_sentence": "In 1543, Copernicus said that the Sun was at the center.",
+        "reason": "波蘭天文學家哥白尼（Copernicus）於 1543 年提出的是『太陽中心說 (the Sun was at the center)』，打破古人地心說！"
+      },
+      {
+        "trap_id": "SP05_ERR_2",
+        "sentence": "Galileo discovered the force of gravity and proved Copernicus right.",
+        "tokens": [
+          "Galileo",
+          "discovered",
+          "the",
+          "force",
+          "of",
+          "gravity",
+          "and",
+          "proved",
+          "Copernicus",
+          "right."
+        ],
+        "wrong_index": 0,
+        "wrong_word": "Galileo",
+        "correct_word": "Newton",
+        "fixed_sentence": "Newton discovered the force of gravity and proved Copernicus right.",
+        "reason": "發現萬有引力（gravity）並證明地球繞太陽公轉的是英國科學家『牛頓 (Isaac Newton)』！"
+      },
+      {
+        "trap_id": "SP05_ERR_3",
+        "sentence": "In 1930, Edwin Hubble discovered another universe in space.",
+        "tokens": [
+          "In",
+          "1930,",
           "Edwin",
           "Hubble",
           "discovered",
           "another",
           "universe",
           "in",
-          "1930."
+          "space."
         ],
-        "wrong_index": 4,
+        "wrong_index": 6,
         "wrong_word": "universe",
         "correct_word": "galaxy",
-        "fixed_sentence": "Edwin Hubble discovered another galaxy in 1930.",
-        "reason": "哈伯發現的是另一個「星系 (galaxy)」，宇宙 (universe) 只有一個，裡面包含數十億個星系。"
+        "fixed_sentence": "In 1930, Edwin Hubble discovered another galaxy in space.",
+        "reason": "哈伯（Edwin Hubble）在 1930 年發現的是銀河系以外的另一個『星系 (galaxy)』，宇宙（universe）只有一個！"
       },
       {
-        "trap_id": "MISTAKE_COPERNICUS_VS_NEWTON",
-        "sentence": "Copernicus proved gravity in 1543.",
+        "trap_id": "SP05_ERR_4",
+        "sentence": "The Milky Way galaxy is made of billions of icy comets.",
         "tokens": [
-          "Copernicus",
-          "proved",
-          "gravity",
-          "in",
-          "1543."
+          "The",
+          "Milky",
+          "Way",
+          "galaxy",
+          "is",
+          "made",
+          "of",
+          "billions",
+          "of",
+          "icy",
+          "comets."
         ],
-        "wrong_index": 0,
-        "wrong_word": "Copernicus",
-        "correct_word": "Newton",
-        "fixed_sentence": "Newton discovered gravity and proved Copernicus's heliocentric theory.",
-        "reason": "哥白尼提出太陽中心說，但牛頓才發現萬有引力並給予科學證明。"
+        "wrong_index": 10,
+        "wrong_word": "comets.",
+        "correct_word": "stars.",
+        "fixed_sentence": "The Milky Way galaxy is made of billions of icy stars.",
+        "reason": "伽利略透過望遠鏡發現銀河系（Milky Way）明亮的光帶是由無數顆『恆星 (stars)』所組成，而非彗星！"
       },
       {
-        "trap_id": "MISTAKE_HUBBLE_ATMOSPHERE_ADVANTAGE",
-        "sentence": "Hubble takes better photos because it is closer to the stars.",
+        "trap_id": "SP05_ERR_5",
+        "sentence": "Hubble takes better photos because it is inside Earth's atmosphere.",
         "tokens": [
           "Hubble",
           "takes",
@@ -3604,16 +5880,15 @@ window.MIDTERM_DATABASE = [
           "because",
           "it",
           "is",
-          "closer",
-          "to",
-          "the",
-          "stars."
+          "inside",
+          "Earth's",
+          "atmosphere."
         ],
         "wrong_index": 7,
-        "wrong_word": "closer",
+        "wrong_word": "inside",
         "correct_word": "outside",
         "fixed_sentence": "Hubble takes better photos because it is outside Earth's atmosphere.",
-        "reason": "哈伯望遠鏡解析度高的關鍵優勢是位於「大氣層之外」，不受大氣水氣與亂流干擾，並非因為它離恆星顯著更近。"
+        "reason": "哈伯太空望遠鏡能拍出更清晰的照片，是因為它運行於地球大氣層『之外 (outside Earth's atmosphere)』，不受大氣干擾！"
       }
     ],
     "quizzes": [
@@ -3621,301 +5896,164 @@ window.MIDTERM_DATABASE = [
         "id": "SPACE_CH05_LIST_1",
         "type": "spelling_listen",
         "category_tag": "listening",
-        "question": "請聽電腦發音，在紙上拼寫出這個核心單字：",
-        "hint": "中文釋義：天文學",
+        "question": "請聽電腦發音，在紙上拼寫出這個核心單字或片語：",
+        "hint": "詞性與中文：n. 天文學",
         "audio_word": "astronomy",
-        "phonetic": "",
-        "syllables": "astronomy",
+        "phonetic": "/əˈstrɑːnəmi/",
+        "syllables": "as-tron-o-my",
         "answer": "astronomy",
         "explanation": {
-          "concept": "Chapter 5: Astronomy 核心字彙：astronomy",
-          "formula": "詞性與例句搭配：the scientific study of stars, planets, and outer space",
-          "trap": "注意拼寫盲點：切記母音與子音字母對應，勿漏寫尾音或不發音字母。"
+          "concept": "【Chapter 5: Astronomy】核心字彙：astronomy /əˈstrɑːnəmi/ (n. 天文學)",
+          "formula": "課文例句：Astronomy is studying the planets and the stars.",
+          "trap": "拼寫與用法關鍵：astro- (星體) + -nomy (學科)。"
         }
       },
       {
         "id": "SPACE_CH05_LIST_2",
         "type": "spelling_listen",
         "category_tag": "listening",
-        "question": "請聽電腦發音，在紙上拼寫出這個核心單字：",
-        "hint": "中文釋義：天文學家",
+        "question": "請聽電腦發音，在紙上拼寫出這個核心單字或片語：",
+        "hint": "詞性與中文：n. 天文學家",
         "audio_word": "astronomer",
-        "phonetic": "",
-        "syllables": "astronomer",
+        "phonetic": "/əˈstrɑːnəmər/",
+        "syllables": "as-tron-o-mer",
         "answer": "astronomer",
         "explanation": {
-          "concept": "Chapter 5: Astronomy 核心字彙：astronomer",
-          "formula": "詞性與例句搭配：a scientist who studies stars and planets",
-          "trap": "注意拼寫盲點：切記母音與子音字母對應，勿漏寫尾音或不發音字母。"
+          "concept": "【Chapter 5: Astronomy】核心字彙：astronomer /əˈstrɑːnəmər/ (n. 天文學家)",
+          "formula": "課文例句：People who study astronomy are called astronomers.",
+          "trap": "拼寫與用法關鍵：字尾 -er 代表從事該學科研究的科學家。"
         }
       },
       {
         "id": "SPACE_CH05_LIST_3",
         "type": "spelling_listen",
         "category_tag": "listening",
-        "question": "請聽電腦發音，在紙上拼寫出這個核心單字：",
-        "hint": "中文釋義：望遠鏡",
+        "question": "請聽電腦發音，在紙上拼寫出這個核心單字或片語：",
+        "hint": "詞性與中文：n. 望遠鏡",
         "audio_word": "telescope",
-        "phonetic": "",
-        "syllables": "telescope",
+        "phonetic": "/ˈtɛlɪˌskoʊp/",
+        "syllables": "tel-e-scope",
         "answer": "telescope",
         "explanation": {
-          "concept": "Chapter 5: Astronomy 核心字彙：telescope",
-          "formula": "詞性與例句搭配：an optical instrument designed to make distant objects appear nearer",
-          "trap": "注意拼寫盲點：切記母音與子音字母對應，勿漏寫尾音或不發音字母。"
+          "concept": "【Chapter 5: Astronomy】核心字彙：telescope /ˈtɛlɪˌskoʊp/ (n. 望遠鏡)",
+          "formula": "課文例句：In 1609, Galileo used one of the first telescopes.",
+          "trap": "拼寫與用法關鍵：伽利略用望遠鏡發現月球坑洞與木星的四顆衛星。"
         }
       },
       {
         "id": "SPACE_CH05_LIST_4",
         "type": "spelling_listen",
         "category_tag": "listening",
-        "question": "請聽電腦發音，在紙上拼寫出這個核心單字：",
-        "hint": "中文釋義：地心引力、重力",
+        "question": "請聽電腦發音，在紙上拼寫出這個核心單字或片語：",
+        "hint": "詞性與中文：n. 萬有引力；地心引力",
         "audio_word": "gravity",
-        "phonetic": "",
-        "syllables": "gravity",
+        "phonetic": "/ˈɡrævəti/",
+        "syllables": "grav-i-ty",
         "answer": "gravity",
         "explanation": {
-          "concept": "Chapter 5: Astronomy 核心字彙：gravity",
-          "formula": "詞性與例句搭配：the force that attracts objects toward each other",
-          "trap": "注意拼寫盲點：切記母音與子音字母對應，勿漏寫尾音或不發音字母。"
+          "concept": "【Chapter 5: Astronomy】核心字彙：gravity /ˈɡrævəti/ (n. 萬有引力；地心引力)",
+          "formula": "課文例句：Isaac Newton discovered the force of gravity.",
+          "trap": "拼寫與用法關鍵：重力讓物體掉落地面，也讓行星繞著太陽公轉。"
         }
       },
       {
         "id": "SPACE_CH05_LIST_5",
         "type": "spelling_listen",
         "category_tag": "listening",
-        "question": "請聽電腦發音，在紙上拼寫出這個核心單字：",
-        "hint": "中文釋義：星系",
+        "question": "請聽電腦發音，在紙上拼寫出這個核心單字或片語：",
+        "hint": "詞性與中文：n. 星系",
         "audio_word": "galaxy",
-        "phonetic": "",
-        "syllables": "galaxy",
+        "phonetic": "/ˈɡæləksi/",
+        "syllables": "gal-ax-y",
         "answer": "galaxy",
         "explanation": {
-          "concept": "Chapter 5: Astronomy 核心字彙：galaxy",
-          "formula": "詞性與例句搭配：a system of millions or billions of stars, together with gas and dust",
-          "trap": "注意拼寫盲點：切記母音與子音字母對應，勿漏寫尾音或不發音字母。"
+          "concept": "【Chapter 5: Astronomy】核心字彙：galaxy /ˈɡæləksi/ (n. 星系)",
+          "formula": "課文例句：In 1930, Edwin Hubble discovered another galaxy.",
+          "trap": "拼寫與用法關鍵：複數為 galaxies（去 y 改 ies）；宇宙中有數十億個星系。"
         }
       },
       {
         "id": "SPACE_CH05_LIST_6",
         "type": "spelling_listen",
         "category_tag": "listening",
-        "question": "請聽電腦發音，在紙上拼寫出這個核心單字：",
-        "hint": "中文釋義：銀河系",
+        "question": "請聽電腦發音，在紙上拼寫出這個核心單字或片語：",
+        "hint": "詞性與中文：n. 銀河系",
         "audio_word": "Milky Way",
-        "phonetic": "",
-        "syllables": "Milky Way",
+        "phonetic": "/ˌmɪlki ˈweɪ/",
+        "syllables": "Milk-y Way",
         "answer": "Milky Way",
         "explanation": {
-          "concept": "Chapter 5: Astronomy 核心字彙：Milky Way",
-          "formula": "詞性與例句搭配：the galaxy of which our solar system is a part",
-          "trap": "注意拼寫盲點：切記母音與子音字母對應，勿漏寫尾音或不發音字母。"
+          "concept": "【Chapter 5: Astronomy】核心字彙：Milky Way /ˌmɪlki ˈweɪ/ (n. 銀河系)",
+          "formula": "課文例句：The Milky Way is the galaxy where our solar system lives.",
+          "trap": "拼寫與用法關鍵：專有名詞首字母需大寫，前面常加定冠詞 the。"
         }
       },
       {
         "id": "SPACE_CH05_LIST_7",
         "type": "spelling_listen",
         "category_tag": "listening",
-        "question": "請聽電腦發音，在紙上拼寫出這個核心單字：",
-        "hint": "中文釋義：太空船、太空載具",
+        "question": "請聽電腦發音，在紙上拼寫出這個核心單字或片語：",
+        "hint": "詞性與中文：n. 太空船；太空探測器（單複數同形）",
         "audio_word": "spacecraft",
-        "phonetic": "",
-        "syllables": "spacecraft",
+        "phonetic": "/ˈspeɪsˌkræft/",
+        "syllables": "space-craft",
         "answer": "spacecraft",
         "explanation": {
-          "concept": "Chapter 5: Astronomy 核心字彙：spacecraft",
-          "formula": "詞性與例句搭配：a vehicle used for traveling in space",
-          "trap": "注意拼寫盲點：切記母音與子音字母對應，勿漏寫尾音或不發音字母。"
+          "concept": "【Chapter 5: Astronomy】核心字彙：spacecraft /ˈspeɪsˌkræft/ (n. 太空船；太空探測器（單複數同形）)",
+          "formula": "課文例句：Astronomers use spacecraft to explore our solar system.",
+          "trap": "拼寫與用法關鍵：單複數同形，不可加 -s！"
         }
       },
       {
         "id": "SPACE_CH05_LIST_8",
         "type": "spelling_listen",
         "category_tag": "listening",
-        "question": "請聽電腦發音，在紙上拼寫出這個核心單字：",
-        "hint": "中文釋義：計算",
+        "question": "請聽電腦發音，在紙上拼寫出這個核心單字或片語：",
+        "hint": "詞性與中文：v. 計算；推算",
         "audio_word": "calculate",
-        "phonetic": "",
-        "syllables": "calculate",
+        "phonetic": "/ˈkælkjəˌleɪt/",
+        "syllables": "cal-cu-late",
         "answer": "calculate",
         "explanation": {
-          "concept": "Chapter 5: Astronomy 核心字彙：calculate",
-          "formula": "詞性與例句搭配：to determine mathematically using numbers",
-          "trap": "注意拼寫盲點：切記母音與子音字母對應，勿漏寫尾音或不發音字母。"
+          "concept": "【Chapter 5: Astronomy】核心字彙：calculate /ˈkælkjəˌleɪt/ (v. 計算；推算)",
+          "formula": "課文例句：Ancient people used the stars to calculate the seasons.",
+          "trap": "拼寫與用法關鍵：use numbers to find out something (用數字推算某事)。"
         }
       },
       {
-        "id": "SPACE_CH05_RW_9",
-        "type": "paper_rewrite",
-        "category_tag": "rewrite",
-        "question": "題目提示：(圖片：古希臘羅馬神廟石柱建築)",
-        "answer": "temple",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
+        "id": "SPACE_CH05_LIST_9",
+        "type": "spelling_listen",
+        "category_tag": "listening",
+        "question": "請聽電腦發音，在紙上拼寫出這個核心單字或片語：",
+        "hint": "詞性與中文：n. 宇宙",
+        "audio_word": "universe",
+        "phonetic": "/ˈjuːnɪˌvɜːrs/",
+        "syllables": "u-ni-verse",
+        "answer": "universe",
         "explanation": {
-          "concept": "Chapter 5: Astronomy 核心句型結構改寫",
-          "formula": "標準句型：temple",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
+          "concept": "【Chapter 5: Astronomy】核心字彙：universe /ˈjuːnɪˌvɜːrs/ (n. 宇宙)",
+          "formula": "課文例句：There are billions of galaxies in the universe.",
+          "trap": "拼寫與用法關鍵：uni- (單一整體)，整個宇宙只有一個，包含數十億個星系 (galaxies)。"
         }
       },
       {
-        "id": "SPACE_CH05_RW_10",
-        "type": "paper_rewrite",
-        "category_tag": "rewrite",
-        "question": "題目提示：(圖片：桌曆月曆)",
-        "answer": "calendar",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
-        "explanation": {
-          "concept": "Chapter 5: Astronomy 核心句型結構改寫",
-          "formula": "標準句型：calendar",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
-        }
-      },
-      {
-        "id": "SPACE_CH05_RW_11",
-        "type": "paper_rewrite",
-        "category_tag": "rewrite",
-        "question": "題目提示：(圖片：向日葵中心的種子箭頭)",
-        "answer": "seeds",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
-        "explanation": {
-          "concept": "Chapter 5: Astronomy 核心句型結構改寫",
-          "formula": "標準句型：seeds",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
-        }
-      },
-      {
-        "id": "SPACE_CH05_RW_12",
-        "type": "paper_rewrite",
-        "category_tag": "rewrite",
-        "question": "題目提示：(圖片：三腳架光學望遠鏡)",
-        "answer": "telescope",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
-        "explanation": {
-          "concept": "Chapter 5: Astronomy 核心句型結構改寫",
-          "formula": "標準句型：telescope",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
-        }
-      },
-      {
-        "id": "SPACE_CH05_RW_13",
-        "type": "paper_rewrite",
-        "category_tag": "rewrite",
-        "question": "題目提示：(圖片：航行於太空的深空無人探測太空船)",
-        "answer": "spacecraft",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
-        "explanation": {
-          "concept": "Chapter 5: Astronomy 核心句型結構改寫",
-          "formula": "標準句型：spacecraft",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
-        }
-      },
-      {
-        "id": "SPACE_CH05_RW_14",
-        "type": "paper_rewrite",
-        "category_tag": "rewrite",
-        "question": "題目提示：(圖片：科學家在電腦前使用天文望遠鏡觀測)",
-        "answer": "astronomer",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
-        "explanation": {
-          "concept": "Chapter 5: Astronomy 核心句型結構改寫",
-          "formula": "標準句型：astronomer",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
-        }
-      },
-      {
-        "id": "SPACE_CH05_RW_15",
-        "type": "paper_rewrite",
-        "category_tag": "rewrite",
-        "question": "題目提示：show that something is correct",
+        "id": "SPACE_CH05_LIST_10",
+        "type": "spelling_listen",
+        "category_tag": "listening",
+        "question": "請聽電腦發音，在紙上拼寫出這個核心單字或片語：",
+        "hint": "詞性與中文：v. 證明；證實",
+        "audio_word": "prove",
+        "phonetic": "/pruːv/",
+        "syllables": "prove",
         "answer": "prove",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
         "explanation": {
-          "concept": "Chapter 5: Astronomy 核心句型結構改寫",
-          "formula": "標準句型：prove",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
+          "concept": "【Chapter 5: Astronomy】核心字彙：prove /pruːv/ (v. 證明；證實)",
+          "formula": "課文例句：Isaac Newton proved that Earth orbits the Sun.",
+          "trap": "拼寫與用法關鍵：過去式為 proved，意為 show that something is correct。"
         }
       },
       {
-        "id": "SPACE_CH05_RW_16",
-        "type": "paper_rewrite",
-        "category_tag": "rewrite",
-        "question": "題目提示：a special day",
-        "answer": "festival",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
-        "explanation": {
-          "concept": "Chapter 5: Astronomy 核心句型結構改寫",
-          "formula": "標準句型：festival",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
-        }
-      },
-      {
-        "id": "SPACE_CH05_RW_17",
-        "type": "paper_rewrite",
-        "category_tag": "rewrite",
-        "question": "題目提示：think that something is true",
-        "answer": "believe",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
-        "explanation": {
-          "concept": "Chapter 5: Astronomy 核心句型結構改寫",
-          "formula": "標準句型：believe",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
-        }
-      },
-      {
-        "id": "SPACE_CH05_RW_18",
-        "type": "paper_rewrite",
-        "category_tag": "rewrite",
-        "question": "題目提示：a building with statues of gods",
-        "answer": "temple",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
-        "explanation": {
-          "concept": "Chapter 5: Astronomy 核心句型結構改寫",
-          "formula": "標準句型：temple",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
-        }
-      },
-      {
-        "id": "SPACE_CH05_RW_19",
-        "type": "paper_rewrite",
-        "category_tag": "rewrite",
-        "question": "題目提示：look around a new place",
-        "answer": "explore",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
-        "explanation": {
-          "concept": "Chapter 5: Astronomy 核心句型結構改寫",
-          "formula": "標準句型：explore",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
-        }
-      },
-      {
-        "id": "SPACE_CH05_RW_20",
-        "type": "paper_rewrite",
-        "category_tag": "rewrite",
-        "question": "題目提示：use numbers to find out something",
-        "answer": "calculate",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
-        "explanation": {
-          "concept": "Chapter 5: Astronomy 核心句型結構改寫",
-          "formula": "標準句型：calculate",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
-        }
-      },
-      {
-        "id": "SPACE_CH05_RW_21",
-        "type": "paper_rewrite",
-        "category_tag": "rewrite",
-        "question": "題目提示：it can move things",
-        "answer": "force",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
-        "explanation": {
-          "concept": "Chapter 5: Astronomy 核心句型結構改寫",
-          "formula": "標準句型：force",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
-        }
-      },
-      {
-        "id": "SPACE_CH05_TF_22",
+        "id": "SPACE_CH05_TF_11",
         "type": "choice",
         "category_tag": "choice",
         "question": "Ancient people used the stars to calculate things.",
@@ -3924,15 +6062,15 @@ window.MIDTERM_DATABASE = [
           "False (錯誤)"
         ],
         "answer": "True (正確)",
+        "hint": "是非題：請根據課文事實判斷 True (正確) 或 False (錯誤)",
         "explanation": {
-          "concept": "Chapter 5: Astronomy 課文事實與文法判斷",
-          "formula": "正解分析：(用日月星辰計算季節與農耕曆法)",
-          "trap": "審題注意細節數字、專有名詞與時態限定詞。"
-        },
-        "hint": "判斷 True 還是 False"
+          "concept": "Space Ch.5 天文學發展史：哥白尼日心說、伽利略望遠鏡、牛頓重力與哈伯星系",
+          "formula": "本題為【True (正確)】。課文依據：用日月星辰計算季節與農耕曆法",
+          "trap": "科學史辨析：Copernicus (1543 提出太陽中心說)、Galileo (1609 用望遠鏡看月球坑洞與木星四衛星)、Newton (發現萬有引力證明公轉)、Hubble (1930 發現另一個星系 galaxy 而非 universe)！"
+        }
       },
       {
-        "id": "SPACE_CH05_TF_23",
+        "id": "SPACE_CH05_TF_12",
         "type": "choice",
         "category_tag": "choice",
         "question": "Galileo thought that the Earth orbited the Sun.",
@@ -3941,15 +6079,15 @@ window.MIDTERM_DATABASE = [
           "False (錯誤)"
         ],
         "answer": "True (正確)",
+        "hint": "是非題：請根據課文事實判斷 True (正確) 或 False (錯誤)",
         "explanation": {
-          "concept": "Chapter 5: Astronomy 課文事實與文法判斷",
-          "formula": "正解分析：(伽利略支持哥白尼日心說)",
-          "trap": "審題注意細節數字、專有名詞與時態限定詞。"
-        },
-        "hint": "判斷 True 還是 False"
+          "concept": "Space Ch.5 天文學發展史：哥白尼日心說、伽利略望遠鏡、牛頓重力與哈伯星系",
+          "formula": "本題為【True (正確)】。課文依據：伽利略支持哥白尼日心說",
+          "trap": "科學史辨析：Copernicus (1543 提出太陽中心說)、Galileo (1609 用望遠鏡看月球坑洞與木星四衛星)、Newton (發現萬有引力證明公轉)、Hubble (1930 發現另一個星系 galaxy 而非 universe)！"
+        }
       },
       {
-        "id": "SPACE_CH05_TF_24",
+        "id": "SPACE_CH05_TF_13",
         "type": "choice",
         "category_tag": "choice",
         "question": "Gravity makes planets orbit the Sun.",
@@ -3958,15 +6096,15 @@ window.MIDTERM_DATABASE = [
           "False (錯誤)"
         ],
         "answer": "True (正確)",
+        "hint": "是非題：請根據課文事實判斷 True (正確) 或 False (錯誤)",
         "explanation": {
-          "concept": "Chapter 5: Astronomy 課文事實與文法判斷",
-          "formula": "正解分析：(牛頓萬有引力支配天體軌道)",
-          "trap": "審題注意細節數字、專有名詞與時態限定詞。"
-        },
-        "hint": "判斷 True 還是 False"
+          "concept": "Space Ch.5 天文學發展史：哥白尼日心說、伽利略望遠鏡、牛頓重力與哈伯星系",
+          "formula": "本題為【True (正確)】。課文依據：牛頓萬有引力支配天體軌道",
+          "trap": "科學史辨析：Copernicus (1543 提出太陽中心說)、Galileo (1609 用望遠鏡看月球坑洞與木星四衛星)、Newton (發現萬有引力證明公轉)、Hubble (1930 發現另一個星系 galaxy 而非 universe)！"
+        }
       },
       {
-        "id": "SPACE_CH05_TF_25",
+        "id": "SPACE_CH05_TF_14",
         "type": "choice",
         "category_tag": "choice",
         "question": "The Milky Way is made of billions of comets.",
@@ -3975,15 +6113,15 @@ window.MIDTERM_DATABASE = [
           "False (錯誤)"
         ],
         "answer": "False (錯誤)",
+        "hint": "是非題：請根據課文事實判斷 True (正確) 或 False (錯誤)",
         "explanation": {
-          "concept": "Chapter 5: Astronomy 課文事實與文法判斷",
-          "formula": "正解分析：(銀河系是由無數恆星組成，非彗星)",
-          "trap": "審題注意細節數字、專有名詞與時態限定詞。"
-        },
-        "hint": "判斷 True 還是 False"
+          "concept": "Space Ch.5 天文學發展史：哥白尼日心說、伽利略望遠鏡、牛頓重力與哈伯星系",
+          "formula": "本題為【False (錯誤)】。課文依據：銀河系是由無數恆星組成，非彗星",
+          "trap": "科學史辨析：Copernicus (1543 提出太陽中心說)、Galileo (1609 用望遠鏡看月球坑洞與木星四衛星)、Newton (發現萬有引力證明公轉)、Hubble (1930 發現另一個星系 galaxy 而非 universe)！"
+        }
       },
       {
-        "id": "SPACE_CH05_TF_26",
+        "id": "SPACE_CH05_TF_15",
         "type": "choice",
         "category_tag": "choice",
         "question": "Hubble discovered another universe.",
@@ -3992,12 +6130,197 @@ window.MIDTERM_DATABASE = [
           "False (錯誤)"
         ],
         "answer": "False (錯誤)",
+        "hint": "是非題：請根據課文事實判斷 True (正確) 或 False (錯誤)",
         "explanation": {
-          "concept": "Chapter 5: Astronomy 課文事實與文法判斷",
-          "formula": "正解分析：(哈伯發現的是另一個星系 galaxy，非 universe)",
-          "trap": "審題注意細節數字、專有名詞與時態限定詞。"
-        },
-        "hint": "判斷 True 還是 False"
+          "concept": "Space Ch.5 天文學發展史：哥白尼日心說、伽利略望遠鏡、牛頓重力與哈伯星系",
+          "formula": "本題為【False (錯誤)】。課文依據：哈伯發現的是另一個星系 galaxy，非 universe",
+          "trap": "科學史辨析：Copernicus (1543 提出太陽中心說)、Galileo (1609 用望遠鏡看月球坑洞與木星四衛星)、Newton (發現萬有引力證明公轉)、Hubble (1930 發現另一個星系 galaxy 而非 universe)！"
+        }
+      },
+      {
+        "id": "SPACE_CH05_DEF_16",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "根據英文定義拼寫出核心字彙：show that something is correct",
+        "answer": "prove",
+        "hint": "提示：已給範例",
+        "explanation": {
+          "concept": "Chapter 5: Astronomy 英英定義與字彙配對",
+          "formula": "『show that something is correct』對應的精確單字為：prove",
+          "trap": "科學史辨析：Copernicus (1543 提出太陽中心說)、Galileo (1609 用望遠鏡看月球坑洞與木星四衛星)、Newton (發現萬有引力證明公轉)、Hubble (1930 發現另一個星系 galaxy 而非 universe)！"
+        }
+      },
+      {
+        "id": "SPACE_CH05_DEF_17",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "根據英文定義拼寫出核心字彙：a special day",
+        "answer": "festival",
+        "hint": "請根據定義在紙上拼寫出正確單字",
+        "explanation": {
+          "concept": "Chapter 5: Astronomy 英英定義與字彙配對",
+          "formula": "『a special day』對應的精確單字為：festival",
+          "trap": "科學史辨析：Copernicus (1543 提出太陽中心說)、Galileo (1609 用望遠鏡看月球坑洞與木星四衛星)、Newton (發現萬有引力證明公轉)、Hubble (1930 發現另一個星系 galaxy 而非 universe)！"
+        }
+      },
+      {
+        "id": "SPACE_CH05_DEF_18",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "根據英文定義拼寫出核心字彙：think that something is true",
+        "answer": "believe",
+        "hint": "請根據定義在紙上拼寫出正確單字",
+        "explanation": {
+          "concept": "Chapter 5: Astronomy 英英定義與字彙配對",
+          "formula": "『think that something is true』對應的精確單字為：believe",
+          "trap": "科學史辨析：Copernicus (1543 提出太陽中心說)、Galileo (1609 用望遠鏡看月球坑洞與木星四衛星)、Newton (發現萬有引力證明公轉)、Hubble (1930 發現另一個星系 galaxy 而非 universe)！"
+        }
+      },
+      {
+        "id": "SPACE_CH05_DEF_19",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "根據英文定義拼寫出核心字彙：a building with statues of gods",
+        "answer": "temple",
+        "hint": "請根據定義在紙上拼寫出正確單字",
+        "explanation": {
+          "concept": "Chapter 5: Astronomy 英英定義與字彙配對",
+          "formula": "『a building with statues of gods』對應的精確單字為：temple",
+          "trap": "科學史辨析：Copernicus (1543 提出太陽中心說)、Galileo (1609 用望遠鏡看月球坑洞與木星四衛星)、Newton (發現萬有引力證明公轉)、Hubble (1930 發現另一個星系 galaxy 而非 universe)！"
+        }
+      },
+      {
+        "id": "SPACE_CH05_DEF_20",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "根據英文定義拼寫出核心字彙：look around a new place",
+        "answer": "explore",
+        "hint": "請根據定義在紙上拼寫出正確單字",
+        "explanation": {
+          "concept": "Chapter 5: Astronomy 英英定義與字彙配對",
+          "formula": "『look around a new place』對應的精確單字為：explore",
+          "trap": "科學史辨析：Copernicus (1543 提出太陽中心說)、Galileo (1609 用望遠鏡看月球坑洞與木星四衛星)、Newton (發現萬有引力證明公轉)、Hubble (1930 發現另一個星系 galaxy 而非 universe)！"
+        }
+      },
+      {
+        "id": "SPACE_CH05_DEF_21",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "根據英文定義拼寫出核心字彙：use numbers to find out something",
+        "answer": "calculate",
+        "hint": "請根據定義在紙上拼寫出正確單字",
+        "explanation": {
+          "concept": "Chapter 5: Astronomy 英英定義與字彙配對",
+          "formula": "『use numbers to find out something』對應的精確單字為：calculate",
+          "trap": "科學史辨析：Copernicus (1543 提出太陽中心說)、Galileo (1609 用望遠鏡看月球坑洞與木星四衛星)、Newton (發現萬有引力證明公轉)、Hubble (1930 發現另一個星系 galaxy 而非 universe)！"
+        }
+      },
+      {
+        "id": "SPACE_CH05_DEF_22",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "根據英文定義拼寫出核心字彙：it can move things",
+        "answer": "force",
+        "hint": "請根據定義在紙上拼寫出正確單字",
+        "explanation": {
+          "concept": "Chapter 5: Astronomy 英英定義與字彙配對",
+          "formula": "『it can move things』對應的精確單字為：force",
+          "trap": "科學史辨析：Copernicus (1543 提出太陽中心說)、Galileo (1609 用望遠鏡看月球坑洞與木星四衛星)、Newton (發現萬有引力證明公轉)、Hubble (1930 發現另一個星系 galaxy 而非 universe)！"
+        }
+      },
+      {
+        "id": "SPACE_CH05_BFILL_23",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "Copernicus said that everything in the solar system orbited the ______, but nobody ______ him.",
+        "answer": "Sun / believed",
+        "hint": "課文重點句填空：請在紙上寫出空格處的單字",
+        "explanation": {
+          "concept": "Space Ch.5 天文學發展史：哥白尼日心說、伽利略望遠鏡、牛頓重力與哈伯星系",
+          "formula": "完整原句：Copernicus said that everything in the solar system orbited the Sun, but nobody believed him.",
+          "trap": "科學史辨析：Copernicus (1543 提出太陽中心說)、Galileo (1609 用望遠鏡看月球坑洞與木星四衛星)、Newton (發現萬有引力證明公轉)、Hubble (1930 發現另一個星系 galaxy 而非 universe)！"
+        }
+      },
+      {
+        "id": "SPACE_CH05_BFILL_24",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "Galileo ______ Copernicus, but ______ people didn't want him to write about his ideas.",
+        "answer": "believed / important",
+        "hint": "課文重點句填空：請在紙上寫出空格處的單字",
+        "explanation": {
+          "concept": "Space Ch.5 天文學發展史：哥白尼日心說、伽利略望遠鏡、牛頓重力與哈伯星系",
+          "formula": "完整原句：Galileo believed Copernicus, but important people didn't want him to write about his ideas.",
+          "trap": "科學史辨析：Copernicus (1543 提出太陽中心說)、Galileo (1609 用望遠鏡看月球坑洞與木星四衛星)、Newton (發現萬有引力證明公轉)、Hubble (1930 發現另一個星系 galaxy 而非 universe)！"
+        }
+      },
+      {
+        "id": "SPACE_CH05_BFILL_25",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "Newton discovered the force of ______. He ______ that Copernicus was right.",
+        "answer": "gravity / proved",
+        "hint": "課文重點句填空：請在紙上寫出空格處的單字",
+        "explanation": {
+          "concept": "Space Ch.5 天文學發展史：哥白尼日心說、伽利略望遠鏡、牛頓重力與哈伯星系",
+          "formula": "完整原句：Newton discovered the force of gravity. He proved that Copernicus was right.",
+          "trap": "科學史辨析：Copernicus (1543 提出太陽中心說)、Galileo (1609 用望遠鏡看月球坑洞與木星四衛星)、Newton (發現萬有引力證明公轉)、Hubble (1930 發現另一個星系 galaxy 而非 universe)！"
+        }
+      },
+      {
+        "id": "SPACE_CH05_BFILL_26",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "Hubble ______ another galaxy. Now we know that there are lots of galaxies in the ______.",
+        "answer": "discovered / universe",
+        "hint": "課文重點句填空：請在紙上寫出空格處的單字",
+        "explanation": {
+          "concept": "Space Ch.5 天文學發展史：哥白尼日心說、伽利略望遠鏡、牛頓重力與哈伯星系",
+          "formula": "完整原句：Hubble discovered another galaxy. Now we know that there are lots of galaxies in the universe.",
+          "trap": "科學史辨析：Copernicus (1543 提出太陽中心說)、Galileo (1609 用望遠鏡看月球坑洞與木星四衛星)、Newton (發現萬有引力證明公轉)、Hubble (1930 發現另一個星系 galaxy 而非 universe)！"
+        }
+      },
+      {
+        "id": "SPACE_CH05_EX_27",
+        "type": "paper_rewrite",
+        "category_tag": "rewrite",
+        "question": "科學史重寫：用 Isaac Newton / prove / Earth orbits the Sun 造出過去式完整句",
+        "options": [],
+        "answer": "Isaac Newton proved that Earth orbits the Sun.",
+        "hint": "牛頓發現萬有引力並證明了地球繞太陽公轉",
+        "explanation": {
+          "concept": "Space Ch.5 天文學發展史：哥白尼日心說、伽利略望遠鏡、牛頓重力與哈伯星系",
+          "formula": "標準解答：Isaac Newton proved that Earth orbits the Sun.",
+          "trap": "科學史辨析：Copernicus (1543 提出太陽中心說)、Galileo (1609 用望遠鏡看月球坑洞與木星四衛星)、Newton (發現萬有引力證明公轉)、Hubble (1930 發現另一個星系 galaxy 而非 universe)！"
+        }
+      },
+      {
+        "id": "SPACE_CH05_EX_28",
+        "type": "paper_rewrite",
+        "category_tag": "rewrite",
+        "question": "科學事實改錯重寫：In 1930, Edwin Hubble discovered another universe.",
+        "options": [],
+        "answer": "In 1930, Edwin Hubble discovered another galaxy.",
+        "hint": "哈伯發現的是另一個星系 (galaxy)，而非另一個宇宙",
+        "explanation": {
+          "concept": "Space Ch.5 天文學發展史：哥白尼日心說、伽利略望遠鏡、牛頓重力與哈伯星系",
+          "formula": "標準解答：In 1930, Edwin Hubble discovered another galaxy.",
+          "trap": "科學史辨析：Copernicus (1543 提出太陽中心說)、Galileo (1609 用望遠鏡看月球坑洞與木星四衛星)、Newton (發現萬有引力證明公轉)、Hubble (1930 發現另一個星系 galaxy 而非 universe)！"
+        }
+      },
+      {
+        "id": "SPACE_CH05_EX_29",
+        "type": "paper_rewrite",
+        "category_tag": "rewrite",
+        "question": "科學問答造句：Why can the Hubble Space Telescope take better photos than telescopes on Earth?",
+        "options": [],
+        "answer": "Because it is outside Earth's atmosphere.",
+        "hint": "因為哈伯太空望遠鏡位於地球大氣層之外 (outside Earth's atmosphere)",
+        "explanation": {
+          "concept": "Space Ch.5 天文學發展史：哥白尼日心說、伽利略望遠鏡、牛頓重力與哈伯星系",
+          "formula": "標準解答：Because it is outside Earth's atmosphere.",
+          "trap": "科學史辨析：Copernicus (1543 提出太陽中心說)、Galileo (1609 用望遠鏡看月球坑洞與木星四衛星)、Newton (發現萬有引力證明公轉)、Hubble (1930 發現另一個星系 galaxy 而非 universe)！"
+        }
       }
     ]
   },
@@ -4014,127 +6337,219 @@ window.MIDTERM_DATABASE = [
         "section_title": "迷霧中的山林探險 (Lost and Found on the Trail)",
         "sentences": [
           {
-            "en": "One foggy morning, Sarah and her brother decided to hike up the hill.",
-            "zh": "一個起霧的早晨，莎拉和她的哥哥決定徒步上山。"
+            "en": "One foggy morning, Jaya and her family went hiking.",
+            "zh": "一個起霧的早晨，佳雅和她的家人去健行。"
           },
           {
-            "en": "The thick fog covered the path, making it hard to see.",
-            "zh": "濃霧籠罩著小徑，讓人很難看清。"
+            "en": "Their goal was a hill with a tall, crooked tree on top.",
+            "zh": "他們的目標是一座山頂上有一棵高大彎曲樹木的山丘。"
           },
           {
             "en": "They walked past a log bench on the left side of the trail.",
             "zh": "他們走過了步道左側的一張原木長凳。"
           },
           {
-            "en": "Suddenly, they realized they could not find the crooked pine tree.",
-            "zh": "突然間，他們意識到找不到那棵彎曲的松樹了。"
+            "en": "Manoj realized they should have turned right instead of going straight.",
+            "zh": "馬諾傑意識到他們應該右轉而不是直走。"
           },
           {
-            "en": "Listen carefully! Do you hear the lighthouse horn?",
-            "zh": "仔細聽！你聽見燈塔的號角聲了嗎？"
+            "en": "They climbed up a smaller hill and discovered the top was above the fog.",
+            "zh": "他們爬上一座較小的山丘，發現山頂高於濃霧之上。"
           },
           {
-            "en": "The sound came from the south, guiding them toward the town.",
-            "zh": "聲音從南方傳來，指引他們走向城鎮。"
+            "en": "They looked at the map and saw the lighthouse to the south near town.",
+            "zh": "他們看著地圖，看見城鎮附近南方的燈塔。"
           },
           {
-            "en": "They climbed up a smaller hill above the fog line and saw the clear blue sky.",
-            "zh": "他們爬上一座高於霧線的小山丘，看見了晴朗的藍天。"
+            "en": "Then they saw the hill with the crooked tree to the northeast.",
+            "zh": "接著他們看見東北方那座有著彎曲大樹的山丘。"
           },
           {
-            "en": "Soon, they safely reached their picnic spot with their family.",
-            "zh": "不久，他們和家人安全抵達了野餐地點。"
+            "en": "It looked like an island in a sea of clouds.",
+            "zh": "它看起來就像雲海中的一座島嶼。"
           }
         ]
       }
     ],
     "vocab": [
       {
-        "word": "turn right / left",
+        "word": "compass",
+        "phonetic": "/ˈkʌmpəs/",
+        "syllables": "com-pass",
+        "pos": "n.",
+        "meaning": "指南針；指北針",
+        "example": "A compass is an instrument you use to tell direction.",
+        "note": "字尾有兩個 s；內有磁針永遠指向北方 (north)。"
+      },
+      {
+        "word": "lighthouse",
+        "phonetic": "/ˈlaɪtˌhaʊs/",
+        "syllables": "light-house",
+        "pos": "n.",
+        "meaning": "燈塔",
+        "example": "A lighthouse is a tall tower built on the coast.",
+        "note": "複合字：light (燈光) + house (房屋)，頂端有巨型燈具與號角 (horn)。"
+      },
+      {
+        "word": "foggy",
+        "phonetic": "/ˈfɔːɡi/",
+        "syllables": "fog-gy",
+        "pos": "adj.",
+        "meaning": "有霧的；濃霧瀰漫的",
+        "example": "Jaya and her family went hiking one foggy morning.",
+        "note": "名詞 fog (霧) 重複字尾 g 加 -y 變成形容詞 foggy。"
+      },
+      {
+        "word": "crooked",
+        "phonetic": "/ˈkrʊkɪd/",
+        "syllables": "crook-ed",
+        "pos": "adj.",
+        "meaning": "彎曲的；歪斜的",
+        "example": "Their goal was a hill with a tall, crooked tree on top.",
+        "note": "-ed 發 /ɪd/ 音，讀作兩音節 crook-ed。"
+      },
+      {
+        "word": "turn right",
+        "phonetic": "/tɜːrn ˈraɪt/",
+        "syllables": "turn right",
         "pos": "phrase",
-        "meaning": "右轉 / 左轉",
-        "example": ""
+        "meaning": "右轉",
+        "example": "There is a place we should have turned right.",
+        "note": "反義片語為 turn left (左轉)。"
       },
       {
         "word": "go straight",
+        "phonetic": "/ɡoʊ ˈstreɪt/",
+        "syllables": "go straight",
         "pos": "phrase",
         "meaning": "直走",
-        "example": ""
+        "example": "We decided to go straight instead of turning.",
+        "note": "straight 中的 gh 不發音，切勿漏寫 gh。"
       },
       {
         "word": "go back",
+        "phonetic": "/ɡoʊ ˈbæk/",
+        "syllables": "go back",
         "pos": "phrase",
-        "meaning": "折返、回頭",
-        "example": ""
+        "meaning": "折返；回去",
+        "example": "Before we go back down the trail, let's hike up the hill.",
+        "note": "指沿原路返回或回到某地。"
       },
       {
-        "word": "on the left side",
+        "word": "on the left",
+        "phonetic": "/ɑːn ðə ˈlɛft/",
+        "syllables": "on the left",
         "pos": "phrase",
-        "meaning": "在左側",
-        "example": ""
+        "meaning": "在左邊；在左側",
+        "example": "She pointed to a log bench on the left side of the trail.",
+        "note": "介系詞用 on：on the left / on the right。"
       },
       {
         "word": "up the hill",
+        "phonetic": "/ʌp ðə ˈhɪl/",
+        "syllables": "up the hill",
         "pos": "phrase",
-        "meaning": "上山",
-        "example": ""
-      },
-      {
-        "word": "between A and B",
-        "pos": "phrase",
-        "meaning": "在 A 與 B 之間",
-        "example": ""
+        "meaning": "往山上；爬上山丘",
+        "example": "We should hike up the hill and take a look around!",
+        "note": "下山則為 down the hill。"
       },
       {
         "word": "read a map",
+        "phonetic": "/riːd ə ˈmæp/",
+        "syllables": "read a map",
         "pos": "phrase",
-        "meaning": "看地圖、判讀地圖",
-        "example": ""
+        "meaning": "看地圖；判讀地圖",
+        "example": "We know how to read a map, so let's look.",
+        "note": "「看地圖」英文動詞用 read，不用 look 或 watch！"
       }
     ],
     "mistake_buster": [
       {
-        "trap_id": "MISTAKE_SETTING_CONFUSION",
-        "sentence": "The family got lost because they were tired.",
+        "trap_id": "RWW05_ERR_1",
+        "sentence": "Jaya and her family got lost because they turned right.",
         "tokens": [
-          "The",
+          "Jaya",
+          "and",
+          "her",
           "family",
           "got",
           "lost",
           "because",
           "they",
-          "were",
-          "tired."
+          "turned right."
         ],
-        "wrong_index": 5,
-        "wrong_word": "they",
-        "correct_word": "the",
-        "fixed_sentence": "The family got lost because the morning was foggy and they went straight instead of turning right.",
-        "reason": "混淆人物生理感覺 (tired) 與時空環境主因 (foggy weather causing missed turn)。"
+        "wrong_index": 8,
+        "wrong_word": "turned right.",
+        "correct_word": "went straight.",
+        "fixed_sentence": "Jaya and her family got lost because they went straight.",
+        "reason": "根據故事第 7-8 行，他們在應該右轉的地方誤『直走 (went straight)』，才走到沒見過的原木長凳！"
       },
       {
-        "trap_id": "MISTAKE_FOG_ELEVATION",
-        "sentence": "The fog was above the hill so they could not see the sun.",
+        "trap_id": "RWW05_ERR_2",
+        "sentence": "When they climbed the small hill, the fog was above them.",
         "tokens": [
-          "The",
+          "When",
+          "they",
+          "climbed",
+          "the",
+          "small",
+          "hill,",
+          "the",
           "fog",
           "was",
           "above",
-          "the",
-          "hill",
-          "so",
-          "they",
-          "could",
-          "not",
-          "see",
-          "the",
-          "sun."
+          "them."
         ],
-        "wrong_index": 1,
-        "wrong_word": "fog",
-        "correct_word": "top",
-        "fixed_sentence": "The top of the hill was above the fog, so they could see clearly.",
-        "reason": "文章明確指出爬上小山頂後「was above the fog」，視野豁然開朗，有如雲海中的島嶼。"
+        "wrong_index": 9,
+        "wrong_word": "above",
+        "correct_word": "below",
+        "fixed_sentence": "When they climbed the small hill, the fog was below them.",
+        "reason": "根據故事第 18 行，小山丘的山頂高於濃霧（above the fog），所以濃霧是在他們『下方 (below them / at the bottom of the hill)』！"
+      },
+      {
+        "trap_id": "RWW05_ERR_3",
+        "sentence": "We knew the trail well, so we needed to watch a map.",
+        "tokens": [
+          "We",
+          "knew",
+          "the",
+          "trail",
+          "well,",
+          "so",
+          "we",
+          "needed",
+          "to",
+          "watch",
+          "a",
+          "map."
+        ],
+        "wrong_index": 9,
+        "wrong_word": "watch",
+        "correct_word": "read",
+        "fixed_sentence": "We knew the trail well, so we needed to read a map.",
+        "reason": "英文中「看地圖、判讀地圖」固定動詞搭配為『read a map』，不可使用 watch 或 look！"
+      },
+      {
+        "trap_id": "RWW05_ERR_4",
+        "sentence": "The tall lighthouse with a loud horn was to the north.",
+        "tokens": [
+          "The",
+          "tall",
+          "lighthouse",
+          "with",
+          "a",
+          "loud",
+          "horn",
+          "was",
+          "to",
+          "the",
+          "north."
+        ],
+        "wrong_index": 10,
+        "wrong_word": "north.",
+        "correct_word": "south.",
+        "fixed_sentence": "The tall lighthouse with a loud horn was to the south.",
+        "reason": "媽媽看地圖定位時指出：城鎮附近的燈塔位於『南方 (south)』，而彎曲大樹的野餐山頭在東北方（northeast）！"
       }
     ],
     "quizzes": [
@@ -4142,151 +6557,389 @@ window.MIDTERM_DATABASE = [
         "id": "RWW6_U05_LIST_1",
         "type": "spelling_listen",
         "category_tag": "listening",
-        "question": "請聽電腦發音，在紙上拼寫出這個核心單字：",
-        "hint": "中文釋義：右轉 / 左轉",
-        "audio_word": "turn right / left",
-        "phonetic": "",
-        "syllables": "turn right / left",
-        "answer": "turn right / left",
+        "question": "請聽電腦發音，在紙上拼寫出這個核心單字或片語：",
+        "hint": "詞性與中文：n. 指南針；指北針",
+        "audio_word": "compass",
+        "phonetic": "/ˈkʌmpəs/",
+        "syllables": "com-pass",
+        "answer": "compass",
         "explanation": {
-          "concept": "Unit 5: Lost and Found 核心字彙：turn right / left",
-          "formula": "詞性與例句搭配：右轉 / 左轉",
-          "trap": "注意拼寫盲點：切記母音與子音字母對應，勿漏寫尾音或不發音字母。"
+          "concept": "【Unit 5: Lost and Found】核心字彙：compass /ˈkʌmpəs/ (n. 指南針；指北針)",
+          "formula": "課文例句：A compass is an instrument you use to tell direction.",
+          "trap": "拼寫與用法關鍵：字尾有兩個 s；內有磁針永遠指向北方 (north)。"
         }
       },
       {
         "id": "RWW6_U05_LIST_2",
         "type": "spelling_listen",
         "category_tag": "listening",
-        "question": "請聽電腦發音，在紙上拼寫出這個核心單字：",
-        "hint": "中文釋義：直走",
-        "audio_word": "go straight",
-        "phonetic": "",
-        "syllables": "go straight",
-        "answer": "go straight",
+        "question": "請聽電腦發音，在紙上拼寫出這個核心單字或片語：",
+        "hint": "詞性與中文：n. 燈塔",
+        "audio_word": "lighthouse",
+        "phonetic": "/ˈlaɪtˌhaʊs/",
+        "syllables": "light-house",
+        "answer": "lighthouse",
         "explanation": {
-          "concept": "Unit 5: Lost and Found 核心字彙：go straight",
-          "formula": "詞性與例句搭配：直走",
-          "trap": "注意拼寫盲點：切記母音與子音字母對應，勿漏寫尾音或不發音字母。"
+          "concept": "【Unit 5: Lost and Found】核心字彙：lighthouse /ˈlaɪtˌhaʊs/ (n. 燈塔)",
+          "formula": "課文例句：A lighthouse is a tall tower built on the coast.",
+          "trap": "拼寫與用法關鍵：複合字：light (燈光) + house (房屋)，頂端有巨型燈具與號角 (horn)。"
         }
       },
       {
         "id": "RWW6_U05_LIST_3",
         "type": "spelling_listen",
         "category_tag": "listening",
-        "question": "請聽電腦發音，在紙上拼寫出這個核心單字：",
-        "hint": "中文釋義：折返、回頭",
-        "audio_word": "go back",
-        "phonetic": "",
-        "syllables": "go back",
-        "answer": "go back",
+        "question": "請聽電腦發音，在紙上拼寫出這個核心單字或片語：",
+        "hint": "詞性與中文：adj. 有霧的；濃霧瀰漫的",
+        "audio_word": "foggy",
+        "phonetic": "/ˈfɔːɡi/",
+        "syllables": "fog-gy",
+        "answer": "foggy",
         "explanation": {
-          "concept": "Unit 5: Lost and Found 核心字彙：go back",
-          "formula": "詞性與例句搭配：折返、回頭",
-          "trap": "注意拼寫盲點：切記母音與子音字母對應，勿漏寫尾音或不發音字母。"
+          "concept": "【Unit 5: Lost and Found】核心字彙：foggy /ˈfɔːɡi/ (adj. 有霧的；濃霧瀰漫的)",
+          "formula": "課文例句：Jaya and her family went hiking one foggy morning.",
+          "trap": "拼寫與用法關鍵：名詞 fog (霧) 重複字尾 g 加 -y 變成形容詞 foggy。"
         }
       },
       {
         "id": "RWW6_U05_LIST_4",
         "type": "spelling_listen",
         "category_tag": "listening",
-        "question": "請聽電腦發音，在紙上拼寫出這個核心單字：",
-        "hint": "中文釋義：在左側",
-        "audio_word": "on the left side",
-        "phonetic": "",
-        "syllables": "on the left side",
-        "answer": "on the left side",
+        "question": "請聽電腦發音，在紙上拼寫出這個核心單字或片語：",
+        "hint": "詞性與中文：adj. 彎曲的；歪斜的",
+        "audio_word": "crooked",
+        "phonetic": "/ˈkrʊkɪd/",
+        "syllables": "crook-ed",
+        "answer": "crooked",
         "explanation": {
-          "concept": "Unit 5: Lost and Found 核心字彙：on the left side",
-          "formula": "詞性與例句搭配：在左側",
-          "trap": "注意拼寫盲點：切記母音與子音字母對應，勿漏寫尾音或不發音字母。"
+          "concept": "【Unit 5: Lost and Found】核心字彙：crooked /ˈkrʊkɪd/ (adj. 彎曲的；歪斜的)",
+          "formula": "課文例句：Their goal was a hill with a tall, crooked tree on top.",
+          "trap": "拼寫與用法關鍵：-ed 發 /ɪd/ 音，讀作兩音節 crook-ed。"
         }
       },
       {
         "id": "RWW6_U05_LIST_5",
         "type": "spelling_listen",
         "category_tag": "listening",
-        "question": "請聽電腦發音，在紙上拼寫出這個核心單字：",
-        "hint": "中文釋義：上山",
-        "audio_word": "up the hill",
-        "phonetic": "",
-        "syllables": "up the hill",
-        "answer": "up the hill",
+        "question": "請聽電腦發音，在紙上拼寫出這個核心單字或片語：",
+        "hint": "詞性與中文：phrase 右轉",
+        "audio_word": "turn right",
+        "phonetic": "/tɜːrn ˈraɪt/",
+        "syllables": "turn right",
+        "answer": "turn right",
         "explanation": {
-          "concept": "Unit 5: Lost and Found 核心字彙：up the hill",
-          "formula": "詞性與例句搭配：上山",
-          "trap": "注意拼寫盲點：切記母音與子音字母對應，勿漏寫尾音或不發音字母。"
+          "concept": "【Unit 5: Lost and Found】核心字彙：turn right /tɜːrn ˈraɪt/ (phrase 右轉)",
+          "formula": "課文例句：There is a place we should have turned right.",
+          "trap": "拼寫與用法關鍵：反義片語為 turn left (左轉)。"
         }
       },
       {
         "id": "RWW6_U05_LIST_6",
         "type": "spelling_listen",
         "category_tag": "listening",
-        "question": "請聽電腦發音，在紙上拼寫出這個核心單字：",
-        "hint": "中文釋義：在 A 與 B 之間",
-        "audio_word": "between A and B",
-        "phonetic": "",
-        "syllables": "between A and B",
-        "answer": "between A and B",
+        "question": "請聽電腦發音，在紙上拼寫出這個核心單字或片語：",
+        "hint": "詞性與中文：phrase 直走",
+        "audio_word": "go straight",
+        "phonetic": "/ɡoʊ ˈstreɪt/",
+        "syllables": "go straight",
+        "answer": "go straight",
         "explanation": {
-          "concept": "Unit 5: Lost and Found 核心字彙：between A and B",
-          "formula": "詞性與例句搭配：在 A 與 B 之間",
-          "trap": "注意拼寫盲點：切記母音與子音字母對應，勿漏寫尾音或不發音字母。"
+          "concept": "【Unit 5: Lost and Found】核心字彙：go straight /ɡoʊ ˈstreɪt/ (phrase 直走)",
+          "formula": "課文例句：We decided to go straight instead of turning.",
+          "trap": "拼寫與用法關鍵：straight 中的 gh 不發音，切勿漏寫 gh。"
         }
       },
       {
         "id": "RWW6_U05_LIST_7",
         "type": "spelling_listen",
         "category_tag": "listening",
-        "question": "請聽電腦發音，在紙上拼寫出這個核心單字：",
-        "hint": "中文釋義：看地圖、判讀地圖",
-        "audio_word": "read a map",
-        "phonetic": "",
-        "syllables": "read a map",
-        "answer": "read a map",
+        "question": "請聽電腦發音，在紙上拼寫出這個核心單字或片語：",
+        "hint": "詞性與中文：phrase 折返；回去",
+        "audio_word": "go back",
+        "phonetic": "/ɡoʊ ˈbæk/",
+        "syllables": "go back",
+        "answer": "go back",
         "explanation": {
-          "concept": "Unit 5: Lost and Found 核心字彙：read a map",
-          "formula": "詞性與例句搭配：看地圖、判讀地圖",
-          "trap": "注意拼寫盲點：切記母音與子音字母對應，勿漏寫尾音或不發音字母。"
+          "concept": "【Unit 5: Lost and Found】核心字彙：go back /ɡoʊ ˈbæk/ (phrase 折返；回去)",
+          "formula": "課文例句：Before we go back down the trail, let's hike up the hill.",
+          "trap": "拼寫與用法關鍵：指沿原路返回或回到某地。"
         }
       },
       {
-        "id": "RWW6_U05_QA_8",
+        "id": "RWW6_U05_LIST_8",
+        "type": "spelling_listen",
+        "category_tag": "listening",
+        "question": "請聽電腦發音，在紙上拼寫出這個核心單字或片語：",
+        "hint": "詞性與中文：phrase 在左邊；在左側",
+        "audio_word": "on the left",
+        "phonetic": "/ɑːn ðə ˈlɛft/",
+        "syllables": "on the left",
+        "answer": "on the left",
+        "explanation": {
+          "concept": "【Unit 5: Lost and Found】核心字彙：on the left /ɑːn ðə ˈlɛft/ (phrase 在左邊；在左側)",
+          "formula": "課文例句：She pointed to a log bench on the left side of the trail.",
+          "trap": "拼寫與用法關鍵：介系詞用 on：on the left / on the right。"
+        }
+      },
+      {
+        "id": "RWW6_U05_LIST_9",
+        "type": "spelling_listen",
+        "category_tag": "listening",
+        "question": "請聽電腦發音，在紙上拼寫出這個核心單字或片語：",
+        "hint": "詞性與中文：phrase 往山上；爬上山丘",
+        "audio_word": "up the hill",
+        "phonetic": "/ʌp ðə ˈhɪl/",
+        "syllables": "up the hill",
+        "answer": "up the hill",
+        "explanation": {
+          "concept": "【Unit 5: Lost and Found】核心字彙：up the hill /ʌp ðə ˈhɪl/ (phrase 往山上；爬上山丘)",
+          "formula": "課文例句：We should hike up the hill and take a look around!",
+          "trap": "拼寫與用法關鍵：下山則為 down the hill。"
+        }
+      },
+      {
+        "id": "RWW6_U05_LIST_10",
+        "type": "spelling_listen",
+        "category_tag": "listening",
+        "question": "請聽電腦發音，在紙上拼寫出這個核心單字或片語：",
+        "hint": "詞性與中文：phrase 看地圖；判讀地圖",
+        "audio_word": "read a map",
+        "phonetic": "/riːd ə ˈmæp/",
+        "syllables": "read a map",
+        "answer": "read a map",
+        "explanation": {
+          "concept": "【Unit 5: Lost and Found】核心字彙：read a map /riːd ə ˈmæp/ (phrase 看地圖；判讀地圖)",
+          "formula": "課文例句：We know how to read a map, so let's look.",
+          "trap": "拼寫與用法關鍵：「看地圖」英文動詞用 read，不用 look 或 watch！"
+        }
+      },
+      {
+        "id": "RWW6_U05_RMC_11",
+        "type": "choice",
+        "category_tag": "choice",
+        "question": "Len got water in his nose as he played in the waves.",
+        "options": [
+          "He's at the beach.",
+          "He's in the city."
+        ],
+        "answer": "He's at the beach.",
+        "hint": "閱讀與字義選擇題：請從選項中選出最符合課文內容的答案",
+        "explanation": {
+          "concept": "Unit 5 閱讀策略：分析故事時空背景 (Identify Setting) 與戶外方位指引",
+          "formula": "正解：『He's at the beach.』。根據課文上下文線索與字義推論得出。",
+          "trap": "細節注意：濃霧 (foggy morning) 導致他們在該右轉處誤直走 (went straight)；爬上小山頂後位於濃霧之上 (above the fog)；看地圖英文必用 read a map！"
+        }
+      },
+      {
+        "id": "RWW6_U05_RMC_12",
+        "type": "choice",
+        "category_tag": "choice",
+        "question": "Emma asked the server for a glass of water.",
+        "options": [
+          "She's in a restaurant.",
+          "She's in her kitchen at home."
+        ],
+        "answer": "She's in a restaurant.",
+        "hint": "閱讀與字義選擇題：請從選項中選出最符合課文內容的答案",
+        "explanation": {
+          "concept": "Unit 5 閱讀策略：分析故事時空背景 (Identify Setting) 與戶外方位指引",
+          "formula": "正解：『She's in a restaurant.』。根據課文上下文線索與字義推論得出。",
+          "trap": "細節注意：濃霧 (foggy morning) 導致他們在該右轉處誤直走 (went straight)；爬上小山頂後位於濃霧之上 (above the fog)；看地圖英文必用 read a map！"
+        }
+      },
+      {
+        "id": "RWW6_U05_RMC_13",
+        "type": "choice",
+        "category_tag": "choice",
+        "question": "What does the family do on the hill?",
+        "options": [
+          "sit down",
+          "turn left",
+          "read a map",
+          "have a picnic"
+        ],
+        "answer": "read a map",
+        "hint": "閱讀與字義選擇題：請從選項中選出最符合課文內容的答案",
+        "explanation": {
+          "concept": "Unit 5 閱讀策略：分析故事時空背景 (Identify Setting) 與戶外方位指引",
+          "formula": "正解：『read a map』。根據課文上下文線索與字義推論得出。",
+          "trap": "細節注意：濃霧 (foggy morning) 導致他們在該右轉處誤直走 (went straight)；爬上小山頂後位於濃霧之上 (above the fog)；看地圖英文必用 read a map！"
+        }
+      },
+      {
+        "id": "RWW6_U05_RMC_14",
+        "type": "choice",
+        "category_tag": "choice",
+        "question": "Where is the fog?",
+        "options": [
+          "at the bottom of the hill",
+          "above the hill",
+          "to the north",
+          "off the main trail"
+        ],
+        "answer": "at the bottom of the hill",
+        "hint": "閱讀與字義選擇題：請從選項中選出最符合課文內容的答案",
+        "explanation": {
+          "concept": "Unit 5 閱讀策略：分析故事時空背景 (Identify Setting) 與戶外方位指引",
+          "formula": "正解：『at the bottom of the hill』。課文依據：the top of the hill was above the fog",
+          "trap": "細節注意：濃霧 (foggy morning) 導致他們在該右轉處誤直走 (went straight)；爬上小山頂後位於濃霧之上 (above the fog)；看地圖英文必用 read a map！"
+        }
+      },
+      {
+        "id": "RWW6_U05_RMC_15",
+        "type": "choice",
+        "category_tag": "choice",
+        "question": "How did Jaya and her family get on the wrong trail?",
+        "options": [
+          "They went left.",
+          "They went straight.",
+          "They went up a hill.",
+          "They went back."
+        ],
+        "answer": "They went straight.",
+        "hint": "閱讀與字義選擇題：請從選項中選出最符合課文內容的答案",
+        "explanation": {
+          "concept": "Unit 5 閱讀策略：分析故事時空背景 (Identify Setting) 與戶外方位指引",
+          "formula": "正解：『They went straight.』。課文依據：instead of turning right",
+          "trap": "細節注意：濃霧 (foggy morning) 導致他們在該右轉處誤直走 (went straight)；爬上小山頂後位於濃霧之上 (above the fog)；看地圖英文必用 read a map！"
+        }
+      },
+      {
+        "id": "RWW6_U05_RMC_16",
+        "type": "choice",
+        "category_tag": "choice",
+        "question": "Where did Jaya and her family plan to hike to?",
+        "options": [
+          "the bench",
+          "the lighthouse",
+          "the hill above the fallen log",
+          "the hill with the crooked tree"
+        ],
+        "answer": "the hill with the crooked tree",
+        "hint": "閱讀與字義選擇題：請從選項中選出最符合課文內容的答案",
+        "explanation": {
+          "concept": "Unit 5 閱讀策略：分析故事時空背景 (Identify Setting) 與戶外方位指引",
+          "formula": "正解：『the hill with the crooked tree』。根據課文上下文線索與字義推論得出。",
+          "trap": "細節注意：濃霧 (foggy morning) 導致他們在該右轉處誤直走 (went straight)；爬上小山頂後位於濃霧之上 (above the fog)；看地圖英文必用 read a map！"
+        }
+      },
+      {
+        "id": "RWW6_U05_BFILL_17",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "A lighthouse is a tall ______ built on the coast.",
+        "answer": "tower",
+        "hint": "課文重點句填空：請在紙上寫出空格處的單字",
+        "explanation": {
+          "concept": "Unit 5 閱讀策略：分析故事時空背景 (Identify Setting) 與戶外方位指引",
+          "formula": "完整原句：A lighthouse is a tall tower built on the coast.",
+          "trap": "細節注意：濃霧 (foggy morning) 導致他們在該右轉處誤直走 (went straight)；爬上小山頂後位於濃霧之上 (above the fog)；看地圖英文必用 read a map！"
+        }
+      },
+      {
+        "id": "RWW6_U05_BFILL_18",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "It has a bright ______ and very loud ______.",
+        "answer": "lamp / horn",
+        "hint": "課文重點句填空：請在紙上寫出空格處的單字",
+        "explanation": {
+          "concept": "Unit 5 閱讀策略：分析故事時空背景 (Identify Setting) 與戶外方位指引",
+          "formula": "完整原句：It has a bright lamp and very loud horn.",
+          "trap": "細節注意：濃霧 (foggy morning) 導致他們在該右轉處誤直走 (went straight)；爬上小山頂後位於濃霧之上 (above the fog)；看地圖英文必用 read a map！"
+        }
+      },
+      {
+        "id": "RWW6_U05_BFILL_19",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "These are turned on when ______ forms along the coast.",
+        "answer": "fog",
+        "hint": "課文重點句填空：請在紙上寫出空格處的單字",
+        "explanation": {
+          "concept": "Unit 5 閱讀策略：分析故事時空背景 (Identify Setting) 與戶外方位指引",
+          "formula": "完整原句：These are turned on when fog forms along the coast.",
+          "trap": "細節注意：濃霧 (foggy morning) 導致他們在該右轉處誤直走 (went straight)；爬上小山頂後位於濃霧之上 (above the fog)；看地圖英文必用 read a map！"
+        }
+      },
+      {
+        "id": "RWW6_U05_BFILL_20",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "A lighthouse warns ______ that they are near land.",
+        "answer": "people in ships",
+        "hint": "課文重點句填空：請在紙上寫出空格處的單字",
+        "explanation": {
+          "concept": "Unit 5 閱讀策略：分析故事時空背景 (Identify Setting) 與戶外方位指引",
+          "formula": "完整原句：A lighthouse warns people in ships that they are near land.",
+          "trap": "細節注意：濃霧 (foggy morning) 導致他們在該右轉處誤直走 (went straight)；爬上小山頂後位於濃霧之上 (above the fog)；看地圖英文必用 read a map！"
+        }
+      },
+      {
+        "id": "RWW6_U05_QA_21",
         "type": "fill",
         "category_tag": "fill",
         "question": "How do Jaya and Manoj know they're in the wrong place?",
         "answer": "They see a log bench on the left side of the trail that they don't remember, realizing they should have turned right instead of going straight.",
-        "hint": "在紙上寫下答案關鍵字或完整句子",
+        "hint": "閱讀理解簡答：在紙上寫下關鍵答案或完整句子",
         "explanation": {
-          "concept": "Unit 5: Lost and Found 閱讀理解與細節檢索",
-          "formula": "課文原句定位正解：They see a log bench on the left side of the trail that they don't remember, realizing they should have turned right instead of going straight.",
-          "trap": "注意問句疑問詞（What, Why, Where, How）對應之作答時態與主詞人稱。"
+          "concept": "Unit 5 閱讀策略：分析故事時空背景 (Identify Setting) 與戶外方位指引",
+          "formula": "標準解答：They see a log bench on the left side of the trail that they don't remember, realizing they should have turned right instead of going straight.",
+          "trap": "細節注意：濃霧 (foggy morning) 導致他們在該右轉處誤直走 (went straight)；爬上小山頂後位於濃霧之上 (above the fog)；看地圖英文必用 read a map！"
         }
       },
       {
-        "id": "RWW6_U05_QA_9",
+        "id": "RWW6_U05_QA_22",
         "type": "fill",
         "category_tag": "fill",
         "question": "What time of day is it when Jaya and her family see the bench?",
         "answer": "It is noon (12:00 PM).",
-        "hint": "在紙上寫下答案關鍵字或完整句子",
+        "hint": "閱讀理解簡答：在紙上寫下關鍵答案或完整句子",
         "explanation": {
-          "concept": "Unit 5: Lost and Found 閱讀理解與細節檢索",
-          "formula": "課文原句定位正解：It is noon (12:00 PM).",
-          "trap": "注意問句疑問詞（What, Why, Where, How）對應之作答時態與主詞人稱。"
+          "concept": "Unit 5 閱讀策略：分析故事時空背景 (Identify Setting) 與戶外方位指引",
+          "formula": "標準解答：It is noon (12:00 PM).",
+          "trap": "細節注意：濃霧 (foggy morning) 導致他們在該右轉處誤直走 (went straight)；爬上小山頂後位於濃霧之上 (above the fog)；看地圖英文必用 read a map！"
         }
       },
       {
-        "id": "RWW6_U05_QA_10",
+        "id": "RWW6_U05_QA_23",
         "type": "fill",
         "category_tag": "fill",
         "question": "How does weather affect the family's plans?",
         "answer": "The thick fog makes it impossible to see distant landmarks, causing them to miss their trail turn and lose their way.",
-        "hint": "在紙上寫下答案關鍵字或完整句子",
+        "hint": "閱讀理解簡答：在紙上寫下關鍵答案或完整句子",
         "explanation": {
-          "concept": "Unit 5: Lost and Found 閱讀理解與細節檢索",
-          "formula": "課文原句定位正解：The thick fog makes it impossible to see distant landmarks, causing them to miss their trail turn and lose their way.",
-          "trap": "注意問句疑問詞（What, Why, Where, How）對應之作答時態與主詞人稱。"
+          "concept": "Unit 5 閱讀策略：分析故事時空背景 (Identify Setting) 與戶外方位指引",
+          "formula": "標準解答：The thick fog makes it impossible to see distant landmarks, causing them to miss their trail turn and lose their way.",
+          "trap": "細節注意：濃霧 (foggy morning) 導致他們在該右轉處誤直走 (went straight)；爬上小山頂後位於濃霧之上 (above the fog)；看地圖英文必用 read a map！"
+        }
+      },
+      {
+        "id": "RWW6_U05_EX_24",
+        "type": "paper_rewrite",
+        "category_tag": "rewrite",
+        "question": "閱讀理解造句：Where is the family in the story, and what is the weather like?",
+        "options": [],
+        "answer": "They are on a hiking trail in the hills, and it is very foggy.",
+        "hint": "描述時空背景 (Setting)：在山間健行步道上，且天氣濃霧瀰漫 (foggy)",
+        "explanation": {
+          "concept": "Unit 5 閱讀策略：分析故事時空背景 (Identify Setting) 與戶外方位指引",
+          "formula": "標準解答：They are on a hiking trail in the hills, and it is very foggy.",
+          "trap": "細節注意：濃霧 (foggy morning) 導致他們在該右轉處誤直走 (went straight)；爬上小山頂後位於濃霧之上 (above the fog)；看地圖英文必用 read a map！"
+        }
+      },
+      {
+        "id": "RWW6_U05_EX_25",
+        "type": "paper_rewrite",
+        "category_tag": "rewrite",
+        "question": "方位片語造句：用 turn right / instead of / go straight 完成句子（We should...）",
+        "options": [],
+        "answer": "We should turn right instead of going straight.",
+        "hint": "instead of 後面動詞要加 -ing (going straight)",
+        "explanation": {
+          "concept": "Unit 5 閱讀策略：分析故事時空背景 (Identify Setting) 與戶外方位指引",
+          "formula": "標準解答：We should turn right instead of going straight.",
+          "trap": "細節注意：濃霧 (foggy morning) 導致他們在該右轉處誤直走 (went straight)；爬上小山頂後位於濃霧之上 (above the fog)；看地圖英文必用 read a map！"
         }
       }
     ]
@@ -4304,118 +6957,200 @@ window.MIDTERM_DATABASE = [
         "section_title": "定向越野的冒險世界 (The World of Orienteering)",
         "sentences": [
           {
-            "en": "Orienteering is an exciting outdoor sport that began in Sweden.",
-            "zh": "定向越野是一項起源於瑞典的令人興奮的戶外運動。"
+            "en": "In the sport of orienteering, racers use a map and compass to find stations called controls.",
+            "zh": "在定向越野運動中，參賽者使用地圖和指南針尋找稱為「控制點」的站點。"
           },
           {
-            "en": "Racers use a topographical map and a magnetic compass to navigate through unfamiliar terrain.",
-            "zh": "參賽者使用地形圖和磁指南針在陌生的地形中導航。"
+            "en": "A special red and white flag marks each control.",
+            "zh": "每個控制點都標有特殊的紅白相間旗幟。"
           },
           {
-            "en": "Along the course, there are checkpoints called controls.",
-            "zh": "沿途設有被稱為「檢查點」的控制點。"
+            "en": "Controls may be in front of a big rock or behind a tree.",
+            "zh": "控制點可能位在巨石前方或大樹後面。"
           },
           {
-            "en": "Each control is marked with a distinctive red and white triangular flag.",
-            "zh": "每個控制點都標有獨特的紅白三角旗。"
+            "en": "At each control, racers mark a card they carry with them.",
+            "zh": "在每個控制點，參賽者會在隨身攜帶的卡片上做記號。"
           },
           {
-            "en": "Racers carry a punch card and mark it at every station to prove they visited it.",
-            "zh": "參賽者攜帶打孔卡並在每個站點打卡，以證明他們曾經到訪。"
+            "en": "The winner is not simply the fastest runner, but the next person to finish with a full card.",
+            "zh": "獲勝者不僅僅是跑最快的人，而是打滿全卡所有控制點並率先抵達終點的人。"
           },
           {
-            "en": "The winner is not simply the fastest runner, but the one who accurately finds all the controls!",
-            "zh": "獲勝者不僅僅是跑得最快的人，而是準確找到所有控制點的人！"
+            "en": "In orienteering, you will likely run along a river, climb over rocks, and go up and down hills.",
+            "zh": "在定向越野中，你可能會沿著河邊奔跑、爬過岩石，並在山丘間上下穿梭。"
           }
         ]
       }
     ],
     "vocab": [
       {
-        "word": "go two blocks north",
-        "pos": "phrase",
-        "meaning": "向北走兩個街區",
-        "example": "urban grid directions"
+        "word": "orienteering",
+        "phonetic": "/ˌɔːriɛnˈtɪrɪŋ/",
+        "syllables": "o-ri-en-teer-ing",
+        "pos": "n.",
+        "meaning": "定向越野運動",
+        "example": "In the sport of orienteering, racers use a map and compass.",
+        "note": "結合地圖與指北針在野外尋找檢查點並打卡的計時運動。"
       },
       {
-        "word": "across the street from",
-        "pos": "phrase",
-        "meaning": "在...對街 / 對面",
-        "example": "opposite side of road"
+        "word": "control",
+        "phonetic": "/kənˈtroʊl/",
+        "syllables": "con-trol",
+        "pos": "n.",
+        "meaning": "（定向越野的）控制點、檢查站",
+        "example": "Racers must find all the controls to win.",
+        "note": "比賽中必須集滿卡片上全部 18 個 controls 的打孔記號才算有效完賽。"
       },
       {
-        "word": "in front of / behind",
+        "word": "corner",
+        "phonetic": "/ˈkɔːrnər/",
+        "syllables": "cor-ner",
+        "pos": "n.",
+        "meaning": "街角；轉角（兩條道路交會處）",
+        "example": "Standing on a corner, you ask someone how to get to a store.",
+        "note": "課文定義：a place where two roads meet。"
+      },
+      {
+        "word": "visual",
+        "phonetic": "/ˈvɪʒuəl/",
+        "syllables": "vis-u-al",
+        "pos": "n./adj.",
+        "meaning": "視覺圖表（圖片、圖解、地圖）；視覺的",
+        "example": "Visuals provide information that is not in a text.",
+        "note": "包含 pictures, diagrams, and maps，能補充文章未寫出的細節。"
+      },
+      {
+        "word": "go two blocks",
+        "phonetic": "/ɡoʊ ˈtuː ˈblɑːks/",
+        "syllables": "go two blocks",
         "pos": "phrase",
-        "meaning": "在...前面 / 後面",
-        "example": "relative obstacle position"
+        "meaning": "走兩個街區（表示移動距離）",
+        "example": "Go two blocks north and turn left.",
+        "note": "block 指兩條十字路口之間的「街區」，go two blocks 意為 move this far。"
+      },
+      {
+        "word": "across the street",
+        "phonetic": "/əˈkrɔːs ðə ˈstriːt/",
+        "syllables": "a-cross the street",
+        "pos": "phrase",
+        "meaning": "在對街；在馬路對面",
+        "example": "You will be across the street from the bookstore.",
+        "note": "意為 on the other side (在另一側)；動詞片語「過馬路」則是 cross the street。"
       },
       {
         "word": "along a river",
+        "phonetic": "/əˈlɔːŋ ə ˈrɪvər/",
+        "syllables": "a-long a riv-er",
         "pos": "phrase",
         "meaning": "沿著河流",
-        "example": "natural linear boundary"
+        "example": "In orienteering, you will likely run along a river.",
+        "note": "along 表示「順著、沿著（線狀地形）」。"
       },
       {
         "word": "climb over rocks",
+        "phonetic": "/klaɪm ˈoʊvər ˈrɑːks/",
+        "syllables": "climb o-ver rocks",
         "pos": "phrase",
         "meaning": "爬過岩石",
-        "example": "terrain navigation"
+        "example": "Racers climb over rocks and go up and down hills.",
+        "note": "climb 的 b 不發音！over 表「越過障礙物上方」。"
       },
       {
         "word": "up and down hills",
+        "phonetic": "/ʌp ænd daʊn ˈhɪlz/",
+        "syllables": "up and down hills",
         "pos": "phrase",
         "meaning": "在山丘間上下起伏穿梭",
-        "example": "elevation changes"
+        "example": "You will climb over rocks and go up and down hills.",
+        "note": "描述野外高低起伏的地形挑戰。"
       }
     ],
     "mistake_buster": [
       {
-        "trap_id": "MISTAKE_ORIENTEERING_WINNER",
-        "sentence": "The person who runs the fastest and crosses the finish line first always wins in orienteering.",
+        "trap_id": "RWW06_ERR_1",
+        "sentence": "In orienteering, racers only use a compass to find controls.",
+        "tokens": [
+          "In",
+          "orienteering,",
+          "racers",
+          "only",
+          "use",
+          "a",
+          "compass",
+          "to",
+          "find",
+          "controls."
+        ],
+        "wrong_index": 3,
+        "wrong_word": "only",
+        "correct_word": "both a map and",
+        "fixed_sentence": "In orienteering, racers use both a map and a compass to find controls.",
+        "reason": "定向越野選手必須『同時使用地圖與指北針 (a map and a compass)』，單靠指北針無法得知控制點位置！"
+      },
+      {
+        "trap_id": "RWW06_ERR_2",
+        "sentence": "The racer who crosses the finish line first always wins.",
         "tokens": [
           "The",
-          "person",
+          "racer",
           "who",
-          "runs",
-          "the",
-          "fastest",
-          "and",
           "crosses",
           "the",
           "finish",
           "line",
           "first",
           "always",
-          "wins",
-          "in",
-          "orienteering."
+          "wins."
         ],
-        "wrong_index": 0,
-        "wrong_word": "The",
-        "correct_word": "Only",
-        "fixed_sentence": "Only the fastest person who has marked ALL controls on the card wins.",
-        "reason": "定向越野強調導航精確度，遺漏打卡點即失去獲勝資格。"
+        "wrong_index": 8,
+        "wrong_word": "always",
+        "correct_word": "with a full card",
+        "fixed_sentence": "The racer who crosses the finish line with a full card wins.",
+        "reason": "定向越野規定必須找齊所有控制點並打滿整張控制卡（with a full card）；若漏打一個點，就算第一個衝線也不算贏！"
       },
       {
-        "trap_id": "MISTAKE_VISUAL_REDUNDANCY",
-        "sentence": "Visuals only repeat what the text already said in words.",
+        "trap_id": "RWW06_ERR_3",
+        "sentence": "Control flags are placed so racers can see them easily.",
         "tokens": [
-          "Visuals",
-          "only",
-          "repeat",
-          "what",
-          "the",
-          "text",
-          "already",
-          "said",
-          "in",
-          "words."
+          "Control",
+          "flags",
+          "are",
+          "placed",
+          "so",
+          "racers",
+          "can",
+          "see",
+          "them",
+          "easily."
         ],
-        "wrong_index": 1,
-        "wrong_word": "only",
-        "correct_word": "provide",
-        "fixed_sentence": "Visuals provide critical extra data not mentioned in text (e.g. number of controls = 18, flag appearance).",
-        "reason": "學生常輕忽附圖，本課教研核心正是訓練由附圖獲取延伸資訊的能力。"
+        "wrong_index": 9,
+        "wrong_word": "easily.",
+        "correct_word": "hardly.",
+        "fixed_sentence": "Control flags are placed so racers cannot see them easily.",
+        "reason": "課文第 14-21 行指出控制旗刻意藏在大石頭前或樹後，從各方向都『不容易直接看見 (can't see them easily)』！"
+      },
+      {
+        "trap_id": "RWW06_ERR_4",
+        "sentence": "According to Figure 2, there are twelve controls on the card.",
+        "tokens": [
+          "According",
+          "to",
+          "Figure",
+          "2,",
+          "there",
+          "are",
+          "twelve",
+          "controls",
+          "on",
+          "the",
+          "card."
+        ],
+        "wrong_index": 6,
+        "wrong_word": "twelve",
+        "correct_word": "eighteen",
+        "fixed_sentence": "According to Figure 2, there are eighteen controls on the card.",
+        "reason": "檢視課本 Figure 2 的定向越野打卡表（Control Card），上面共有編號 1 到『18 (eighteen)』個打卡格！"
       }
     ],
     "quizzes": [
@@ -4423,204 +7158,296 @@ window.MIDTERM_DATABASE = [
         "id": "RWW6_U06_LIST_1",
         "type": "spelling_listen",
         "category_tag": "listening",
-        "question": "請聽電腦發音，在紙上拼寫出這個核心單字：",
-        "hint": "中文釋義：向北走兩個街區",
-        "audio_word": "go two blocks north",
-        "phonetic": "",
-        "syllables": "go two blocks north",
-        "answer": "go two blocks north",
+        "question": "請聽電腦發音，在紙上拼寫出這個核心單字或片語：",
+        "hint": "詞性與中文：n. 定向越野運動",
+        "audio_word": "orienteering",
+        "phonetic": "/ˌɔːriɛnˈtɪrɪŋ/",
+        "syllables": "o-ri-en-teer-ing",
+        "answer": "orienteering",
         "explanation": {
-          "concept": "Unit 6: The World of Orienteering 核心字彙：go two blocks north",
-          "formula": "詞性與例句搭配：urban grid directions",
-          "trap": "注意拼寫盲點：切記母音與子音字母對應，勿漏寫尾音或不發音字母。"
+          "concept": "【Unit 6: The World of Orienteering】核心字彙：orienteering /ˌɔːriɛnˈtɪrɪŋ/ (n. 定向越野運動)",
+          "formula": "課文例句：In the sport of orienteering, racers use a map and compass.",
+          "trap": "拼寫與用法關鍵：結合地圖與指北針在野外尋找檢查點並打卡的計時運動。"
         }
       },
       {
         "id": "RWW6_U06_LIST_2",
         "type": "spelling_listen",
         "category_tag": "listening",
-        "question": "請聽電腦發音，在紙上拼寫出這個核心單字：",
-        "hint": "中文釋義：在...對街 / 對面",
-        "audio_word": "across the street from",
-        "phonetic": "",
-        "syllables": "across the street from",
-        "answer": "across the street from",
+        "question": "請聽電腦發音，在紙上拼寫出這個核心單字或片語：",
+        "hint": "詞性與中文：n. （定向越野的）控制點、檢查站",
+        "audio_word": "control",
+        "phonetic": "/kənˈtroʊl/",
+        "syllables": "con-trol",
+        "answer": "control",
         "explanation": {
-          "concept": "Unit 6: The World of Orienteering 核心字彙：across the street from",
-          "formula": "詞性與例句搭配：opposite side of road",
-          "trap": "注意拼寫盲點：切記母音與子音字母對應，勿漏寫尾音或不發音字母。"
+          "concept": "【Unit 6: The World of Orienteering】核心字彙：control /kənˈtroʊl/ (n. （定向越野的）控制點、檢查站)",
+          "formula": "課文例句：Racers must find all the controls to win.",
+          "trap": "拼寫與用法關鍵：比賽中必須集滿卡片上全部 18 個 controls 的打孔記號才算有效完賽。"
         }
       },
       {
         "id": "RWW6_U06_LIST_3",
         "type": "spelling_listen",
         "category_tag": "listening",
-        "question": "請聽電腦發音，在紙上拼寫出這個核心單字：",
-        "hint": "中文釋義：在...前面 / 後面",
-        "audio_word": "in front of / behind",
-        "phonetic": "",
-        "syllables": "in front of / behind",
-        "answer": "in front of / behind",
+        "question": "請聽電腦發音，在紙上拼寫出這個核心單字或片語：",
+        "hint": "詞性與中文：n. 街角；轉角（兩條道路交會處）",
+        "audio_word": "corner",
+        "phonetic": "/ˈkɔːrnər/",
+        "syllables": "cor-ner",
+        "answer": "corner",
         "explanation": {
-          "concept": "Unit 6: The World of Orienteering 核心字彙：in front of / behind",
-          "formula": "詞性與例句搭配：relative obstacle position",
-          "trap": "注意拼寫盲點：切記母音與子音字母對應，勿漏寫尾音或不發音字母。"
+          "concept": "【Unit 6: The World of Orienteering】核心字彙：corner /ˈkɔːrnər/ (n. 街角；轉角（兩條道路交會處）)",
+          "formula": "課文例句：Standing on a corner, you ask someone how to get to a store.",
+          "trap": "拼寫與用法關鍵：課文定義：a place where two roads meet。"
         }
       },
       {
         "id": "RWW6_U06_LIST_4",
         "type": "spelling_listen",
         "category_tag": "listening",
-        "question": "請聽電腦發音，在紙上拼寫出這個核心單字：",
-        "hint": "中文釋義：沿著河流",
-        "audio_word": "along a river",
-        "phonetic": "",
-        "syllables": "along a river",
-        "answer": "along a river",
+        "question": "請聽電腦發音，在紙上拼寫出這個核心單字或片語：",
+        "hint": "詞性與中文：n./adj. 視覺圖表（圖片、圖解、地圖）；視覺的",
+        "audio_word": "visual",
+        "phonetic": "/ˈvɪʒuəl/",
+        "syllables": "vis-u-al",
+        "answer": "visual",
         "explanation": {
-          "concept": "Unit 6: The World of Orienteering 核心字彙：along a river",
-          "formula": "詞性與例句搭配：natural linear boundary",
-          "trap": "注意拼寫盲點：切記母音與子音字母對應，勿漏寫尾音或不發音字母。"
+          "concept": "【Unit 6: The World of Orienteering】核心字彙：visual /ˈvɪʒuəl/ (n./adj. 視覺圖表（圖片、圖解、地圖）；視覺的)",
+          "formula": "課文例句：Visuals provide information that is not in a text.",
+          "trap": "拼寫與用法關鍵：包含 pictures, diagrams, and maps，能補充文章未寫出的細節。"
         }
       },
       {
         "id": "RWW6_U06_LIST_5",
         "type": "spelling_listen",
         "category_tag": "listening",
-        "question": "請聽電腦發音，在紙上拼寫出這個核心單字：",
-        "hint": "中文釋義：爬過岩石",
-        "audio_word": "climb over rocks",
-        "phonetic": "",
-        "syllables": "climb over rocks",
-        "answer": "climb over rocks",
+        "question": "請聽電腦發音，在紙上拼寫出這個核心單字或片語：",
+        "hint": "詞性與中文：phrase 走兩個街區（表示移動距離）",
+        "audio_word": "go two blocks",
+        "phonetic": "/ɡoʊ ˈtuː ˈblɑːks/",
+        "syllables": "go two blocks",
+        "answer": "go two blocks",
         "explanation": {
-          "concept": "Unit 6: The World of Orienteering 核心字彙：climb over rocks",
-          "formula": "詞性與例句搭配：terrain navigation",
-          "trap": "注意拼寫盲點：切記母音與子音字母對應，勿漏寫尾音或不發音字母。"
+          "concept": "【Unit 6: The World of Orienteering】核心字彙：go two blocks /ɡoʊ ˈtuː ˈblɑːks/ (phrase 走兩個街區（表示移動距離）)",
+          "formula": "課文例句：Go two blocks north and turn left.",
+          "trap": "拼寫與用法關鍵：block 指兩條十字路口之間的「街區」，go two blocks 意為 move this far。"
         }
       },
       {
         "id": "RWW6_U06_LIST_6",
         "type": "spelling_listen",
         "category_tag": "listening",
-        "question": "請聽電腦發音，在紙上拼寫出這個核心單字：",
-        "hint": "中文釋義：在山丘間上下起伏穿梭",
+        "question": "請聽電腦發音，在紙上拼寫出這個核心單字或片語：",
+        "hint": "詞性與中文：phrase 在對街；在馬路對面",
+        "audio_word": "across the street",
+        "phonetic": "/əˈkrɔːs ðə ˈstriːt/",
+        "syllables": "a-cross the street",
+        "answer": "across the street",
+        "explanation": {
+          "concept": "【Unit 6: The World of Orienteering】核心字彙：across the street /əˈkrɔːs ðə ˈstriːt/ (phrase 在對街；在馬路對面)",
+          "formula": "課文例句：You will be across the street from the bookstore.",
+          "trap": "拼寫與用法關鍵：意為 on the other side (在另一側)；動詞片語「過馬路」則是 cross the street。"
+        }
+      },
+      {
+        "id": "RWW6_U06_LIST_7",
+        "type": "spelling_listen",
+        "category_tag": "listening",
+        "question": "請聽電腦發音，在紙上拼寫出這個核心單字或片語：",
+        "hint": "詞性與中文：phrase 沿著河流",
+        "audio_word": "along a river",
+        "phonetic": "/əˈlɔːŋ ə ˈrɪvər/",
+        "syllables": "a-long a riv-er",
+        "answer": "along a river",
+        "explanation": {
+          "concept": "【Unit 6: The World of Orienteering】核心字彙：along a river /əˈlɔːŋ ə ˈrɪvər/ (phrase 沿著河流)",
+          "formula": "課文例句：In orienteering, you will likely run along a river.",
+          "trap": "拼寫與用法關鍵：along 表示「順著、沿著（線狀地形）」。"
+        }
+      },
+      {
+        "id": "RWW6_U06_LIST_8",
+        "type": "spelling_listen",
+        "category_tag": "listening",
+        "question": "請聽電腦發音，在紙上拼寫出這個核心單字或片語：",
+        "hint": "詞性與中文：phrase 爬過岩石",
+        "audio_word": "climb over rocks",
+        "phonetic": "/klaɪm ˈoʊvər ˈrɑːks/",
+        "syllables": "climb o-ver rocks",
+        "answer": "climb over rocks",
+        "explanation": {
+          "concept": "【Unit 6: The World of Orienteering】核心字彙：climb over rocks /klaɪm ˈoʊvər ˈrɑːks/ (phrase 爬過岩石)",
+          "formula": "課文例句：Racers climb over rocks and go up and down hills.",
+          "trap": "拼寫與用法關鍵：climb 的 b 不發音！over 表「越過障礙物上方」。"
+        }
+      },
+      {
+        "id": "RWW6_U06_LIST_9",
+        "type": "spelling_listen",
+        "category_tag": "listening",
+        "question": "請聽電腦發音，在紙上拼寫出這個核心單字或片語：",
+        "hint": "詞性與中文：phrase 在山丘間上下起伏穿梭",
         "audio_word": "up and down hills",
-        "phonetic": "",
+        "phonetic": "/ʌp ænd daʊn ˈhɪlz/",
         "syllables": "up and down hills",
         "answer": "up and down hills",
         "explanation": {
-          "concept": "Unit 6: The World of Orienteering 核心字彙：up and down hills",
-          "formula": "詞性與例句搭配：elevation changes",
-          "trap": "注意拼寫盲點：切記母音與子音字母對應，勿漏寫尾音或不發音字母。"
+          "concept": "【Unit 6: The World of Orienteering】核心字彙：up and down hills /ʌp ænd daʊn ˈhɪlz/ (phrase 在山丘間上下起伏穿梭)",
+          "formula": "課文例句：You will climb over rocks and go up and down hills.",
+          "trap": "拼寫與用法關鍵：描述野外高低起伏的地形挑戰。"
         }
       },
       {
-        "id": "RWW6_U06_RW_7",
-        "type": "paper_rewrite",
-        "category_tag": "rewrite",
-        "question": "題目提示：Orienteering events are held outdoors.",
-        "answer": "T",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
+        "id": "RWW6_U06_RMC_10",
+        "type": "choice",
+        "category_tag": "choice",
+        "question": "A visual gives the same information that is in a text.",
+        "options": [
+          "true",
+          "false"
+        ],
+        "answer": "false",
+        "hint": "閱讀與字義選擇題：請從選項中選出最符合課文內容的答案",
         "explanation": {
-          "concept": "Unit 6: The World of Orienteering 核心句型結構改寫",
-          "formula": "標準句型：T",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
+          "concept": "Unit 6 閱讀策略：運用圖表視覺資訊 (Use Visuals) 與定向越野規則",
+          "formula": "正解：『false』。課文依據：視覺圖表會提供文字未詳述的延伸補充資訊",
+          "trap": "規則與圖表細節：Figure 2 控制卡共有 18 個控制點 (controls)；獲勝條件是「打滿全卡所有控制點 (finish with a full card)」而非單純跑最快！"
         }
       },
       {
-        "id": "RWW6_U06_RW_8",
-        "type": "paper_rewrite",
-        "category_tag": "rewrite",
-        "question": "題目提示：In orienteering, you may only use a compass.",
-        "answer": "F",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
+        "id": "RWW6_U06_RMC_11",
+        "type": "choice",
+        "category_tag": "choice",
+        "question": "A picture is an example of a visual.",
+        "options": [
+          "true",
+          "false"
+        ],
+        "answer": "true",
+        "hint": "閱讀與字義選擇題：請從選項中選出最符合課文內容的答案",
         "explanation": {
-          "concept": "Unit 6: The World of Orienteering 核心句型結構改寫",
-          "formula": "標準句型：F",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
+          "concept": "Unit 6 閱讀策略：運用圖表視覺資訊 (Use Visuals) 與定向越野規則",
+          "formula": "正解：『true』。根據課文上下文線索與字義推論得出。",
+          "trap": "規則與圖表細節：Figure 2 控制卡共有 18 個控制點 (controls)；獲勝條件是「打滿全卡所有控制點 (finish with a full card)」而非單純跑最快！"
         }
       },
       {
-        "id": "RWW6_U06_RW_9",
-        "type": "paper_rewrite",
-        "category_tag": "rewrite",
-        "question": "題目提示：Control flags have bright colors.",
-        "answer": "T",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
+        "id": "RWW6_U06_RMC_12",
+        "type": "choice",
+        "category_tag": "choice",
+        "question": "In line 2, corner means:",
+        "options": [
+          "a flag.",
+          "an event.",
+          "a place where two roads meet.",
+          "a spot behind a tree or rock."
+        ],
+        "answer": "a place where two roads meet.",
+        "hint": "閱讀與字義選擇題：請從選項中選出最符合課文內容的答案",
         "explanation": {
-          "concept": "Unit 6: The World of Orienteering 核心句型結構改寫",
-          "formula": "標準句型：T",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
+          "concept": "Unit 6 閱讀策略：運用圖表視覺資訊 (Use Visuals) 與定向越野規則",
+          "formula": "正解：『a place where two roads meet.』。根據課文上下文線索與字義推論得出。",
+          "trap": "規則與圖表細節：Figure 2 控制卡共有 18 個控制點 (controls)；獲勝條件是「打滿全卡所有控制點 (finish with a full card)」而非單純跑最快！"
         }
       },
       {
-        "id": "RWW6_U06_RW_10",
-        "type": "paper_rewrite",
-        "category_tag": "rewrite",
-        "question": "題目提示：Control flags are easy to find.",
-        "answer": "F",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
+        "id": "RWW6_U06_RMC_13",
+        "type": "choice",
+        "category_tag": "choice",
+        "question": "In line 3, Go two blocks means:",
+        "options": [
+          "move this far.",
+          "hide over there.",
+          "turn around here.",
+          "run more quickly."
+        ],
+        "answer": "move this far.",
+        "hint": "閱讀與字義選擇題：請從選項中選出最符合課文內容的答案",
         "explanation": {
-          "concept": "Unit 6: The World of Orienteering 核心句型結構改寫",
-          "formula": "標準句型：F",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
+          "concept": "Unit 6 閱讀策略：運用圖表視覺資訊 (Use Visuals) 與定向越野規則",
+          "formula": "正解：『move this far.』。根據課文上下文線索與字義推論得出。",
+          "trap": "規則與圖表細節：Figure 2 控制卡共有 18 個控制點 (controls)；獲勝條件是「打滿全卡所有控制點 (finish with a full card)」而非單純跑最快！"
         }
       },
       {
-        "id": "RWW6_U06_RW_11",
-        "type": "paper_rewrite",
-        "category_tag": "rewrite",
-        "question": "題目提示：Racers carry cards that they mark.",
-        "answer": "T",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
+        "id": "RWW6_U06_RMC_14",
+        "type": "choice",
+        "category_tag": "choice",
+        "question": "In line 4, across the street from means:",
+        "options": [
+          "behind.",
+          "in front.",
+          "on the other side.",
+          "next to."
+        ],
+        "answer": "on the other side.",
+        "hint": "閱讀與字義選擇題：請從選項中選出最符合課文內容的答案",
         "explanation": {
-          "concept": "Unit 6: The World of Orienteering 核心句型結構改寫",
-          "formula": "標準句型：T",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
+          "concept": "Unit 6 閱讀策略：運用圖表視覺資訊 (Use Visuals) 與定向越野規則",
+          "formula": "正解：『on the other side.』。根據課文上下文線索與字義推論得出。",
+          "trap": "規則與圖表細節：Figure 2 控制卡共有 18 個控制點 (controls)；獲勝條件是「打滿全卡所有控制點 (finish with a full card)」而非單純跑最快！"
         }
       },
       {
-        "id": "RWW6_U06_RW_12",
-        "type": "paper_rewrite",
-        "category_tag": "rewrite",
-        "question": "題目提示：Racers must know how to read a map.",
-        "answer": "T",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
+        "id": "RWW6_U06_RMC_15",
+        "type": "choice",
+        "category_tag": "choice",
+        "question": "In line 33, cross the street means:",
+        "options": [
+          "go to the other side.",
+          "climb over.",
+          "go up and down.",
+          "run around."
+        ],
+        "answer": "go to the other side.",
+        "hint": "閱讀與字義選擇題：請從選項中選出最符合課文內容的答案",
         "explanation": {
-          "concept": "Unit 6: The World of Orienteering 核心句型結構改寫",
-          "formula": "標準句型：T",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
+          "concept": "Unit 6 閱讀策略：運用圖表視覺資訊 (Use Visuals) 與定向越野規則",
+          "formula": "正解：『go to the other side.』。根據課文上下文線索與字義推論得出。",
+          "trap": "規則與圖表細節：Figure 2 控制卡共有 18 個控制點 (controls)；獲勝條件是「打滿全卡所有控制點 (finish with a full card)」而非單純跑最快！"
         }
       },
       {
-        "id": "RWW6_U06_RW_13",
-        "type": "paper_rewrite",
-        "category_tag": "rewrite",
-        "question": "題目提示：Racers need a map and compass to find the finish line.",
-        "answer": "T",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
+        "id": "RWW6_U06_RMC_16",
+        "type": "choice",
+        "category_tag": "choice",
+        "question": "Where is Bayani's house?",
+        "options": [
+          "near a corner",
+          "north of the street",
+          "east of the swings",
+          "across from the park"
+        ],
+        "answer": "across from the park",
+        "hint": "閱讀與字義選擇題：請從選項中選出最符合課文內容的答案",
         "explanation": {
-          "concept": "Unit 6: The World of Orienteering 核心句型結構改寫",
-          "formula": "標準句型：T",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
+          "concept": "Unit 6 閱讀策略：運用圖表視覺資訊 (Use Visuals) 與定向越野規則",
+          "formula": "正解：『across from the park』。根據課文上下文線索與字義推論得出。",
+          "trap": "規則與圖表細節：Figure 2 控制卡共有 18 個控制點 (controls)；獲勝條件是「打滿全卡所有控制點 (finish with a full card)」而非單純跑最快！"
         }
       },
       {
-        "id": "RWW6_U06_RW_14",
-        "type": "paper_rewrite",
-        "category_tag": "rewrite",
-        "question": "題目提示：You must finish first to win an orienteering event.",
-        "answer": "F",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
+        "id": "RWW6_U06_RMC_17",
+        "type": "choice",
+        "category_tag": "choice",
+        "question": "What treasure did the writer's team find?",
+        "options": [
+          "cookies",
+          "directions",
+          "maps",
+          "swings"
+        ],
+        "answer": "cookies",
+        "hint": "閱讀與字義選擇題：請從選項中選出最符合課文內容的答案",
         "explanation": {
-          "concept": "Unit 6: The World of Orienteering 核心句型結構改寫",
-          "formula": "標準句型：F",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
+          "concept": "Unit 6 閱讀策略：運用圖表視覺資訊 (Use Visuals) 與定向越野規則",
+          "formula": "正解：『cookies』。課文依據：插圖盒子寫著 COOKIES，且文章說明 we ate them",
+          "trap": "規則與圖表細節：Figure 2 控制卡共有 18 個控制點 (controls)；獲勝條件是「打滿全卡所有控制點 (finish with a full card)」而非單純跑最快！"
         }
       },
       {
-        "id": "RWW6_U06_TF_15",
+        "id": "RWW6_U06_TF_18",
         "type": "choice",
         "category_tag": "choice",
         "question": "Orienteering events are held outdoors.",
@@ -4629,15 +7456,15 @@ window.MIDTERM_DATABASE = [
           "False (錯誤)"
         ],
         "answer": "True (正確)",
+        "hint": "是非題：請根據課文事實判斷 True (正確) 或 False (錯誤)",
         "explanation": {
-          "concept": "Unit 6: The World of Orienteering 課文事實與文法判斷",
-          "formula": "正解分析：(舉辦於森林原野等戶外)",
-          "trap": "審題注意細節數字、專有名詞與時態限定詞。"
-        },
-        "hint": "判斷 True 還是 False"
+          "concept": "Unit 6 閱讀策略：運用圖表視覺資訊 (Use Visuals) 與定向越野規則",
+          "formula": "本題為【True (正確)】。課文依據：舉辦於森林原野等戶外",
+          "trap": "規則與圖表細節：Figure 2 控制卡共有 18 個控制點 (controls)；獲勝條件是「打滿全卡所有控制點 (finish with a full card)」而非單純跑最快！"
+        }
       },
       {
-        "id": "RWW6_U06_TF_16",
+        "id": "RWW6_U06_TF_19",
         "type": "choice",
         "category_tag": "choice",
         "question": "In orienteering, you may only use a compass.",
@@ -4646,15 +7473,15 @@ window.MIDTERM_DATABASE = [
           "False (錯誤)"
         ],
         "answer": "False (錯誤)",
+        "hint": "是非題：請根據課文事實判斷 True (正確) 或 False (錯誤)",
         "explanation": {
-          "concept": "Unit 6: The World of Orienteering 課文事實與文法判斷",
-          "formula": "正解分析：(必須同時使用地圖與指南針 a map and a compass)",
-          "trap": "審題注意細節數字、專有名詞與時態限定詞。"
-        },
-        "hint": "判斷 True 還是 False"
+          "concept": "Unit 6 閱讀策略：運用圖表視覺資訊 (Use Visuals) 與定向越野規則",
+          "formula": "本題為【False (錯誤)】。課文依據：必須同時使用地圖與指南針 a map and a compass",
+          "trap": "規則與圖表細節：Figure 2 控制卡共有 18 個控制點 (controls)；獲勝條件是「打滿全卡所有控制點 (finish with a full card)」而非單純跑最快！"
+        }
       },
       {
-        "id": "RWW6_U06_TF_17",
+        "id": "RWW6_U06_TF_20",
         "type": "choice",
         "category_tag": "choice",
         "question": "Control flags have bright colors.",
@@ -4663,15 +7490,15 @@ window.MIDTERM_DATABASE = [
           "False (錯誤)"
         ],
         "answer": "True (正確)",
+        "hint": "是非題：請根據課文事實判斷 True (正確) 或 False (錯誤)",
         "explanation": {
-          "concept": "Unit 6: The World of Orienteering 課文事實與文法判斷",
-          "formula": "正解分析：(紅白或橘白亮色)",
-          "trap": "審題注意細節數字、專有名詞與時態限定詞。"
-        },
-        "hint": "判斷 True 還是 False"
+          "concept": "Unit 6 閱讀策略：運用圖表視覺資訊 (Use Visuals) 與定向越野規則",
+          "formula": "本題為【True (正確)】。課文依據：紅白或橘白亮色",
+          "trap": "規則與圖表細節：Figure 2 控制卡共有 18 個控制點 (controls)；獲勝條件是「打滿全卡所有控制點 (finish with a full card)」而非單純跑最快！"
+        }
       },
       {
-        "id": "RWW6_U06_TF_18",
+        "id": "RWW6_U06_TF_21",
         "type": "choice",
         "category_tag": "choice",
         "question": "Control flags are easy to find.",
@@ -4680,15 +7507,15 @@ window.MIDTERM_DATABASE = [
           "False (錯誤)"
         ],
         "answer": "False (錯誤)",
+        "hint": "是非題：請根據課文事實判斷 True (正確) 或 False (錯誤)",
         "explanation": {
-          "concept": "Unit 6: The World of Orienteering 課文事實與文法判斷",
-          "formula": "正解分析：(刻意藏在巨石後或大樹旁，從各角度不容易直接看見)",
-          "trap": "審題注意細節數字、專有名詞與時態限定詞。"
-        },
-        "hint": "判斷 True 還是 False"
+          "concept": "Unit 6 閱讀策略：運用圖表視覺資訊 (Use Visuals) 與定向越野規則",
+          "formula": "本題為【False (錯誤)】。課文依據：刻意藏在巨石後或大樹旁，從各角度不容易直接看見",
+          "trap": "規則與圖表細節：Figure 2 控制卡共有 18 個控制點 (controls)；獲勝條件是「打滿全卡所有控制點 (finish with a full card)」而非單純跑最快！"
+        }
       },
       {
-        "id": "RWW6_U06_TF_19",
+        "id": "RWW6_U06_TF_22",
         "type": "choice",
         "category_tag": "choice",
         "question": "Racers carry cards that they mark.",
@@ -4697,15 +7524,15 @@ window.MIDTERM_DATABASE = [
           "False (錯誤)"
         ],
         "answer": "True (正確)",
+        "hint": "是非題：請根據課文事實判斷 True (正確) 或 False (錯誤)",
         "explanation": {
-          "concept": "Unit 6: The World of Orienteering 課文事實與文法判斷",
-          "formula": "正解分析：(攜帶控制卡打卡)",
-          "trap": "審題注意細節數字、專有名詞與時態限定詞。"
-        },
-        "hint": "判斷 True 還是 False"
+          "concept": "Unit 6 閱讀策略：運用圖表視覺資訊 (Use Visuals) 與定向越野規則",
+          "formula": "本題為【True (正確)】。課文依據：攜帶控制卡打卡",
+          "trap": "規則與圖表細節：Figure 2 控制卡共有 18 個控制點 (controls)；獲勝條件是「打滿全卡所有控制點 (finish with a full card)」而非單純跑最快！"
+        }
       },
       {
-        "id": "RWW6_U06_TF_20",
+        "id": "RWW6_U06_TF_23",
         "type": "choice",
         "category_tag": "choice",
         "question": "Racers must know how to read a map.",
@@ -4714,15 +7541,15 @@ window.MIDTERM_DATABASE = [
           "False (錯誤)"
         ],
         "answer": "True (正確)",
+        "hint": "是非題：請根據課文事實判斷 True (正確) 或 False (錯誤)",
         "explanation": {
-          "concept": "Unit 6: The World of Orienteering 課文事實與文法判斷",
-          "formula": "正解分析：(必須具備地圖判讀能力)",
-          "trap": "審題注意細節數字、專有名詞與時態限定詞。"
-        },
-        "hint": "判斷 True 還是 False"
+          "concept": "Unit 6 閱讀策略：運用圖表視覺資訊 (Use Visuals) 與定向越野規則",
+          "formula": "本題為【True (正確)】。課文依據：必須具備地圖判讀能力",
+          "trap": "規則與圖表細節：Figure 2 控制卡共有 18 個控制點 (controls)；獲勝條件是「打滿全卡所有控制點 (finish with a full card)」而非單純跑最快！"
+        }
       },
       {
-        "id": "RWW6_U06_TF_21",
+        "id": "RWW6_U06_TF_24",
         "type": "choice",
         "category_tag": "choice",
         "question": "Racers need a map and compass to find the finish line.",
@@ -4731,15 +7558,15 @@ window.MIDTERM_DATABASE = [
           "False (錯誤)"
         ],
         "answer": "True (正確)",
+        "hint": "是非題：請根據課文事實判斷 True (正確) 或 False (錯誤)",
         "explanation": {
-          "concept": "Unit 6: The World of Orienteering 課文事實與文法判斷",
-          "formula": "正解分析：(終點線同樣需要指北針定位)",
-          "trap": "審題注意細節數字、專有名詞與時態限定詞。"
-        },
-        "hint": "判斷 True 還是 False"
+          "concept": "Unit 6 閱讀策略：運用圖表視覺資訊 (Use Visuals) 與定向越野規則",
+          "formula": "本題為【True (正確)】。課文依據：終點線同樣需要指北針定位",
+          "trap": "規則與圖表細節：Figure 2 控制卡共有 18 個控制點 (controls)；獲勝條件是「打滿全卡所有控制點 (finish with a full card)」而非單純跑最快！"
+        }
       },
       {
-        "id": "RWW6_U06_TF_22",
+        "id": "RWW6_U06_TF_25",
         "type": "choice",
         "category_tag": "choice",
         "question": "You must finish first to win an orienteering event.",
@@ -4748,50 +7575,130 @@ window.MIDTERM_DATABASE = [
           "False (錯誤)"
         ],
         "answer": "False (錯誤)",
+        "hint": "是非題：請根據課文事實判斷 True (正確) 或 False (錯誤)",
         "explanation": {
-          "concept": "Unit 6: The World of Orienteering 課文事實與文法判斷",
-          "formula": "正解分析：(必須「打滿全卡所有控制點」的第一名才算獲勝)",
-          "trap": "審題注意細節數字、專有名詞與時態限定詞。"
-        },
-        "hint": "判斷 True 還是 False"
+          "concept": "Unit 6 閱讀策略：運用圖表視覺資訊 (Use Visuals) 與定向越野規則",
+          "formula": "本題為【False (錯誤)】。課文依據：必須「打滿全卡所有控制點」的第一名才算獲勝",
+          "trap": "規則與圖表細節：Figure 2 控制卡共有 18 個控制點 (controls)；獲勝條件是「打滿全卡所有控制點 (finish with a full card)」而非單純跑最快！"
+        }
       },
       {
-        "id": "RWW6_U06_QA_23",
+        "id": "RWW6_U06_BFILL_26",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "In line 2, ______ means:",
+        "answer": "corner",
+        "hint": "課文重點句填空：請在紙上寫出空格處的單字",
+        "explanation": {
+          "concept": "Unit 6 閱讀策略：運用圖表視覺資訊 (Use Visuals) 與定向越野規則",
+          "formula": "完整原句：In line 2, corner means:",
+          "trap": "規則與圖表細節：Figure 2 控制卡共有 18 個控制點 (controls)；獲勝條件是「打滿全卡所有控制點 (finish with a full card)」而非單純跑最快！"
+        }
+      },
+      {
+        "id": "RWW6_U06_BFILL_27",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "In line 3, ______ means:",
+        "answer": "Go two blocks",
+        "hint": "課文重點句填空：請在紙上寫出空格處的單字",
+        "explanation": {
+          "concept": "Unit 6 閱讀策略：運用圖表視覺資訊 (Use Visuals) 與定向越野規則",
+          "formula": "完整原句：In line 3, Go two blocks means:",
+          "trap": "規則與圖表細節：Figure 2 控制卡共有 18 個控制點 (controls)；獲勝條件是「打滿全卡所有控制點 (finish with a full card)」而非單純跑最快！"
+        }
+      },
+      {
+        "id": "RWW6_U06_BFILL_28",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "In line 4, ______ means:",
+        "answer": "across the street from",
+        "hint": "課文重點句填空：請在紙上寫出空格處的單字",
+        "explanation": {
+          "concept": "Unit 6 閱讀策略：運用圖表視覺資訊 (Use Visuals) 與定向越野規則",
+          "formula": "完整原句：In line 4, across the street from means:",
+          "trap": "規則與圖表細節：Figure 2 控制卡共有 18 個控制點 (controls)；獲勝條件是「打滿全卡所有控制點 (finish with a full card)」而非單純跑最快！"
+        }
+      },
+      {
+        "id": "RWW6_U06_BFILL_29",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "In line 33, ______ means:",
+        "answer": "cross the street",
+        "hint": "課文重點句填空：請在紙上寫出空格處的單字",
+        "explanation": {
+          "concept": "Unit 6 閱讀策略：運用圖表視覺資訊 (Use Visuals) 與定向越野規則",
+          "formula": "完整原句：In line 33, cross the street means:",
+          "trap": "規則與圖表細節：Figure 2 控制卡共有 18 個控制點 (controls)；獲勝條件是「打滿全卡所有控制點 (finish with a full card)」而非單純跑最快！"
+        }
+      },
+      {
+        "id": "RWW6_U06_QA_30",
         "type": "fill",
         "category_tag": "fill",
         "question": "What does a control flag look like?",
         "answer": "It is a bright flag with red/orange and white triangles.",
-        "hint": "在紙上寫下答案關鍵字或完整句子",
+        "hint": "閱讀理解簡答：在紙上寫下關鍵答案或完整句子",
         "explanation": {
-          "concept": "Unit 6: The World of Orienteering 閱讀理解與細節檢索",
-          "formula": "課文原句定位正解：It is a bright flag with red/orange and white triangles.",
-          "trap": "注意問句疑問詞（What, Why, Where, How）對應之作答時態與主詞人稱。"
+          "concept": "Unit 6 閱讀策略：運用圖表視覺資訊 (Use Visuals) 與定向越野規則",
+          "formula": "標準解答：It is a bright flag with red/orange and white triangles.",
+          "trap": "規則與圖表細節：Figure 2 控制卡共有 18 個控制點 (controls)；獲勝條件是「打滿全卡所有控制點 (finish with a full card)」而非單純跑最快！"
         }
       },
       {
-        "id": "RWW6_U06_QA_24",
+        "id": "RWW6_U06_QA_31",
         "type": "fill",
         "category_tag": "fill",
         "question": "Look at the card. How many controls are there?",
         "answer": "There are 18 controls.",
-        "hint": "在紙上寫下答案關鍵字或完整句子",
+        "hint": "閱讀理解簡答：在紙上寫下關鍵答案或完整句子",
         "explanation": {
-          "concept": "Unit 6: The World of Orienteering 閱讀理解與細節檢索",
-          "formula": "課文原句定位正解：There are 18 controls.",
-          "trap": "注意問句疑問詞（What, Why, Where, How）對應之作答時態與主詞人稱。"
+          "concept": "Unit 6 閱讀策略：運用圖表視覺資訊 (Use Visuals) 與定向越野規則",
+          "formula": "標準解答：There are 18 controls.",
+          "trap": "規則與圖表細節：Figure 2 控制卡共有 18 個控制點 (controls)；獲勝條件是「打滿全卡所有控制點 (finish with a full card)」而非單純跑最快！"
         }
       },
       {
-        "id": "RWW6_U06_QA_25",
+        "id": "RWW6_U06_QA_32",
         "type": "fill",
         "category_tag": "fill",
         "question": "How do visuals help you to understand a text?",
         "answer": "Visuals provide visual details (what the equipment looks like, how many stations there are) that are not fully described in the text.",
-        "hint": "在紙上寫下答案關鍵字或完整句子",
+        "hint": "閱讀理解簡答：在紙上寫下關鍵答案或完整句子",
         "explanation": {
-          "concept": "Unit 6: The World of Orienteering 閱讀理解與細節檢索",
-          "formula": "課文原句定位正解：Visuals provide visual details (what the equipment looks like, how many stations there are) that are not fully described in the text.",
-          "trap": "注意問句疑問詞（What, Why, Where, How）對應之作答時態與主詞人稱。"
+          "concept": "Unit 6 閱讀策略：運用圖表視覺資訊 (Use Visuals) 與定向越野規則",
+          "formula": "標準解答：Visuals provide visual details (what the equipment looks like, how many stations there are) that are not fully described in the text.",
+          "trap": "規則與圖表細節：Figure 2 控制卡共有 18 個控制點 (controls)；獲勝條件是「打滿全卡所有控制點 (finish with a full card)」而非單純跑最快！"
+        }
+      },
+      {
+        "id": "RWW6_U06_EX_33",
+        "type": "paper_rewrite",
+        "category_tag": "rewrite",
+        "question": "閱讀理解造句：What two tools do racers use to find controls in orienteering?",
+        "options": [],
+        "answer": "Racers use a map and a compass to find controls.",
+        "hint": "定向越野必備兩大導航工具：a map and a compass",
+        "explanation": {
+          "concept": "Unit 6 閱讀策略：運用圖表視覺資訊 (Use Visuals) 與定向越野規則",
+          "formula": "標準解答：Racers use a map and a compass to find controls.",
+          "trap": "規則與圖表細節：Figure 2 控制卡共有 18 個控制點 (controls)；獲勝條件是「打滿全卡所有控制點 (finish with a full card)」而非單純跑最快！"
+        }
+      },
+      {
+        "id": "RWW6_U06_EX_34",
+        "type": "paper_rewrite",
+        "category_tag": "rewrite",
+        "question": "規則造句：How does a racer win an orienteering race? (用 find all the controls / full card 回答)",
+        "options": [],
+        "answer": "A racer must find all the controls and finish with a full card to win.",
+        "hint": "必須找齊所有控制點並打滿整張控制卡才能獲勝",
+        "explanation": {
+          "concept": "Unit 6 閱讀策略：運用圖表視覺資訊 (Use Visuals) 與定向越野規則",
+          "formula": "標準解答：A racer must find all the controls and finish with a full card to win.",
+          "trap": "規則與圖表細節：Figure 2 控制卡共有 18 個控制點 (controls)；獲勝條件是「打滿全卡所有控制點 (finish with a full card)」而非單純跑最快！"
         }
       }
     ]
@@ -4806,35 +7713,35 @@ window.MIDTERM_DATABASE = [
     "pages": "p.50 - p.53",
     "passages": [
       {
-        "section_title": "我們使用的語言世界 (Languages Around the Globe)",
+        "section_title": "我們使用的語言世界 (Languages We Use)",
         "sentences": [
           {
-            "en": "There are about seven thousand languages spoken in the world today.",
-            "zh": "今天世界上大約有七千種被使用的語言。"
+            "en": "Everyone is a native speaker of their first language learned at home.",
+            "zh": "每個人都是自己在家中學到的第一語言的母語使用者。"
           },
           {
-            "en": "Chinese has the most native speakers of any language.",
-            "zh": "中文是所有語言中擁有最多母語人口的語言。"
+            "en": "An official language is the one used by the government of a country.",
+            "zh": "官方語言是一個國家政府所使用的語言。"
           },
           {
-            "en": "English and Spanish are also spoken by hundreds of millions of people.",
-            "zh": "英語和西班牙語也由數以億計的人使用。"
+            "en": "A country has to pass a law to make a language official.",
+            "zh": "一個國家必須通過法律才能使某種語言成為官方語言。"
           },
           {
-            "en": "In many countries, children grow up learning two or more languages.",
-            "zh": "在許多國家，孩子們在成長過程中學習兩種或更多種語言。"
+            "en": "Mexico never passed a law, so it has no official language.",
+            "zh": "墨西哥從未通過相關法律，因此沒有官方語言。"
           },
           {
-            "en": "People who can speak two languages fluently are called bilingual.",
-            "zh": "能流利地說兩種語言的人被稱為雙語者。"
+            "en": "Zimbabwe has the most official languages in the world, with sixteen!",
+            "zh": "辛巴威擁有世界上最多的官方語言，高達十六種！"
           },
           {
-            "en": "Sign language uses hand movements and facial expressions to communicate without speaking.",
-            "zh": "手語利用手部動作和麵部表情進行交流，無需開口說話。"
+            "en": "Hindi and English are the two official languages of India.",
+            "zh": "印地語和英語是印度的兩種官方語言。"
           },
           {
-            "en": "Learning languages helps us understand different cultures and make friends around the world.",
-            "zh": "學習語言能幫助我們理解不同文化並結交世界各地的朋友。"
+            "en": "People who cannot hear or speak use sign languages to communicate with their hands.",
+            "zh": "聽不見或無法說話的人使用手語透過雙手來溝通。"
           }
         ]
       }
@@ -4842,45 +7749,81 @@ window.MIDTERM_DATABASE = [
     "vocab": [
       {
         "word": "native speaker",
-        "pos": "noun_phrase",
+        "phonetic": "/ˌneɪtɪv ˈspiːkər/",
+        "syllables": "na-tive speak-er",
+        "pos": "n.",
         "meaning": "母語使用者",
-        "example": "native speaker of English"
+        "example": "Everyone is a native speaker of their first language.",
+        "note": "native language 指從小在家中自然習得的母語。"
       },
       {
         "word": "official language",
-        "pos": "noun_phrase",
+        "phonetic": "/əˈfɪʃəl ˈlæŋɡwɪdʒ/",
+        "syllables": "of-fi-cial lan-guage",
+        "pos": "n.",
         "meaning": "官方語言",
-        "example": "pass a law to make a language official"
+        "example": "An official language is the one used by the government.",
+        "note": "official 中間有兩個 f，ci 發 /ʃ/ 音。"
       },
       {
         "word": "pass a law",
-        "pos": "verb_phrase",
-        "meaning": "通過法律",
-        "example": "pass a law in parliament"
+        "phonetic": "/pæs ə ˈlɔː/",
+        "syllables": "pass a law",
+        "pos": "phrase",
+        "meaning": "通過法律；立法",
+        "example": "A country has to pass a law to make a language official.",
+        "note": "若沒有 pass a law（如墨西哥、美國），該國就沒有法定官方語言。"
       },
       {
         "word": "bar graph",
-        "pos": "noun_phrase",
+        "phonetic": "/ˈbɑːr ˌɡræf/",
+        "syllables": "bar graph",
+        "pos": "n.",
         "meaning": "長條圖",
-        "example": "look at the bar graph"
+        "example": "A bar graph uses rectangles to show how much or how many.",
+        "note": "graph 的 ph 發 /f/ 音；用長方形長度比較不同項目的數量。"
       },
       {
         "word": "Mandarin",
-        "pos": "noun_proper",
-        "meaning": "華語、普通話",
-        "example": "speak Mandarin"
+        "phonetic": "/ˈmændərɪn/",
+        "syllables": "Man-da-rin",
+        "pos": "n.",
+        "meaning": "華語；普通話；國語",
+        "example": "Most people in China use Mandarin to talk with each other.",
+        "note": "專有名詞首字母 M 必須大寫。"
       },
       {
         "word": "sign language",
-        "pos": "noun_phrase",
+        "phonetic": "/ˈsaɪn ˌlæŋɡwɪdʒ/",
+        "syllables": "sign lan-guage",
+        "pos": "n.",
         "meaning": "手語",
-        "example": "American Sign Language (ASL)"
+        "example": "People who cannot hear or speak use sign languages.",
+        "note": "sign 中的 g 不發音！利用手勢、臉部表情與肢體動作溝通。"
+      },
+      {
+        "word": "government",
+        "phonetic": "/ˈɡʌvərnmənt/",
+        "syllables": "gov-ern-ment",
+        "pos": "n.",
+        "meaning": "政府",
+        "example": "An official language is used by the government of a country.",
+        "note": "gov-ern-ment，切勿漏寫中間的 n！"
+      },
+      {
+        "word": "communicate",
+        "phonetic": "/kəˈmjuːnɪˌkeɪt/",
+        "syllables": "com-mu-ni-cate",
+        "pos": "v.",
+        "meaning": "溝通；交流",
+        "example": "They communicate by making different faces and moving their bodies.",
+        "note": "注意開頭 com-mu- 有兩個 m。"
       }
     ],
     "mistake_buster": [
       {
-        "trap_id": "MISTAKE_OFFICIAL_VS_MOST_SPOKEN",
-        "sentence": "Spanish is the official language of Mexico because everyone speaks it.",
+        "trap_id": "RWW07_ERR_1",
+        "sentence": "Spanish is the official language of Mexico by government law.",
         "tokens": [
           "Spanish",
           "is",
@@ -4889,36 +7832,80 @@ window.MIDTERM_DATABASE = [
           "language",
           "of",
           "Mexico",
-          "because",
-          "everyone",
-          "speaks",
-          "it."
+          "by",
+          "government",
+          "law."
         ],
         "wrong_index": 3,
         "wrong_word": "official",
-        "correct_word": "most",
-        "fixed_sentence": "Spanish is the most spoken language in Mexico, but Mexico has NO official language because it never passed a law.",
-        "reason": "官方語言必須經過法律程序（pass a law）正式確立，最廣泛使用的語言不等於法定官方語言。"
+        "correct_word": "most spoken",
+        "fixed_sentence": "Spanish is the most spoken language of Mexico by government law.",
+        "reason": "墨西哥從未通過法律（never passed a law）指定官方語言，因此墨西哥有『0 個官方語言』，西班牙語只是最普遍使用的語言！"
       },
       {
-        "trap_id": "MISTAKE_BAR_GRAPH_SCALE",
-        "sentence": "Only 14 countries in the world have official languages.",
+        "trap_id": "RWW07_ERR_2",
+        "sentence": "According to the bar graph, eight countries have one official language.",
         "tokens": [
-          "Only",
-          "14",
+          "According",
+          "to",
+          "the",
+          "bar",
+          "graph,",
+          "eight",
           "countries",
+          "have",
+          "one",
+          "official",
+          "language."
+        ],
+        "wrong_index": 8,
+        "wrong_word": "one",
+        "correct_word": "no",
+        "fixed_sentence": "According to the bar graph, eight countries have no official language.",
+        "reason": "根據第 51 頁長條圖，有 8 個國家是『0 個官方語言 (no official language)』；擁有 1 個官方語言的國家高達 110 國！"
+      },
+      {
+        "trap_id": "RWW07_ERR_3",
+        "sentence": "China has the most official languages in the world with sixteen.",
+        "tokens": [
+          "China",
+          "has",
+          "the",
+          "most",
+          "official",
+          "languages",
           "in",
           "the",
           "world",
-          "have",
-          "official",
-          "languages."
+          "with",
+          "sixteen."
         ],
         "wrong_index": 0,
-        "wrong_word": "Only",
-        "correct_word": "14",
-        "fixed_sentence": "14 countries have 4 or more official languages; 110 countries have 1 official language.",
-        "reason": "混淆長條圖 X 軸（國家數量）與 Y 軸（官方語言數量組別）。"
+        "wrong_word": "China",
+        "correct_word": "Zimbabwe",
+        "fixed_sentence": "Zimbabwe has the most official languages in the world with sixteen.",
+        "reason": "擁有全世界最多官方語言（16 種）的國家是非洲的『辛巴威 (Zimbabwe)』！"
+      },
+      {
+        "trap_id": "RWW07_ERR_4",
+        "sentence": "An official language is the first language you learn at home.",
+        "tokens": [
+          "An official",
+          "language",
+          "is",
+          "the",
+          "first",
+          "language",
+          "you",
+          "learn",
+          "at",
+          "home."
+        ],
+        "wrong_index": 0,
+        "wrong_word": "An official",
+        "correct_word": "A native",
+        "fixed_sentence": "A native language is the first language you learn at home.",
+        "reason": "在家中從小習得的第ㄧ語言稱為『母語 (native language)』；政府立法在學校與公務使用的才叫官方語言 (official language)！"
       }
     ],
     "quizzes": [
@@ -4926,148 +7913,370 @@ window.MIDTERM_DATABASE = [
         "id": "RWW6_U07_LIST_1",
         "type": "spelling_listen",
         "category_tag": "listening",
-        "question": "請聽電腦發音，在紙上拼寫出這個核心單字：",
-        "hint": "中文釋義：母語使用者",
+        "question": "請聽電腦發音，在紙上拼寫出這個核心單字或片語：",
+        "hint": "詞性與中文：n. 母語使用者",
         "audio_word": "native speaker",
-        "phonetic": "",
-        "syllables": "native speaker",
+        "phonetic": "/ˌneɪtɪv ˈspiːkər/",
+        "syllables": "na-tive speak-er",
         "answer": "native speaker",
         "explanation": {
-          "concept": "Unit 7: Languages We Use 核心字彙：native speaker",
-          "formula": "詞性與例句搭配：native speaker of English",
-          "trap": "注意拼寫盲點：切記母音與子音字母對應，勿漏寫尾音或不發音字母。"
+          "concept": "【Unit 7: Languages We Use】核心字彙：native speaker /ˌneɪtɪv ˈspiːkər/ (n. 母語使用者)",
+          "formula": "課文例句：Everyone is a native speaker of their first language.",
+          "trap": "拼寫與用法關鍵：native language 指從小在家中自然習得的母語。"
         }
       },
       {
         "id": "RWW6_U07_LIST_2",
         "type": "spelling_listen",
         "category_tag": "listening",
-        "question": "請聽電腦發音，在紙上拼寫出這個核心單字：",
-        "hint": "中文釋義：官方語言",
+        "question": "請聽電腦發音，在紙上拼寫出這個核心單字或片語：",
+        "hint": "詞性與中文：n. 官方語言",
         "audio_word": "official language",
-        "phonetic": "",
-        "syllables": "official language",
+        "phonetic": "/əˈfɪʃəl ˈlæŋɡwɪdʒ/",
+        "syllables": "of-fi-cial lan-guage",
         "answer": "official language",
         "explanation": {
-          "concept": "Unit 7: Languages We Use 核心字彙：official language",
-          "formula": "詞性與例句搭配：pass a law to make a language official",
-          "trap": "注意拼寫盲點：切記母音與子音字母對應，勿漏寫尾音或不發音字母。"
+          "concept": "【Unit 7: Languages We Use】核心字彙：official language /əˈfɪʃəl ˈlæŋɡwɪdʒ/ (n. 官方語言)",
+          "formula": "課文例句：An official language is the one used by the government.",
+          "trap": "拼寫與用法關鍵：official 中間有兩個 f，ci 發 /ʃ/ 音。"
         }
       },
       {
         "id": "RWW6_U07_LIST_3",
         "type": "spelling_listen",
         "category_tag": "listening",
-        "question": "請聽電腦發音，在紙上拼寫出這個核心單字：",
-        "hint": "中文釋義：通過法律",
+        "question": "請聽電腦發音，在紙上拼寫出這個核心單字或片語：",
+        "hint": "詞性與中文：phrase 通過法律；立法",
         "audio_word": "pass a law",
-        "phonetic": "",
+        "phonetic": "/pæs ə ˈlɔː/",
         "syllables": "pass a law",
         "answer": "pass a law",
         "explanation": {
-          "concept": "Unit 7: Languages We Use 核心字彙：pass a law",
-          "formula": "詞性與例句搭配：pass a law in parliament",
-          "trap": "注意拼寫盲點：切記母音與子音字母對應，勿漏寫尾音或不發音字母。"
+          "concept": "【Unit 7: Languages We Use】核心字彙：pass a law /pæs ə ˈlɔː/ (phrase 通過法律；立法)",
+          "formula": "課文例句：A country has to pass a law to make a language official.",
+          "trap": "拼寫與用法關鍵：若沒有 pass a law（如墨西哥、美國），該國就沒有法定官方語言。"
         }
       },
       {
         "id": "RWW6_U07_LIST_4",
         "type": "spelling_listen",
         "category_tag": "listening",
-        "question": "請聽電腦發音，在紙上拼寫出這個核心單字：",
-        "hint": "中文釋義：長條圖",
+        "question": "請聽電腦發音，在紙上拼寫出這個核心單字或片語：",
+        "hint": "詞性與中文：n. 長條圖",
         "audio_word": "bar graph",
-        "phonetic": "",
+        "phonetic": "/ˈbɑːr ˌɡræf/",
         "syllables": "bar graph",
         "answer": "bar graph",
         "explanation": {
-          "concept": "Unit 7: Languages We Use 核心字彙：bar graph",
-          "formula": "詞性與例句搭配：look at the bar graph",
-          "trap": "注意拼寫盲點：切記母音與子音字母對應，勿漏寫尾音或不發音字母。"
+          "concept": "【Unit 7: Languages We Use】核心字彙：bar graph /ˈbɑːr ˌɡræf/ (n. 長條圖)",
+          "formula": "課文例句：A bar graph uses rectangles to show how much or how many.",
+          "trap": "拼寫與用法關鍵：graph 的 ph 發 /f/ 音；用長方形長度比較不同項目的數量。"
         }
       },
       {
         "id": "RWW6_U07_LIST_5",
         "type": "spelling_listen",
         "category_tag": "listening",
-        "question": "請聽電腦發音，在紙上拼寫出這個核心單字：",
-        "hint": "中文釋義：華語、普通話",
+        "question": "請聽電腦發音，在紙上拼寫出這個核心單字或片語：",
+        "hint": "詞性與中文：n. 華語；普通話；國語",
         "audio_word": "Mandarin",
-        "phonetic": "",
-        "syllables": "Mandarin",
+        "phonetic": "/ˈmændərɪn/",
+        "syllables": "Man-da-rin",
         "answer": "Mandarin",
         "explanation": {
-          "concept": "Unit 7: Languages We Use 核心字彙：Mandarin",
-          "formula": "詞性與例句搭配：speak Mandarin",
-          "trap": "注意拼寫盲點：切記母音與子音字母對應，勿漏寫尾音或不發音字母。"
+          "concept": "【Unit 7: Languages We Use】核心字彙：Mandarin /ˈmændərɪn/ (n. 華語；普通話；國語)",
+          "formula": "課文例句：Most people in China use Mandarin to talk with each other.",
+          "trap": "拼寫與用法關鍵：專有名詞首字母 M 必須大寫。"
         }
       },
       {
         "id": "RWW6_U07_LIST_6",
         "type": "spelling_listen",
         "category_tag": "listening",
-        "question": "請聽電腦發音，在紙上拼寫出這個核心單字：",
-        "hint": "中文釋義：手語",
+        "question": "請聽電腦發音，在紙上拼寫出這個核心單字或片語：",
+        "hint": "詞性與中文：n. 手語",
         "audio_word": "sign language",
-        "phonetic": "",
-        "syllables": "sign language",
+        "phonetic": "/ˈsaɪn ˌlæŋɡwɪdʒ/",
+        "syllables": "sign lan-guage",
         "answer": "sign language",
         "explanation": {
-          "concept": "Unit 7: Languages We Use 核心字彙：sign language",
-          "formula": "詞性與例句搭配：American Sign Language (ASL)",
-          "trap": "注意拼寫盲點：切記母音與子音字母對應，勿漏寫尾音或不發音字母。"
+          "concept": "【Unit 7: Languages We Use】核心字彙：sign language /ˈsaɪn ˌlæŋɡwɪdʒ/ (n. 手語)",
+          "formula": "課文例句：People who cannot hear or speak use sign languages.",
+          "trap": "拼寫與用法關鍵：sign 中的 g 不發音！利用手勢、臉部表情與肢體動作溝通。"
         }
       },
       {
-        "id": "RWW6_U07_QA_7",
+        "id": "RWW6_U07_LIST_7",
+        "type": "spelling_listen",
+        "category_tag": "listening",
+        "question": "請聽電腦發音，在紙上拼寫出這個核心單字或片語：",
+        "hint": "詞性與中文：n. 政府",
+        "audio_word": "government",
+        "phonetic": "/ˈɡʌvərnmənt/",
+        "syllables": "gov-ern-ment",
+        "answer": "government",
+        "explanation": {
+          "concept": "【Unit 7: Languages We Use】核心字彙：government /ˈɡʌvərnmənt/ (n. 政府)",
+          "formula": "課文例句：An official language is used by the government of a country.",
+          "trap": "拼寫與用法關鍵：gov-ern-ment，切勿漏寫中間的 n！"
+        }
+      },
+      {
+        "id": "RWW6_U07_LIST_8",
+        "type": "spelling_listen",
+        "category_tag": "listening",
+        "question": "請聽電腦發音，在紙上拼寫出這個核心單字或片語：",
+        "hint": "詞性與中文：v. 溝通；交流",
+        "audio_word": "communicate",
+        "phonetic": "/kəˈmjuːnɪˌkeɪt/",
+        "syllables": "com-mu-ni-cate",
+        "answer": "communicate",
+        "explanation": {
+          "concept": "【Unit 7: Languages We Use】核心字彙：communicate /kəˈmjuːnɪˌkeɪt/ (v. 溝通；交流)",
+          "formula": "課文例句：They communicate by making different faces and moving their bodies.",
+          "trap": "拼寫與用法關鍵：注意開頭 com-mu- 有兩個 m。"
+        }
+      },
+      {
+        "id": "RWW6_U07_RMC_9",
+        "type": "choice",
+        "category_tag": "choice",
+        "question": "What does the yellow/green bar show?",
+        "options": [
+          "how many students read no books or one book",
+          "how many students read between two and five books"
+        ],
+        "answer": "how many students read no books or one book",
+        "hint": "閱讀與字義選擇題：請從選項中選出最符合課文內容的答案",
+        "explanation": {
+          "concept": "Unit 7 閱讀策略：長條圖判讀 (Bar Graph) 與母語 vs. 官方語言定義",
+          "formula": "正解：『how many students read no books or one book』。根據課文上下文線索與字義推論得出。",
+          "trap": "數據與定義辨析：國家必須通過法律 (pass a law) 才有官方語言（墨西哥與美國為 0 官方語言，共 8 國）；110 國有 1 種官方語言；辛巴威有 16 種居冠！"
+        }
+      },
+      {
+        "id": "RWW6_U07_RMC_10",
+        "type": "choice",
+        "category_tag": "choice",
+        "question": "How many students read more than 6 books?",
+        "options": [
+          "6",
+          "10"
+        ],
+        "answer": "6",
+        "hint": "閱讀與字義選擇題：請從選項中選出最符合課文內容的答案",
+        "explanation": {
+          "concept": "Unit 7 閱讀策略：長條圖判讀 (Bar Graph) 與母語 vs. 官方語言定義",
+          "formula": "正解：『6』。根據課文上下文線索與字義推論得出。",
+          "trap": "數據與定義辨析：國家必須通過法律 (pass a law) 才有官方語言（墨西哥與美國為 0 官方語言，共 8 國）；110 國有 1 種官方語言；辛巴威有 16 種居冠！"
+        }
+      },
+      {
+        "id": "RWW6_U07_RMC_11",
+        "type": "choice",
+        "category_tag": "choice",
+        "question": "Which is an official language of India?",
+        "options": [
+          "Chinese",
+          "Hindi",
+          "Spanish",
+          "none of the above"
+        ],
+        "answer": "Hindi",
+        "hint": "閱讀與字義選擇題：請從選項中選出最符合課文內容的答案",
+        "explanation": {
+          "concept": "Unit 7 閱讀策略：長條圖判讀 (Bar Graph) 與母語 vs. 官方語言定義",
+          "formula": "正解：『Hindi』。課文依據：and English",
+          "trap": "數據與定義辨析：國家必須通過法律 (pass a law) 才有官方語言（墨西哥與美國為 0 官方語言，共 8 國）；110 國有 1 種官方語言；辛巴威有 16 種居冠！"
+        }
+      },
+      {
+        "id": "RWW6_U07_RMC_12",
+        "type": "choice",
+        "category_tag": "choice",
+        "question": "In the bar graph, which color bar would include Zimbabwe?",
+        "options": [
+          "Orange (1)",
+          "Yellow (2)",
+          "Pink (3)",
+          "Purple (4+)"
+        ],
+        "answer": "Purple (4+)",
+        "hint": "閱讀與字義選擇題：請從選項中選出最符合課文內容的答案",
+        "explanation": {
+          "concept": "Unit 7 閱讀策略：長條圖判讀 (Bar Graph) 與母語 vs. 官方語言定義",
+          "formula": "正解：『Purple (4+)』。課文依據：Zimbabwe has 16 official languages",
+          "trap": "數據與定義辨析：國家必須通過法律 (pass a law) 才有官方語言（墨西哥與美國為 0 官方語言，共 8 國）；110 國有 1 種官方語言；辛巴威有 16 種居冠！"
+        }
+      },
+      {
+        "id": "RWW6_U07_RMC_13",
+        "type": "choice",
+        "category_tag": "choice",
+        "question": "In the bar graph, which country is included in the bar for 1?",
+        "options": [
+          "China",
+          "Mexico",
+          "Zimbabwe",
+          "France"
+        ],
+        "answer": "France",
+        "hint": "閱讀與字義選擇題：請從選項中選出最符合課文內容的答案",
+        "explanation": {
+          "concept": "Unit 7 閱讀策略：長條圖判讀 (Bar Graph) 與母語 vs. 官方語言定義",
+          "formula": "正解：『France』。課文依據：French is the single official language",
+          "trap": "數據與定義辨析：國家必須通過法律 (pass a law) 才有官方語言（墨西哥與美國為 0 官方語言，共 8 國）；110 國有 1 種官方語言；辛巴威有 16 種居冠！"
+        }
+      },
+      {
+        "id": "RWW6_U07_RMC_14",
+        "type": "choice",
+        "category_tag": "choice",
+        "question": "Where might you not use an official language?",
+        "options": [
+          "in government",
+          "while traveling",
+          "at home",
+          "at school"
+        ],
+        "answer": "at home",
+        "hint": "閱讀與字義選擇題：請從選項中選出最符合課文內容的答案",
+        "explanation": {
+          "concept": "Unit 7 閱讀策略：長條圖判讀 (Bar Graph) 與母語 vs. 官方語言定義",
+          "formula": "正解：『at home』。課文依據：people usually speak their native language at home",
+          "trap": "數據與定義辨析：國家必須通過法律 (pass a law) 才有官方語言（墨西哥與美國為 0 官方語言，共 8 國）；110 國有 1 種官方語言；辛巴威有 16 種居冠！"
+        }
+      },
+      {
+        "id": "RWW6_U07_BFILL_15",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "Tawanda moved from ______ to ______ when he was nineteen.",
+        "answer": "Zimbabwe / Tanzania",
+        "hint": "課文重點句填空：請在紙上寫出空格處的單字",
+        "explanation": {
+          "concept": "Unit 7 閱讀策略：長條圖判讀 (Bar Graph) 與母語 vs. 官方語言定義",
+          "formula": "完整原句：Tawanda moved from Zimbabwe to Tanzania when he was nineteen.",
+          "trap": "數據與定義辨析：國家必須通過法律 (pass a law) 才有官方語言（墨西哥與美國為 0 官方語言，共 8 國）；110 國有 1 種官方語言；辛巴威有 16 種居冠！"
+        }
+      },
+      {
+        "id": "RWW6_U07_BFILL_16",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "His family spoke a native language called ______ at home.",
+        "answer": "Shona",
+        "hint": "課文重點句填空：請在紙上寫出空格處的單字",
+        "explanation": {
+          "concept": "Unit 7 閱讀策略：長條圖判讀 (Bar Graph) 與母語 vs. 官方語言定義",
+          "formula": "完整原句：His family spoke a native language called Shona at home.",
+          "trap": "數據與定義辨析：國家必須通過法律 (pass a law) 才有官方語言（墨西哥與美國為 0 官方語言，共 8 國）；110 國有 1 種官方語言；辛巴威有 16 種居冠！"
+        }
+      },
+      {
+        "id": "RWW6_U07_BFILL_17",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "Tawanda speaks ______ and is learning ______.",
+        "answer": "Shona / English / Swahili",
+        "hint": "課文重點句填空：請在紙上寫出空格處的單字",
+        "explanation": {
+          "concept": "Unit 7 閱讀策略：長條圖判讀 (Bar Graph) 與母語 vs. 官方語言定義",
+          "formula": "完整原句：Tawanda speaks Shona / English and is learning Swahili.",
+          "trap": "數據與定義辨析：國家必須通過法律 (pass a law) 才有官方語言（墨西哥與美國為 0 官方語言，共 8 國）；110 國有 1 種官方語言；辛巴威有 16 種居冠！"
+        }
+      },
+      {
+        "id": "RWW6_U07_BFILL_18",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "Tanzania has two ______ languages.",
+        "answer": "official",
+        "hint": "課文重點句填空：請在紙上寫出空格處的單字",
+        "explanation": {
+          "concept": "Unit 7 閱讀策略：長條圖判讀 (Bar Graph) 與母語 vs. 官方語言定義",
+          "formula": "完整原句：Tanzania has two official languages.",
+          "trap": "數據與定義辨析：國家必須通過法律 (pass a law) 才有官方語言（墨西哥與美國為 0 官方語言，共 8 國）；110 國有 1 種官方語言；辛巴威有 16 種居冠！"
+        }
+      },
+      {
+        "id": "RWW6_U07_QA_19",
         "type": "fill",
         "category_tag": "fill",
         "question": "What information does the bar graph show?",
         "answer": "It shows the number of official languages in 196 countries around the world.",
-        "hint": "在紙上寫下答案關鍵字或完整句子",
+        "hint": "閱讀理解簡答：在紙上寫下關鍵答案或完整句子",
         "explanation": {
-          "concept": "Unit 7: Languages We Use 閱讀理解與細節檢索",
-          "formula": "課文原句定位正解：It shows the number of official languages in 196 countries around the world.",
-          "trap": "注意問句疑問詞（What, Why, Where, How）對應之作答時態與主詞人稱。"
+          "concept": "Unit 7 閱讀策略：長條圖判讀 (Bar Graph) 與母語 vs. 官方語言定義",
+          "formula": "標準解答：It shows the number of official languages in 196 countries around the world.",
+          "trap": "數據與定義辨析：國家必須通過法律 (pass a law) 才有官方語言（墨西哥與美國為 0 官方語言，共 8 國）；110 國有 1 種官方語言；辛巴威有 16 種居冠！"
         }
       },
       {
-        "id": "RWW6_U07_QA_8",
+        "id": "RWW6_U07_QA_20",
         "type": "fill",
         "category_tag": "fill",
         "question": "What does a country need to do if it wants to have an official language?",
         "answer": "A country has to pass a law to make a language official.",
-        "hint": "在紙上寫下答案關鍵字或完整句子",
+        "hint": "閱讀理解簡答：在紙上寫下關鍵答案或完整句子",
         "explanation": {
-          "concept": "Unit 7: Languages We Use 閱讀理解與細節檢索",
-          "formula": "課文原句定位正解：A country has to pass a law to make a language official.",
-          "trap": "注意問句疑問詞（What, Why, Where, How）對應之作答時態與主詞人稱。"
+          "concept": "Unit 7 閱讀策略：長條圖判讀 (Bar Graph) 與母語 vs. 官方語言定義",
+          "formula": "標準解答：A country has to pass a law to make a language official.",
+          "trap": "數據與定義辨析：國家必須通過法律 (pass a law) 才有官方語言（墨西哥與美國為 0 官方語言，共 8 國）；110 國有 1 種官方語言；辛巴威有 16 種居冠！"
         }
       },
       {
-        "id": "RWW6_U07_QA_9",
+        "id": "RWW6_U07_QA_21",
         "type": "fill",
         "category_tag": "fill",
         "question": "How many countries have no official language?",
         "answer": "8 countries.",
-        "hint": "在紙上寫下答案關鍵字或完整句子",
+        "hint": "閱讀理解簡答：在紙上寫下關鍵答案或完整句子",
         "explanation": {
-          "concept": "Unit 7: Languages We Use 閱讀理解與細節檢索",
-          "formula": "課文原句定位正解：8 countries.",
-          "trap": "注意問句疑問詞（What, Why, Where, How）對應之作答時態與主詞人稱。"
+          "concept": "Unit 7 閱讀策略：長條圖判讀 (Bar Graph) 與母語 vs. 官方語言定義",
+          "formula": "標準解答：8 countries.",
+          "trap": "數據與定義辨析：國家必須通過法律 (pass a law) 才有官方語言（墨西哥與美國為 0 官方語言，共 8 國）；110 國有 1 種官方語言；辛巴威有 16 種居冠！"
         }
       },
       {
-        "id": "RWW6_U07_QA_10",
+        "id": "RWW6_U07_QA_22",
         "type": "fill",
         "category_tag": "fill",
         "question": "How does the bar graph help you better understand the text?",
         "answer": "It shows how common or rare it is for countries to have 0, 1, 2, 3, or more than 4 official languages.",
-        "hint": "在紙上寫下答案關鍵字或完整句子",
+        "hint": "閱讀理解簡答：在紙上寫下關鍵答案或完整句子",
         "explanation": {
-          "concept": "Unit 7: Languages We Use 閱讀理解與細節檢索",
-          "formula": "課文原句定位正解：It shows how common or rare it is for countries to have 0, 1, 2, 3, or more than 4 official languages.",
-          "trap": "注意問句疑問詞（What, Why, Where, How）對應之作答時態與主詞人稱。"
+          "concept": "Unit 7 閱讀策略：長條圖判讀 (Bar Graph) 與母語 vs. 官方語言定義",
+          "formula": "標準解答：It shows how common or rare it is for countries to have 0, 1, 2, 3, or more than 4 official languages.",
+          "trap": "數據與定義辨析：國家必須通過法律 (pass a law) 才有官方語言（墨西哥與美國為 0 官方語言，共 8 國）；110 國有 1 種官方語言；辛巴威有 16 種居冠！"
+        }
+      },
+      {
+        "id": "RWW6_U07_EX_23",
+        "type": "paper_rewrite",
+        "category_tag": "rewrite",
+        "question": "定義造句：What does a country have to do to make a language official? (用 pass a law 回答)",
+        "options": [],
+        "answer": "A country has to pass a law to make a language official.",
+        "hint": "國家必須通過法律 (pass a law) 才能將語言定為官方語言",
+        "explanation": {
+          "concept": "Unit 7 閱讀策略：長條圖判讀 (Bar Graph) 與母語 vs. 官方語言定義",
+          "formula": "標準解答：A country has to pass a law to make a language official.",
+          "trap": "數據與定義辨析：國家必須通過法律 (pass a law) 才有官方語言（墨西哥與美國為 0 官方語言，共 8 國）；110 國有 1 種官方語言；辛巴威有 16 種居冠！"
+        }
+      },
+      {
+        "id": "RWW6_U07_EX_24",
+        "type": "paper_rewrite",
+        "category_tag": "rewrite",
+        "question": "圖表數據造句：According to the bar graph, how many countries have no official language?",
+        "options": [],
+        "answer": "Eight countries have no official language.",
+        "hint": "長條圖中 0 official languages 對應的國家數量是 8 國",
+        "explanation": {
+          "concept": "Unit 7 閱讀策略：長條圖判讀 (Bar Graph) 與母語 vs. 官方語言定義",
+          "formula": "標準解答：Eight countries have no official language.",
+          "trap": "數據與定義辨析：國家必須通過法律 (pass a law) 才有官方語言（墨西哥與美國為 0 官方語言，共 8 國）；110 國有 1 種官方語言；辛巴威有 16 種居冠！"
         }
       }
     ]
@@ -5082,35 +8291,35 @@ window.MIDTERM_DATABASE = [
     "pages": "p.54 - p.57",
     "passages": [
       {
-        "section_title": "夏日校園的雙語對話 (So Many Questions at Summer School)",
+        "section_title": "夏日校園的雙語對話 (So Many Questions)",
         "sentences": [
           {
-            "en": "Rosa was carrying art supplies to her summer school classroom.",
-            "zh": "羅莎正帶著美術用品前往她的夏令營教室。"
+            "en": "Rosa walked through the door, carrying a big pile of drawing paper and art supplies.",
+            "zh": "羅莎走過門口，抱著一大疊圖畫紙和美術用品。"
           },
           {
-            "en": "She met a new boy named Erico in the hallway.",
-            "zh": "她在走廊遇見了一位名叫埃里科的新男孩。"
+            "en": "She spoke Italian at home and asked Erico a lot of questions.",
+            "zh": "她在家說義大利語，並問了埃里科許多問題。"
           },
           {
-            "en": "Erico had lived in Australia, Italy, and Brazil before moving here.",
-            "zh": "埃里科在搬到這裡之前曾住在澳大利亞、義大利和巴西。"
+            "en": "Erico's name is Portuguese, and his family is from Australia.",
+            "zh": "埃里科的名字是葡萄牙文，而他的家人來自澳洲。"
           },
           {
-            "en": "He spoke English with a British accent and could also speak Portuguese.",
-            "zh": "他操著英國口音說英語，並且還會說葡萄牙語。"
+            "en": "His dad moved there from Brazil, and his mom is from Portugal.",
+            "zh": "他的爸爸從巴西搬到那裡，而他的媽媽來自葡萄牙。"
           },
           {
-            "en": "Rosa asked him many questions because she was curious about his journeys.",
-            "zh": "羅莎問了他很多問題，因為她對他的旅程充滿好奇。"
+            "en": "Speaking Portuguese helped Erico learn some Italian.",
+            "zh": "會說葡萄牙語幫助埃里科學會了一些義大利語。"
           },
           {
-            "en": "When you read a story, you can make predictions using clues and what you already know.",
-            "zh": "當你閱讀故事時，你可以利用線索和已有知識來進行推測。"
+            "en": "Erico realized that asking so many questions was Rosa's way of being friendly.",
+            "zh": "埃里科明白問這麼多問題是羅莎表達友善的方式。"
           },
           {
-            "en": "Erico smiled and predicted they would become great friends in art class.",
-            "zh": "埃里科微笑著預測他們會在美術課上成為好朋友。"
+            "en": "He helped her pick up her paper, paint brushes, and colored pencils.",
+            "zh": "他幫她撿起圖畫紙、畫筆和彩色鉛筆。"
           }
         ]
       }
@@ -5118,74 +8327,163 @@ window.MIDTERM_DATABASE = [
     "vocab": [
       {
         "word": "bilingual",
-        "pos": "adj",
-        "meaning": "雙語的",
-        "example": "able to speak two languages fluently"
+        "phonetic": "/baɪˈlɪŋɡwəl/",
+        "syllables": "bi-lin-gual",
+        "pos": "adj.",
+        "meaning": "雙語的；能說兩種語言的",
+        "example": "Do they speak Portuguese and English? Are they bilingual?",
+        "note": "字首 bi- 代表「二」（如 bicycle 兩輪腳踏車），指 speaking two languages。"
       },
       {
         "word": "accent",
-        "pos": "noun",
-        "meaning": "腔調、口音",
-        "example": "a distinctive mode of pronunciation of a language"
-      },
-      {
-        "word": "Italian",
-        "pos": "noun / adj",
-        "meaning": "義大利語、義大利人的",
-        "example": "the language or people of Italy"
-      },
-      {
-        "word": "Portuguese",
-        "pos": "noun / adj",
-        "meaning": "葡萄牙語、葡萄牙的",
-        "example": "the language or people of Portugal and Brazil"
+        "phonetic": "/ˈæksɛnt/",
+        "syllables": "ac-cent",
+        "pos": "n.",
+        "meaning": "口音；腔調",
+        "example": "You sound like you have a British accent.",
+        "note": "課文定義：a way to pronounce words（發音吐字的方式）。"
       },
       {
         "word": "prediction",
-        "pos": "noun",
-        "meaning": "預測、推測",
-        "example": "a statement about what you think will happen in the future"
+        "phonetic": "/prɪˈdɪkʃən/",
+        "syllables": "pre-dic-tion",
+        "pos": "n.",
+        "meaning": "預測；推測",
+        "example": "A prediction is what you think will happen in the future.",
+        "note": "pre- (預先) + dict (說) + -ion，預測未來可能發生的事。"
+      },
+      {
+        "word": "Italian",
+        "phonetic": "/ɪˈtæljən/",
+        "syllables": "I-tal-ian",
+        "pos": "n./adj.",
+        "meaning": "義大利語；義大利的",
+        "example": "Rosa speaks Italian at home.",
+        "note": "Italy 去 y 加 -ian，語言與國籍字首 I 永遠大寫。"
+      },
+      {
+        "word": "Portuguese",
+        "phonetic": "/ˌpɔːrtʃəˈɡiːz/",
+        "syllables": "Por-tu-guese",
+        "pos": "n./adj.",
+        "meaning": "葡萄牙語；葡萄牙的",
+        "example": "Speaking Portuguese helped Erico learn some Italian.",
+        "note": "葡萄牙 (Portugal) 與巴西 (Brazil) 都說 Portuguese；字尾為 -guese。"
+      },
+      {
+        "word": "pronounce",
+        "phonetic": "/prəˈnaʊns/",
+        "syllables": "pro-nounce",
+        "pos": "v.",
+        "meaning": "發音",
+        "example": "An accent is a special way to pronounce words.",
+        "note": "動詞為 pro-nounce (中間是 o-u)，名詞發音則是 pronunciation。"
+      },
+      {
+        "word": "interrupt",
+        "phonetic": "/ˌɪntəˈrʌpt/",
+        "syllables": "in-ter-rupt",
+        "pos": "v.",
+        "meaning": "打斷（談話）；插嘴",
+        "example": "Rosa interrupted Erico and asked five questions quickly.",
+        "note": "inter- + rupt，注意中間有兩個 r。"
+      },
+      {
+        "word": "supplies",
+        "phonetic": "/səˈplaɪz/",
+        "syllables": "sup-plies",
+        "pos": "n.",
+        "meaning": "用品；物資（常指文具或美術用品）",
+        "example": "Rosa dropped her art supplies while she was talking.",
+        "note": "單數為 supply，去 y 改 ies 變成複數 supplies。"
       }
     ],
     "mistake_buster": [
       {
-        "trap_id": "MISTAKE_PREDICTION_VS_FACT",
-        "sentence": "'Darla fell asleep on the rug' is a prediction.",
+        "trap_id": "RWW08_ERR_1",
+        "sentence": "When Rosa met Erico, she first spoke to him in Portuguese.",
         "tokens": [
-          "'Darla",
-          "fell",
-          "asleep",
-          "on",
-          "the",
-          "rug'",
-          "is",
-          "a",
-          "prediction."
+          "When",
+          "Rosa",
+          "met",
+          "Erico,",
+          "she",
+          "first",
+          "spoke",
+          "to",
+          "him",
+          "in",
+          "Portuguese."
         ],
-        "wrong_index": 1,
-        "wrong_word": "fell",
-        "correct_word": "will",
-        "fixed_sentence": "'Darla will do well in school' is a prediction.",
-        "reason": "預測必須指向未發生或未知之未來事件，敘述既成事實並非 prediction。"
+        "wrong_index": 10,
+        "wrong_word": "Portuguese.",
+        "correct_word": "Italian.",
+        "fixed_sentence": "When Rosa met Erico, she first spoke to him in Italian.",
+        "reason": "故事第 1-2 行明確寫道：Rosa 因為看到 Erico 的名字像義大利文，開口第一句話是用『義大利語 (Italian)』請他幫忙扶門！"
       },
       {
-        "trap_id": "MISTAKE_BILINGUAL_DEFINITION",
-        "sentence": "Bilingual means someone who can talk very quickly.",
+        "trap_id": "RWW08_ERR_2",
+        "sentence": "Erico grew up in Australia, so he speaks with an Australian accent.",
         "tokens": [
-          "Bilingual",
-          "means",
-          "someone",
-          "who",
-          "can",
-          "talk",
-          "very",
-          "quickly."
+          "Erico",
+          "grew",
+          "up",
+          "in",
+          "Australia,",
+          "so",
+          "he",
+          "speaks",
+          "with",
+          "an Australian",
+          "accent."
         ],
-        "wrong_index": 5,
-        "wrong_word": "talk",
-        "correct_word": "speak",
-        "fixed_sentence": "Bilingual means someone who can speak two languages.",
-        "reason": "字首 bi- 表示「二」，bilingual 專指通曉兩種語言。"
+        "wrong_index": 9,
+        "wrong_word": "an Australian",
+        "correct_word": "a British",
+        "fixed_sentence": "Erico grew up in Australia, so he speaks with a British accent.",
+        "reason": "Rosa 驚訝地發現 Erico 雖然來自澳洲家庭，但說話卻帶著『英國腔 (British accent)』，這也是結尾長故事的伏筆！"
+      },
+      {
+        "trap_id": "RWW08_ERR_3",
+        "sentence": "Being bilingual means a person can speak three languages fluently.",
+        "tokens": [
+          "Being",
+          "bilingual",
+          "means",
+          "a",
+          "person",
+          "can",
+          "speak",
+          "three",
+          "languages",
+          "fluently."
+        ],
+        "wrong_index": 7,
+        "wrong_word": "three",
+        "correct_word": "two",
+        "fixed_sentence": "Being bilingual means a person can speak two languages fluently.",
+        "reason": "字首『bi-』代表數字 2，因此『bilingual（雙語的）』是指能流利使用『兩種 (two)』語言！"
+      },
+      {
+        "trap_id": "RWW08_ERR_4",
+        "sentence": "Erico thought Rosa was rude because she asked many questions.",
+        "tokens": [
+          "Erico",
+          "thought",
+          "Rosa",
+          "was",
+          "rude",
+          "because",
+          "she",
+          "asked",
+          "many",
+          "questions."
+        ],
+        "wrong_index": 4,
+        "wrong_word": "rude",
+        "correct_word": "friendly",
+        "fixed_sentence": "Erico thought Rosa was friendly because she asked many questions.",
+        "reason": "故事第 31-32 行指出 Erico 明白問這麼多問題是 Rosa 表達『友善 (friendly)』的方式，並親切幫她撿畫具！"
       }
     ],
     "quizzes": [
@@ -5193,188 +8491,280 @@ window.MIDTERM_DATABASE = [
         "id": "RWW6_U08_LIST_1",
         "type": "spelling_listen",
         "category_tag": "listening",
-        "question": "請聽電腦發音，在紙上拼寫出這個核心單字：",
-        "hint": "中文釋義：雙語的",
+        "question": "請聽電腦發音，在紙上拼寫出這個核心單字或片語：",
+        "hint": "詞性與中文：adj. 雙語的；能說兩種語言的",
         "audio_word": "bilingual",
-        "phonetic": "",
-        "syllables": "bilingual",
+        "phonetic": "/baɪˈlɪŋɡwəl/",
+        "syllables": "bi-lin-gual",
         "answer": "bilingual",
         "explanation": {
-          "concept": "Unit 8: So Many Questions 核心字彙：bilingual",
-          "formula": "詞性與例句搭配：able to speak two languages fluently",
-          "trap": "注意拼寫盲點：切記母音與子音字母對應，勿漏寫尾音或不發音字母。"
+          "concept": "【Unit 8: So Many Questions】核心字彙：bilingual /baɪˈlɪŋɡwəl/ (adj. 雙語的；能說兩種語言的)",
+          "formula": "課文例句：Do they speak Portuguese and English? Are they bilingual?",
+          "trap": "拼寫與用法關鍵：字首 bi- 代表「二」（如 bicycle 兩輪腳踏車），指 speaking two languages。"
         }
       },
       {
         "id": "RWW6_U08_LIST_2",
         "type": "spelling_listen",
         "category_tag": "listening",
-        "question": "請聽電腦發音，在紙上拼寫出這個核心單字：",
-        "hint": "中文釋義：腔調、口音",
+        "question": "請聽電腦發音，在紙上拼寫出這個核心單字或片語：",
+        "hint": "詞性與中文：n. 口音；腔調",
         "audio_word": "accent",
-        "phonetic": "",
-        "syllables": "accent",
+        "phonetic": "/ˈæksɛnt/",
+        "syllables": "ac-cent",
         "answer": "accent",
         "explanation": {
-          "concept": "Unit 8: So Many Questions 核心字彙：accent",
-          "formula": "詞性與例句搭配：a distinctive mode of pronunciation of a language",
-          "trap": "注意拼寫盲點：切記母音與子音字母對應，勿漏寫尾音或不發音字母。"
+          "concept": "【Unit 8: So Many Questions】核心字彙：accent /ˈæksɛnt/ (n. 口音；腔調)",
+          "formula": "課文例句：You sound like you have a British accent.",
+          "trap": "拼寫與用法關鍵：課文定義：a way to pronounce words（發音吐字的方式）。"
         }
       },
       {
         "id": "RWW6_U08_LIST_3",
         "type": "spelling_listen",
         "category_tag": "listening",
-        "question": "請聽電腦發音，在紙上拼寫出這個核心單字：",
-        "hint": "中文釋義：義大利語、義大利人的",
-        "audio_word": "Italian",
-        "phonetic": "",
-        "syllables": "Italian",
-        "answer": "Italian",
+        "question": "請聽電腦發音，在紙上拼寫出這個核心單字或片語：",
+        "hint": "詞性與中文：n. 預測；推測",
+        "audio_word": "prediction",
+        "phonetic": "/prɪˈdɪkʃən/",
+        "syllables": "pre-dic-tion",
+        "answer": "prediction",
         "explanation": {
-          "concept": "Unit 8: So Many Questions 核心字彙：Italian",
-          "formula": "詞性與例句搭配：the language or people of Italy",
-          "trap": "注意拼寫盲點：切記母音與子音字母對應，勿漏寫尾音或不發音字母。"
+          "concept": "【Unit 8: So Many Questions】核心字彙：prediction /prɪˈdɪkʃən/ (n. 預測；推測)",
+          "formula": "課文例句：A prediction is what you think will happen in the future.",
+          "trap": "拼寫與用法關鍵：pre- (預先) + dict (說) + -ion，預測未來可能發生的事。"
         }
       },
       {
         "id": "RWW6_U08_LIST_4",
         "type": "spelling_listen",
         "category_tag": "listening",
-        "question": "請聽電腦發音，在紙上拼寫出這個核心單字：",
-        "hint": "中文釋義：葡萄牙語、葡萄牙的",
-        "audio_word": "Portuguese",
-        "phonetic": "",
-        "syllables": "Portuguese",
-        "answer": "Portuguese",
+        "question": "請聽電腦發音，在紙上拼寫出這個核心單字或片語：",
+        "hint": "詞性與中文：n./adj. 義大利語；義大利的",
+        "audio_word": "Italian",
+        "phonetic": "/ɪˈtæljən/",
+        "syllables": "I-tal-ian",
+        "answer": "Italian",
         "explanation": {
-          "concept": "Unit 8: So Many Questions 核心字彙：Portuguese",
-          "formula": "詞性與例句搭配：the language or people of Portugal and Brazil",
-          "trap": "注意拼寫盲點：切記母音與子音字母對應，勿漏寫尾音或不發音字母。"
+          "concept": "【Unit 8: So Many Questions】核心字彙：Italian /ɪˈtæljən/ (n./adj. 義大利語；義大利的)",
+          "formula": "課文例句：Rosa speaks Italian at home.",
+          "trap": "拼寫與用法關鍵：Italy 去 y 加 -ian，語言與國籍字首 I 永遠大寫。"
         }
       },
       {
         "id": "RWW6_U08_LIST_5",
         "type": "spelling_listen",
         "category_tag": "listening",
-        "question": "請聽電腦發音，在紙上拼寫出這個核心單字：",
-        "hint": "中文釋義：預測、推測",
-        "audio_word": "prediction",
-        "phonetic": "",
-        "syllables": "prediction",
-        "answer": "prediction",
+        "question": "請聽電腦發音，在紙上拼寫出這個核心單字或片語：",
+        "hint": "詞性與中文：n./adj. 葡萄牙語；葡萄牙的",
+        "audio_word": "Portuguese",
+        "phonetic": "/ˌpɔːrtʃəˈɡiːz/",
+        "syllables": "Por-tu-guese",
+        "answer": "Portuguese",
         "explanation": {
-          "concept": "Unit 8: So Many Questions 核心字彙：prediction",
-          "formula": "詞性與例句搭配：a statement about what you think will happen in the future",
-          "trap": "注意拼寫盲點：切記母音與子音字母對應，勿漏寫尾音或不發音字母。"
+          "concept": "【Unit 8: So Many Questions】核心字彙：Portuguese /ˌpɔːrtʃəˈɡiːz/ (n./adj. 葡萄牙語；葡萄牙的)",
+          "formula": "課文例句：Speaking Portuguese helped Erico learn some Italian.",
+          "trap": "拼寫與用法關鍵：葡萄牙 (Portugal) 與巴西 (Brazil) 都說 Portuguese；字尾為 -guese。"
         }
       },
       {
-        "id": "RWW6_U08_RW_6",
-        "type": "paper_rewrite",
-        "category_tag": "rewrite",
-        "question": "題目提示：Rosa first speaks to Erico in Portuguese.",
-        "answer": "F",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
+        "id": "RWW6_U08_LIST_6",
+        "type": "spelling_listen",
+        "category_tag": "listening",
+        "question": "請聽電腦發音，在紙上拼寫出這個核心單字或片語：",
+        "hint": "詞性與中文：v. 發音",
+        "audio_word": "pronounce",
+        "phonetic": "/prəˈnaʊns/",
+        "syllables": "pro-nounce",
+        "answer": "pronounce",
         "explanation": {
-          "concept": "Unit 8: So Many Questions 核心句型結構改寫",
-          "formula": "標準句型：F",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
+          "concept": "【Unit 8: So Many Questions】核心字彙：pronounce /prəˈnaʊns/ (v. 發音)",
+          "formula": "課文例句：An accent is a special way to pronounce words.",
+          "trap": "拼寫與用法關鍵：動詞為 pro-nounce (中間是 o-u)，名詞發音則是 pronunciation。"
         }
       },
       {
-        "id": "RWW6_U08_RW_7",
-        "type": "paper_rewrite",
-        "category_tag": "rewrite",
-        "question": "題目提示：Rosa and Erico are studying art.",
-        "answer": "T",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
+        "id": "RWW6_U08_LIST_7",
+        "type": "spelling_listen",
+        "category_tag": "listening",
+        "question": "請聽電腦發音，在紙上拼寫出這個核心單字或片語：",
+        "hint": "詞性與中文：v. 打斷（談話）；插嘴",
+        "audio_word": "interrupt",
+        "phonetic": "/ˌɪntəˈrʌpt/",
+        "syllables": "in-ter-rupt",
+        "answer": "interrupt",
         "explanation": {
-          "concept": "Unit 8: So Many Questions 核心句型結構改寫",
-          "formula": "標準句型：T",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
+          "concept": "【Unit 8: So Many Questions】核心字彙：interrupt /ˌɪntəˈrʌpt/ (v. 打斷（談話）；插嘴)",
+          "formula": "課文例句：Rosa interrupted Erico and asked five questions quickly.",
+          "trap": "拼寫與用法關鍵：inter- + rupt，注意中間有兩個 r。"
         }
       },
       {
-        "id": "RWW6_U08_RW_8",
-        "type": "paper_rewrite",
-        "category_tag": "rewrite",
-        "question": "題目提示：Erico was born in Australia.",
-        "answer": "T",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
+        "id": "RWW6_U08_LIST_8",
+        "type": "spelling_listen",
+        "category_tag": "listening",
+        "question": "請聽電腦發音，在紙上拼寫出這個核心單字或片語：",
+        "hint": "詞性與中文：n. 用品；物資（常指文具或美術用品）",
+        "audio_word": "supplies",
+        "phonetic": "/səˈplaɪz/",
+        "syllables": "sup-plies",
+        "answer": "supplies",
         "explanation": {
-          "concept": "Unit 8: So Many Questions 核心句型結構改寫",
-          "formula": "標準句型：T",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
+          "concept": "【Unit 8: So Many Questions】核心字彙：supplies /səˈplaɪz/ (n. 用品；物資（常指文具或美術用品）)",
+          "formula": "課文例句：Rosa dropped her art supplies while she was talking.",
+          "trap": "拼寫與用法關鍵：單數為 supply，去 y 改 ies 變成複數 supplies。"
         }
       },
       {
-        "id": "RWW6_U08_RW_9",
-        "type": "paper_rewrite",
-        "category_tag": "rewrite",
-        "question": "題目提示：Erico's parents were born in different countries.",
-        "answer": "T",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
+        "id": "RWW6_U08_RMC_9",
+        "type": "choice",
+        "category_tag": "choice",
+        "question": "Which sentence is a prediction?",
+        "options": [
+          "Darla will do well in school.",
+          "Darla fell asleep on the rug."
+        ],
+        "answer": "Darla will do well in school.",
+        "hint": "閱讀與字義選擇題：請從選項中選出最符合課文內容的答案",
         "explanation": {
-          "concept": "Unit 8: So Many Questions 核心句型結構改寫",
-          "formula": "標準句型：T",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
+          "concept": "Unit 8 閱讀策略：根據文本線索進行預測 (Make Predictions) 與多國語言文化",
+          "formula": "正解：『Darla will do well in school.』。課文依據：含有 will 未來預測動詞",
+          "trap": "人物與字彙細節：Rosa 抱著畫紙畫筆代表要去上美術課 (art class)；Rosa 第一句話講 Italian；Erico 雖來自澳洲家庭但講話是英國腔 (British accent)；bilingual 指雙語！"
         }
       },
       {
-        "id": "RWW6_U08_RW_10",
-        "type": "paper_rewrite",
-        "category_tag": "rewrite",
-        "question": "題目提示：Erico decides Rosa is unfriendly.",
-        "answer": "F",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
+        "id": "RWW6_U08_RMC_10",
+        "type": "choice",
+        "category_tag": "choice",
+        "question": "Ron sent a text message. What will happen next?",
+        "options": [
+          "He will send the message.",
+          "His friend will read the message."
+        ],
+        "answer": "His friend will read the message.",
+        "hint": "閱讀與字義選擇題：請從選項中選出最符合課文內容的答案",
         "explanation": {
-          "concept": "Unit 8: So Many Questions 核心句型結構改寫",
-          "formula": "標準句型：F",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
+          "concept": "Unit 8 閱讀策略：根據文本線索進行預測 (Make Predictions) 與多國語言文化",
+          "formula": "正解：『His friend will read the message.』。課文依據：基於生活常理之合理預測",
+          "trap": "人物與字彙細節：Rosa 抱著畫紙畫筆代表要去上美術課 (art class)；Rosa 第一句話講 Italian；Erico 雖來自澳洲家庭但講話是英國腔 (British accent)；bilingual 指雙語！"
         }
       },
       {
-        "id": "RWW6_U08_RW_11",
-        "type": "paper_rewrite",
-        "category_tag": "rewrite",
-        "question": "題目提示：Knowing Portuguese helped Erico learn Italian.",
-        "answer": "T",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
+        "id": "RWW6_U08_RMC_11",
+        "type": "choice",
+        "category_tag": "choice",
+        "question": "In line 2, Italian means a language from:",
+        "options": [
+          "Australia.",
+          "Brazil.",
+          "Italy.",
+          "Portugal."
+        ],
+        "answer": "Italy.",
+        "hint": "閱讀與字義選擇題：請從選項中選出最符合課文內容的答案",
         "explanation": {
-          "concept": "Unit 8: So Many Questions 核心句型結構改寫",
-          "formula": "標準句型：T",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
+          "concept": "Unit 8 閱讀策略：根據文本線索進行預測 (Make Predictions) 與多國語言文化",
+          "formula": "正解：『Italy.』。根據課文上下文線索與字義推論得出。",
+          "trap": "人物與字彙細節：Rosa 抱著畫紙畫筆代表要去上美術課 (art class)；Rosa 第一句話講 Italian；Erico 雖來自澳洲家庭但講話是英國腔 (British accent)；bilingual 指雙語！"
         }
       },
       {
-        "id": "RWW6_U08_RW_12",
-        "type": "paper_rewrite",
-        "category_tag": "rewrite",
-        "question": "題目提示：Erico speaks with an Australian accent.",
-        "answer": "F",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
+        "id": "RWW6_U08_RMC_12",
+        "type": "choice",
+        "category_tag": "choice",
+        "question": "In line 10, accent means a way to:",
+        "options": [
+          "draw or paint.",
+          "pronounce words.",
+          "make new friends.",
+          "ask many questions."
+        ],
+        "answer": "pronounce words.",
+        "hint": "閱讀與字義選擇題：請從選項中選出最符合課文內容的答案",
         "explanation": {
-          "concept": "Unit 8: So Many Questions 核心句型結構改寫",
-          "formula": "標準句型：F",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
+          "concept": "Unit 8 閱讀策略：根據文本線索進行預測 (Make Predictions) 與多國語言文化",
+          "formula": "正解：『pronounce words.』。根據課文上下文線索與字義推論得出。",
+          "trap": "人物與字彙細節：Rosa 抱著畫紙畫筆代表要去上美術課 (art class)；Rosa 第一句話講 Italian；Erico 雖來自澳洲家庭但講話是英國腔 (British accent)；bilingual 指雙語！"
         }
       },
       {
-        "id": "RWW6_U08_RW_13",
-        "type": "paper_rewrite",
-        "category_tag": "rewrite",
-        "question": "題目提示：Erico has a long story to tell Rosa.",
-        "answer": "T",
-        "hint": "在紙上寫出完整句子後按「翻牌核對答案」",
+        "id": "RWW6_U08_RMC_13",
+        "type": "choice",
+        "category_tag": "choice",
+        "question": "In line 18, Portuguese means from:",
+        "options": [
+          "England.",
+          "Portugal.",
+          "Italy.",
+          "Australia."
+        ],
+        "answer": "Portugal.",
+        "hint": "閱讀與字義選擇題：請從選項中選出最符合課文內容的答案",
         "explanation": {
-          "concept": "Unit 8: So Many Questions 核心句型結構改寫",
-          "formula": "標準句型：T",
-          "trap": "小學生常犯錯誤：切記首字母大寫、標點符號與主詞動詞時態一致性。"
+          "concept": "Unit 8 閱讀策略：根據文本線索進行預測 (Make Predictions) 與多國語言文化",
+          "formula": "正解：『Portugal.』。課文依據：also spoken in Brazil",
+          "trap": "人物與字彙細節：Rosa 抱著畫紙畫筆代表要去上美術課 (art class)；Rosa 第一句話講 Italian；Erico 雖來自澳洲家庭但講話是英國腔 (British accent)；bilingual 指雙語！"
         }
       },
       {
-        "id": "RWW6_U08_TF_14",
+        "id": "RWW6_U08_RMC_14",
+        "type": "choice",
+        "category_tag": "choice",
+        "question": "In line 22, bilingual means:",
+        "options": [
+          "moving a lot.",
+          "being friendly.",
+          "pushing a door open.",
+          "speaking two languages."
+        ],
+        "answer": "speaking two languages.",
+        "hint": "閱讀與字義選擇題：請從選項中選出最符合課文內容的答案",
+        "explanation": {
+          "concept": "Unit 8 閱讀策略：根據文本線索進行預測 (Make Predictions) 與多國語言文化",
+          "formula": "正解：『speaking two languages.』。根據課文上下文線索與字義推論得出。",
+          "trap": "人物與字彙細節：Rosa 抱著畫紙畫筆代表要去上美術課 (art class)；Rosa 第一句話講 Italian；Erico 雖來自澳洲家庭但講話是英國腔 (British accent)；bilingual 指雙語！"
+        }
+      },
+      {
+        "id": "RWW6_U08_RMC_15",
+        "type": "choice",
+        "category_tag": "choice",
+        "question": "What does the writer want to do soon?",
+        "options": [
+          "write a letter to her family",
+          "have a video call with friends",
+          "make dinner for her brother",
+          "speak with someone in English"
+        ],
+        "answer": "have a video call with friends",
+        "hint": "閱讀與字義選擇題：請從選項中選出最符合課文內容的答案",
+        "explanation": {
+          "concept": "Unit 8 閱讀策略：根據文本線索進行預測 (Make Predictions) 與多國語言文化",
+          "formula": "正解：『have a video call with friends』。根據課文上下文線索與字義推論得出。",
+          "trap": "人物與字彙細節：Rosa 抱著畫紙畫筆代表要去上美術課 (art class)；Rosa 第一句話講 Italian；Erico 雖來自澳洲家庭但講話是英國腔 (British accent)；bilingual 指雙語！"
+        }
+      },
+      {
+        "id": "RWW6_U08_RMC_16",
+        "type": "choice",
+        "category_tag": "choice",
+        "question": "What will the writer do after sending this message?",
+        "options": [
+          "make new friends",
+          "call her father",
+          "have a conversation",
+          "go eat dinner"
+        ],
+        "answer": "go eat dinner",
+        "hint": "閱讀與字義選擇題：請從選項中選出最符合課文內容的答案",
+        "explanation": {
+          "concept": "Unit 8 閱讀策略：根據文本線索進行預測 (Make Predictions) 與多國語言文化",
+          "formula": "正解：『go eat dinner』。課文依據：父親喊著 dinner's ready",
+          "trap": "人物與字彙細節：Rosa 抱著畫紙畫筆代表要去上美術課 (art class)；Rosa 第一句話講 Italian；Erico 雖來自澳洲家庭但講話是英國腔 (British accent)；bilingual 指雙語！"
+        }
+      },
+      {
+        "id": "RWW6_U08_TF_17",
         "type": "choice",
         "category_tag": "choice",
         "question": "Rosa first speaks to Erico in Portuguese.",
@@ -5383,15 +8773,15 @@ window.MIDTERM_DATABASE = [
           "False (錯誤)"
         ],
         "answer": "False (錯誤)",
+        "hint": "是非題：請根據課文事實判斷 True (正確) 或 False (錯誤)",
         "explanation": {
-          "concept": "Unit 8: So Many Questions 課文事實與文法判斷",
-          "formula": "正解分析：(Rosa 開口第一句話是用義大利語 Italian 發問)",
-          "trap": "審題注意細節數字、專有名詞與時態限定詞。"
-        },
-        "hint": "判斷 True 還是 False"
+          "concept": "Unit 8 閱讀策略：根據文本線索進行預測 (Make Predictions) 與多國語言文化",
+          "formula": "本題為【False (錯誤)】。課文依據：Rosa 開口第一句話是用義大利語 Italian 發問",
+          "trap": "人物與字彙細節：Rosa 抱著畫紙畫筆代表要去上美術課 (art class)；Rosa 第一句話講 Italian；Erico 雖來自澳洲家庭但講話是英國腔 (British accent)；bilingual 指雙語！"
+        }
       },
       {
-        "id": "RWW6_U08_TF_15",
+        "id": "RWW6_U08_TF_18",
         "type": "choice",
         "category_tag": "choice",
         "question": "Rosa and Erico are studying art.",
@@ -5400,15 +8790,15 @@ window.MIDTERM_DATABASE = [
           "False (錯誤)"
         ],
         "answer": "True (正確)",
+        "hint": "是非題：請根據課文事實判斷 True (正確) 或 False (錯誤)",
         "explanation": {
-          "concept": "Unit 8: So Many Questions 課文事實與文法判斷",
-          "formula": "正解分析：(從畫紙、筆刷與色鉛筆等美術用品推斷)",
-          "trap": "審題注意細節數字、專有名詞與時態限定詞。"
-        },
-        "hint": "判斷 True 還是 False"
+          "concept": "Unit 8 閱讀策略：根據文本線索進行預測 (Make Predictions) 與多國語言文化",
+          "formula": "本題為【True (正確)】。課文依據：從畫紙、筆刷與色鉛筆等美術用品推斷",
+          "trap": "人物與字彙細節：Rosa 抱著畫紙畫筆代表要去上美術課 (art class)；Rosa 第一句話講 Italian；Erico 雖來自澳洲家庭但講話是英國腔 (British accent)；bilingual 指雙語！"
+        }
       },
       {
-        "id": "RWW6_U08_TF_16",
+        "id": "RWW6_U08_TF_19",
         "type": "choice",
         "category_tag": "choice",
         "question": "Erico was born in Australia.",
@@ -5417,15 +8807,15 @@ window.MIDTERM_DATABASE = [
           "False (錯誤)"
         ],
         "answer": "True (正確)",
+        "hint": "是非題：請根據課文事實判斷 True (正確) 或 False (錯誤)",
         "explanation": {
-          "concept": "Unit 8: So Many Questions 課文事實與文法判斷",
-          "formula": "正解分析：(他的家庭來自澳洲 Australia)",
-          "trap": "審題注意細節數字、專有名詞與時態限定詞。"
-        },
-        "hint": "判斷 True 還是 False"
+          "concept": "Unit 8 閱讀策略：根據文本線索進行預測 (Make Predictions) 與多國語言文化",
+          "formula": "本題為【True (正確)】。課文依據：他的家庭來自澳洲 Australia",
+          "trap": "人物與字彙細節：Rosa 抱著畫紙畫筆代表要去上美術課 (art class)；Rosa 第一句話講 Italian；Erico 雖來自澳洲家庭但講話是英國腔 (British accent)；bilingual 指雙語！"
+        }
       },
       {
-        "id": "RWW6_U08_TF_17",
+        "id": "RWW6_U08_TF_20",
         "type": "choice",
         "category_tag": "choice",
         "question": "Erico's parents were born in different countries.",
@@ -5434,15 +8824,15 @@ window.MIDTERM_DATABASE = [
           "False (錯誤)"
         ],
         "answer": "True (正確)",
+        "hint": "是非題：請根據課文事實判斷 True (正確) 或 False (錯誤)",
         "explanation": {
-          "concept": "Unit 8: So Many Questions 課文事實與文法判斷",
-          "formula": "正解分析：(父親來自巴西 Brazil，母親來自葡萄牙 Portugal)",
-          "trap": "審題注意細節數字、專有名詞與時態限定詞。"
-        },
-        "hint": "判斷 True 還是 False"
+          "concept": "Unit 8 閱讀策略：根據文本線索進行預測 (Make Predictions) 與多國語言文化",
+          "formula": "本題為【True (正確)】。課文依據：父親來自巴西 Brazil，母親來自葡萄牙 Portugal",
+          "trap": "人物與字彙細節：Rosa 抱著畫紙畫筆代表要去上美術課 (art class)；Rosa 第一句話講 Italian；Erico 雖來自澳洲家庭但講話是英國腔 (British accent)；bilingual 指雙語！"
+        }
       },
       {
-        "id": "RWW6_U08_TF_18",
+        "id": "RWW6_U08_TF_21",
         "type": "choice",
         "category_tag": "choice",
         "question": "Erico decides Rosa is unfriendly.",
@@ -5451,15 +8841,15 @@ window.MIDTERM_DATABASE = [
           "False (錯誤)"
         ],
         "answer": "False (錯誤)",
+        "hint": "是非題：請根據課文事實判斷 True (正確) 或 False (錯誤)",
         "explanation": {
-          "concept": "Unit 8: So Many Questions 課文事實與文法判斷",
-          "formula": "正解分析：(Erico 明白連珠發問是 Rosa 展現友善的方式)",
-          "trap": "審題注意細節數字、專有名詞與時態限定詞。"
-        },
-        "hint": "判斷 True 還是 False"
+          "concept": "Unit 8 閱讀策略：根據文本線索進行預測 (Make Predictions) 與多國語言文化",
+          "formula": "本題為【False (錯誤)】。課文依據：Erico 明白連珠發問是 Rosa 展現友善的方式",
+          "trap": "人物與字彙細節：Rosa 抱著畫紙畫筆代表要去上美術課 (art class)；Rosa 第一句話講 Italian；Erico 雖來自澳洲家庭但講話是英國腔 (British accent)；bilingual 指雙語！"
+        }
       },
       {
-        "id": "RWW6_U08_TF_19",
+        "id": "RWW6_U08_TF_22",
         "type": "choice",
         "category_tag": "choice",
         "question": "Knowing Portuguese helped Erico learn Italian.",
@@ -5468,15 +8858,15 @@ window.MIDTERM_DATABASE = [
           "False (錯誤)"
         ],
         "answer": "True (正確)",
+        "hint": "是非題：請根據課文事實判斷 True (正確) 或 False (錯誤)",
         "explanation": {
-          "concept": "Unit 8: So Many Questions 課文事實與文法判斷",
-          "formula": "正解分析：(第 35 行明確肯定：Portuguese did help me learn some Italian)",
-          "trap": "審題注意細節數字、專有名詞與時態限定詞。"
-        },
-        "hint": "判斷 True 還是 False"
+          "concept": "Unit 8 閱讀策略：根據文本線索進行預測 (Make Predictions) 與多國語言文化",
+          "formula": "本題為【True (正確)】。課文依據：第 35 行明確肯定：Portuguese did help me learn some Italian",
+          "trap": "人物與字彙細節：Rosa 抱著畫紙畫筆代表要去上美術課 (art class)；Rosa 第一句話講 Italian；Erico 雖來自澳洲家庭但講話是英國腔 (British accent)；bilingual 指雙語！"
+        }
       },
       {
-        "id": "RWW6_U08_TF_20",
+        "id": "RWW6_U08_TF_23",
         "type": "choice",
         "category_tag": "choice",
         "question": "Erico speaks with an Australian accent.",
@@ -5485,15 +8875,15 @@ window.MIDTERM_DATABASE = [
           "False (錯誤)"
         ],
         "answer": "False (錯誤)",
+        "hint": "是非題：請根據課文事實判斷 True (正確) 或 False (錯誤)",
         "explanation": {
-          "concept": "Unit 8: So Many Questions 課文事實與文法判斷",
-          "formula": "正解分析：(他帶著英國腔 British accent)",
-          "trap": "審題注意細節數字、專有名詞與時態限定詞。"
-        },
-        "hint": "判斷 True 還是 False"
+          "concept": "Unit 8 閱讀策略：根據文本線索進行預測 (Make Predictions) 與多國語言文化",
+          "formula": "本題為【False (錯誤)】。課文依據：他帶著英國腔 British accent",
+          "trap": "人物與字彙細節：Rosa 抱著畫紙畫筆代表要去上美術課 (art class)；Rosa 第一句話講 Italian；Erico 雖來自澳洲家庭但講話是英國腔 (British accent)；bilingual 指雙語！"
+        }
       },
       {
-        "id": "RWW6_U08_TF_21",
+        "id": "RWW6_U08_TF_24",
         "type": "choice",
         "category_tag": "choice",
         "question": "Erico has a long story to tell Rosa.",
@@ -5502,37 +8892,117 @@ window.MIDTERM_DATABASE = [
           "False (錯誤)"
         ],
         "answer": "True (正確)",
+        "hint": "是非題：請根據課文事實判斷 True (正確) 或 False (錯誤)",
         "explanation": {
-          "concept": "Unit 8: So Many Questions 課文事實與文法判斷",
-          "formula": "正解分析：(文章最後一句：do you want to hear a long story?)",
-          "trap": "審題注意細節數字、專有名詞與時態限定詞。"
-        },
-        "hint": "判斷 True 還是 False"
+          "concept": "Unit 8 閱讀策略：根據文本線索進行預測 (Make Predictions) 與多國語言文化",
+          "formula": "本題為【True (正確)】。課文依據：文章最後一句：do you want to hear a long story?",
+          "trap": "人物與字彙細節：Rosa 抱著畫紙畫筆代表要去上美術課 (art class)；Rosa 第一句話講 Italian；Erico 雖來自澳洲家庭但講話是英國腔 (British accent)；bilingual 指雙語！"
+        }
       },
       {
-        "id": "RWW6_U08_QA_22",
+        "id": "RWW6_U08_BFILL_25",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "In line 2, ______ means a language from:",
+        "answer": "Italian",
+        "hint": "課文重點句填空：請在紙上寫出空格處的單字",
+        "explanation": {
+          "concept": "Unit 8 閱讀策略：根據文本線索進行預測 (Make Predictions) 與多國語言文化",
+          "formula": "完整原句：In line 2, Italian means a language from:",
+          "trap": "人物與字彙細節：Rosa 抱著畫紙畫筆代表要去上美術課 (art class)；Rosa 第一句話講 Italian；Erico 雖來自澳洲家庭但講話是英國腔 (British accent)；bilingual 指雙語！"
+        }
+      },
+      {
+        "id": "RWW6_U08_BFILL_26",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "In line 10, ______ means a way to:",
+        "answer": "accent",
+        "hint": "課文重點句填空：請在紙上寫出空格處的單字",
+        "explanation": {
+          "concept": "Unit 8 閱讀策略：根據文本線索進行預測 (Make Predictions) 與多國語言文化",
+          "formula": "完整原句：In line 10, accent means a way to:",
+          "trap": "人物與字彙細節：Rosa 抱著畫紙畫筆代表要去上美術課 (art class)；Rosa 第一句話講 Italian；Erico 雖來自澳洲家庭但講話是英國腔 (British accent)；bilingual 指雙語！"
+        }
+      },
+      {
+        "id": "RWW6_U08_BFILL_27",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "In line 18, ______ means from:",
+        "answer": "Portuguese",
+        "hint": "課文重點句填空：請在紙上寫出空格處的單字",
+        "explanation": {
+          "concept": "Unit 8 閱讀策略：根據文本線索進行預測 (Make Predictions) 與多國語言文化",
+          "formula": "完整原句：In line 18, Portuguese means from:",
+          "trap": "人物與字彙細節：Rosa 抱著畫紙畫筆代表要去上美術課 (art class)；Rosa 第一句話講 Italian；Erico 雖來自澳洲家庭但講話是英國腔 (British accent)；bilingual 指雙語！"
+        }
+      },
+      {
+        "id": "RWW6_U08_BFILL_28",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "In line 22, ______ means:",
+        "answer": "bilingual",
+        "hint": "課文重點句填空：請在紙上寫出空格處的單字",
+        "explanation": {
+          "concept": "Unit 8 閱讀策略：根據文本線索進行預測 (Make Predictions) 與多國語言文化",
+          "formula": "完整原句：In line 22, bilingual means:",
+          "trap": "人物與字彙細節：Rosa 抱著畫紙畫筆代表要去上美術課 (art class)；Rosa 第一句話講 Italian；Erico 雖來自澳洲家庭但講話是英國腔 (British accent)；bilingual 指雙語！"
+        }
+      },
+      {
+        "id": "RWW6_U08_QA_29",
         "type": "fill",
         "category_tag": "fill",
         "question": "Read the paragraph starting at line 4. What class do you think Rosa is going to?",
         "answer": "She is going to an art class, because she is carrying a big pile of drawing paper, paint brushes, and colored pencils.",
-        "hint": "在紙上寫下答案關鍵字或完整句子",
+        "hint": "閱讀理解簡答：在紙上寫下關鍵答案或完整句子",
         "explanation": {
-          "concept": "Unit 8: So Many Questions 閱讀理解與細節檢索",
-          "formula": "課文原句定位正解：She is going to an art class, because she is carrying a big pile of drawing paper, paint brushes, and colored pencils.",
-          "trap": "注意問句疑問詞（What, Why, Where, How）對應之作答時態與主詞人稱。"
+          "concept": "Unit 8 閱讀策略：根據文本線索進行預測 (Make Predictions) 與多國語言文化",
+          "formula": "標準解答：She is going to an art class, because she is carrying a big pile of drawing paper, paint brushes, and colored pencils.",
+          "trap": "人物與字彙細節：Rosa 抱著畫紙畫筆代表要去上美術課 (art class)；Rosa 第一句話講 Italian；Erico 雖來自澳洲家庭但講話是英國腔 (British accent)；bilingual 指雙語！"
         }
       },
       {
-        "id": "RWW6_U08_QA_23",
+        "id": "RWW6_U08_QA_30",
         "type": "fill",
         "category_tag": "fill",
         "question": "What do you predict will happen after the story ends?",
         "answer": "Erico and Rosa will walk into the art classroom together, and Erico will tell her the long story of why he grew up with a British accent.",
-        "hint": "在紙上寫下答案關鍵字或完整句子",
+        "hint": "閱讀理解簡答：在紙上寫下關鍵答案或完整句子",
         "explanation": {
-          "concept": "Unit 8: So Many Questions 閱讀理解與細節檢索",
-          "formula": "課文原句定位正解：Erico and Rosa will walk into the art classroom together, and Erico will tell her the long story of why he grew up with a British accent.",
-          "trap": "注意問句疑問詞（What, Why, Where, How）對應之作答時態與主詞人稱。"
+          "concept": "Unit 8 閱讀策略：根據文本線索進行預測 (Make Predictions) 與多國語言文化",
+          "formula": "標準解答：Erico and Rosa will walk into the art classroom together, and Erico will tell her the long story of why he grew up with a British accent.",
+          "trap": "人物與字彙細節：Rosa 抱著畫紙畫筆代表要去上美術課 (art class)；Rosa 第一句話講 Italian；Erico 雖來自澳洲家庭但講話是英國腔 (British accent)；bilingual 指雙語！"
+        }
+      },
+      {
+        "id": "RWW6_U08_EX_31",
+        "type": "paper_rewrite",
+        "category_tag": "rewrite",
+        "question": "情境預測造句：What class do you predict Rosa is going to, and why?",
+        "options": [],
+        "answer": "She is going to an art class because she is carrying drawing paper and paint brushes.",
+        "hint": "從她攜帶圖畫紙、水彩筆與色鉛筆預測她要去上美術課 (art class)",
+        "explanation": {
+          "concept": "Unit 8 閱讀策略：根據文本線索進行預測 (Make Predictions) 與多國語言文化",
+          "formula": "標準解答：She is going to an art class because she is carrying drawing paper and paint brushes.",
+          "trap": "人物與字彙細節：Rosa 抱著畫紙畫筆代表要去上美術課 (art class)；Rosa 第一句話講 Italian；Erico 雖來自澳洲家庭但講話是英國腔 (British accent)；bilingual 指雙語！"
+        }
+      },
+      {
+        "id": "RWW6_U08_EX_32",
+        "type": "paper_rewrite",
+        "category_tag": "rewrite",
+        "question": "字彙定義造句：What does the word 'bilingual' mean? (用 speak two languages 造句)",
+        "options": [],
+        "answer": "Bilingual means being able to speak two languages.",
+        "hint": "bilingual 指能夠說兩種語言",
+        "explanation": {
+          "concept": "Unit 8 閱讀策略：根據文本線索進行預測 (Make Predictions) 與多國語言文化",
+          "formula": "標準解答：Bilingual means being able to speak two languages.",
+          "trap": "人物與字彙細節：Rosa 抱著畫紙畫筆代表要去上美術課 (art class)；Rosa 第一句話講 Italian；Erico 雖來自澳洲家庭但講話是英國腔 (British accent)；bilingual 指雙語！"
         }
       }
     ]
@@ -5841,12 +9311,12 @@ window.MIDTERM_DATABASE = [
       },
       {
         "trap_id": "W02_TRAP_NEGATIVE_PAST",
-        "sentence": "Ray are not pass quiz, and Jim didn't either.",
+        "sentence": "Ray are not pass the quiz, and Jim didn't either.",
         "tokens": [
           "Ray",
-          "are",
-          "not",
+          "are not",
           "pass",
+          "the",
           "quiz,",
           "and",
           "Jim",
@@ -5947,14 +9417,13 @@ window.MIDTERM_DATABASE = [
           "cat",
           "was",
           "sleeping",
-          "infront",
-          "off",
+          "infront off",
           "the",
           "door."
         ],
         "wrong_index": 4,
-        "wrong_word": "infront",
-        "correct_word": "in",
+        "wrong_word": "infront off",
+        "correct_word": "in front of",
         "fixed_sentence": "The cat was sleeping in front of the door.",
         "reason": "【介系詞片語連寫與錯字】in front of 是三個獨立單字，介系詞是 of（非雙 f 的 off）。"
       },
@@ -5965,15 +9434,14 @@ window.MIDTERM_DATABASE = [
           "A",
           "dog",
           "runs",
-          "more",
-          "faster",
+          "more faster",
           "than",
           "a",
           "person."
         ],
         "wrong_index": 3,
-        "wrong_word": "more",
-        "correct_word": "",
+        "wrong_word": "more faster",
+        "correct_word": "faster",
         "fixed_sentence": "A dog runs faster than a person.",
         "reason": "【雙重比較級錯誤】fast 是單音節副詞，比較級直接加 -er (faster)，不可重複加 more！"
       },
@@ -6019,10 +9487,10 @@ window.MIDTERM_DATABASE = [
       },
       {
         "trap_id": "W04_TRAP_ADVERB_LY_DROP",
-        "sentence": "Peter laugh loud when he heard the joke.",
+        "sentence": "Peter laughed loud when he heard the joke.",
         "tokens": [
           "Peter",
-          "laugh",
+          "laughed",
           "loud",
           "when",
           "he",
@@ -6034,7 +9502,7 @@ window.MIDTERM_DATABASE = [
         "wrong_word": "loud",
         "correct_word": "loudly",
         "fixed_sentence": "Peter laughed loudly when he heard the joke.",
-        "reason": "【形容詞副詞混淆】修飾動詞 laugh 必須使用副詞 loudly，不能使用形容詞 loud。"
+        "reason": "【形容詞副詞混淆】修飾動詞 laughed 必須使用副詞 loudly，不能使用形容詞 loud。"
       },
       {
         "trap_id": "W05_TRAP_THIRD_PERSON_S",
@@ -6089,7 +9557,7 @@ window.MIDTERM_DATABASE = [
           "a",
           "car."
         ],
-        "wrong_index": 7,
+        "wrong_index": 6,
         "wrong_word": "will",
         "correct_word": "would",
         "fixed_sentence": "If I had 6000 dollars, I would buy a car.",
@@ -6521,17 +9989,17 @@ window.MIDTERM_DATABASE = [
         "category_tag": "choice",
         "question": "【附和句倒裝選擇】Brad did not play baseball, and ( ______ ).",
         "options": [
-          "Lisa didn't either",
-          "neither did Lisa",
-          "Lisa did too",
+          "Lisa didn't, either",
+          "neither didn't Lisa",
+          "Lisa did, too",
           "so did Lisa"
         ],
-        "answer": "Lisa didn't either",
-        "hint": "前句是否定句，後句附和必須也是否定附和",
+        "answer": "Lisa didn't, either",
+        "hint": "前句是否定句，後句附和必須也是否定附和（注意 neither 後不可用 didn't）",
         "explanation": {
           "concept": "Grammar 3 Unit 13: 否定附和句",
-          "formula": "否定句附和有兩種標準形式：① and Lisa didn't either；② and neither did Lisa。",
-          "trap": "前句是否定 did not，絕不能選肯定附和的 too 或 so did！"
+          "formula": "否定句附和標準形式：① Lisa didn't, either；② neither did Lisa（助動詞必須為肯定形 did）。",
+          "trap": "neither didn't Lisa 犯了雙重否定錯誤 ❌；too 與 so did 則是肯定附和 ❌。"
         }
       },
       {

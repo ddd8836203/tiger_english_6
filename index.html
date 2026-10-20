@@ -286,6 +286,7 @@
             <div class="dual-stem-box">
               <div class="dual-q-stem" id="midtermQuizStem">題目載入中...</div>
               <div class="dual-q-hint" id="midtermQuizHint">提示...</div>
+              <div id="midtermQuizOptions" class="midterm-quiz-options" style="display: none;"></div>
 
               <!-- 單字盲聽專屬發音器 (僅在 type === 'spelling_listen' 時顯示) -->
               <div id="spellingListenPlayer" class="spelling-listen-player" style="display: none;">
@@ -483,6 +484,11 @@
             <input type="checkbox" id="toggleChineseTranslation" checked>
             <span>顯示中文對照翻譯</span>
           </label>
+          <label class="toggle-label">
+            <input type="checkbox" id="toggleKeyAnnotations" checked>
+            <span>✨ 標註必考重點句與單字小卡</span>
+          </label>
+          <span class="reading-click-tip">💡 點擊課文內高亮單字，即可聽發音並開啟「7 大記憶錨點解析小卡」！</span>
         </div>
         <div id="readingPassagesList" class="reading-passages-list">
           <!-- 動態載入課文段落 -->
@@ -505,6 +511,12 @@
           <div class="quiz-info-group">
             <span class="quiz-type-badge" id="quizTypeBadge">Grammar Quiz</span>
             <span class="quiz-progress-text" id="quizProgressText">第 1 / 10 題</span>
+            <select id="quizCategorySelect" class="custom-select" style="margin-left:0.5rem; font-size:0.85rem; padding:0.3rem 0.6rem;">
+              <option value="all">📚 本單元全部題型</option>
+              <option value="grammar">📐 文法專攻 (Grammar)</option>
+              <option value="reading">📖 課文理解 (Reading)</option>
+              <option value="vocab">🔤 核心單字 (Vocab)</option>
+            </select>
           </div>
           <div class="quiz-mode-switch">
             <label class="mode-btn active" data-mode="paper">
@@ -583,9 +595,21 @@
     <section id="view-braingym" class="view-panel">
       <div class="braingym-container">
         <div class="braingym-hero">
-          <div class="hero-badge">⚡ 晨間 5~10 分鐘 iPad 免動筆</div>
+          <div class="hero-badge">⚡ 晨間 5~10 分鐘 iPad 免動筆 ｜ 六上期中考 12 單元必考秒殺</div>
           <h2 class="hero-title">晨間純腦力英語體操 (1★~10★ 語感天梯)</h2>
-          <p class="hero-sub">專門利用早餐零碎時間單手點擊秒殺，培養頂級語感、句型倒裝直覺與時態邏輯排除能力！</p>
+          <p class="hero-sub">專門利用早餐零碎時間單手點擊秒殺，培養倒裝附和、三級副詞比較、量詞搭配與科普閱讀直覺！（答錯自動歸檔至錯題本）</p>
+          <div class="braingym-toolbar">
+            <div class="bg-tier-pills" id="bgTierPills">
+              <button class="bg-tier-btn active" data-tier="all">🔥 全部星級 (50題)</button>
+              <button class="bg-tier-btn" data-tier="1-3">⭐ Lv.1~3 基礎暖身</button>
+              <button class="bg-tier-btn" data-tier="4-7">⭐⭐ Lv.4~7 段考主力</button>
+              <button class="bg-tier-btn" data-tier="8-10">⭐⭐⭐ Lv.8~10 滿分魔王</button>
+            </div>
+            <div class="bg-stats-bar">
+              <span class="bg-combo-badge" id="bgComboBadge">🔥 連勝 Combo: 0</span>
+              <span class="bg-progress-badge" id="bgProgressBadge">第 1 / 50 題</span>
+            </div>
+          </div>
         </div>
         <div id="braingymCard" class="quiz-card braingym-card">
           <!-- 腦力體操專用題目與即時雙色回饋 -->
@@ -601,12 +625,18 @@
             <h2 class="section-title">📕 終身錯題本與弱點消滅戰</h2>
             <p class="section-sub">自動歸檔所有標註「❌ 答錯」與「⏳ 猶豫」的題目，持續追蹤直到觀念完全打通！</p>
           </div>
-          <div class="errorbook-actions">
-            <button id="exportAiPromptBtn" class="btn-primary">
-              <span>🤖 一鍵匯出給 AI 出變式題</span>
+          <div class="errorbook-actions" style="flex-wrap:wrap; gap:0.5rem;">
+            <button id="preloadTeaErrorsBtn" class="btn-cta" title="將 Rex 在岱崙 Week 2 / Week 4 / Week 5 小考真實失分的 18 道題目一鍵匯入錯題本">
+              <span>🔥 載入岱崙小考 18 道真實失分題</span>
             </button>
-            <button id="retryErrorsBtn" class="btn-secondary">
+            <button id="retryErrorsBtn" class="btn-primary">
               <span>⚡ 啟動錯題消滅測驗</span>
+            </button>
+            <button id="printErrorBookBtn" class="btn-secondary">
+              <span>🖨️ 印出專屬錯題 A4 重測卷</span>
+            </button>
+            <button id="exportAiPromptBtn" class="btn-secondary">
+              <span>🤖 匯出 AI 變式題 Prompt</span>
             </button>
           </div>
         </div>
@@ -670,6 +700,13 @@
                   <span class="type-desc">整合單字、文法、閱讀測驗與素養題。</span>
                 </div>
               </label>
+              <label class="print-type-label">
+                <input type="radio" name="printType" value="errorbook">
+                <div class="type-box">
+                  <span class="type-title">📕 Error Book 專屬錯題重測卷</span>
+                  <span class="type-desc">將目前「錯題本」內累積的所有錯題與猶豫題一鍵排版為 A4 驗收卷！</span>
+                </div>
+              </label>
             </div>
 
             <div class="setup-options-row">
@@ -726,6 +763,13 @@
           <span>📋 一鍵複製 Prompt</span>
         </button>
       </div>
+    </div>
+  </div>
+
+  <!-- ==================== 課文點選單字 7 大錨點解析小卡 Modal ==================== -->
+  <div id="vocabPopoverModal" class="modal-overlay no-print">
+    <div class="modal-card vocab-popover-card" id="vocabPopoverContent">
+      <!-- 由 app.js 動態注入 Tiger 7大錨點單字解析 -->
     </div>
   </div>
 

@@ -20,16 +20,22 @@
     currentMidtermQuizIdx: 0,
     midtermQuizFilter: 'all',      // 'all' | 'listening' | 'fill' | 'choice' | 'rewrite'
     midtermDualMode: 'paper',      // 'paper' | 'voice'
+    midtermQuizStatus: {},         // { [qId]: 'correct' | 'wrong' }
+    midtermMistakeStatus: {},      // { [trapId]: 'correct' | 'wrong' }
     studySubtab: 'vocab',          // 'vocab' | 'reading' | 'grammar'
-    selectedBookId: 'od3',         // 預設 Oxford Discover 3
-    selectedUnitId: 'od3_1',       // 預設 Unit 1
+    selectedBookId: 'gra3',        // 預設六上期中考 Grammar 3
+    selectedUnitId: 'gra3_13',     // 預設 Unit 13
     ttsSpeed: 1.0,                 // 1.0x 或 0.8x
     quizMode: 'paper',             // 'paper' (紙筆對答) | 'interactive' (iPad 點選)
+    quizCategory: 'all',           // 'all' | 'grammar' | 'reading' | 'vocab'
+    isErrorBookRetry: false,       // 是否為錯題本消滅戰模式
     quizQuestions: [],             // 當前測驗題庫
     quizIndex: 0,                  // 當前題號 (0-indexed)
     quizResults: {},               // { [qId]: { status: 'correct'|'hesitant'|'wrong', selectedOption, timestamp } }
     brainGymQuestions: [],         // 晨間體操題目
     brainGymIndex: 0,
+    brainGymTier: 'all',           // 'all' | '1-3' | '4-7' | '8-10'
+    brainGymCombo: 0,
     errors: []                     // 終身錯題本清單
   };
 
@@ -55,7 +61,7 @@
     initAiModal();
 
     // 初始渲染期中考專區與課本單元
-    renderMidtermSprint();
+    switchView(AppState.currentView);
     renderCurrentUnit();
   });
 
@@ -67,9 +73,17 @@
       const saved = localStorage.getItem(STORAGE_KEY_SETTINGS);
       if (saved) {
         const parsed = jsonParseSafe(saved);
-        if (parsed.ttsSpeed) AppState.ttsSpeed = parsed.ttsSpeed;
-        if (parsed.bookId) AppState.selectedBookId = parsed.bookId;
-        if (parsed.unitId) AppState.selectedUnitId = parsed.unitId;
+        if (parsed && parsed.ttsSpeed) AppState.ttsSpeed = parsed.ttsSpeed;
+        if (parsed && parsed.bookId && window.ENGLISH_DATA) {
+          const validUnit = ENGLISH_DATA.units.find(u => u.book_id === parsed.bookId && u.unit_id === parsed.unitId);
+          if (validUnit && parsed.bookId !== 'od3') {
+            AppState.selectedBookId = parsed.bookId;
+            AppState.selectedUnitId = parsed.unitId;
+            if (validUnit.midterm_unit_id) {
+              AppState.selectedMidtermUnitId = validUnit.midterm_unit_id;
+            }
+          }
+        }
       }
     } catch (e) {
       console.warn('載入設定失敗:', e);
@@ -86,6 +100,31 @@
       }));
     } catch (e) {
       console.warn('儲存設定失敗:', e);
+    }
+  }
+
+  // 雙向同步期中考單元與頂部課本/單元選單
+  function syncTopbarFromMidtermId(midtermUnitId) {
+    if (!window.ENGLISH_DATA) return;
+    const matchedUnit = ENGLISH_DATA.units.find(u => u.midterm_unit_id === midtermUnitId);
+    if (matchedUnit) {
+      AppState.selectedBookId = matchedUnit.book_id;
+      AppState.selectedUnitId = matchedUnit.unit_id;
+      const bookSelect = document.getElementById('bookSelect');
+      if (bookSelect) bookSelect.value = AppState.selectedBookId;
+      populateUnitsForSelectedBook();
+      saveSettings();
+      renderCurrentUnit();
+    }
+  }
+
+  function syncMidtermFromTopbarUnit() {
+    if (!window.ENGLISH_DATA) return;
+    const matchedUnit = ENGLISH_DATA.units.find(u => u.book_id === AppState.selectedBookId && u.unit_id === AppState.selectedUnitId);
+    if (matchedUnit && matchedUnit.midterm_unit_id) {
+      AppState.selectedMidtermUnitId = matchedUnit.midterm_unit_id;
+      const midtermSelect = document.getElementById('midtermUnitSelect');
+      if (midtermSelect) midtermSelect.value = AppState.selectedMidtermUnitId;
     }
   }
 
@@ -127,22 +166,47 @@
     const unitSelect = document.getElementById('unitSelect');
     if (!bookSelect || !unitSelect || !window.ENGLISH_DATA) return;
 
-    // 填充課本選單
+    // 填充課本選單（分組：🔥 六上期中考核心教材 vs 📚 其他延伸教材）
     bookSelect.innerHTML = '';
-    ENGLISH_DATA.books.forEach(b => {
-      const opt = document.createElement('option');
-      opt.value = b.book_id;
-      opt.textContent = b.book_name;
-      if (b.book_id === AppState.selectedBookId) opt.selected = true;
-      bookSelect.appendChild(opt);
-    });
+    const midtermBooks = ENGLISH_DATA.books.filter(b => b.is_midterm);
+    const otherBooks = ENGLISH_DATA.books.filter(b => !b.is_midterm);
+
+    if (midtermBooks.length > 0) {
+      const grpMid = document.createElement('optgroup');
+      grpMid.label = '🔥 六上期中考核心範圍 (5 大教材)';
+      midtermBooks.forEach(b => {
+        const opt = document.createElement('option');
+        opt.value = b.book_id;
+        opt.textContent = b.book_name;
+        if (b.book_id === AppState.selectedBookId) opt.selected = true;
+        grpMid.appendChild(opt);
+      });
+      bookSelect.appendChild(grpMid);
+    }
+
+    if (otherBooks.length > 0) {
+      const grpOther = document.createElement('optgroup');
+      grpOther.label = '📚 課外與歷屆延伸教材';
+      otherBooks.forEach(b => {
+        const opt = document.createElement('option');
+        opt.value = b.book_id;
+        opt.textContent = b.book_name;
+        if (b.book_id === AppState.selectedBookId) opt.selected = true;
+        grpOther.appendChild(opt);
+      });
+      bookSelect.appendChild(grpOther);
+    }
 
     // 課本切換事件
     bookSelect.addEventListener('change', (e) => {
       AppState.selectedBookId = e.target.value;
+      AppState.isErrorBookRetry = false;
       populateUnitsForSelectedBook();
+      syncMidtermFromTopbarUnit();
       saveSettings();
       renderCurrentUnit();
+      if (AppState.currentView === 'quiz') loadQuizForCurrentUnit();
+      if (AppState.currentView === 'print') renderA4PrintPreview();
     });
 
     // 填充並切換單元
@@ -150,8 +214,12 @@
 
     unitSelect.addEventListener('change', (e) => {
       AppState.selectedUnitId = e.target.value;
+      AppState.isErrorBookRetry = false;
+      syncMidtermFromTopbarUnit();
       saveSettings();
       renderCurrentUnit();
+      if (AppState.currentView === 'quiz') loadQuizForCurrentUnit();
+      if (AppState.currentView === 'print') renderA4PrintPreview();
     });
   }
 
@@ -171,21 +239,41 @@
       return;
     }
 
-    // 確保選中存在的單元
+    // 區分期中考單元與一般單元
+    const midUnits = bookUnits.filter(u => u.is_midterm);
+    const extUnits = bookUnits.filter(u => !u.is_midterm);
     let matchFound = false;
-    bookUnits.forEach(u => {
-      const opt = document.createElement('option');
-      opt.value = u.unit_id;
-      opt.textContent = u.unit_title || u.unit_id;
-      if (u.unit_id === AppState.selectedUnitId) {
-        opt.selected = true;
-        matchFound = true;
-      }
-      unitSelect.appendChild(opt);
-    });
+
+    const appendUnitOptions = (container, unitsList) => {
+      unitsList.forEach(u => {
+        const opt = document.createElement('option');
+        opt.value = u.unit_id;
+        opt.textContent = u.unit_title || u.unit_id;
+        if (u.unit_id === AppState.selectedUnitId) {
+          opt.selected = true;
+          matchFound = true;
+        }
+        container.appendChild(opt);
+      });
+    };
+
+    if (midUnits.length > 0 && extUnits.length > 0) {
+      const grpMid = document.createElement('optgroup');
+      grpMid.label = '🔥 本次期中考必考單元';
+      appendUnitOptions(grpMid, midUnits);
+      unitSelect.appendChild(grpMid);
+
+      const grpExt = document.createElement('optgroup');
+      grpExt.label = '📖 其他延伸單元';
+      appendUnitOptions(grpExt, extUnits);
+      unitSelect.appendChild(grpExt);
+    } else {
+      appendUnitOptions(unitSelect, bookUnits);
+    }
 
     if (!matchFound) {
-      AppState.selectedUnitId = bookUnits[0].unit_id;
+      const defaultUnit = midUnits.length > 0 ? midUnits[0] : bookUnits[0];
+      AppState.selectedUnitId = defaultUnit.unit_id;
       unitSelect.value = AppState.selectedUnitId;
     }
   }
@@ -195,6 +283,9 @@
     navTabs.forEach(tab => {
       tab.addEventListener('click', () => {
         const viewId = tab.dataset.view;
+        if (viewId !== 'quiz') {
+          AppState.isErrorBookRetry = false;
+        }
         switchView(viewId);
       });
     });
@@ -213,11 +304,25 @@
       p.classList.toggle('active', p.id === `view-${viewId}`);
     });
 
+    // 避免頂部舊版教材選單與「期中考衝刺專區 / 晨間體操 / 錯題本」的專屬選單打架
+    const topSelectorZone = document.querySelector('.selector-zone');
+    if (topSelectorZone) {
+      const needsBookSelector = (viewId === 'study' || viewId === 'quiz' || viewId === 'print');
+      topSelectorZone.style.display = needsBookSelector ? 'flex' : 'none';
+    }
+
     // 特殊視圖切換動作
     if (viewId === 'midterm') {
       renderMidtermSprint();
+    } else if (viewId === 'study') {
+      renderCurrentUnit();
     } else if (viewId === 'quiz') {
-      loadQuizForCurrentUnit();
+      if (!AppState.isErrorBookRetry) {
+        loadQuizForCurrentUnit();
+      } else {
+        renderQuizCard();
+        renderQuizDotsNav();
+      }
     } else if (viewId === 'braingym') {
       loadBrainGym();
     } else if (viewId === 'errorbook') {
@@ -346,6 +451,76 @@
         });
       });
     }
+
+    // 切換必考長句與考點標註
+    const toggleKeyAnnotations = document.getElementById('toggleKeyAnnotations');
+    if (toggleKeyAnnotations) {
+      toggleKeyAnnotations.addEventListener('change', () => {
+        renderReadingSection();
+      });
+    }
+
+    // 課文單字 7 大錨點彈出小卡 Modal 關閉事件
+    const vocabModal = document.getElementById('vocabPopoverModal');
+    const closeVocabModalBtn = document.getElementById('closeVocabPopoverBtn');
+    if (closeVocabModalBtn && vocabModal) {
+      closeVocabModalBtn.addEventListener('click', () => {
+        vocabModal.classList.remove('active');
+      });
+    }
+    if (vocabModal) {
+      vocabModal.addEventListener('click', (e) => {
+        if (e.target === vocabModal) vocabModal.classList.remove('active');
+      });
+    }
+  }
+
+  function openVocabPopoverModal(item) {
+    const modal = document.getElementById('vocabPopoverModal');
+    const content = document.getElementById('vocabPopoverContent');
+    if (!modal || !content || !item) return;
+
+    content.innerHTML = `
+      <div class="vocab-popover-header">
+        <div>
+          <span class="vocab-popover-word">${escapeHtml(item.word)}</span>
+          ${item.pos ? `<span class="card-pos-tag" style="margin-left:0.5rem;">${escapeHtml(item.pos)}</span>` : ''}
+        </div>
+        <button type="button" class="btn-pronounce" id="popoverSpeakWordBtn" title="發音">
+          <span>🔊</span>
+        </button>
+      </div>
+      <div class="vocab-popover-meaning">${escapeHtml(item.chi)}</div>
+      <div class="anchor-section" style="display:flex;">
+        ${item.breakdown ? `<div class="anchor-item"><span class="anchor-badge badge-break">字根拆解</span><span class="anchor-text">${escapeHtml(item.breakdown)}</span></div>` : ''}
+        ${item.trick ? `<div class="anchor-item"><span class="anchor-badge badge-trick">諧音聯想</span><span class="anchor-text">${escapeHtml(item.trick)}</span></div>` : ''}
+        ${item.scene ? `<div class="anchor-item"><span class="anchor-badge badge-scene">情境畫面</span><span class="anchor-text">${escapeHtml(item.scene)}</span></div>` : ''}
+        ${item.collocation ? `<div class="anchor-item"><span class="anchor-badge badge-colloc">搭配用法</span><span class="anchor-text">${escapeHtml(item.collocation)}</span></div>` : ''}
+        ${item.chant ? `<div class="anchor-item"><span class="anchor-badge badge-chant">記憶口訣</span><span class="anchor-text">${escapeHtml(item.chant)}</span></div>` : ''}
+        ${item.compare ? `<div class="anchor-item"><span class="anchor-badge badge-compare">易混比較</span><span class="anchor-text">${escapeHtml(item.compare)}</span></div>` : ''}
+      </div>
+      ${item.context_eng ? `
+        <div class="card-example" style="margin-top:0.85rem;">
+          <div style="display:flex; justify-content:space-between; align-items:center; gap:0.5rem;">
+            <div class="example-eng">${escapeHtml(item.context_eng)}</div>
+            <button type="button" class="btn-secondary" id="popoverSpeakSentenceBtn" style="padding:0.25rem 0.6rem; font-size:0.78rem; flex-shrink:0;">🔊 讀例句</button>
+          </div>
+          ${item.context_chi ? `<div class="example-chi">${escapeHtml(item.context_chi)}</div>` : ''}
+        </div>
+      ` : ''}
+    `;
+
+    const speakBtn = document.getElementById('popoverSpeakWordBtn');
+    if (speakBtn) {
+      speakBtn.addEventListener('click', () => speakWord(item.word));
+    }
+    const speakSentBtn = document.getElementById('popoverSpeakSentenceBtn');
+    if (speakSentBtn) {
+      speakSentBtn.addEventListener('click', () => speakWord(item.context_eng));
+    }
+
+    modal.classList.add('active');
+    speakWord(item.word);
   }
 
   function renderCurrentUnit() {
@@ -469,6 +644,87 @@
     speakNext();
   }
 
+  function buildInteractiveReadingHtml(engText, keySentences, unitVocabs, showKeyAnnotations) {
+    if (!engText) return '';
+
+    // 準備單字匹配字典 (依字長由長到短排序，避免短字搶先匹配)
+    const vocabMatchers = [];
+    unitVocabs.forEach((v, vIdx) => {
+      const base = (v.word || '').trim();
+      if (!base || base.length < 3) return;
+      const cleanBase = base.replace(/\s*\(.*?\)\s*/g, '').trim();
+      if (!cleanBase) return;
+      const escaped = cleanBase.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      // 支援常見字尾變化 (-s, -es, -ed, -d, -ing, -er, -est, y->ies/ied)
+      let patternStr = `\\b(${escaped}(?:s|es|ed|d|ing|er|est)?)\\b`;
+      if (cleanBase.endsWith('y') && cleanBase.length > 3) {
+        const stemY = cleanBase.slice(0, -1).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        patternStr = `\\b(${escaped}(?:s|ed|ing)?|${stemY}(?:ies|ied|ier|iest))\\b`;
+      } else if (cleanBase.endsWith('e') && cleanBase.length > 3) {
+        const stemE = cleanBase.slice(0, -1).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        patternStr = `\\b(${escaped}(?:s|d|r|st)?|${stemE}(?:ing|ed))\\b`;
+      }
+      vocabMatchers.push({
+        vIdx,
+        wordLen: cleanBase.length,
+        regex: new RegExp(patternStr, 'gi')
+      });
+    });
+    vocabMatchers.sort((a, b) => b.wordLen - a.wordLen);
+
+    // 將一段純文字加上單字互動標記 (安全處理 HTML 跳脫與佔位符)
+    function highlightVocabTokensInPlainSegment(segmentText) {
+      if (!segmentText) return '';
+      const placeholders = [];
+      let workText = segmentText;
+
+      vocabMatchers.forEach(matcher => {
+        workText = workText.replace(matcher.regex, (match) => {
+          // 避免替換到已經成為佔位符的內容
+          if (match.includes('@@VOCAB_')) return match;
+          const tokenIdx = placeholders.length;
+          placeholders.push({ matchedText: match, vIdx: matcher.vIdx });
+          return `@@VOCAB_${tokenIdx}@@`;
+        });
+      });
+
+      let escapedHtml = escapeHtml(workText);
+      escapedHtml = escapedHtml.replace(/@@VOCAB_(\d+)@@/g, (_, idxStr) => {
+        const info = placeholders[parseInt(idxStr, 10)];
+        if (!info) return '';
+        return `<span class="reading-vocab-token" data-vidx="${info.vIdx}" title="點擊發音並查看 7 大記憶錨點小卡">${escapeHtml(info.matchedText)}</span>`;
+      });
+      return escapedHtml;
+    }
+
+    // 如果開啟必考長句高亮且該段有 key_sentences
+    if (showKeyAnnotations && Array.isArray(keySentences) && keySentences.length > 0) {
+      let remaining = engText;
+      let resultHtml = '';
+      // 依句子在段落中出現的位置排序切分
+      const validKeys = keySentences
+        .filter(ks => ks && ks.text && remaining.includes(ks.text))
+        .sort((a, b) => remaining.indexOf(a.text) - remaining.indexOf(b.text));
+
+      if (validKeys.length > 0) {
+        let cursor = 0;
+        validKeys.forEach(ks => {
+          const pos = engText.indexOf(ks.text, cursor);
+          if (pos === -1) return;
+          const beforeText = engText.slice(cursor, pos);
+          resultHtml += highlightVocabTokensInPlainSegment(beforeText);
+          const innerHighlighted = highlightVocabTokensInPlainSegment(ks.text);
+          resultHtml += `<span class="reading-key-sentence" title="${escapeHtml(ks.note || '必考重點句')}"><span class="key-star-badge">⭐ 必考句</span>${innerHighlighted}</span>`;
+          cursor = pos + ks.text.length;
+        });
+        resultHtml += highlightVocabTokensInPlainSegment(engText.slice(cursor));
+        return resultHtml;
+      }
+    }
+
+    return highlightVocabTokensInPlainSegment(engText);
+  }
+
   function renderReadingSection() {
     const list = document.getElementById('readingPassagesList');
     const countTag = document.getElementById('readingCountTag');
@@ -483,22 +739,64 @@
       return;
     }
 
+    // 取得本單元單字庫（若本單元為綜合考卷則合併期中考單字供點選）
+    let unitVocabs = ENGLISH_DATA.vocabulary.filter(v => v.book_id === AppState.selectedBookId && v.unit_id === AppState.selectedUnitId);
+    if (unitVocabs.length < 5) {
+      unitVocabs = ENGLISH_DATA.vocabulary.filter(v => v.is_midterm);
+    }
+
+    const showChinese = document.getElementById('toggleChineseTranslation') ? document.getElementById('toggleChineseTranslation').checked : true;
+    const showKeyAnnotations = document.getElementById('toggleKeyAnnotations') ? document.getElementById('toggleKeyAnnotations').checked : true;
+
     passages.forEach((p, idx) => {
       const card = document.createElement('div');
       card.className = 'reading-card';
+
+      const interactiveEngHtml = buildInteractiveReadingHtml(p.eng, p.key_sentences, unitVocabs, showKeyAnnotations);
+
+      let keyNotesHtml = '';
+      if (showKeyAnnotations && Array.isArray(p.key_sentences) && p.key_sentences.length > 0) {
+        keyNotesHtml = `
+          <div class="reading-key-notes-box">
+            ${p.key_sentences.map(ks => `
+              <div class="reading-key-note-item">
+                <span class="note-tag">🎯 段考考點解析</span>
+                <span>${escapeHtml(ks.note)}</span>
+              </div>
+            `).join('')}
+          </div>
+        `;
+      }
+
       card.innerHTML = `
         <div class="reading-card-top">
-          <span class="reading-seq">Paragraph ${p.sequence || (idx + 1)}</span>
+          <div style="display:flex; align-items:center; gap:0.65rem; flex-wrap:wrap;">
+            <span class="reading-seq">Paragraph ${p.sequence || (idx + 1)}</span>
+            ${p.section_title ? `<span class="reading-section-badge">📌 ${escapeHtml(p.section_title)}</span>` : ''}
+          </div>
           <button class="btn-pronounce" title="朗讀此段落">
             <span>🔊</span>
           </button>
         </div>
-        <div class="reading-eng">${escapeHtml(p.eng)}</div>
-        ${p.chi ? `<div class="reading-chi">${escapeHtml(p.chi)}</div>` : ''}
+        <div class="reading-eng">${interactiveEngHtml}</div>
+        ${p.chi ? `<div class="reading-chi" style="display:${showChinese ? 'block' : 'none'};">${escapeHtml(p.chi)}</div>` : ''}
+        ${keyNotesHtml}
       `;
 
       card.querySelector('.btn-pronounce').addEventListener('click', () => {
         speakWord(p.eng);
+      });
+
+      // 綁定課文內高亮單字點擊事件 -> 發音 + 彈出 7 大錨點單字小卡
+      card.querySelectorAll('.reading-vocab-token').forEach(tok => {
+        tok.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const vIdx = parseInt(tok.dataset.vidx, 10);
+          const vocabItem = unitVocabs[vIdx];
+          if (vocabItem) {
+            openVocabPopoverModal(vocabItem);
+          }
+        });
       });
 
       list.appendChild(card);
@@ -570,6 +868,16 @@
       });
     });
 
+    // 題型分類篩選
+    const catSelect = document.getElementById('quizCategorySelect');
+    if (catSelect) {
+      catSelect.addEventListener('change', (e) => {
+        AppState.quizCategory = e.target.value;
+        AppState.isErrorBookRetry = false;
+        loadQuizForCurrentUnit();
+      });
+    }
+
     // 紙筆軌：看答案與詳解
     const showAnswerBtn = document.getElementById('showAnswerBtn');
     if (showAnswerBtn) {
@@ -610,7 +918,15 @@
 
   function loadQuizForCurrentUnit() {
     if (!window.ENGLISH_DATA) return;
-    const questions = ENGLISH_DATA.quizzes.filter(q => q.book_id === AppState.selectedBookId && q.unit_id === AppState.selectedUnitId && q.type !== 'brain_gym');
+    let questions = ENGLISH_DATA.quizzes.filter(q =>
+      q.book_id === AppState.selectedBookId &&
+      q.unit_id === AppState.selectedUnitId &&
+      q.type !== 'brain_gym'
+    );
+
+    if (AppState.quizCategory && AppState.quizCategory !== 'all') {
+      questions = questions.filter(q => (q.type || '').toLowerCase() === AppState.quizCategory);
+    }
     
     AppState.quizQuestions = questions;
     AppState.quizIndex = 0;
@@ -618,6 +934,25 @@
 
     renderQuizCard();
     renderQuizDotsNav();
+  }
+
+  function buildSmartOptionsForQuestion(q) {
+    if (Array.isArray(q.options) && q.options.length >= 2) {
+      return q.options;
+    }
+    // 當錯題本重測遇到原本是「點詞抓錯」或「長句改寫」無選項題時，智慧生成選項或自評按鈕
+    const ans = String(q.answer || '').trim();
+    if (!ans) return ['我已掌握正解', '還不太確定'];
+    if (ans.length > 40 || ans.includes('➔')) {
+      return [
+        ans,
+        '（紙筆寫錯 / 語序顛倒 — 點此記為再複習）'
+      ];
+    }
+    const pool = ['more harder', 'do she', 'neither did I', 'will rain', 'most quickest', 'so did he', 'have lived'];
+    const distractors = pool.filter(p => p.toLowerCase() !== ans.toLowerCase()).slice(0, 3);
+    const merged = [ans, ...distractors];
+    return merged;
   }
 
   function renderQuizCard() {
@@ -630,40 +965,51 @@
     if (expBox) expBox.classList.remove('active');
 
     if (AppState.quizQuestions.length === 0) {
-      card.innerHTML = '<div class="no-data-msg" style="padding: 2rem;">本單元目前暫無測驗題目，請切換至其他單元或開啟「晨間體操」。</div>';
       if (progressText) progressText.textContent = '0 / 0 題';
+      if (qTypeBadge) qTypeBadge.textContent = 'NO QUESTIONS';
+      const qStem = document.getElementById('qStem');
+      if (qStem) qStem.textContent = '目前此分類下暫無題目，請將上方題型切換為「全部題型」或選擇其他單元。';
+      const optionsContainer = document.getElementById('interactiveOptions');
+      if (optionsContainer) optionsContainer.innerHTML = '';
       return;
     }
 
+    if (AppState.quizIndex >= AppState.quizQuestions.length) {
+      AppState.quizIndex = 0;
+    }
+
     const q = AppState.quizQuestions[AppState.quizIndex];
-    if (progressText) progressText.textContent = `第 ${AppState.quizIndex + 1} / ${AppState.quizQuestions.length} 題`;
-    if (qTypeBadge) qTypeBadge.textContent = `${q.type.toUpperCase()} QUIZ`;
+    if (progressText) {
+      const modePrefix = AppState.isErrorBookRetry ? '🔥 錯題消滅戰：' : '';
+      progressText.textContent = `${modePrefix}第 ${AppState.quizIndex + 1} / ${AppState.quizQuestions.length} 題`;
+    }
+    const safeType = String(q.type || q.category_tag || 'comprehensive').toUpperCase();
+    if (qTypeBadge) qTypeBadge.textContent = `${safeType} QUIZ`;
 
     const qDifficulty = document.getElementById('qDifficulty');
     const qStem = document.getElementById('qStem');
-    if (qDifficulty) qDifficulty.textContent = q.difficulty || '★★★☆☆';
+    if (qDifficulty) qDifficulty.textContent = q.difficulty || '★★★★☆';
     if (qStem) qStem.textContent = q.question;
 
-    // 渲染 iPad 互動選項
+    // 渲染 iPad 互動選項（自動補齊非選擇題的互動選項，確保 iPad 觸控軌不卡死）
     const optionsContainer = document.getElementById('interactiveOptions');
     if (optionsContainer) {
       optionsContainer.innerHTML = '';
-      if (q.options && q.options.length > 0) {
-        q.options.forEach(opt => {
-          const btn = document.createElement('button');
-          btn.className = 'option-btn';
-          btn.textContent = opt;
-          btn.addEventListener('click', () => handleInteractiveOptionClick(opt, q, btn));
-          optionsContainer.appendChild(btn);
-        });
-      }
+      const opts = buildSmartOptionsForQuestion(q);
+      opts.forEach(opt => {
+        const btn = document.createElement('button');
+        btn.className = 'option-btn';
+        btn.textContent = opt;
+        btn.addEventListener('click', () => handleInteractiveOptionClick(opt, q, btn));
+        optionsContainer.appendChild(btn);
+      });
     }
 
     // 渲染詳解內容
     const expCorrectAns = document.getElementById('expCorrectAns');
     const expContent = document.getElementById('expContent');
     if (expCorrectAns) expCorrectAns.textContent = `正解：${q.answer}`;
-    if (expContent) expContent.textContent = q.explanation || '暫無詳解說明。';
+    if (expContent) expContent.textContent = q.explanation || '請對照正解檢視時態、副詞三級變化與助動詞搭配。';
 
     updateQuizCardModeUI();
     updateCheckButtonsHighlight();
@@ -704,12 +1050,12 @@
   }
 
   function handleInteractiveOptionClick(selectedOpt, question, btnElement) {
-    const isCorrect = (selectedOpt.trim().toLowerCase() === question.answer.trim().toLowerCase());
+    const isCorrect = (String(selectedOpt).trim().toLowerCase() === String(question.answer).trim().toLowerCase());
     
     // 選項視覺反饋
-    document.querySelectorAll('.option-btn').forEach(btn => {
+    document.querySelectorAll('#interactiveOptions .option-btn').forEach(btn => {
       btn.classList.remove('selected-correct', 'selected-wrong');
-      if (btn.textContent.trim().toLowerCase() === question.answer.trim().toLowerCase()) {
+      if (btn.textContent.trim().toLowerCase() === String(question.answer).trim().toLowerCase()) {
         btn.classList.add('selected-correct');
       }
     });
@@ -745,7 +1091,7 @@
 
     document.querySelectorAll('.btn-check').forEach(btn => {
       const type = btn.dataset.ans;
-      btn.classList.toggle('active', record && record.status === type);
+      btn.classList.toggle('active', Boolean(record && record.status === type));
     });
   }
 
@@ -784,28 +1130,72 @@
   // 8. 晨間純腦力體操 (Morning Brain Gym 1★~10★)
   // ==========================================================================
   function initBrainGym() {
-    // 晨間體操切換到此視圖時自動載入
+    const tierBtns = document.querySelectorAll('#bgTierPills .bg-tier-btn');
+    tierBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const tier = btn.dataset.tier || 'all';
+        AppState.brainGymTier = tier;
+        AppState.brainGymIndex = 0;
+        tierBtns.forEach(b => b.classList.toggle('active', b.dataset.tier === tier));
+        loadBrainGym();
+      });
+    });
+  }
+
+  function getFilteredBrainGymList() {
+    if (!window.ENGLISH_DATA) return [];
+    let list = ENGLISH_DATA.quizzes.filter(q => q.type === 'brain_gym');
+    const tier = AppState.brainGymTier;
+    if (tier === '1-3') {
+      list = list.filter(q => (q.star || 1) >= 1 && (q.star || 1) <= 3);
+    } else if (tier === '4-7') {
+      list = list.filter(q => (q.star || 1) >= 4 && (q.star || 1) <= 7);
+    } else if (tier === '8-10') {
+      list = list.filter(q => (q.star || 1) >= 8 && (q.star || 1) <= 10);
+    }
+    return list;
+  }
+
+  function formatBrainGymDualExplanation(expText) {
+    if (!expText) return '<div class="bg-exp-green">請熟記此核心句型與搭配詞。</div>';
+    const greenIdx = expText.indexOf('🟢');
+    const redIdx = expText.indexOf('🔴');
+    if (greenIdx !== -1 && redIdx !== -1) {
+      const greenPart = expText.slice(greenIdx, redIdx).trim();
+      const redPart = expText.slice(redIdx).trim();
+      return `
+        <div class="bg-exp-green">${escapeHtml(greenPart)}</div>
+        <div class="bg-exp-red">${escapeHtml(redPart)}</div>
+      `;
+    }
+    return `<div class="bg-exp-green">${escapeHtml(expText)}</div>`;
   }
 
   function loadBrainGym() {
     const card = document.getElementById('braingymCard');
     if (!card || !window.ENGLISH_DATA) return;
 
-    const bgList = ENGLISH_DATA.quizzes.filter(q => q.type === 'brain_gym');
+    const bgList = getFilteredBrainGymList();
     if (bgList.length === 0) {
-      card.innerHTML = '<div class="no-data-msg">目前尚無晨間體操題目。</div>';
+      card.innerHTML = '<div class="no-data-msg">目前此星級分類尚無題目。</div>';
       return;
     }
 
-    const currentQ = bgList[AppState.brainGymIndex % bgList.length];
+    const idx = AppState.brainGymIndex % bgList.length;
+    const currentQ = bgList[idx];
+
+    const comboBadge = document.getElementById('bgComboBadge');
+    if (comboBadge) comboBadge.textContent = `🔥 連勝 Combo: ${AppState.brainGymCombo}`;
+    const progBadge = document.getElementById('bgProgressBadge');
+    if (progBadge) progBadge.textContent = `第 ${idx + 1} / ${bgList.length} 題`;
 
     card.innerHTML = `
       <div class="card-question-box">
-        <div style="display:flex; justify-content:space-between; align-items:center;">
-          <span style="font-weight:700; color:var(--accent-amber);">⭐ Level ${currentQ.star || 1} 晨間挑戰</span>
-          <span class="q-difficulty">${currentQ.difficulty || '★★★☆☆'}</span>
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem;">
+          <span style="font-weight:800; color:var(--accent-amber);">⚡ Level ${currentQ.star || 1}★ 六上期中考秒殺挑戰</span>
+          <span class="q-difficulty">${currentQ.difficulty || '★★★★★'}</span>
         </div>
-        <div class="q-stem" style="font-size:1.4rem;">${escapeHtml(currentQ.question)}</div>
+        <div class="q-stem" style="font-size:1.35rem; margin-top:0.5rem;">${escapeHtml(currentQ.question)}</div>
       </div>
 
       <div class="interactive-options" id="bgOptionsContainer">
@@ -821,8 +1211,11 @@
           <span class="exp-badge">🧠 晨間雙色直覺解析</span>
           <span class="exp-correct-ans">正解：${escapeHtml(currentQ.answer)}</span>
         </div>
-        <div class="exp-content">${escapeHtml(currentQ.explanation)}</div>
-        <div style="margin-top: 1.25rem; display:flex; justify-content:flex-end;">
+        <div class="exp-content">${formatBrainGymDualExplanation(currentQ.explanation)}</div>
+        <div style="margin-top: 1.25rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.75rem;">
+          <button id="prevBgBtn" class="btn-secondary">
+            <span>⬅️ 上一題</span>
+          </button>
           <button id="nextBgBtn" class="btn-primary">
             <span>挑戰下一題 ⚡</span>
           </button>
@@ -830,7 +1223,8 @@
       </div>
     `;
 
-    // 選項點選
+    // 選項點選（含 Combo 計算與自動錯題本連動）
+    let answered = false;
     card.querySelectorAll('.bg-opt-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         const opt = btn.dataset.opt;
@@ -844,17 +1238,37 @@
 
         if (!isCorrect) {
           btn.classList.add('selected-wrong');
+          if (!answered) {
+            AppState.brainGymCombo = 0;
+            logErrorQuestion(currentQ, 'wrong');
+          }
+        } else {
+          if (!answered) {
+            AppState.brainGymCombo++;
+            removeErrorQuestion(currentQ.id);
+          }
         }
+        answered = true;
+
+        if (comboBadge) comboBadge.textContent = `🔥 連勝 Combo: ${AppState.brainGymCombo}`;
 
         const expBox = document.getElementById('bgExpBox');
         if (expBox) expBox.classList.add('active');
       });
     });
 
+    const prevBtn = document.getElementById('prevBgBtn');
+    if (prevBtn) {
+      prevBtn.addEventListener('click', () => {
+        AppState.brainGymIndex = (AppState.brainGymIndex - 1 + bgList.length) % bgList.length;
+        loadBrainGym();
+      });
+    }
+
     const nextBtn = document.getElementById('nextBgBtn');
     if (nextBtn) {
       nextBtn.addEventListener('click', () => {
-        AppState.brainGymIndex++;
+        AppState.brainGymIndex = (AppState.brainGymIndex + 1) % bgList.length;
         loadBrainGym();
       });
     }
@@ -870,6 +1284,38 @@
     if (filterBook) filterBook.addEventListener('change', renderErrorBook);
     if (filterStatus) filterStatus.addEventListener('change', renderErrorBook);
 
+    // 一鍵匯入岱崙 (TEA 3C Quiz) 18 道真實考卷失分錯題
+    const preloadTeaBtn = document.getElementById('preloadTeaErrorsBtn');
+    if (preloadTeaBtn) {
+      preloadTeaBtn.addEventListener('click', () => {
+        const addedCount = preloadTeaRealExamErrors();
+        renderErrorBook();
+        const span = preloadTeaBtn.querySelector('span');
+        if (span) {
+          span.textContent = addedCount > 0
+            ? `✅ 已匯入 ${addedCount} 道岱崙真實錯題！`
+            : '⚡ 岱崙 18 道真實錯題已在錯題本中！';
+          setTimeout(() => {
+            span.textContent = '🔥 載入岱崙小考 18 道真實失分題';
+          }, 2500);
+        }
+      });
+    }
+
+    // 印出專屬錯題 A4 重測卷
+    const printErrBtn = document.getElementById('printErrorBookBtn');
+    if (printErrBtn) {
+      printErrBtn.addEventListener('click', () => {
+        if (AppState.errors.length === 0) {
+          alert('目前錯題本是空的！可先點擊「🔥 載入岱崙小考 18 道真實失分題」再列印專屬重測卷。');
+          return;
+        }
+        const errRadio = document.querySelector('input[name="printType"][value="errorbook"]');
+        if (errRadio) errRadio.checked = true;
+        switchView('print');
+      });
+    }
+
     // 啟動錯題消滅戰
     const retryBtn = document.getElementById('retryErrorsBtn');
     if (retryBtn) {
@@ -878,7 +1324,17 @@
           alert('太棒了！目前錯題本空空如也，沒有需要消滅的錯題！');
           return;
         }
-        AppState.quizQuestions = AppState.errors.map(e => e.questionData);
+        AppState.isErrorBookRetry = true;
+        AppState.quizQuestions = AppState.errors.map(e => {
+          const qData = e.questionData || {};
+          return {
+            ...qData,
+            id: e.id || qData.id || `ERR_${Date.now()}`,
+            book_id: e.book_id || qData.book_id || 'tea_midterm',
+            unit_id: e.unit_id || qData.unit_id || 'tea_midterm_1',
+            type: qData.type || 'error_retry'
+          };
+        });
         AppState.quizIndex = 0;
         AppState.quizResults = {};
         switchView('quiz');
@@ -886,15 +1342,90 @@
     }
   }
 
+  function preloadTeaRealExamErrors() {
+    let added = 0;
+    // 從 ENGLISH_DATA 中抓取 tea_midterm_1 的核心考題與 MIDTERM_DATABASE 的 TEA_QUIZ_REVIEW 抓錯題
+    if (window.ENGLISH_DATA) {
+      const teaQuizzes = ENGLISH_DATA.quizzes.filter(q => q.book_id === 'tea_midterm');
+      teaQuizzes.forEach(q => {
+        if (!AppState.errors.some(e => e.id === q.id)) {
+          AppState.errors.push({
+            id: q.id,
+            book_id: 'tea_midterm',
+            unit_id: 'tea_midterm_1',
+            status: 'wrong',
+            lastAttempt: Date.now(),
+            questionData: {
+              ...q,
+              book_id: 'tea_midterm',
+              unit_id: 'tea_midterm_1',
+              type: q.type || 'grammar'
+            }
+          });
+          added++;
+        }
+      });
+    }
+
+    if (window.MIDTERM_DATABASE) {
+      const teaUnit = window.MIDTERM_DATABASE.find(u => u.id === 'TEA_QUIZ_REVIEW');
+      if (teaUnit && Array.isArray(teaUnit.mistake_buster)) {
+        teaUnit.mistake_buster.slice(0, 6).forEach((item, idx) => {
+          const errId = `TEA_MISTAKE_${idx + 1}`;
+          if (!AppState.errors.some(e => e.id === errId)) {
+            AppState.errors.push({
+              id: errId,
+              book_id: 'tea_midterm',
+              unit_id: 'tea_midterm_1',
+              status: 'wrong',
+              lastAttempt: Date.now(),
+              questionData: {
+                id: errId,
+                book_id: 'tea_midterm',
+                unit_id: 'tea_midterm_1',
+                type: 'grammar',
+                question: `【岱崙真實考卷改錯】找出句中錯誤並訂正：${item.sentence}`,
+                options: [
+                  `${item.wrong_word} ➔ ${item.correct_word}`,
+                  `${item.correct_word} ➔ ${item.wrong_word}`,
+                  '全句無語法錯誤'
+                ],
+                answer: `${item.wrong_word} ➔ ${item.correct_word}`,
+                explanation: `${item.reason}（正確完整句：${item.fixed_sentence}）`
+              }
+            });
+            added++;
+          }
+        });
+      }
+    }
+
+    if (added > 0) {
+      saveErrorBook();
+    }
+    return added;
+  }
+
   function logErrorQuestion(question, status) {
-    const existingIdx = AppState.errors.findIndex(e => e.id === question.id);
+    if (!question) return;
+    const qId = question.id || `ERR_${Date.now()}`;
+    const bookId = question.book_id || AppState.selectedBookId || 'gra3';
+    const unitId = question.unit_id || AppState.selectedUnitId || 'gra3_13';
+
+    const existingIdx = AppState.errors.findIndex(e => e.id === qId);
     const record = {
-      id: question.id,
-      book_id: question.book_id,
-      unit_id: question.unit_id,
+      id: qId,
+      book_id: bookId,
+      unit_id: unitId,
       status: status, // 'wrong' or 'hesitant'
       lastAttempt: Date.now(),
-      questionData: question
+      questionData: {
+        ...question,
+        id: qId,
+        book_id: bookId,
+        unit_id: unitId,
+        type: question.type || 'grammar'
+      }
     };
 
     if (existingIdx >= 0) {
@@ -919,7 +1450,7 @@
     const filterStatus = document.getElementById('errorStatusFilter');
     if (!list) return;
 
-    // 填充錯題課本篩選選單
+    // 填充錯題課本篩選選單（包含所有課本與歷史考卷）
     if (filterBook && filterBook.options.length <= 1 && window.ENGLISH_DATA) {
       ENGLISH_DATA.books.forEach(b => {
         const opt = document.createElement('option');
@@ -934,7 +1465,10 @@
 
     let filtered = AppState.errors;
     if (selectedBook !== 'all') {
-      filtered = filtered.filter(e => e.book_id === selectedBook);
+      filtered = filtered.filter(e => {
+        const bId = e.book_id || (e.questionData && e.questionData.book_id) || '';
+        return bId === selectedBook || bId.toLowerCase().includes(selectedBook.toLowerCase());
+      });
     }
     if (selectedStatus !== 'all') {
       filtered = filtered.filter(e => e.status === selectedStatus);
@@ -942,28 +1476,30 @@
 
     list.innerHTML = '';
     if (filtered.length === 0) {
-      list.innerHTML = '<div class="no-data-msg" style="padding: 2.5rem; text-align: center;">🎉 目前沒有符合篩選條件的錯題！觀念完全通透！</div>';
+      list.innerHTML = '<div class="no-data-msg" style="padding: 2.5rem; text-align: center;">🎉 目前沒有符合篩選條件的錯題！可點擊右上方「🔥 載入岱崙小考 18 道真實失分題」進行考前弱點特訓！</div>';
       return;
     }
 
     filtered.forEach(item => {
-      const q = item.questionData;
+      const q = item.questionData || {};
+      const safeBookLabel = String(item.book_id || q.book_id || 'MIDTERM').toUpperCase();
+      const safeUnitLabel = String(item.unit_id || q.unit_id || '');
       const card = document.createElement('div');
       card.className = 'error-item-card';
       card.innerHTML = `
         <div class="error-left-col">
-          <div style="display:flex; align-items:center; gap:0.5rem;">
+          <div style="display:flex; align-items:center; gap:0.5rem; flex-wrap:wrap;">
             <span class="error-status-tag ${item.status === 'wrong' ? 'status-wrong' : 'status-hesitant'}">
               ${item.status === 'wrong' ? '❌ 算錯 / 答錯' : '⏳ 猶豫 / 想很久'}
             </span>
-            <span style="font-size:0.8rem; color:var(--text-muted);">${q.book_id.toUpperCase()} ｜ ${q.unit_id}</span>
+            <span style="font-size:0.8rem; color:var(--text-muted); font-weight:600;">${escapeHtml(safeBookLabel)} ｜ ${escapeHtml(safeUnitLabel)}</span>
           </div>
-          <div class="error-q-stem">${escapeHtml(q.question)}</div>
-          <div class="error-ans-row">正確答案：${escapeHtml(q.answer)}</div>
+          <div class="error-q-stem">${escapeHtml(q.question || '')}</div>
+          <div class="error-ans-row">正確答案：${escapeHtml(q.answer || '')}</div>
           <div style="font-size:0.88rem; color:var(--text-secondary); line-height:1.5;">${escapeHtml(q.explanation || '')}</div>
         </div>
         <div>
-          <button class="btn-secondary btn-remove-err" data-id="${item.id}" title="已掌握，移出錯題本">
+          <button class="btn-secondary btn-remove-err" data-id="${escapeHtml(item.id)}" title="已掌握，移出錯題本">
             <span>✅ 克服</span>
           </button>
         </div>
@@ -1014,8 +1550,9 @@
     const book = ENGLISH_DATA.books.find(b => b.book_id === AppState.selectedBookId);
     const unit = ENGLISH_DATA.units.find(u => u.book_id === AppState.selectedBookId && u.unit_id === AppState.selectedUnitId);
 
-    const bookName = book ? book.book_name : '英語教材';
-    const unitTitle = unit ? (unit.unit_title || unit.unit_id) : '單元評量';
+    let bookName = book ? book.book_name : '英語教材';
+    let unitTitle = unit ? (unit.unit_title || unit.unit_id) : '單元評量';
+    let subHeaderDesc = '';
 
     // 生成 QR Code (指向當前單元練習)
     let qrSvg = '';
@@ -1032,9 +1569,43 @@
 
     let questionsHtml = '';
 
-    if (printType === 'spelling') {
+    if (printType === 'errorbook') {
+      bookName = '📕 終身錯題本 — 個人化弱點消滅重測卷';
+      unitTitle = '六上期中考精準掃盲特訓';
+      const errList = AppState.errors.slice(0, count);
+      subHeaderDesc = `錯題重測專卷 ｜ 總題數：${errList.length} 題 ${isTeacher ? '（教師 / 家長詳解版）' : '（學生實戰作答版）'}`;
+
+      if (errList.length === 0) {
+        questionsHtml = `<div style="padding:2rem; text-align:center; color:#6B7280;">目前錯題本尚無題目，請先至「📕 錯題本」載入岱崙小考錯題或進行測驗。</div>`;
+      } else {
+        questionsHtml = `
+          <div class="sheet-questions-grid">
+            ${errList.map((e, i) => {
+              const q = e.questionData || {};
+              return `
+                <div class="sheet-q-item">
+                  <div class="sheet-q-stem">
+                    <strong>${i + 1}.</strong> <span style="font-size:8.5pt; color:#4F46E5;">[${escapeHtml(String(e.book_id || '').toUpperCase())}]</span> ${escapeHtml(q.question || '')}
+                  </div>
+                  ${Array.isArray(q.options) && q.options.length > 0 ? `
+                    <div class="sheet-options-row">
+                      ${q.options.map((opt, oi) => `<span>(${String.fromCharCode(65 + oi)}) ${escapeHtml(opt)}</span>`).join('')}
+                    </div>
+                  ` : ''}
+                  ${isTeacher
+                    ? `<div class="sheet-teacher-ans">正解：${escapeHtml(q.answer || '')} ｜ ${escapeHtml(q.explanation || '')}</div>`
+                    : `<div style="height: 20px; border-bottom: 1px solid #9CA3AF; margin-top: 6px;"></div>`
+                  }
+                </div>
+              `;
+            }).join('')}
+          </div>
+        `;
+      }
+    } else if (printType === 'spelling') {
       // Spelling Bee 單字聽寫卷
       const vocabs = ENGLISH_DATA.vocabulary.filter(v => v.book_id === AppState.selectedBookId && v.unit_id === AppState.selectedUnitId).slice(0, count);
+      subHeaderDesc = `Spelling Bee 實體單字聽寫卷 ｜ 總題數：${vocabs.length} 題 ${isTeacher ? '（教師 / 家長解答版）' : ''}`;
       
       questionsHtml = `
         <div class="sheet-questions-grid sheet-two-col">
@@ -1055,6 +1626,7 @@
     } else {
       // 文法或綜合評量卷
       const qList = ENGLISH_DATA.quizzes.filter(q => q.book_id === AppState.selectedBookId && q.unit_id === AppState.selectedUnitId && q.type !== 'brain_gym').slice(0, count);
+      subHeaderDesc = `Grammar & Usage 文法診斷卷 ｜ 總題數：${qList.length} 題 ${isTeacher ? '（教師 / 家長解答版）' : ''}`;
 
       questionsHtml = `
         <div class="sheet-questions-grid">
@@ -1082,7 +1654,7 @@
       <div class="sheet-header">
         <div class="sheet-title-zone">
           <h1>${escapeHtml(bookName)} — ${escapeHtml(unitTitle)}</h1>
-          <p>${printType === 'spelling' ? 'Spelling Bee 實體單字聽寫卷' : 'Grammar & Usage 文法診斷卷'} ｜ 總題數：${count} 題 ${isTeacher ? '（教師 / 家長解答版）' : ''}</p>
+          <p>${escapeHtml(subHeaderDesc)}</p>
           <div class="sheet-meta-bar">
             <span>學校/班級：____________</span>
             <span>姓名：____________</span>
@@ -1151,20 +1723,22 @@
   }
 
   function generateAiPrompt() {
-    const errorSample = AppState.errors.slice(0, 5).map((e, i) => {
-      const q = e.questionData;
-      return `【錯題 ${i + 1}】(${e.book_id.toUpperCase()} ${e.unit_id})\n題目：${q.question}\n正解：${q.answer}\n學生狀態：${e.status === 'wrong' ? '算錯/選錯' : '猶豫想很久'}\n詳解筆記：${q.explanation || '無'}`;
+    const errorSample = AppState.errors.slice(0, 8).map((e, i) => {
+      const q = e.questionData || {};
+      const bLabel = String(e.book_id || q.book_id || 'MIDTERM').toUpperCase();
+      const uLabel = String(e.unit_id || q.unit_id || '');
+      return `【錯題 ${i + 1}】(${bLabel} ${uLabel})\n題目：${q.question || ''}\n正解：${q.answer || ''}\n學生狀態：${e.status === 'wrong' ? '算錯/選錯' : '猶豫想很久'}\n詳解筆記：${q.explanation || '無'}`;
     }).join('\n\n');
 
     return `你是一位頂尖的小學六年級英語教研出題專家。
-以下是一位 12 歲國小六年級學生在做英語測驗時遇到的錯題與盲點紀錄：
+以下是一位 12 歲國小六年級學生在準備六上期中考（範圍涵蓋副詞三級比較、So/Neither 倒裝附和、未來式 will/going to、條件句與長篇閱讀）時遇到的錯題與盲點紀錄：
 
 ${errorSample}
 
 請為這位學生執行「精準錯題消滅與自適應補強出題」：
-1. 深入剖析學生在以上題目中的核心文法盲點（如 -ed/-ing 形容詞混淆、動詞三態變化、時態一致性、介系詞搭配失誤）。
-2. 針對上述每個錯題觀念，量身生成 2~3 題「相同語法觀念、不同日常生活情境」的深度變式題（4 個選項，並附上標註正解與詳細防坑破題思路）。
-3. 難度對標校內名校段考滿分與全民英檢（GEPT 初級）水準，請用繁體中文輸出。`;
+1. 深入剖析學生在以上題目中的核心文法盲點（如副詞比較級與最高級混用、助動詞與時態脫鉤、動詞三態變化、介系詞搭配失誤）。
+2. 針對上述每個錯題觀念，量身生成 2~3 題「相同語法觀念、不同日常生活情境」的深度變式題（包含選擇題與仿照岱崙小考的長句改寫題，並附上標註正解與詳細防坑破題思路）。
+3. 難度對標校內名校段考滿分與全民英檢（GEPT 初級~中級）水準，請用繁體中文輸出。`;
   }
 
   // ==========================================================================
@@ -1213,6 +1787,7 @@ ${errorSample}
         AppState.currentMistakeIdx = 0;
         AppState.selectedTokenIdx = null;
         AppState.currentMidtermQuizIdx = 0;
+        syncTopbarFromMidtermId(AppState.selectedMidtermUnitId);
         cancelOngoingSpeech();
         renderMidtermSprint();
       });
@@ -1543,15 +2118,42 @@ ${errorSample}
     const selfCorrectBtn = document.getElementById('mistakeSelfCorrectBtn');
     if (selfCorrectBtn) {
       selfCorrectBtn.addEventListener('click', () => {
-        alert('🎉 太棒了！紙筆作答正確！記下一勝！');
+        const unit = getSelectedMidtermUnit();
+        if (!unit || !unit.mistake_buster) return;
+        const item = unit.mistake_buster[AppState.currentMistakeIdx];
+        const errId = `MISTAKE_${unit.id}_${AppState.currentMistakeIdx + 1}`;
+        AppState.midtermMistakeStatus[errId] = 'correct';
+        // 若先前曾加入錯題本，答對後自動從錯題本移除
+        const prevLen = AppState.errors.length;
+        AppState.errors = AppState.errors.filter(e => e.id !== errId);
+        if (AppState.errors.length !== prevLen) saveErrorBook();
+
+        const span = selfCorrectBtn.querySelector('span');
+        if (span) span.textContent = '🎉 太棒了！已標記過關！';
+        setTimeout(() => {
+          if (span) span.textContent = '👍 我在紙上改對了';
+          if (AppState.currentMistakeIdx < unit.mistake_buster.length - 1) {
+            AppState.currentMistakeIdx++;
+          }
+          renderMistakeBuster();
+        }, 450);
       });
     }
 
     const selfWrongBtn = document.getElementById('mistakeSelfWrongBtn');
     if (selfWrongBtn) {
       selfWrongBtn.addEventListener('click', () => {
+        const unit = getSelectedMidtermUnit();
+        if (unit && unit.mistake_buster) {
+          const errId = `MISTAKE_${unit.id}_${AppState.currentMistakeIdx + 1}`;
+          AppState.midtermMistakeStatus[errId] = 'wrong';
+        }
         saveCurrentMistakeToErrors();
-        alert('📕 已將此改錯題收入【終身錯題本】，隨時複習！');
+        const span = selfWrongBtn.querySelector('span');
+        if (span) span.textContent = '📕 已收錄至錯題本！';
+        setTimeout(() => {
+          if (span) span.textContent = '❌ 我改錯了（加入錯題本）';
+        }, 1200);
       });
     }
 
@@ -1633,7 +2235,10 @@ ${errorSample}
       dotsBox.innerHTML = '';
       for (let i = 0; i < total; i++) {
         const dot = document.createElement('div');
-        dot.className = `mistake-dot ${i === AppState.currentMistakeIdx ? 'active' : ''}`;
+        const errId = `MISTAKE_${unit.id}_${i + 1}`;
+        const st = AppState.midtermMistakeStatus[errId];
+        const stClass = st === 'correct' ? 'dot-correct' : (st === 'wrong' ? 'dot-wrong' : '');
+        dot.className = `mistake-dot ${i === AppState.currentMistakeIdx ? 'active' : ''} ${stClass}`.trim();
         dot.addEventListener('click', () => {
           AppState.currentMistakeIdx = i;
           renderMistakeBuster();
@@ -1684,17 +2289,30 @@ ${errorSample}
     const unit = getSelectedMidtermUnit();
     if (!unit || !unit.mistake_buster) return;
     const item = unit.mistake_buster[AppState.currentMistakeIdx];
+    const matchedEdUnit = window.ENGLISH_DATA ? window.ENGLISH_DATA.units.find(u => u.midterm_unit_id === unit.id) : null;
+    const normBookId = matchedEdUnit ? matchedEdUnit.book_id : (unit.book || 'gra3');
+    const normUnitId = matchedEdUnit ? matchedEdUnit.unit_id : (unit.display_title || unit.unit_title || unit.id);
+    const errId = `MISTAKE_${unit.id}_${AppState.currentMistakeIdx + 1}`;
 
     const errObj = {
-      id: `MISTAKE_${unit.id}_${AppState.currentMistakeIdx + 1}`,
-      book_id: unit.book,
-      unit_id: unit.unit_title,
+      id: errId,
+      book_id: normBookId,
+      unit_id: normUnitId,
       status: 'wrong',
       timestamp: Date.now(),
       questionData: {
+        id: errId,
+        book_id: normBookId,
+        unit_id: normUnitId,
+        type: 'grammar',
         question: `【點詞抓錯】${item.sentence}`,
-        answer: `${item.wrong_word} ➔ ${item.correct_word}（完整句：${item.fixed_sentence}）`,
-        explanation: item.reason
+        options: [
+          `${item.wrong_word} ➔ ${item.correct_word}`,
+          `${item.correct_word} ➔ ${item.wrong_word}`,
+          '全句無語法錯誤'
+        ],
+        answer: `${item.wrong_word} ➔ ${item.correct_word}`,
+        explanation: `${item.reason}（正確完整句：${item.fixed_sentence}）`
       }
     };
 
@@ -1794,15 +2412,46 @@ ${errorSample}
     const correctBtn = document.getElementById('midtermAnsCorrectBtn');
     if (correctBtn) {
       correctBtn.addEventListener('click', () => {
-        alert('👍 恭喜作答正確！記下一分！');
+        const unit = getSelectedMidtermUnit();
+        const quizzes = getFilteredMidtermQuizzes();
+        if (!unit || quizzes.length === 0) return;
+        const q = quizzes[AppState.currentMidtermQuizIdx];
+        const qId = q.id || `QUIZ_${unit.id}_${AppState.currentMidtermQuizIdx + 1}`;
+        AppState.midtermQuizStatus[qId] = 'correct';
+
+        // 若先前在錯題本中，答對後自動消滅錯題
+        const prevLen = AppState.errors.length;
+        AppState.errors = AppState.errors.filter(e => e.id !== qId);
+        if (AppState.errors.length !== prevLen) saveErrorBook();
+
+        const span = correctBtn.querySelector('span');
+        if (span) span.textContent = '🎉 答對過關！進入下一題...';
+        setTimeout(() => {
+          if (span) span.textContent = '👍 我寫對了 / 唸對了';
+          if (AppState.currentMidtermQuizIdx < quizzes.length - 1) {
+            AppState.currentMidtermQuizIdx++;
+          }
+          renderMidtermDualQuiz();
+        }, 450);
       });
     }
 
     const wrongBtn = document.getElementById('midtermAnsWrongBtn');
     if (wrongBtn) {
       wrongBtn.addEventListener('click', () => {
+        const unit = getSelectedMidtermUnit();
+        const quizzes = getFilteredMidtermQuizzes();
+        if (unit && quizzes.length > 0) {
+          const q = quizzes[AppState.currentMidtermQuizIdx];
+          const qId = q.id || `QUIZ_${unit.id}_${AppState.currentMidtermQuizIdx + 1}`;
+          AppState.midtermQuizStatus[qId] = 'wrong';
+        }
         saveCurrentQuizToErrors();
-        alert('❌ 已將此測驗題歸檔至【終身錯題本】！');
+        const span = wrongBtn.querySelector('span');
+        if (span) span.textContent = '📕 已收錄至【終身錯題本】！';
+        setTimeout(() => {
+          if (span) span.textContent = '❌ 寫錯 / 不熟（加入錯題本）';
+        }, 1200);
       });
     }
 
@@ -1928,6 +2577,43 @@ ${errorSample}
     const hint = document.getElementById('midtermQuizHint');
     if (hint) hint.textContent = q.hint || '在實體紙筆寫下你的答案後核對';
 
+    // 渲染選擇題選項區 (當 q.options 存在且非空時顯示選項按鈕，支援紙筆對照與直接點擊作答)
+    const optionsBox = document.getElementById('midtermQuizOptions');
+    if (optionsBox) {
+      if (Array.isArray(q.options) && q.options.length > 0) {
+        optionsBox.style.display = 'grid';
+        optionsBox.innerHTML = '';
+        const letters = ['A', 'B', 'C', 'D', 'E'];
+        q.options.forEach((optText, idx) => {
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'midterm-option-btn';
+          btn.innerHTML = `<span class="opt-letter">${letters[idx] || idx + 1}</span><span class="opt-text">${escapeHtml(optText)}</span>`;
+          btn.addEventListener('click', () => {
+            const isCorrect = (optText.trim().toLowerCase() === String(q.answer).trim().toLowerCase());
+            optionsBox.querySelectorAll('.midterm-option-btn').forEach((b, bIdx) => {
+              const bText = q.options[bIdx] || '';
+              if (bText.trim().toLowerCase() === String(q.answer).trim().toLowerCase()) {
+                b.classList.add('opt-correct');
+              } else if (b === btn && !isCorrect) {
+                b.classList.add('opt-wrong');
+              }
+            });
+            const qId = q.id || `QUIZ_${unit.id}_${AppState.currentMidtermQuizIdx + 1}`;
+            AppState.midtermQuizStatus[qId] = isCorrect ? 'correct' : 'wrong';
+            if (!isCorrect) {
+              saveCurrentQuizToErrors();
+            }
+            if (drawer) drawer.style.display = 'block';
+          });
+          optionsBox.appendChild(btn);
+        });
+      } else {
+        optionsBox.style.display = 'none';
+        optionsBox.innerHTML = '';
+      }
+    }
+
     // 單字盲聽專屬播放器
     const listenPlayer = document.getElementById('spellingListenPlayer');
     if (q.type === 'spelling_listen') {
@@ -1970,7 +2656,11 @@ ${errorSample}
       const maxDots = Math.min(total, 20);
       for (let i = 0; i < maxDots; i++) {
         const dot = document.createElement('div');
-        dot.className = `mistake-dot ${i === AppState.currentMidtermQuizIdx ? 'active' : ''}`;
+        const qItem = quizzes[i];
+        const qId = qItem ? (qItem.id || `QUIZ_${unit.id}_${i + 1}`) : '';
+        const st = AppState.midtermQuizStatus[qId];
+        const stClass = st === 'correct' ? 'dot-correct' : (st === 'wrong' ? 'dot-wrong' : '');
+        dot.className = `mistake-dot ${i === AppState.currentMidtermQuizIdx ? 'active' : ''} ${stClass}`.trim();
         dot.addEventListener('click', () => {
           AppState.currentMidtermQuizIdx = i;
           renderMidtermDualQuiz();
@@ -2066,18 +2756,27 @@ ${errorSample}
     const quizzes = getFilteredMidtermQuizzes();
     if (!unit || quizzes.length === 0) return;
     const q = quizzes[AppState.currentMidtermQuizIdx];
+    const matchedEdUnit = window.ENGLISH_DATA ? window.ENGLISH_DATA.units.find(u => u.midterm_unit_id === unit.id) : null;
+    const normBookId = matchedEdUnit ? matchedEdUnit.book_id : (unit.book || 'gra3');
+    const normUnitId = matchedEdUnit ? matchedEdUnit.unit_id : (unit.display_title || unit.unit_title || unit.id);
+    const errId = q.id || `QUIZ_${unit.id}_${AppState.currentMidtermQuizIdx + 1}`;
 
     const expText = typeof q.explanation === 'object' && q.explanation !== null
       ? `【考點】${q.explanation.concept}\n【破題】${q.explanation.formula}\n【陷阱】${q.explanation.trap}`
       : (q.explanation || q.hint);
 
     const errObj = {
-      id: q.id || `QUIZ_${unit.id}_${AppState.currentMidtermQuizIdx + 1}`,
-      book_id: unit.book,
-      unit_id: unit.unit_title,
+      id: errId,
+      book_id: normBookId,
+      unit_id: normUnitId,
       status: 'wrong',
       timestamp: Date.now(),
       questionData: {
+        id: errId,
+        book_id: normBookId,
+        unit_id: normUnitId,
+        type: q.type || 'grammar',
+        options: Array.isArray(q.options) ? q.options : [],
         question: q.question,
         answer: q.answer,
         explanation: expText
@@ -2171,11 +2870,12 @@ ${errorSample}
     let allQuizzes = [];
 
     targetUnits.forEach(u => {
-      (u.vocab || []).forEach(v => allVocab.push({ ...v, unit_title: u.unit_title }));
-      (u.mistake_buster || []).forEach(m => allMistakes.push({ ...m, unit_title: u.unit_title }));
+      const uTitle = u.display_title || u.unit_title || u.id;
+      (u.vocab || []).forEach(v => allVocab.push({ ...v, unit_title: uTitle }));
+      (u.mistake_buster || []).forEach(m => allMistakes.push({ ...m, unit_title: uTitle }));
       (u.quizzes || []).forEach(q => {
-        if (q.type === 'paper_rewrite') allRewrites.push({ ...q, unit_title: u.unit_title });
-        else allQuizzes.push({ ...q, unit_title: u.unit_title });
+        if (q.type === 'paper_rewrite') allRewrites.push({ ...q, unit_title: uTitle });
+        else if (q.type !== 'spelling_listen') allQuizzes.push({ ...q, unit_title: uTitle });
       });
     });
 
@@ -2305,10 +3005,18 @@ ${errorSample}
         if (isTeacher || isContrast) {
           ansLine = `<strong style="color:#DC2626; margin-left:8px;">(正解：${escapeHtml(q.answer)})</strong>`;
         }
+        let optsLine = '';
+        if (Array.isArray(q.options) && q.options.length > 0) {
+          const letters = ['A', 'B', 'C', 'D'];
+          optsLine = `<div style="margin-top:4px; margin-left:18px; color:#374151; font-size:9.5pt;">` +
+            q.options.map((o, oi) => `(${letters[oi] || oi + 1}) ${escapeHtml(o)}`).join('&nbsp;&nbsp;&nbsp;&nbsp;') +
+            `</div>`;
+        }
         html += `
           <div class="print-q-item" style="margin-bottom:10px;">
             <span class="q-num">${idx + 1}.</span>
             <span class="q-text">${escapeHtml(q.question)} ${ansLine}</span>
+            ${optsLine}
           </div>
         `;
       });
@@ -2448,41 +3156,73 @@ ${errorSample}
     });
     html += `</div></div>`;
 
-    // 考券 Part III: Grammar 3 (Unit 14) 副詞三級比較長句合成 (Week 4 / 5 真題，重大失分點 4/20 分)
+    // 考券 Part III: Grammar 3 (Unit 14) 副詞三級比較長句合成 (Week 4 / 5 真題全收錄，重大失分點 4/20 分)
     const grammar14Items = [
       {
-        q: "How fast can they run? person, dog & lion",
+        q: "How did they do in their quiz? Anne: 100%, Penny: 95% & Eric: 90%",
+        ans: "Eric did well in his quiz, Penny did better than Eric, but Anne did the best.",
+        student: "Penny did better than Eric, but Anne did the best.",
+        redNote: "漏寫第一段原級子句 Eric did well in his quiz,",
+        reason: "必遵照三段式公式（well ➔ better than ➔ the best），須從 90% 的 Eric 寫起"
+      },
+      {
+        q: "How did they do in their quiz? Jerome: 65%, Ivan: 55% & Nate: 45%",
+        ans: "Jerome did badly in his quiz, Ivan did worse than Jerome, but Nate did the worst.",
+        student: "Ivan did worse Jerome, but Nate did the worst.",
+        redNote: "漏寫第一段原級 Jerome did badly in his quiz,；worse 後方補 than",
+        reason: "不規則副詞 badly ➔ worse than ➔ the worst，由 65% 往 45% 遞減比較"
+      },
+      {
+        q: "The distance they flew: eagle: 41km, duck: 91km & pigeon: 282km",
+        ans: "An eagle flew far, a duck flew farther than an eagle, but a pigeon flew the farthest.",
+        student: "A duck flew farther than an eagle, but a pigeon flew the farthest.",
+        redNote: "漏寫第一段原級 An eagle flew far,（注意 An eagle 冠詞）",
+        reason: "far ➔ farther/further than ➔ the farthest/furthest，注意過去式動詞 flew"
+      },
+      {
+        q: "How do they laugh? witch, vampire & zombie",
+        ans: "A witch laughs horribly, a vampire laughs more horribly than a witch, but a zombie laughs the most horribly.",
+        student: "A vampire laughed horribly than a witch, but a zoobie laughed the most horribly.",
+        redNote: "補第一段 A witch laughs horribly,；laughed 改現在式 laughs；horribly 前補 more；訂正 zombie",
+        reason: "題幹問 How do they laugh (現在式)，三單動詞必加 -s，多音節副詞比較級必加 more"
+      },
+      {
+        q: "How did they move? snail, tortoise & the old man",
+        ans: "The old man moved slowly, a tortoise moved more slowly than the old man, but a snail moved the most slowly.",
+        student: "A tortoise moved more slowly than an old man, but a snail moved the most slowly",
+        redNote: "補第一段 The old man moved slowly,（注意由慢 ➔ 更慢 ➔ 最慢排序）",
+        reason: "比誰移動更慢，最慢的 a snail 必須放在最後一段 the most slowly"
+      },
+      {
+        q: "How fast do they run? person, dog & lion",
         ans: "A person runs fast, a dog runs faster than a person, but a lion runs the fastest.",
-        student: "A person can run fast, a dog can run more fast than a dog, and a lion can run the faster",
-        redNote: "劃掉 more fast 改 faster than a person；劃掉 the faster 改 the fastest；and 改 but",
-        reason: "fast 是單音節副詞（faster, the fastest）；前後兩物比較對象需不同；最後一項為轉折 but"
+        student: "A dog runs faster than a person, but lion can run fastest.",
+        redNote: "補第一段 A person runs fast,；lion 前補 a；fastest 前補 the；刪 can 改 runs",
+        reason: "單音節副詞 fast ➔ faster than ➔ the fastest；單數可數名詞必加 a，最高級必加 the"
       },
       {
         q: "How quickly can they walk? five year old, eight year old & adult",
         ans: "A five year old can walk quickly, an eight year old can walk more quickly than a five year old, but an adult can walk the most quickly.",
-        student: "five year old walk quick, eight year old walk quicker than five year old, adult walk fastest",
-        redNote: "補冠詞 A/an；quick 改副詞 quickly；比較級用 more quickly than；最高級用 the most quickly",
-        reason: "修飾動詞 walk 必須用副詞形式 quickly；多音節副詞比較級與最高級為 more quickly / the most quickly"
+        student: "An eight year old can walk more than a five year old, but an adult can walk the most quickly.",
+        redNote: "補第一段 A five year old can walk quickly,；more 後方補副詞 quickly",
+        reason: "比較級不可只寫 walk more than，必須寫完整 walk more quickly than"
       },
       {
         q: "How far can they jump? frog, rabbit & kangaroo",
         ans: "A frog can jump far, a rabbit can jump farther than a frog, but a kangaroo can jump the farthest.",
-        student: "A frog can jump far, a rabbit can jump farther than a frog, but a kangaroo can jump farthest.",
-        redNote: "farthest 前面補冠詞 the",
-        reason: "最高級副詞前面務必加上 the（the farthest）"
-      },
-      {
-        q: "How loudly can they laugh? Peter, Helen & Jack",
-        ans: "Peter laughs loudly, Helen laughs more loudly than Peter, but Jack laughs the most loudly.",
-        student: "Peter laugh loud, Helen laugh more loud than Peter, but Jack laugh the most loud.",
-        redNote: "第三人稱單數動詞加 s (laughs)；loud 改為副詞 loudly / more loudly / the most loudly",
-        reason: "一般動詞修飾副詞 -ly 與主詞第三人稱單數動詞加 -s"
+        student: "A rabbit can jump further than a frog, but kangaroo can jump the furthest.",
+        redNote: "補第一段 A frog can jump far,；kangaroo 前補不定冠詞 a",
+        reason: "單數名詞 a kangaroo 不可裸奔漏冠詞"
       }
     ];
 
     html += `
       <div class="exam-section">
-        <div class="section-title-print">Part III. Grammar 3 (U14) 副詞三級長句合成 (每題 8 分，共 32 分)</div>
+        <div class="section-title-print">Part III. Grammar 3 (U14) 副詞三級長句合成 (每題 4 分，共 32 分)</div>
+        <div style="font-size:9.5pt; background:#F8FAFC; border:1px solid #CBD5E1; padding:6px 10px; border-radius:4px; margin-bottom:10px; color:#1E293B;">
+          <div><strong>📌 副詞字庫 Adverbs</strong>：<code>[well, horribly, badly, quickly, far, fast, slowly]</code></div>
+          <div><strong>📐 必寫三段公式 Sentence form</strong>：<code>&lt;adverb clause&gt; , + &lt;comparative clause&gt; , + but + &lt;superlative clause&gt; .</code>（注意動詞時態與問句對齊！）</div>
+        </div>
         <div class="exam-questions-grid">
     `;
     grammar14Items.forEach((g, idx) => {
@@ -2555,33 +3295,43 @@ ${errorSample}
       </div>
     `;
 
-    // Part I: AI 變式倒裝附和句改寫 (4 題，每題 6 分 = 24 分)
+    // Part I: AI 變式倒裝附和句改寫 (6 題，每題 4 分 = 24 分)
     const variantG13 = [
       {
-        prompt: "Emma, Lucas - finished the race / so",
-        ans: "Emma finished the race, and so did Lucas.",
-        hint: "肯定倒裝附和句：so + 過去助動詞 did + 主詞 Lucas"
+        prompt: "Leo, Max - 100% on test / so",
+        ans: "Leo got 100% on his test, and so did Max.",
+        hint: "陷阱防範：記得先補過去式動詞 got！肯定倒裝用 so + did + 主詞 Max"
       },
       {
-        prompt: "Noah, Liam - did not watch TV / either",
-        ans: "Noah did not watch TV, and Liam didn't either.",
-        hint: "否定一般附和句：主詞 Liam + didn't + either"
+        prompt: "Emma, Chloe - 95% on quiz / too",
+        ans: "Emma got 95% on her quiz, and Chloe did, too.",
+        hint: "陷阱防範：前句動詞是 got，後句附和必用 Chloe did, too（不可寫 are, too）"
       },
       {
-        prompt: "Sophia, Ava - won the spelling contest / too",
-        ans: "Sophia won the spelling contest, and Ava did, too.",
-        hint: "肯定一般附和句：助動詞 did + 逗號 + too"
+        prompt: "Noah, Liam - not pass the exam / either",
+        ans: "Noah didn't pass the exam, and Liam didn't, either.",
+        hint: "陷阱防範：過去式一般動詞否定必用 didn't pass（不可寫 are not pass）"
       },
       {
-        prompt: "Ethan, Mason - was not late for school / neither",
-        ans: "Ethan was not late for school, and neither was Mason.",
-        hint: "否定倒裝附和句：neither + be動詞過去式 was + 主詞 Mason"
+        prompt: "Sophia, Ava - did not play tennis / neither",
+        ans: "Sophia did not play tennis, and neither did Ava.",
+        hint: "陷阱防範：neither 本身已含否定，後面助動詞必用肯定形 did（neither did Ava）"
+      },
+      {
+        prompt: "Edison, Swan - a famous inventor / so",
+        ans: "Edison was a famous inventor, and so was Swan.",
+        hint: "陷阱防範：身分名詞無一般動詞，前句用 was，後句倒裝必對齊用 so was Swan！"
+      },
+      {
+        prompt: "Ethan, Mason - not late for school / neither",
+        ans: "Ethan wasn't late for school, and neither was Mason.",
+        hint: "陷阱防範：形容詞 late 搭配 be 動詞 wasn't，後句否定倒裝用 neither was Mason"
       }
     ];
 
     html += `
       <div class="exam-section">
-        <div class="section-title-print">I. AI 變式倒裝附和句改寫 (依指定連接詞合成句子，每題 6 分，共 24 分)</div>
+        <div class="section-title-print">I. AI 變式倒裝附和句改寫 (請用過去簡單式與指定連接詞合成句子，每題 4 分，共 24 分)</div>
         <div class="exam-questions-grid">
     `;
     variantG13.forEach((g, idx) => {
@@ -2590,7 +3340,7 @@ ${errorSample}
         ansLine = `<div style="color:#DC2626; font-weight:600; margin-top:4px;">正解：${escapeHtml(g.ans)} <small style="color:#4B5563;">(${escapeHtml(g.hint)})</small></div>`;
       }
       html += `
-        <div class="print-q-item" style="margin-bottom:12px;">
+        <div class="print-q-item" style="margin-bottom:10px;">
           <span class="q-num">${idx + 1}.</span>
           <span class="q-text">Prompt: <strong>[${escapeHtml(g.prompt)}]</strong></span>
           ${ansLine}
@@ -2599,33 +3349,47 @@ ${errorSample}
     });
     html += `</div></div>`;
 
-    // Part II: AI 變式副詞三級長句合成 (4 題，每題 8 分 = 32 分)
+    // Part II: AI 變式副詞三級長句合成 (6 題，每題 6 分 = 36 分)
     const variantG14 = [
       {
-        prompt: "How loudly can they roar? cub, wolf & tiger",
-        ans: "A cub can roar loudly, a wolf can roar more loudly than a cub, but a tiger can roar the most loudly.",
-        hint: "多音節副詞 loudly ➔ more loudly than ➔ the most loudly"
+        prompt: "How did they do in their test? Mia: 100%, Zoe: 92% & Ben: 85%",
+        ans: "Ben did well in his test, Zoe did better than Ben, but Mia did the best.",
+        hint: "不規則副詞 well ➔ better than ➔ the best（必須從 85% 的 Ben 開始寫第一段原級！）"
       },
       {
-        prompt: "How skillfully can they paint? beginner, student & artist",
-        ans: "A beginner can paint skillfully, a student can paint more skillfully than a beginner, but an artist can paint the most skillfully.",
-        hint: "注意 an artist 冠詞為 an；paint 需加或不加 s 視時態/助動詞而定"
+        prompt: "How did they do in their game? Sam: 60%, Leo: 50% & Dan: 40%",
+        ans: "Sam did badly in his game, Leo did worse than Sam, but Dan did the worst.",
+        hint: "不規則副詞 badly ➔ worse than ➔ the worst（從 60% 的 Sam 往 40% 的 Dan 寫）"
       },
       {
-        prompt: "How beautifully can they dance? Bella, Chloe & Mia",
-        ans: "Bella dances beautifully, Chloe dances more beautifully than Bella, but Mia dances the most beautifully.",
-        hint: "第三人稱單數動詞加 s (dances)；more beautifully / the most beautifully"
+        prompt: "The distance they flew: glider: 15km, helicopter: 120km & airplane: 900km",
+        ans: "A glider flew far, a helicopter flew farther than a glider, but an airplane flew the farthest.",
+        hint: "過去式動詞 flew；far ➔ farther/further than ➔ the farthest/furthest（注意 an airplane 冠詞）"
       },
       {
-        prompt: "How high can they jump? cat, deer & horse",
-        ans: "A cat can jump high, a deer can jump higher than a cat, but a horse can jump the highest.",
-        hint: "單音節副詞 high ➔ higher than ➔ the highest"
+        prompt: "How do they sing? frog, cat & bird (用 beautifully)",
+        ans: "A frog sings beautifully, a cat sings more beautifully than a frog, but a bird sings the most beautifully.",
+        hint: "題幹問 How do they sing (現在式)！三單動詞必加 -s (sings)，比較級必加 more beautifully than"
+      },
+      {
+        prompt: "How fast do they swim? turtle, penguin & dolphin",
+        ans: "A turtle swims fast, a penguin swims faster than a turtle, but a dolphin swims the fastest.",
+        hint: "現在式三單動詞 swims；單音節副詞 fast ➔ faster than ➔ the fastest（記得加 a 與 the！）"
+      },
+      {
+        prompt: "How carefully can they paint? child, student & artist",
+        ans: "A child can paint carefully, a student can paint more carefully than a child, but an artist can paint the most carefully.",
+        hint: "助動詞 can + 原形動詞 paint；carefully ➔ more carefully than ➔ the most carefully（注意 an artist）"
       }
     ];
 
     html += `
       <div class="exam-section">
-        <div class="section-title-print">II. AI 變式副詞三級長句合成 (每題 8 分，共 32 分)</div>
+        <div class="section-title-print">II. AI 變式副詞三級長句合成 (每題 6 分，共 36 分)</div>
+        <div style="font-size:9.5pt; background:#F8FAFC; border:1px solid #CBD5E1; padding:6px 10px; border-radius:4px; margin-bottom:10px; color:#1E293B;">
+          <div><strong>📌 副詞字庫 Adverbs</strong>：<code>[well, badly, far, beautifully, fast, carefully]</code></div>
+          <div><strong>📐 必寫三段公式 Sentence form</strong>：<code>&lt;adverb clause&gt; , + &lt;comparative clause&gt; , + but + &lt;superlative clause&gt; .</code>（千萬別漏寫第一段原級！）</div>
+        </div>
         <div class="exam-questions-grid">
     `;
     variantG14.forEach((g, idx) => {
@@ -2634,7 +3398,7 @@ ${errorSample}
         ansLine = `<div style="color:#DC2626; font-weight:600; margin-top:4px;">正解：${escapeHtml(g.ans)} <small style="color:#4B5563;">(${escapeHtml(g.hint)})</small></div>`;
       }
       html += `
-        <div class="print-q-item" style="margin-bottom:12px;">
+        <div class="print-q-item" style="margin-bottom:10px;">
           <span class="q-num">${idx + 1}.</span>
           <span class="q-text">Prompt: <strong>[${escapeHtml(g.prompt)}]</strong></span>
           ${ansLine}
@@ -2643,8 +3407,29 @@ ${errorSample}
     });
     html += `</div></div>`;
 
-    // Part III: 易混淆生詞與介系詞改錯 (4 題，每題 6 分 = 24 分)
+    // Part III: 考場高頻語法與拼字改錯 (5 題，每題 4 分 = 20 分)
     const variantMistakes = [
+      {
+        sent: "A witch laughs horribly, and a vampire laughs horribly than a witch.",
+        wrong: "horribly than",
+        correct: "more horribly than",
+        fixed: "A witch laughs horribly, and a vampire laughs more horribly than a witch.",
+        reason: "多音節副詞比較級前面必須加 more (more horribly than)"
+      },
+      {
+        sent: "An eight year old can walk more than a five year old.",
+        wrong: "walk more than",
+        correct: "walk more quickly than",
+        fixed: "An eight year old can walk more quickly than a five year old.",
+        reason: "比較走得多快時，more 後方不可漏寫副詞 quickly"
+      },
+      {
+        sent: "A dog runs faster than a person, but lion runs fastest.",
+        wrong: "lion runs fastest",
+        correct: "a lion runs the fastest",
+        fixed: "A dog runs faster than a person, but a lion runs the fastest.",
+        reason: "單數可數名詞 lion 前須加 a，最高級 fastest 前須加 the"
+      },
       {
         sent: "The new library is right infront off the city hall.",
         wrong: "infront off",
@@ -2653,31 +3438,17 @@ ${errorSample}
         reason: "介系詞片語為 in front of（三字分開，介系詞是 of 不是 off）"
       },
       {
-        sent: "The blacksmith heated the iron bar in the hot furnes.",
-        wrong: "furnes",
-        correct: "furnace",
-        fixed: "The blacksmith heated the iron bar in the hot furnace.",
-        reason: "熔爐拼寫為 furnace (-ace 字尾)"
-      },
-      {
-        sent: "She broke the France of her glasses yesterday.",
-        wrong: "France",
-        correct: "frames",
-        fixed: "She broke the frames of her glasses yesterday.",
-        reason: "鏡框為 frames，不是國家法國 France"
-      },
-      {
-        sent: "Workers used a sharp wadge to split the big log.",
-        wrong: "wadge",
-        correct: "wedge",
-        fixed: "Workers used a sharp wedge to split the big log.",
-        reason: "三角楔子拼寫為 wedge，母音為 e"
+        sent: "The glassblower heated the glass in the hot furnes and made metal France.",
+        wrong: "furnes / France",
+        correct: "furnace / frames",
+        fixed: "The glassblower heated the glass in the hot furnace and made metal frames.",
+        reason: "熔爐拼寫為 furnace (-ace)；眼鏡框為 frames 而非法國 France"
       }
     ];
 
     html += `
       <div class="exam-section">
-        <div class="section-title-print">III. 易混淆生字與介系詞改錯 (每題 6 分，共 24 分)</div>
+        <div class="section-title-print">III. 考場高頻語法與拼字改錯 (每題 4 分，共 20 分)</div>
         <div class="exam-questions-grid">
     `;
     variantMistakes.forEach((m, idx) => {
