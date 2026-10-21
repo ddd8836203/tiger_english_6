@@ -9010,11 +9010,11 @@ window.MIDTERM_DATABASE = [
   {
     "id": "TEA_QUIZ_REVIEW",
     "book": "岱崙美語歷史真題考券 (TEA 3C Quiz)",
-    "display_title": "歷史考券錯題特訓 (Quiz Review: W2/W4/W5)",
+    "display_title": "歷史考券錯題特訓 (Quiz Review: W2/W4/W5/W6/W7)",
     "category": "歷史考券",
     "category_icon": "📝",
     "cefr": "A2+",
-    "pages": "Week 2, Week 4, Week 5 (共 6 頁歷史考券)",
+    "pages": "Week 2, 4, 5, 6, 7 (共 10 頁歷史考券)",
     "passages": [
       {
         "section_title": "尋寶定向運動長篇聽寫 (Orienteering - W5 Dictation p.40 滿分篇章)",
@@ -9142,6 +9142,72 @@ window.MIDTERM_DATABASE = [
             "zh": "擁有 6000 美元不是很棒嗎？"
           }
         ]
+      },
+      {
+        "section_title": "短文改錯滿分訂正版：假如我有 3000 美元 (If I Had 3000 Dollars - W6 Proofreading p.10)",
+        "sentences": [
+          {
+            "en": "If I had 3000 dollars, I would do three things.",
+            "zh": "如果我有 3000 美元，我會做三件事。"
+          },
+          {
+            "en": "First, my family loves baseball, so I would go to a baseball game with them.",
+            "zh": "首先，我的家人熱愛棒球，所以我會和他們一起去看一場棒球賽。"
+          },
+          {
+            "en": "Next, I would buy a fish tank for my class.",
+            "zh": "接下來，我會為我的班級買一個魚缸。"
+          },
+          {
+            "en": "I think it would brighten up our classroom.",
+            "zh": "我認為它會讓我們的教室變得更有朝氣。"
+          },
+          {
+            "en": "Finally, I would spend some money on myself.",
+            "zh": "最後，我會花一些錢在自己身上。"
+          },
+          {
+            "en": "I would buy some comic books.",
+            "zh": "我會買一些漫畫書。"
+          },
+          {
+            "en": "They would cost me about 300 dollars.",
+            "zh": "它們大約會花費我 300 美元。"
+          },
+          {
+            "en": "With the rest of the money, I would treat my friends to lunch.",
+            "zh": "用剩下的錢，我會請我的朋友們吃午餐。"
+          }
+        ]
+      },
+      {
+        "section_title": "容器計量詞與可數不可數問答 (Measure Words & Quantifiers - W6 & W7 p.10-11 必考句)",
+        "sentences": [
+          {
+            "en": "There is a slice of pizza and a carton of milk.",
+            "zh": "那裡有一片披薩和一紙盒牛奶。"
+          },
+          {
+            "en": "There are six bottles of water and two cans of tomatoes.",
+            "zh": "那裡有六瓶水和兩罐番茄罐頭。"
+          },
+          {
+            "en": "There is a bar of chocolate and a jar of honey.",
+            "zh": "那裡有一條巧克力和一玻璃罐蜂蜜。"
+          },
+          {
+            "en": "There are seven slices of bread and two cups of tea.",
+            "zh": "那裡有七片吐司和兩杯茶。"
+          },
+          {
+            "en": "How much trash is there? There is a lot of trash.",
+            "zh": "那裡有多少垃圾？那裡有許多垃圾。"
+          },
+          {
+            "en": "How many plastic bottles are there? There are a few plastic bottles.",
+            "zh": "那裡有幾個寶特瓶？那裡有幾個寶特瓶。"
+          }
+        ]
       }
     ],
     "vocab": [
@@ -9264,6 +9330,84 @@ window.MIDTERM_DATABASE = [
         "phonetic": "/ˈkʌmpəs/",
         "translation": "指北針，羅盤",
         "note": "雙音節 com-pass"
+      },
+      {
+        "word": "nectar",
+        "phonetic": "/ˈnektər/",
+        "translation": "花蜜",
+        "note": "W06 學生曾誤拼為 nector，字尾為 -ar"
+      },
+      {
+        "word": "petals",
+        "phonetic": "/ˈpetlz/",
+        "translation": "花瓣",
+        "note": "W06 學生曾誤拼為 patels，首音節為 pe-"
+      },
+      {
+        "word": "pollen",
+        "phonetic": "/ˈpɑːlən/",
+        "translation": "花粉",
+        "note": "OD3 U15 植物授粉核心單字"
+      },
+      {
+        "word": "oxygen",
+        "phonetic": "/ˈɑːksɪdʒən/",
+        "translation": "氧氣",
+        "note": "OD3 U15 植物光合作用單字"
+      },
+      {
+        "word": "language",
+        "phonetic": "/ˈlæŋɡwɪdʒ/",
+        "translation": "語言",
+        "note": "W06 學生曾誤拼為 langauges，注意 -gua- 順序"
+      },
+      {
+        "word": "official",
+        "phonetic": "/əˈfɪʃl/",
+        "translation": "官方的、正式的",
+        "note": "W06 學生曾漏 i 寫成 offical"
+      },
+      {
+        "word": "government",
+        "phonetic": "/ˈɡʌvərnmənt/",
+        "translation": "政府",
+        "note": "W06 學生曾漏 n 寫成 goverment (govern+ment)"
+      },
+      {
+        "word": "French",
+        "phonetic": "/frentʃ/",
+        "translation": "法語、法國的",
+        "note": "W06 學生曾寫成 franch，首字母需大寫 F"
+      },
+      {
+        "word": "countries",
+        "phonetic": "/ˈkʌntriz/",
+        "translation": "國家(複數)",
+        "note": "W06 學生曾漏 u 寫成 contries"
+      },
+      {
+        "word": "example",
+        "phonetic": "/ɪɡˈzæmpl/",
+        "translation": "例子、範例",
+        "note": "W06 學生曾誤寫為 exemple"
+      },
+      {
+        "word": "Mandarin",
+        "phonetic": "/ˈmændərɪn/",
+        "translation": "中文普通話、國語",
+        "note": "W06 學生曾誤寫為 manderin，首字母 M 大寫"
+      },
+      {
+        "word": "thousand",
+        "phonetic": "/ˈθaʊznd/",
+        "translation": "一千",
+        "note": "W06 學生曾誤寫為 thoudnd (thou+sand)"
+      },
+      {
+        "word": "in fact",
+        "phonetic": "/ɪn fækt/",
+        "translation": "事實上",
+        "note": "W06 學生曾聽音硬拼成單字 infecte，實為兩個字"
       }
     ],
     "mistake_buster": [
@@ -9562,6 +9706,275 @@ window.MIDTERM_DATABASE = [
         "correct_word": "would",
         "fixed_sentence": "If I had 6000 dollars, I would buy a car.",
         "reason": "【與現在事實相反假設語氣】條件句為 If + had (過去式)，主要子句必須使用 would + 原形動詞，不可用 will！"
+      },
+      {
+        "trap_id": "W06_TRAP_GO_TO_GAME",
+        "sentence": "First, my family loves baseball, so I would go a baseball game with them.",
+        "tokens": [
+          "First,",
+          "my",
+          "family",
+          "loves",
+          "baseball,",
+          "so",
+          "I",
+          "would",
+          "go",
+          "a",
+          "baseball",
+          "game",
+          "with",
+          "them."
+        ],
+        "wrong_index": 8,
+        "wrong_word": "go",
+        "correct_word": "go to",
+        "fixed_sentence": "First, my family loves baseball, so I would go to a baseball game with them.",
+        "reason": "【W6 真題漏抓：不及物動詞 go 漏介系詞 to】go 後接活動或地點名詞 (a baseball game) 必須加介系詞 to！"
+      },
+      {
+        "trap_id": "W06_TRAP_WOULD_BY_BUY",
+        "sentence": "I would by some comic books at the bookstore.",
+        "tokens": [
+          "I",
+          "would",
+          "by",
+          "some",
+          "comic",
+          "books",
+          "at",
+          "the",
+          "bookstore."
+        ],
+        "wrong_index": 2,
+        "wrong_word": "by",
+        "correct_word": "buy",
+        "fixed_sentence": "I would buy some comic books at the bookstore.",
+        "reason": "【W6 真題漏抓：同音異字 by vs. buy】助動詞 would 後面必須接原形動詞 buy（購買），by 是介系詞！"
+      },
+      {
+        "trap_id": "W06_TRAP_REST_OF_MONEY",
+        "sentence": "With rest of the money, I would treat my friends to lunch.",
+        "tokens": [
+          "With",
+          "rest",
+          "of",
+          "the",
+          "money,",
+          "I",
+          "would",
+          "treat",
+          "my",
+          "friends",
+          "to",
+          "lunch."
+        ],
+        "wrong_index": 1,
+        "wrong_word": "rest",
+        "correct_word": "the rest",
+        "fixed_sentence": "With the rest of the money, I would treat my friends to lunch.",
+        "reason": "【W6 真題失分：With the rest of the money 漏 the】表示『用剩下的錢』固定片語前後都需要定冠詞 the！"
+      },
+      {
+        "trap_id": "W06_TRAP_US_CLASSROOM",
+        "sentence": "I think a new fish tank would brighten up us's classroom.",
+        "tokens": [
+          "I",
+          "think",
+          "a",
+          "new",
+          "fish",
+          "tank",
+          "would",
+          "brighten",
+          "up",
+          "us's",
+          "classroom."
+        ],
+        "wrong_index": 9,
+        "wrong_word": "us's",
+        "correct_word": "our",
+        "fixed_sentence": "I think a new fish tank would brighten up our classroom.",
+        "reason": "【W6 真題代名詞所有格】修飾名詞 classroom 必須用所有格代名詞 our（我們的），英文沒有 us's 或 our's！"
+      },
+      {
+        "trap_id": "W07_TRAP_SEVEN_SLICE_BREAD",
+        "sentence": "There are seven packet of breads on the table.",
+        "tokens": [
+          "There",
+          "are",
+          "seven",
+          "packet of breads",
+          "on",
+          "the",
+          "table."
+        ],
+        "wrong_index": 3,
+        "wrong_word": "packet of breads",
+        "correct_word": "slices of bread",
+        "fixed_sentence": "There are seven slices of bread on the table.",
+        "reason": "【W7 真題三連錯】① 切片吐司量詞用 slice；② seven 後量詞加 -s (slices)；③ 不可數名詞 bread 永遠不可加 -s！"
+      },
+      {
+        "trap_id": "W07_TRAP_FUTURE_SO_WILL",
+        "sentence": "Roger will see a new movie tomorrow, and so do Sean.",
+        "tokens": [
+          "Roger",
+          "will",
+          "see",
+          "a",
+          "new",
+          "movie",
+          "tomorrow,",
+          "and",
+          "so",
+          "do",
+          "Sean."
+        ],
+        "wrong_index": 9,
+        "wrong_word": "do",
+        "correct_word": "will",
+        "fixed_sentence": "Roger will see a new movie tomorrow, and so will Sean.",
+        "reason": "【W7 真題未來式倒裝附和】前句含有時間 tomorrow 為未來式 will see，倒裝附和必須對齊助動詞 so will Sean！"
+      },
+      {
+        "trap_id": "W07_TRAP_3RD_PERSON_DOESNT",
+        "sentence": "Rachel do not learn to play the piano, and Nicole doesn't, either.",
+        "tokens": [
+          "Rachel",
+          "do not",
+          "learn",
+          "to",
+          "play",
+          "the",
+          "piano,",
+          "and",
+          "Nicole",
+          "doesn't,",
+          "either."
+        ],
+        "wrong_index": 1,
+        "wrong_word": "do not",
+        "correct_word": "doesn't",
+        "fixed_sentence": "Rachel doesn't learn to play the piano, and Nicole doesn't, either.",
+        "reason": "【W7 真題單三否定助動詞】Rachel 是第三人稱單數，現在式否定必須用 doesn't (does not)，不可用 do not！"
+      },
+      {
+        "trap_id": "W07_TRAP_MODAL_NEITHER_CAN",
+        "sentence": "Penguins can't fly in the sky, and neither do ostriches.",
+        "tokens": [
+          "Penguins",
+          "can't",
+          "fly",
+          "in",
+          "the",
+          "sky,",
+          "and",
+          "neither",
+          "do",
+          "ostriches."
+        ],
+        "wrong_index": 8,
+        "wrong_word": "do",
+        "correct_word": "can",
+        "fixed_sentence": "Penguins can't fly in the sky, and neither can ostriches.",
+        "reason": "【W7 真題情態助動詞附和】前句是情態助動詞 can't，倒裝附和必須沿用 can (neither can ostriches)，不可慣性寫 do！"
+      },
+      {
+        "trap_id": "W07_TRAP_SUPERLATIVE_VERB_IS",
+        "sentence": "Penny sings more beautifully than Eric, but Anne is the most beautifully.",
+        "tokens": [
+          "Penny",
+          "sings",
+          "more",
+          "beautifully",
+          "than",
+          "Eric,",
+          "but",
+          "Anne",
+          "is",
+          "the",
+          "most",
+          "beautifully."
+        ],
+        "wrong_index": 8,
+        "wrong_word": "is",
+        "correct_word": "sings",
+        "fixed_sentence": "Penny sings more beautifully than Eric, but Anne sings the most beautifully.",
+        "reason": "【W7 真題高頻失分：最高級子句把一般動詞換成 is】修飾唱歌 beautifully 必須搭配一般動詞 sings (Anne sings the most beautifully)，絕不能寫 Anne is！"
+      },
+      {
+        "trap_id": "W07_TRAP_WELL_BETTER_WILL",
+        "sentence": "Ingrid did will on her homework than Hank, but Jeremy did the best.",
+        "tokens": [
+          "Ingrid",
+          "did",
+          "will",
+          "on",
+          "her",
+          "homework",
+          "than",
+          "Hank,",
+          "but",
+          "Jeremy",
+          "did",
+          "the",
+          "best."
+        ],
+        "wrong_index": 2,
+        "wrong_word": "will",
+        "correct_word": "better",
+        "fixed_sentence": "Ingrid did better on her homework than Hank, but Jeremy did the best.",
+        "reason": "【W7 真題不規則副詞 well】well 的比較級是不規則變化 better（well ➔ better ➔ the best），不可寫成 will！"
+      },
+      {
+        "trap_id": "W07_TRAP_EASILY_EASILIER",
+        "sentence": "I can learn science easilier than maths, but I learn Chinese the most easily.",
+        "tokens": [
+          "I",
+          "can",
+          "learn",
+          "science",
+          "easilier",
+          "than",
+          "maths,",
+          "but",
+          "I",
+          "learn",
+          "Chinese",
+          "the",
+          "most",
+          "easily."
+        ],
+        "wrong_index": 4,
+        "wrong_word": "easilier",
+        "correct_word": "more easily",
+        "fixed_sentence": "I can learn science more easily than maths, but I learn Chinese the most easily.",
+        "reason": "【W7 真題自創字錯誤】副詞 easily 以 -ly 結尾，比較級與最高級必須用 more easily / the most easily，沒有 easilier 這個字！"
+      },
+      {
+        "trap_id": "W07_TRAP_BADLY_WORSE_WORST",
+        "sentence": "Ted plays the electric guitar badly than Fred, but Bill plays the worst.",
+        "tokens": [
+          "Ted",
+          "plays",
+          "the",
+          "electric",
+          "guitar",
+          "badly",
+          "than",
+          "Fred,",
+          "but",
+          "Bill",
+          "plays",
+          "the",
+          "worst."
+        ],
+        "wrong_index": 5,
+        "wrong_word": "badly",
+        "correct_word": "worse",
+        "fixed_sentence": "Ted plays the electric guitar worse than Fred, but Bill plays the worst.",
+        "reason": "【W7 真題不規則副詞 badly】badly 的三級變化為 badly ➔ worse ➔ the worst，看到後方有 than 必須用比較級 worse！"
       }
     ],
     "quizzes": [
@@ -10019,6 +10432,388 @@ window.MIDTERM_DATABASE = [
           "concept": "Oxford Discover 3 Unit 13 簡單機械定義",
           "formula": "wedge 的英英字典定義：thick end (厚端) + thin edge (薄刃)。",
           "trap": "ramp 是斜坡（sloping surface），lever 是槓桿（rigid bar pivoting on a fulcrum）。"
+        }
+      },
+      {
+        "id": "TEA_LIST_11",
+        "type": "spelling_listen",
+        "category_tag": "listening",
+        "question": "【W6 真題錯字重測】請聽電腦發音，拼寫出這個植物單字：",
+        "hint": "花朵吸引蜜蜂的甜液：花蜜",
+        "audio_word": "nectar",
+        "phonetic": "/ˈnektər/",
+        "syllables": "nec · tar",
+        "answer": "nectar",
+        "explanation": {
+          "concept": "Discover 3 Unit 15 / Week 6 單字聽寫",
+          "formula": "nec-tar，注意字尾是 -tar 而非 -tor。",
+          "trap": "Rex 考場原答寫成 nector ❌！切記字尾母音為 a (nectar)。"
+        }
+      },
+      {
+        "id": "TEA_LIST_12",
+        "type": "spelling_listen",
+        "category_tag": "listening",
+        "question": "【W6 真題錯字重測】請聽電腦發音，拼寫出這個植物單字：",
+        "hint": "花朵色彩鮮豔的部分：花瓣 (複數)",
+        "audio_word": "petals",
+        "phonetic": "/ˈpetlz/",
+        "syllables": "pet · als",
+        "answer": "petals",
+        "explanation": {
+          "concept": "Discover 3 Unit 15 / Week 6 單字聽寫",
+          "formula": "第一音節為短母音 /e/ (pet-)，第二音節為 -als。",
+          "trap": "Rex 考場原答把 e 跟 a 對調寫成 patels ❌！"
+        }
+      },
+      {
+        "id": "TEA_LIST_13",
+        "type": "spelling_listen",
+        "category_tag": "listening",
+        "question": "【W6 真題錯字重測】請聽電腦發音，拼寫出這個核心單字：",
+        "hint": "人類溝通使用的：語言",
+        "audio_word": "language",
+        "phonetic": "/ˈlæŋɡwɪdʒ/",
+        "syllables": "lan · guage",
+        "answer": "language",
+        "explanation": {
+          "concept": "RWW6 Unit 7 / Week 6 單字聽寫失分題",
+          "formula": "lan + gua + ge，g 後面固定接 ua 發 /ɡwɪ/。",
+          "trap": "Rex 考場原答寫成 langauges ❌（把 ua 寫反成 au 且多加 s）！"
+        }
+      },
+      {
+        "id": "TEA_LIST_14",
+        "type": "spelling_listen",
+        "category_tag": "listening",
+        "question": "【W6 真題錯字重測】請聽電腦發音，拼寫出這個核心單字：",
+        "hint": "政府或國家認定的：官方的、正式的",
+        "audio_word": "official",
+        "phonetic": "/əˈfɪʃl/",
+        "syllables": "of · fi · cial",
+        "answer": "official",
+        "explanation": {
+          "concept": "RWW6 Unit 7 / Week 6 單字聽寫失分題",
+          "formula": "office (辦公室) 去 e + ial = official，字尾 -cial 發 /ʃəl/。",
+          "trap": "Rex 考場原答漏寫 i 寫成 offical ❌！"
+        }
+      },
+      {
+        "id": "TEA_LIST_15",
+        "type": "spelling_listen",
+        "category_tag": "listening",
+        "question": "【W6 真題錯字重測】請聽電腦發音，拼寫出這個核心單字：",
+        "hint": "治理國家的機構：政府",
+        "audio_word": "government",
+        "phonetic": "/ˈɡʌvərnmənt/",
+        "syllables": "gov · ern · ment",
+        "answer": "government",
+        "explanation": {
+          "concept": "RWW6 Unit 7 / Week 6 單字聽寫必考陷阱",
+          "formula": "動詞 govern (統治) + 名詞字尾 -ment = government。",
+          "trap": "Rex 考場原答漏掉中間的 n 寫成 goverment ❌！務必記住 govern 有 n。"
+        }
+      },
+      {
+        "id": "TEA_LIST_16",
+        "type": "spelling_listen",
+        "category_tag": "listening",
+        "question": "【W6 真題錯字重測】請聽電腦發音，拼寫出這個語言名稱：",
+        "hint": "法國人說的語言：法語（注意首字母大小寫）",
+        "audio_word": "French",
+        "phonetic": "/frentʃ/",
+        "syllables": "French",
+        "answer": "French",
+        "explanation": {
+          "concept": "RWW6 Unit 7 / Week 6 專有名詞聽寫",
+          "formula": "國家與語言名稱屬於專有名詞，首字母 F 永遠大寫，母音為 e。",
+          "trap": "Rex 考場原答寫成小寫 franch ❌！"
+        }
+      },
+      {
+        "id": "TEA_LIST_17",
+        "type": "spelling_listen",
+        "category_tag": "listening",
+        "question": "【W6 真題錯字重測】請聽電腦發音，拼寫出這個名詞複數：",
+        "hint": "世界上的許多：國家（複數）",
+        "audio_word": "countries",
+        "phonetic": "/ˈkʌntriz/",
+        "syllables": "coun · tries",
+        "answer": "countries",
+        "explanation": {
+          "concept": "RWW6 Unit 7 / Week 6 單字聽寫失分題",
+          "formula": "coun-try 去 y 加 ies ➔ countries，首音節為 coun- (ou)。",
+          "trap": "Rex 考場原答漏寫 u 寫成 contries ❌！"
+        }
+      },
+      {
+        "id": "TEA_LIST_18",
+        "type": "spelling_listen",
+        "category_tag": "listening",
+        "question": "【W6 真題錯字重測】請聽電腦發音，拼寫出這個核心單字：",
+        "hint": "用來說明的：例子、範例",
+        "audio_word": "example",
+        "phonetic": "/ɪɡˈzæmpl/",
+        "syllables": "ex · am · ple",
+        "answer": "example",
+        "explanation": {
+          "concept": "RWW6 Unit 7 / Week 6 單字聽寫失分題",
+          "formula": "ex + am + ple，第二音節為短母音 /æ/ (am)。",
+          "trap": "Rex 考場原答寫成 exemple ❌！"
+        }
+      },
+      {
+        "id": "TEA_LIST_19",
+        "type": "spelling_listen",
+        "category_tag": "listening",
+        "question": "【W6 真題錯字重測】請聽電腦發音，拼寫出這個語言名稱：",
+        "hint": "世界上最多母語人士說的：中文普通話、國語（注意首字母）",
+        "audio_word": "Mandarin",
+        "phonetic": "/ˈmændərɪn/",
+        "syllables": "Man · da · rin",
+        "answer": "Mandarin",
+        "explanation": {
+          "concept": "RWW6 Unit 7 / Week 6 專有名詞聽寫",
+          "formula": "Man-da-rin，首字母 M 大寫，前兩個音節母音都是 a！",
+          "trap": "Rex 考場原答寫成小寫 manderin ❌！"
+        }
+      },
+      {
+        "id": "TEA_LIST_20",
+        "type": "spelling_listen",
+        "category_tag": "listening",
+        "question": "【W6 真題錯字重測】請聽電腦發音，拼寫出這個數字單位：",
+        "hint": "十個一百：一千 (1,000)",
+        "audio_word": "thousand",
+        "phonetic": "/ˈθaʊznd/",
+        "syllables": "thou · sand",
+        "answer": "thousand",
+        "explanation": {
+          "concept": "RWW6 Unit 7 / Week 6 單字聽寫失分題",
+          "formula": "拆字記憶法：thou + sand (沙子) = thousand。",
+          "trap": "Rex 考場原答漏寫 sa 寫成 thoudnd ❌！"
+        }
+      },
+      {
+        "id": "TEA_LIST_21",
+        "type": "spelling_listen",
+        "category_tag": "listening",
+        "question": "【W6 真題錯字重測】請聽電腦發音，拼寫出這個雙字轉折片語：",
+        "hint": "用來補充真實情況：事實上（兩個單字）",
+        "audio_word": "in fact",
+        "phonetic": "/ɪn fækt/",
+        "syllables": "in · fact",
+        "answer": "in fact",
+        "explanation": {
+          "concept": "RWW6 Unit 8 / Week 6 片語聽寫失分題",
+          "formula": "介系詞 in + 名詞 fact (事實) = in fact（事實上）。",
+          "trap": "Rex 考場原答把兩個字連起來聽音硬拼成 infecte ❌！"
+        }
+      },
+      {
+        "id": "TEA_RW_09",
+        "type": "paper_rewrite",
+        "category_tag": "rewrite",
+        "question": "【Week 7 真題】[Roger, Sean – see new Iron Man movie tomorrow / so]（注意時間副詞 tomorrow 的時態！）",
+        "answer": "Roger will see a new Iron Man movie tomorrow, and so will Sean.",
+        "hint": "看到 tomorrow 必須用未來式 will see，倒裝附和用 so will Sean",
+        "explanation": {
+          "concept": "Grammar 3 Unit 13: 未來式肯定倒裝附和句",
+          "formula": "S1 + will + V ... tomorrow, and so + will + S2。",
+          "trap": "Rex 考場原答：Roger see..., so do Sean ❌！忽略 tomorrow 未來式，導致前後都漏了 will。"
+        }
+      },
+      {
+        "id": "TEA_RW_10",
+        "type": "paper_rewrite",
+        "category_tag": "rewrite",
+        "question": "【Week 7 真題】[Rachel, Nicole – not learn to play the piano / either]（注意單數人名的否定助動詞！）",
+        "answer": "Rachel doesn't learn to play the piano, and Nicole doesn't, either.",
+        "hint": "Rachel 與 Nicole 皆為第三人稱單數，現在式否定用 doesn't",
+        "explanation": {
+          "concept": "Grammar 3 Unit 13: 第三人稱單數否定附和句",
+          "formula": "S1 + doesn't + V ..., and S2 + doesn't, either。",
+          "trap": "Rex 考場原答：Rachel do not..., Nicole do not... ❌！單數主詞絕對不能用 do not。"
+        }
+      },
+      {
+        "id": "TEA_RW_11",
+        "type": "paper_rewrite",
+        "category_tag": "rewrite",
+        "question": "【Week 7 真題】[penguins, ostriches – can't fly / neither]（注意情態助動詞 can't 的倒裝對應！）",
+        "answer": "Penguins can't fly, and neither can ostriches.",
+        "hint": "前句是 can't，後面 neither 倒裝必須用 can (neither can ostriches)",
+        "explanation": {
+          "concept": "Grammar 3 Unit 13: 情態助動詞 can 否定倒裝附和",
+          "formula": "S1 + can't + V, and neither + can + S2。",
+          "trap": "Rex 考場原答：neither do ostriches ❌！前句是 can't，附和必須用 can 而非 do。"
+        }
+      },
+      {
+        "id": "TEA_RW_12",
+        "type": "paper_rewrite",
+        "category_tag": "rewrite",
+        "question": "【Week 7 真題】How beautifully do they sing? Singing Scores: Anne: 10/10, Penny: 9/10 & Eric: 8/10",
+        "answer": "Eric sings beautifully, Penny sings more beautifully than Eric, but Anne sings the most beautifully.",
+        "hint": "最高級子句主詞 Anne 後面必須保留一般動詞 sings，不可寫 Anne is！",
+        "explanation": {
+          "concept": "Grammar 3 Unit 14: 多音節副詞三級比較問答",
+          "formula": "Penny sings more beautifully than Eric, but Anne sings the most beautifully.",
+          "trap": "Rex 考場原答寫成 but Anne is the most beautifully ❌！副詞修飾唱歌動作，動詞必須是 sings 而非 is。"
+        }
+      },
+      {
+        "id": "TEA_RW_13",
+        "type": "paper_rewrite",
+        "category_tag": "rewrite",
+        "question": "【Week 7 真題】How well did they do their homework? Jeremy: 100%, Ingrid: 95% & Hank: 90%",
+        "answer": "Hank did his homework well, Ingrid did better than Hank, but Jeremy did the best.",
+        "hint": "題幹 did 為過去式，且 well 的比較級與最高級為 better / the best",
+        "explanation": {
+          "concept": "Grammar 3 Unit 14: 不規則副詞 well 過去式三級比較",
+          "formula": "過去式 did + well ➔ did better than ➔ but Jeremy did the best。",
+          "trap": "Rex 考場原答：Ingrid did will than Hana, but Jeremy do the best ❌（better 寫成 will、過去式 did 寫成現在式 do）！"
+        }
+      },
+      {
+        "id": "TEA_RW_14",
+        "type": "paper_rewrite",
+        "category_tag": "rewrite",
+        "question": "【Week 7 真題】How easily do you learn: Chinese, science & maths?",
+        "answer": "I learn maths easily, I learn science more easily than maths, but I learn Chinese the most easily.",
+        "hint": "主詞動詞為 I learn，且副詞 easily 比較級為 more easily、最高級為 the most easily",
+        "explanation": {
+          "concept": "Grammar 3 Unit 14: -ly 副詞 (easily) 比較級與最高級",
+          "formula": "I learn + 科目 + more easily than ..., but I learn + 科目 + the most easily。",
+          "trap": "Rex 考場原答：Science is easilier than maths, but Chinese is the easiliest ❌！把副詞 easily 當形容詞自創字且漏了 I learn。"
+        }
+      },
+      {
+        "id": "TEA_RW_15",
+        "type": "paper_rewrite",
+        "category_tag": "rewrite",
+        "question": "【Week 7 真題】How badly do they play the electric guitar? Guitar Scores: Bill: 1/10, Ted: 3/10 & Fred: 5/10",
+        "answer": "Fred plays the electric guitar badly, Ted plays worse than Fred, but Bill plays the worst.",
+        "hint": "badly 的比較級是 worse，最高級是 the worst；1/10 分最低代表彈得最差 (plays the worst)！",
+        "explanation": {
+          "concept": "Grammar 3 Unit 14: 不規則副詞 badly 三級變化",
+          "formula": "badly (原級) ➔ worse than (比較級) ➔ the worst (最高級)。",
+          "trap": "Rex 考場原答：Ted plays badly than Fred, but Bill play the most badly ❌！badly 是不規則變化 worse / the worst。"
+        }
+      },
+      {
+        "id": "TEA_RW_16",
+        "type": "paper_rewrite",
+        "category_tag": "rewrite",
+        "question": "【Week 7 真題】How early did they get up? Elizabeth: 5:30 a.m., Caroline: 6:00 a.m. & Melanie: 6:30 a.m.",
+        "answer": "Melanie got up early, Caroline got up earlier than Melanie, but Elizabeth got up the earliest.",
+        "hint": "early 比較級為 earlier、最高級為 the earliest；最高級主詞 Elizabeth 後面動詞不可寫 is！",
+        "explanation": {
+          "concept": "Grammar 3 Unit 14: -y 結尾雙音節副詞 early 三級變化",
+          "formula": "early ➔ earlier than ➔ the earliest；動詞須維持 got up / gets up。",
+          "trap": "Rex 考場原答：but Elizebeth is the earliest ❌！再次把動作動詞 get up 誤寫成 be 動詞 is。"
+        }
+      },
+      {
+        "id": "TEA_FILL_07",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "【W7 量詞真題】6. bread (7 片吐司)：There are seven ( ____________ ) of ( ____________ ).",
+        "answer": "slices of bread",
+        "hint": "切片吐司量詞用 slice 複數，不可數名詞 bread 絕不加 s（請填 slices of bread）",
+        "explanation": {
+          "concept": "Grammar 3 Unit 15: 不可數食物計量詞搭配",
+          "formula": "數字 (seven) + 複數容器量詞 (slices) + of + 不可數名詞原形 (bread)。",
+          "trap": "Rex 考場原答寫成 seven packet of breads ❌，同時錯了量詞、漏複數 s、又給不可數 bread 加上 s！"
+        }
+      },
+      {
+        "id": "TEA_FILL_08",
+        "type": "fill",
+        "category_tag": "fill",
+        "question": "【W6 改錯真題】With ( ____________ ) of the money, I would treat my friends to lunch.",
+        "answer": "the rest",
+        "hint": "用剩下的錢：With the rest of the money",
+        "explanation": {
+          "concept": "Write Right 3 Unit 5: 假設語氣金額分配固定片語",
+          "formula": "With the rest of the money（用剩下的那筆錢），兩個 the 缺一不可。",
+          "trap": "Rex 考場原答只補了後面 the money，漏了前面 the rest 的 the ❌！"
+        }
+      },
+      {
+        "id": "TEA_MC_07",
+        "type": "choice",
+        "category_tag": "choice",
+        "question": "【W7 真題盲點秒殺】Penny sings more beautifully than Eric, but Anne ( ______ ) the most beautifully.",
+        "options": [
+          "sings",
+          "is",
+          "does",
+          "sing"
+        ],
+        "answer": "sings",
+        "hint": "副詞 the most beautifully 用來修飾唱歌動作，主詞 Anne 為第三人稱單數",
+        "explanation": {
+          "concept": "Grammar 3 Unit 14: 最高級副詞子句動詞搭配",
+          "formula": "主詞 (Anne) + 一般動詞三單 (sings) + 最高級副詞 (the most beautifully)。",
+          "trap": "Rex 在 W7 考卷連錯兩題：誤把最高級子句的動作動詞換成 be 動詞 is ❌！"
+        }
+      },
+      {
+        "id": "TEA_MC_08",
+        "type": "choice",
+        "category_tag": "choice",
+        "question": "【W7 真題盲點秒殺】Ted plays the electric guitar ( ______ ) than Fred, but Bill plays ( ______ ).",
+        "options": [
+          "worse / the worst",
+          "more badly / the most badly",
+          "badlier / the badliest",
+          "badly / the worst"
+        ],
+        "answer": "worse / the worst",
+        "hint": "badly 是不規則變化副詞！",
+        "explanation": {
+          "concept": "Grammar 3 Unit 14: 不規則副詞 badly 三級變化",
+          "formula": "badly (原級) ➔ worse (比較級) ➔ the worst (最高級)。",
+          "trap": "Rex 考場原答寫成 badly than Fred 與 the most badly ❌！切記 badly 不加 more/most。"
+        }
+      },
+      {
+        "id": "TEA_MC_09",
+        "type": "choice",
+        "category_tag": "choice",
+        "question": "【W7 真題盲點秒殺】Penguins can't fly, and ( ______ ) ostriches.",
+        "options": [
+          "neither can",
+          "neither do",
+          "neither can't",
+          "either can"
+        ],
+        "answer": "neither can",
+        "hint": "前句助動詞為 can't，否定倒裝用 neither + 肯定助動詞",
+        "explanation": {
+          "concept": "Grammar 3 Unit 13: 情態助動詞 can 否定倒裝附和",
+          "formula": "前句 can't ➔ 後句 neither + can + 主詞。",
+          "trap": "Rex 考場原答誤選 neither do ❌！必須看前句是哪個助動詞就用哪個助動詞。"
+        }
+      },
+      {
+        "id": "TEA_MC_10",
+        "type": "choice",
+        "category_tag": "choice",
+        "question": "【W7 真題盲點秒殺】There are seven ( ______ ) on the kitchen table.",
+        "options": [
+          "slices of bread",
+          "packet of breads",
+          "slices of breads",
+          "slice of bread"
+        ],
+        "answer": "slices of bread",
+        "hint": "seven 後接複數量詞 slices，bread 不可數永遠不加 s",
+        "explanation": {
+          "concept": "Grammar 3 Unit 15: 容器量詞與不可數名詞",
+          "formula": "seven + slices (複數) + of + bread (不可數原形)。",
+          "trap": "Rex 考場原答寫成 seven packet of breads ❌！"
         }
       }
     ]

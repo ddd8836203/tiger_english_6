@@ -474,3 +474,37 @@
      - 實作 `#preloadTeaErrorsBtn`（「🔥 載入岱崙小考 18 道真實失分題」）與 `#printErrorBookBtn`（「🖨️ 印出專屬錯題 A4 重測卷」）。
   5. **推送至 GitHub 遠端儲存庫**：
      - 提交 Commit `81d4eb9` (`feat: complete Grade 6 Midterm upgrade across Study Room, Dual Quiz, Brain Gym, and Error Book`) 並成功推送到 `https://github.com/ddd8836203/tiger_english_6.git` (`main` 分支)。
+
+
+---
+
+### 20. 階段二十 (2026-10-21)：新增 Week 6 & Week 7 共 4 張考卷 (`IMG_4068.HEIC` ~ `IMG_4071.HEIC`) 四層分離數位化與三層架構全站連動升級 (✅ 完工)
+- **使用者核心探討與指令**：
+  1. 「`"C:\@植善課業\AI\英語學習網頁\六年級上\考券\六年級上_考券"` 這個路徑，我增加了 4 張考券是期中考範圍的 "W6 & W7"，確認一下要怎麼加入網頁中，跟我討論完再動作」
+  2. 「依照你的規劃進行」
+  3. 「1. 更新到我的 github  2. 更新我的 log 檔案」
+- **AI 考卷影像深度診斷（W6 Pages 9–10 & W7 Pages 11–12）**：
+  1. **Week 6 Page 9 (`IMG_4068.HEIC`，總分 43/54)**：
+     - Part A: Discover 3 (Unit 15) 植物生長單字聽寫 (19/20)：僅錯 `nectar`（誤寫 `nector ❌`）與 `petals`（誤寫 `patels ❌`）。
+     - Part B: RWW6 (Units 7 & 8) 語言主題單字聽寫 (7/15 — 重大失分區)：錯了 `Mexican` (`Maxican ❌`)、`language` (`langauges ❌`)、`official` (`offical ❌`)、`government` (`goverment ❌`)、`French` (`franch ❌`)、`countries` (`contries ❌`)、`example` (`exemple ❌`)、`Mandarin` (`manderin ❌`)、`thousand` (`thoudnd ❌`)、`in fact` (`infecte ❌`) 共 10 個字。
+  2. **Week 6 Page 10 (`IMG_4069.HEIC`)**：
+     - Part C: Write Right 3 (Unit 5)《If I Have 3000 Dollars》14 處抓錯題 (5/7)：漏抓 `go [to] a baseball game`、`would by ➔ buy`、`With [the] rest of the money`，並把正確的 `put it in the bank` 誤改為 `you ❌`。
+     - Part D: Grammar 3 數量詞問答 (`How much / How many`, 12/12 滿分)。
+  3. **Week 7 Page 11 (`IMG_4070.HEIC`，總分 41.5/50)**：
+     - Part A: Grammar 3 (Unit 15) 容器量詞看圖造句 (17.5/20)：第 10 題『7 片麵包』誤寫成 `There are seven packet of breads. ❌`（正解：`There are seven slices of bread.`，同時犯了選錯量詞、量詞漏 `-s`、不可數名詞 `bread` 誤加 `-s` 三重錯誤）。
+  4. **Week 7 Page 12 (`IMG_4071.HEIC`)**：
+     - Part B: Grammar 3 (Unit 13) 倒裝與附和句 (8/10)：`tomorrow` 漏未來式 `will`（誤寫 `so do Sean ❌`）、第三人稱單數否定誤寫 `Rachel do not ❌`（應為 `doesn't`）、情態助動詞 `can't` 倒裝誤換成 `neither do ostriches ❌`（應為 `neither can ostriches`）。
+     - Part C: Grammar 3 (Unit 14) 三級副詞比較長句合成 (16/20，較 W4 的 4/20 大幅進步！)：殘留盲點為最高級子句把一般動詞換成 `is`（`Anne is the most beautifully ❌`、`Elizebeth is the earliest ❌`）、不規則副詞 `well` 比較級誤寫 `will ❌`（應為 `better`）、`badly` 比較級/最高級誤寫 `more badly / the most badly ❌`（應為 `worse / the worst`）、把副詞 `easily` 當成形容詞寫出 `Science is easilier / the easiliest ❌`。
+- **具體技術實作與三層架構交付成果**：
+  1. **Tier 1 — 四層分離 Markdown 檔案與總綱擴充**：
+     - 轉換 `IMG_4068.jpg` ~ `IMG_4071.jpg` 至 `preview_jpg/`。
+     - 建立 `考券_六上_Week06_Page09.md`、`考券_六上_Week06_Page10.md`、`考券_六上_Week07_Page11.md`、`考券_六上_Week07_Page12.md`，並更新 `00_Overview_歷史考券.md`（完整涵蓋 W2, 4, 5, 6, 7 共 10 頁考卷）。
+  2. **Tier 2 — 期中考特訓專區 (`exam_review_data.py` ➔ `midterm_data.js` & `app.js`)**：
+     - `TEA_QUIZ_REVIEW` 擴充至 **5 篇課文/範文（42 句）**、**33 個核心單字**、**27 道神探點詞抓錯題**、**55 道紙筆/語音雙軌測驗題**。
+     - 升級 `app.js` 內 `renderQuizOriginalExam()`，讓 A4 歷史考卷 1:1 復原卷與紅黑批改對照卷完整收錄 W2~W7 所有真實錯字、倒裝句、三級副詞長句與 W6 14 處挑錯題。
+  3. **Tier 3 — 學習專區 / 雙軌測試 / 晨間體操 / 錯題本連動升級 (`build_midterm_study_upgrade.py` ➔ `english_data.js`)**：
+     - 新增 Discover 3 U15 植物生長完整短文與 W6《If I Had 3000 Dollars》訂正完本至 `tea_midterm_1` 課文閱聽，並新增 16 張 W6 失分字專屬 7 大記憶錨點單字卡（總單字數達 664 詞）。
+     - 新增 W6/W7 雙軌測驗題 (`q_tea08` ~ `q_tea14`) 與晨間體操秒殺題 (`bg_mid_051` ~ `bg_mid_056`，共 56 題)。
+     - 升級錯題本「🔥 載入岱崙 W2~W7 真實失分題」按鈕，一鍵匯入 W2~W7 全週次真實錯題。
+  4. **推送至 GitHub 並同步更新 4 大 Log 檔**：
+     - 驗證 `node --check` 零語法錯誤，更新 4 份 `.log` 檔案並推送至 GitHub `main` 分支。

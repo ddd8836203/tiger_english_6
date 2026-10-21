@@ -257,3 +257,16 @@
   1. 新增 `build_midterm_study_upgrade.py` 並產出 `english_data.js` (`v2.0.0-midterm-unified`)。
   2. 完成 `index.html`、`style.css`、`app.js` 全模組升級。
   3. 推送 Commit `81d4eb9` 至 GitHub `main` 分支。
+
+
+---
+
+### 20. 階段二十 (2026-10-21)：岱崙美語 3C Quiz Week 6 & Week 7 (4 頁新考卷) 四層分離數位化與全站三層架構整合 (✅ 完工)
+- **核心目標**：
+  1. 將新增的 4 張期中考範圍考卷（`IMG_4068.HEIC` ~ `IMG_4071.HEIC`，涵蓋 Week 6 Pages 9–10 與 Week 7 Pages 11–12）轉為標準四層分離 Markdown 並更新總綱。
+  2. 同步擴充「🔥 六上期中考特訓 (`midterm_data.js`)」、「🖨️ A4 歷史考券 1:1 重測與紅黑批改對照卷 (`app.js`)」，以及「📖 學習專區 / 🎯 雙軌測試 / ⚡ 晨間體操 / 📕 錯題本 (`english_data.js`)」。
+- **交付與驗收**：
+  1. 新增 `考券_六上_Week06_Page09.md` ~ `考券_六上_Week07_Page12.md` 共 4 份四層分離 MD，並更新 `00_Overview_歷史考券.md`。
+  2. 更新 `exam_review_data.py` 並重新編譯 `midterm_data.js`（`TEA_QUIZ_REVIEW` 擴充至 5 篇 42 句、33 單字、27 道抓錯題、55 道測驗題）。
+  3. 更新 `build_midterm_study_upgrade.py` 並重新編譯 `english_data.js`（664 單字、82 文法、160 課文段落、1,711 測驗題含 56 道晨間體操）。
+  4. 更新 `app.js` 與 `index.html`，通過 `node --check` 語法驗證並推送至 GitHub `main` 分支。

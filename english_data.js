@@ -8,10 +8,10 @@ const ENGLISH_DATA = {
     "generated_at": "2026-10-20",
     "total_books": 7,
     "total_units": 40,
-    "total_vocab": 650,
-    "total_grammar": 81,
-    "total_reading": 158,
-    "total_quizzes": 1698
+    "total_vocab": 664,
+    "total_grammar": 82,
+    "total_reading": 160,
+    "total_quizzes": 1711
   },
   "books": [
     {
@@ -36,7 +36,7 @@ const ENGLISH_DATA = {
     },
     {
       "book_id": "tea_midterm",
-      "book_name": "🏆 岱崙 3C 考卷真題與 OD3 必考單字 (U13~U14)",
+      "book_name": "🏆 岱崙 3C 考卷真題 (W2~W7) 與 OD3 必考單字 (U13~U15)",
       "is_midterm": true
     },
     {
@@ -142,8 +142,8 @@ const ENGLISH_DATA = {
     {
       "book_id": "tea_midterm",
       "unit_id": "tea_midterm_1",
-      "unit_title": "🔥 Week 2~5 考卷特訓：OD3 U13~14 簡單機械與吹玻璃單字 + 滿分範文",
-      "big_question": "Tiger English Academy 3C Quiz 真題單字、三級比較長句與滿分作文",
+      "unit_title": "🔥 Week 2~7 考卷特訓：OD3 U13~15 必考單字 + W6/W7 挑錯與滿分範文",
+      "big_question": "Tiger English Academy 3C Quiz (W2~W7) 真題單字、倒裝與三級比較長句、14錯挑錯與滿分作文",
       "is_midterm": true,
       "midterm_unit_id": "TEA_QUIZ_REVIEW"
     },
@@ -2211,6 +2211,50 @@ const ENGLISH_DATA = {
           "sentence": "A new jacket would cost me about 750 dollars. With the rest of the money, I would treat my friends to a movie.",
           "tag": "⭐ W5 作文滿分亮點句",
           "note": "精準運用『物 + would cost + 人 + 金錢』與『With the rest of the money, I would treat + 人 + to + 物』！"
+        }
+      ],
+      "exp_eng": "",
+      "exp_chi": ""
+    },
+    {
+      "book_id": "tea_midterm",
+      "unit_id": "tea_midterm_1",
+      "sequence": 4,
+      "section_title": "📖 岱崙小考 Discover 3 U15 主題精讀：Plant Life, Petals & Sweet Nectar (植物生長、花瓣與花蜜)",
+      "eng": "Plants are very important to humans and animals because green leaves make oxygen for us to breathe. First, a tiny seed grows roots deep into the soil. Second, a strong stem pushes up toward the sunlight and warmth. Third, green leaves grow on the stem. Finally, a colorful flower opens its bright petals!\nInside the flower, there is yellow pollen and sweet liquid called nectar. Bees fly to the bright petals to drink nectar and carry pollen from one flower to another. As the plant grows, scientists can measure the length of its stem, the width of its leaves, and the strength of its roots.",
+      "chi": "植物對人類（humans）與動物非常重要，因為綠葉（leaves）能製造供我們呼吸的氧氣（oxygen）。首先（first），一顆微小的種子（seed）在土壤（soil）深處長出根部（roots）。第二（second），強壯的莖（stem）朝著陽光與溫暖（warmth）向上生長。第三（third），綠葉在莖上長出來。最後（finally），色彩繽紛的花朵（flower）綻放它鮮豔的花瓣（petals）！\n在花朵內部，有黃色的花粉（pollen）以及稱為花蜜（nectar）的甜美汁液。蜜蜂飛向鮮豔的花瓣吸食花蜜，並將花粉從一朵花傳播到另一朵花。當植物生長時，科學家可以測量它莖的長度（length）、葉子的寬度（width）以及根部的強度（strength）。",
+      "key_sentences": [
+        {
+          "sentence": "Finally, a colorful flower opens its bright petals! Inside the flower, there is yellow pollen and sweet liquid called nectar.",
+          "tag": "🔥 岱崙 W6 聽寫 20 單字核心句（19/20 分）",
+          "note": "特別注意 Rex 在 W6 聽寫錯的字：nectar（花蜜 n-e-c-t-a-r，❌nector）、petals（花瓣 p-e-t-a-l-s，❌patels）、second（第二 s-e-c-o-n-d，❌secend）。"
+        },
+        {
+          "sentence": "As the plant grows, scientists can measure the length of its stem, the width of its leaves, and the strength of its roots.",
+          "tag": "⭐ 抽象名詞字尾 -th 四大金剛",
+          "note": "warm ➔ warmth（溫暖）、long ➔ length（長度）、strong ➔ strength（強度/力量）、wide ➔ width（寬度）。"
+        }
+      ],
+      "exp_eng": "",
+      "exp_chi": ""
+    },
+    {
+      "book_id": "tea_midterm",
+      "unit_id": "tea_midterm_1",
+      "sequence": 5,
+      "section_title": "📖 岱崙小考 W6 14 錯字挑錯範本 (Write Right 3 U5)：If I Had 3000 Dollars (14 處地雷訂正完本)",
+      "eng": "[Week 6 Proofreading Passage — Corrected Full Text]\nIf I had 3000 dollars, I would do three things. First, I love sports, so I would go to a baseball game with my sister. Next, I would buy a new bike for my brother. His bike is very old, and he needs a new one. Finally, I would spend some money on myself. I would buy a new computer, a watch, and some video games. Those things would cost me about 1500 dollars. With the rest of the money, I would put it in the bank. Wouldn't it be great to have 3000 dollars?",
+      "chi": "【Week 6 14 處抓錯題 —— 100% 滿分訂正完本】\n如果我有 3000 美元，我會做三件事。首先，我熱愛運動，所以我會和我姊姊一起去看一場棒球比賽。接下來，我會買一台新腳踏車給我弟弟。他的腳踏車非常舊了，而且他需要一台新的。最後，我會花一些錢在自己身上。我會買一台新電腦、一支手錶和一些電玩遊戲。那些東西大約會花費我 1500 美元。用剩下的錢，我會把它存進銀行裡。擁有 3000 美元難道不是很棒嗎？",
+      "key_sentences": [
+        {
+          "sentence": "First, I love sports, so I would go to a baseball game with my sister.",
+          "tag": "⚠️ W6 抓錯漏網之魚 #1",
+          "note": "原卷印成『I would go a baseball game ❌』，不及物動詞 go 後面去某場比賽必須加介系詞 to（go to a baseball game）！"
+        },
+        {
+          "sentence": "With the rest of the money, I would put it in the bank.",
+          "tag": "⚠️ W6 抓錯漏網之魚 #2 & 誤改陷阱",
+          "note": "① 原卷印成『With rest of the money ❌』，漏了定冠詞 the（With the rest of the money）；② 受詞 it 代指剩下的錢，原本完全正確，千萬不可改成 you！"
         }
       ],
       "exp_eng": "",
@@ -12885,14 +12929,14 @@ const ENGLISH_DATA = {
       "pos": "專有名詞 (Proper Noun)",
       "chi": "華語 / 普通話 / 國語",
       "breakdown": "源自梵語 mantrin (官員)，指中文裡全國通用的標準官方話（華語）。",
-      "trick": "諧音「慢得林」。中國有超過百種方言，但大家彼此溝通都講 Mandarin！首字母必大寫！",
+      "trick": "⚠️ 岱崙 W6 考卷真實失分字！Rex 曾寫成『manderin ❌』（忘記大寫且把 da 寫成 de）！口訣：Man (男人) + da (打) + rin (林)，首字母 M 必大寫！",
       "scene": "來自不同省份的人們聚在一起，用標準華語流利地交談。",
       "collocation": "搭配: speak Mandarin (說華語)",
       "img": "🇨🇳",
       "context_eng": "Most people just use one Chinese language to talk with each other. It's called Mandarin.",
       "context_chi": "大多數人只使用一種中文來彼此交談，稱為華語。",
-      "chant": "中國方言上百種，通用 Mandarin 最暢通！",
-      "compare": "Mandarin (大寫：華語) vs. mandarin (小寫：柑橘)。"
+      "chant": "Man-da-rin 大寫 M，中間 d-a 別寫 de！",
+      "compare": "Mandarin (大寫：華語) vs. ❌manderin (錯誤拼法)。"
     },
     {
       "id": "voc_m707",
@@ -12901,7 +12945,7 @@ const ENGLISH_DATA = {
       "word": "Hindi",
       "pos": "專有名詞 (Proper Noun)",
       "chi": "印地語（印度主要母語與官方語言之一）",
-      "breakdown": "源自波斯語 Hind (印度河流域) -> 印度北部屋與全國最廣泛的本土語言。",
+      "breakdown": "源自波斯語 Hind (印度河流域) -> 印度北部與全國最廣泛的本土語言。",
       "trick": "看到 Hind- 就想到 India (印度)！印度的兩大官方語言就是 Hindi 和 English！",
       "scene": "在印度新德里的街道與學校裡，標示牌同時印著印地語與英語。",
       "collocation": "必考事實: Hindi and English are the two official languages of India.",
@@ -12919,14 +12963,150 @@ const ENGLISH_DATA = {
       "pos": "名詞 (Noun)",
       "chi": "政府",
       "breakdown": "govern (統治/管理) + -ment (名詞字尾) -> 治理國家的政府機構。",
-      "trick": "注意中間有個 n (gover-n-ment)！千萬不要漏寫中間的 n！",
+      "trick": "⚠️ 岱崙 W6 考卷真實失分字！Rex 曾寫成『goverment ❌』（漏了中間的 n）！口訣：govern (統治 g-o-v-e-r-n) + ment，中間有個 n 絕對不能吃掉！",
       "scene": "首都的國會與行政大樓，官員們使用官方語言處理國家大事。",
       "collocation": "搭配: used by the government of a country (由一國政府所使用)",
       "img": "🏢",
       "context_eng": "An official language is the one used by the government of a country.",
       "context_chi": "官方語言是一國政府所使用的語言。",
       "chant": "govern 加 ment 管國家，中間 n 字別漏啦！",
-      "compare": "govern (動詞：治理) vs. government (名詞：政府)。"
+      "compare": "government (g-o-v-e-r-n-m-e-n-t) vs. ❌goverment (漏 n 錯字)。"
+    },
+    {
+      "id": "voc_m709",
+      "book_id": "rw6",
+      "unit_id": "rw6_7",
+      "word": "Mexican",
+      "pos": "專有名詞 / 形容詞 (N. / Adj.)",
+      "chi": "墨西哥人 / 墨西哥的",
+      "breakdown": "Mexico (墨西哥) 去 o + -an -> 墨西哥人、墨西哥的。",
+      "trick": "⚠️ 岱崙 W6 考卷真實失分字！Rex 曾拼成『Maxican ❌』！口訣：墨西哥是 M-e-x-i-c-o，第二個字母是 e 不是 a！",
+      "scene": "許多墨西哥人說西班牙語，同時也說當地的原住民母語。",
+      "collocation": "搭配: Mexican people (墨西哥人), Mexican food (墨西哥菜)",
+      "img": "🇲🇽",
+      "context_eng": "Many Mexican people speak native languages, too.",
+      "context_chi": "許多墨西哥人也說當地原住民母語。",
+      "chant": "M-e-x-i-c-a-n，開頭是 Mex 不是 Max！",
+      "compare": "Mexico (國家：墨西哥) vs. Mexican (墨西哥人/的)。"
+    },
+    {
+      "id": "voc_m710",
+      "book_id": "rw6",
+      "unit_id": "rw6_7",
+      "word": "language",
+      "pos": "名詞 (Noun)",
+      "chi": "語言",
+      "breakdown": "源自拉丁文 lingua (舌頭/說話) + -age (名詞字尾) -> 人類溝通的語言。",
+      "trick": "⚠️ 岱崙 W6 考卷真實失分字！Rex 曾拼成『langauges ❌』（把 ua 寫顛倒成 au 且多加 s）！口訣：先寫瓜 (gua: g-u-a)，再寫 ge！",
+      "scene": "世界各地的人們使用成千上萬種不同的語言來交流。",
+      "collocation": "搭配: native language (母語), official language (官方語言), sign language (手語)",
+      "img": "💬",
+      "context_eng": "Everyone is a native speaker of their first language.",
+      "context_chi": "每個人都是自己第一語言的母語使用者。",
+      "chant": "lan 加 gua (g-u-a) 再加 ge，u 在 a 前記心裡！",
+      "compare": "language (單數：l-a-n-g-u-a-g-e) vs. ❌langauge (順序顛倒錯字)。"
+    },
+    {
+      "id": "voc_m711",
+      "book_id": "rw6",
+      "unit_id": "rw6_7",
+      "word": "official",
+      "pos": "形容詞 (Adjective)",
+      "chi": "官方的 / 正式的",
+      "breakdown": "office (辦公室/政府機關) 去 e + -ial (形容詞字尾，發 /ʃəl/ 音)。",
+      "trick": "⚠️ 岱崙 W6 考卷真實失分字！Rex 曾拼成『offical ❌』（漏了 c 後面的 i）！口訣：office 去 e 加 i-a-l，c 後面一定要有 i 才會發 /ʃ/ 的音！",
+      "scene": "政府蓋上正式印章、立法通過成為全國通用的官方標準。",
+      "collocation": "同尾詞族: official (官方的 -cial), special (特別的 -cial), social (社會的 -cial)",
+      "img": "📜",
+      "context_eng": "A country has to pass a law to make a language official.",
+      "context_chi": "一個國家必須通過法律，才能使一種語言成為官方語言。",
+      "chant": "o-f-f-i-c-i-a-l，c 後有 i 才發 /ʃəl/！",
+      "compare": "official (o-f-f-i-c-i-a-l) vs. ❌offical (漏 i 錯字)。"
+    },
+    {
+      "id": "voc_m712",
+      "book_id": "rw6",
+      "unit_id": "rw6_7",
+      "word": "French",
+      "pos": "專有名詞 / 形容詞 (N. / Adj.)",
+      "chi": "法語 / 法國的 / 法國人",
+      "breakdown": "源自國家名 France (法國) -> 轉為語言與形容詞 French。",
+      "trick": "⚠️ 岱崙 W6 考卷真實失分字！Rex 曾寫成『franch ❌』（忘記大寫且把 e 寫成 a）！口訣：國家 France 是 a，但語言 French 中間變 e，且首字母 F 必大寫！",
+      "scene": "在巴黎艾菲爾鐵塔下，人們優雅地說著法語。",
+      "collocation": "國家 vs. 語言: France (法國 - a) ➔ French (法語 - e)",
+      "img": "🇫🇷",
+      "context_eng": "Most people in France speak French as their native language.",
+      "context_chi": "法國大多數人以法語作為他們的母語。",
+      "chant": "法國 France 用 a，法語 French 變 e 大寫 F！",
+      "compare": "French (法語 F-r-e-n-c-h) vs. France (法國 F-r-a-n-c-e)。"
+    },
+    {
+      "id": "voc_m713",
+      "book_id": "rw6",
+      "unit_id": "rw6_7",
+      "word": "countries",
+      "pos": "名詞 (Noun, 複數)｜單數 country",
+      "chi": "國家（複數）",
+      "breakdown": "country (單數國家：c-o-u-n-t-r-y) 去 y 變 i + es -> countries。",
+      "trick": "⚠️ 岱崙 W6 考卷真實失分字！Rex 曾拼成『contries ❌』（漏了 o 後面的 u）！口訣：先寫數數的 count (c-o-u-n-t)，再加上 ries！",
+      "scene": "地球儀上標示著全球 196 個不同的國家。",
+      "collocation": "記憶拆解: count (計算 c-o-u-n-t) + ries = countries",
+      "img": "🌍",
+      "context_eng": "Some countries have no official language.",
+      "context_chi": "有些國家沒有官方語言。",
+      "chant": "先寫 count (c-o-u-n-t) 再加 ries，u 字千萬別漏掉！",
+      "compare": "country (單數) ➔ countries (複數 c-o-u-n-t-r-i-e-s)。"
+    },
+    {
+      "id": "voc_m714",
+      "book_id": "rw6",
+      "unit_id": "rw6_7",
+      "word": "example",
+      "pos": "名詞 (Noun)",
+      "chi": "例子 / 範例",
+      "breakdown": "ex- (out 出來) + ample (拿出來展示的樣本) -> 舉出來的例子。",
+      "trick": "⚠️ 岱崙 W6 考卷真實失分字！Rex 曾受法語影響拼成『exemple ❌』！口訣：ex + am (我是 a-m) + ple = example！",
+      "scene": "老師在黑板上寫下墨西哥作為「沒有官方語言」的例子。",
+      "collocation": "必背片語: for example (例如)",
+      "img": "💡",
+      "context_eng": "Some countries have no official language. Mexico is one example.",
+      "context_chi": "有些國家沒有官方語言。墨西哥就是一個例子。",
+      "chant": "ex 加 am (a-m) 再加 ple，舉個例子最簡單！",
+      "compare": "example (e-x-a-m-p-l-e) vs. ❌exemple (錯把 a 寫成 e)。"
+    },
+    {
+      "id": "voc_m715",
+      "book_id": "rw6",
+      "unit_id": "rw6_7",
+      "word": "thousand",
+      "pos": "數字名詞 (Number)",
+      "chi": "千（1,000）",
+      "breakdown": "thou (th-o-u) + sand (沙子 s-a-n-d) -> 像沙子一樣多的一千個！",
+      "trick": "⚠️ 岱崙 W6 考卷真實失分字！Rex 曾拼成『thoudnd ❌』！口訣：thou + 沙灘上的沙子 sand (s-a-n-d) = thousand！",
+      "scene": "印度全國總共有超過一千種 (more than a thousand) 原住民母語。",
+      "collocation": "搭配: a thousand languages (一千種語言), thousands of (數以千計的)",
+      "img": "🔢",
+      "context_eng": "In fact, people in India speak more than a thousand native languages in all!",
+      "context_chi": "事實上，印度人總共說著超過一千種以上的母語！",
+      "chant": "thou 加沙子 sand (s-a-n-d)，一千 thousand 不寫錯！",
+      "compare": "thousand (1,000) vs. hundred (100) vs. million (1,000,000)。"
+    },
+    {
+      "id": "voc_m716",
+      "book_id": "rw6",
+      "unit_id": "rw6_7",
+      "word": "in fact",
+      "pos": "轉折片語 (Phrase)",
+      "chi": "事實上 / 其實",
+      "breakdown": "in (在...之中) + fact (事實 f-a-c-t) -> 講出更驚人的真實情況。",
+      "trick": "⚠️ 岱崙 W6 考卷真實失分字！Rex 曾連在一起誤寫成『infecte ❌（感染）』！口訣：兩個字一定要分開寫！in + fact (事實 f-a-c-t)！",
+      "scene": "強調印度不只說印地語和英語，「事實上 (In fact)」全印度說超過一千種語言！",
+      "collocation": "放在句首後常接逗號: In fact, ...",
+      "img": "📌",
+      "context_eng": "In fact, people in India speak more than a thousand native languages in all!",
+      "context_chi": "事實上，印度人總共說著超過一千種以上的母語！",
+      "chant": "in 與 fact 兩字分開寫，事實真相擺眼前！",
+      "compare": "in fact (事實上 - 兩字) vs. infect (動詞：感染)。"
     },
     {
       "id": "voc_m801",
@@ -13267,6 +13447,108 @@ const ENGLISH_DATA = {
       "context_chi": "這家店販售義大利製造的精緻玻璃器皿。",
       "chant": "glass 加 ware 玻璃器皿，總稱不可數不加 s！",
       "compare": "glassware (玻璃器皿) vs. eyeglasses (眼鏡，必加 es)。"
+    },
+    {
+      "id": "voc_tea13",
+      "book_id": "tea_midterm",
+      "unit_id": "tea_midterm_1",
+      "word": "nectar",
+      "pos": "名詞 (Noun, 不可數)",
+      "chi": "花蜜",
+      "breakdown": "源自希臘神話中眾神飲用的瓊漿玉液 nektar -> 花朵內部吸引昆蟲的甜美汁液。",
+      "trick": "⚠️ 岱崙 W6 考卷真實失分字！Rex 曾拼成『nector ❌』！口訣：花蜜甜得像一顆大「星星 (star)」，字尾是 -tar (t-a-r)，不是 -tor！",
+      "scene": "小蜜蜂鑽進盛開的花朵中央，吸食香甜可口的花蜜。",
+      "collocation": "搭配: sweet nectar (甜美的花蜜), drink nectar (吸食花蜜)",
+      "img": "🍯",
+      "context_eng": "Bees fly to bright flowers to drink sweet nectar.",
+      "context_chi": "蜜蜂飛向鮮豔的花朵吸食甜美的花蜜。",
+      "chant": "n-e-c-t-a-r，字尾像星星 star 是 a-r！",
+      "compare": "nectar (花蜜 n-e-c-t-a-r) vs. ❌nector (錯誤拼法)。"
+    },
+    {
+      "id": "voc_tea14",
+      "book_id": "tea_midterm",
+      "unit_id": "tea_midterm_1",
+      "word": "petals",
+      "pos": "名詞 (Noun, 複數)｜單數 petal",
+      "chi": "花瓣",
+      "breakdown": "源自希臘文 petalon (薄片/葉片) -> 環繞花蕊的彩色花瓣。",
+      "trick": "⚠️ 岱崙 W6 考卷真實失分字！Rex 曾把 e 和 a 寫反成『patels ❌』！口訣：花瓣是花朵最心愛的「寵物 (pet: p-e-t)」，所以開頭是 pet-als！",
+      "scene": "春天到了，玫瑰與向日葵紛紛展開色彩繽紛的花瓣。",
+      "collocation": "記憶拆解: pet (寵物 p-e-t) + als = petals",
+      "img": "🌸",
+      "context_eng": "Finally, a colorful flower opens its bright petals!",
+      "context_chi": "最後，色彩繽紛的花朵綻放它鮮豔的花瓣！",
+      "chant": "先寫寵物 pet (p-e-t) 再加 als，花瓣 petals 不顛倒！",
+      "compare": "petals (花瓣 p-e-t-a-l-s) vs. ❌patels (母音顛倒錯字)。"
+    },
+    {
+      "id": "voc_tea15",
+      "book_id": "tea_midterm",
+      "unit_id": "tea_midterm_1",
+      "word": "pollen",
+      "pos": "名詞 (Noun, 不可數)",
+      "chi": "花粉",
+      "breakdown": "源自拉丁文 pollen (細粉/微塵) -> 花朵雄蕊產生的黃色細微粉末。",
+      "trick": "poll (p-o-l-l) + en (e-n)！蜜蜂吸花蜜 (nectar) 時，腳上會沾滿黃色的花粉 (pollen) 幫植物授粉！",
+      "scene": "蜜蜂毛茸茸的腳上沾滿了金黃色的細小花粉。",
+      "collocation": "搭配: yellow pollen (黃色花粉), carry pollen (傳播花粉)",
+      "img": "🌼",
+      "context_eng": "Inside the flower, there is yellow pollen and sweet liquid called nectar.",
+      "context_chi": "在花朵內部，有黃色的花粉以及稱為花蜜的甜美汁液。",
+      "chant": "p-o-l-l-e-n 雙 l 加 en，蜜蜂傳播黃花粉！",
+      "compare": "pollen (花粉 - 不可數) vs. petals (花瓣 - 可數)。"
+    },
+    {
+      "id": "voc_tea16",
+      "book_id": "tea_midterm",
+      "unit_id": "tea_midterm_1",
+      "word": "oxygen",
+      "pos": "名詞 (Noun, 不可數)",
+      "chi": "氧氣",
+      "breakdown": "oxy- (酸/銳利) + -gen (產生) -> 植物光合作用產生、供人類與動物呼吸的生命氣體。",
+      "trick": "o-x-y-g-e-n（注意中間是 y 不是 i）！沒有植物綠葉製造 oxygen，人類 (humans) 就無法呼吸！",
+      "scene": "綠色森林在陽光照射下釋放出清新純淨的氧氣泡泡。",
+      "collocation": "搭配: make oxygen (製造氧氣), breathe oxygen (呼吸氧氣)",
+      "img": "🫧",
+      "context_eng": "Green leaves make oxygen for humans and animals to breathe.",
+      "context_chi": "綠葉製造氧氣供人類與動物呼吸。",
+      "chant": "o-x-y-g-e-n，中間有 y 氧氣真新鮮！",
+      "compare": "oxygen (氧氣) vs. carbon dioxide (二氧化碳)。"
+    },
+    {
+      "id": "voc_tea17",
+      "book_id": "tea_midterm",
+      "unit_id": "tea_midterm_1",
+      "word": "warmth",
+      "pos": "名詞 (Noun, 不可數)",
+      "chi": "溫暖 / 暖意",
+      "breakdown": "warm (形容詞：溫暖的) + -th (抽象名詞字尾) -> 溫暖、熱度。",
+      "trick": "Discover 3 U15 必考『-th 抽象名詞四兄弟』之一：warm 直接加 th 變成 warmth！",
+      "scene": "春天的陽光灑在泥土上，給種子帶來發芽所需的溫暖。",
+      "collocation": "-th 名詞四兄弟: warmth (溫暖), length (長度), strength (力量/強度), width (寬度)",
+      "img": "☀️",
+      "context_eng": "A strong stem pushes up toward the sunlight and warmth.",
+      "context_chi": "強壯的莖朝著陽光與溫暖向上生長。",
+      "chant": "warm 加 th 變名詞，陽光 warmth 暖洋洋！",
+      "compare": "warm (形容詞：溫暖的) vs. warmth (名詞：溫暖)。"
+    },
+    {
+      "id": "voc_tea18",
+      "book_id": "tea_midterm",
+      "unit_id": "tea_midterm_1",
+      "word": "strength",
+      "pos": "名詞 (Noun)",
+      "chi": "力量 / 強度 / 體力",
+      "breakdown": "strong (強壯的) 母音 o 變 e + -th -> strength (力量/強度)。",
+      "trick": "注意拼寫變化：strong ➔ str-e-n-g-t-h（o 變成 e，且後面有 g 再加 th）！跟 long ➔ length 完全同規律！",
+      "scene": "大樹深扎進土壤裡的樹根擁有驚人的抓地強度與力量。",
+      "collocation": "同規律變化: long (長的) ➔ length (長度)；strong (強的) ➔ strength (強度)；wide (寬的) ➔ width (寬度)",
+      "img": "💪",
+      "context_eng": "Scientists can measure the length of its stem, the width of its leaves, and the strength of its roots.",
+      "context_chi": "科學家可以測量它莖的長度、葉子的寬度以及根部的強度。",
+      "chant": "strong 與 long 變名詞，o 改 e 加 th 記心裡 (strength / length)！",
+      "compare": "strong (形容詞：強壯的) vs. strength (名詞：力量/強度)。"
     }
   ],
   "grammar": [
@@ -14423,15 +14705,28 @@ const ENGLISH_DATA = {
       "id": "gra_tea01",
       "book_id": "tea_midterm",
       "unit_id": "tea_midterm_1",
-      "rule_title": "🔥 岱崙 3C 小考兩大魔王題型搶分公式（倒裝附和句 + 三級副詞長句合成）",
-      "eng_exp": "Master the two highest-weight sentence writing tasks in Tiger English Academy 3C Quizzes: (1) Past Simple Agreement with so / too / either / neither; (2) Three-tier Adverb Comparison combining positive, comparative, and superlative adverbs in one long sentence.",
-      "chi_exp": "【Rex 期中考必拿回的 23 分救命公式】\n① **Week 2 倒裝與附和句 (Grammar U13)**：\n   • 先看題幹有沒有動詞！若題幹只有 `[Olivia, Penny - 100% on quiz / so]`，前半句一定要自己補上過去式動詞 **`got`** 與所有格 **`her/his`** ➔ `Olivia got 100% on her quiz`\n   • 肯定句尾：`, and Michael did, too.`（或 `, and Michael got 95% on his quiz, too.`）\n   • 肯定倒裝：`, and so did Penny.`（萬萬不可寫 `are` 或 `100% did`！）\n   • 否定句尾：`Ray didn't pass the quiz, and Jim didn't, either.`（過去式否定必用 `didn't + 原形 V`，不可寫 `are not pass`！）\n   • 否定倒裝：`Ray didn't pass the quiz, and neither did Jim.`\n\n② **Week 4 & 5 三級副詞比較長句合成 (Grammar U14)**：\n   • 標準三段式結構：`[主詞1 + V + 原級副詞], [主詞2 + V + 比較級副詞 + than + 主詞1], but [主詞3 + V + the + 最高級副詞].`\n   • 單音節副詞 (`fast, hard, high, late, early`)：直接加 `-er / -est`（`fast ➔ faster than ➔ the fastest`，**嚴禁加 more**！）。\n   • 多音節 `-ly` 副詞 (`quickly,ゆっくり/slowly, clearly, horribly, beautifully`)：用 `more ... than / the most ...`（`quickly ➔ more quickly than ➔ the most quickly`）。\n   • 不規則副詞 (`far, well, badly`)：`far ➔ farther/further than ➔ the farthest/furthest`；`well ➔ better than ➔ the best`。\n   • **三大防扣分鐵律**：(A) 可數單數主詞前要加 `a / an`（`A person`, `An eight year old`）且第三人稱單數現在式動詞要加 `-s`（`runs`, `laughs`）；(B) `than` 後方必須是第一個主詞，不可重複寫第二個主詞；(C) 最高級前面一定要加 **`the`**！",
+      "rule_title": "🔥 岱崙 3C 小考 (W2~W7) 兩大魔王題型搶分公式（倒裝附和句 + 三級副詞長句合成）",
+      "eng_exp": "Master the two highest-weight sentence writing tasks in Tiger English Academy 3C Quizzes (W2~W7): (1) Agreement across tenses and modals (did, will, doesn't, can't) with so / too / either / neither; (2) Three-tier Adverb Comparison combining positive, comparative, and superlative adverbs without replacing action verbs with 'is'.",
+      "chi_exp": "【Rex 期中考必拿回的 30 分救命公式】\n① **W2 & W7 倒裝與附和句 (Grammar U13)**：\n   • **先抓時態與助動詞**：看到 `tomorrow` 必用未來式 **`will`**（`, and so will Sean.`，不可寫 `so do Sean ❌`）；看到第三人稱單數現在式否定必用 **`doesn't`**（`Rachel doesn't..., and Nicole doesn't, either.`，不可寫 `do not ❌`）；看到情態助動詞 **`can't`** 倒裝必鏡像沿用 **`can`**（`, and neither can ostriches.`，不可換成 `neither do ❌`）！\n   • 若題幹只有 `[Olivia, Penny - 100% on quiz / so]`，前半句一定要自己補上過去式動詞 **`got`** 與所有格 **`her/his`** ➔ `Olivia got 100% on her quiz, and so did Penny.`\n\n② **W4, W5 & W7 三級副詞比較長句合成 (Grammar U14)**：\n   • 標準三段式結構：`[主詞1 + V + 原級副詞], [主詞2 + V + 比較級副詞 + than + 主詞1], but [主詞3 + V + the + 最高級副詞].`\n   • **W7 考場四大防扣分鐵律**：\n     (A) **最高級子句嚴禁把動作動詞換成 `is`**：`but Anne sings the most beautifully`（不可寫 `Anne is the most beautifully ❌`）、`but Elizabeth got up the earliest`（不可寫 `Elizabeth is the earliest ❌`）！\n     (B) **兩大不規則副詞必背**：`well ➔ better than ➔ the best`（不可寫 `will than ❌`）；`badly ➔ worse than ➔ the worst`（不可寫 `more badly / the most badly ❌`）！\n     (C) **`easily` 是兩音節 `-ly` 副詞**：必須用 `more easily than / the most easily`（千萬不可把 `I can learn` 省略掉並改寫成形容詞 `is easilier / is the easiliest ❌`）！\n     (D) 單音節副詞 (`fast, hard, high, late, early`) 直接加 `-er / -est`（嚴禁加 `more`），且最高級前必加 **`the`**！",
       "examples": [
-        "【W2 倒裝滿分範本】Olivia got 100% on her quiz, and so did Penny. / Ray didn't pass the quiz, and neither did Jim.",
+        "【W2 & W7 倒裝滿分範本】Roger will see the new Iron Man movie tomorrow, and so will Sean. / Penguins can't fly, and neither can ostriches.",
         "【W4 單音節副詞滿分範本】A person runs fast, a dog runs faster than a person, but a lion runs the fastest.",
-        "【W4 多音節副詞滿分範本】A five year old can walk quickly, an eight year old can walk more quickly than a five year old, but an adult can walk the most quickly.",
-        "【W5 不規則副詞滿分範本】A frog can jump far, a rabbit can jump farther than a frog, but a kangaroo can jump the farthest.",
-        "【W5 單三動詞滿分範本】A clown laughs horribly, a ghost laughs more horribly than a clown, but a witch laughs the most horribly."
+        "【W7 不規則副詞 well 滿分範本】Hana did her homework well, Ingrid did her homework better than Hana, but Jeremy did his homework the best.",
+        "【W7 不規則副詞 badly 滿分範本】Fred plays the electric guitar badly, Ted plays the electric guitar worse than Fred, but Bill plays the electric guitar the worst.",
+        "【W7 保留動詞滿分範本】I can learn maths easily, I can learn science more easily than maths, but I can learn Chinese the most easily."
+      ]
+    },
+    {
+      "id": "gra_tea02",
+      "book_id": "tea_midterm",
+      "unit_id": "tea_midterm_1",
+      "rule_title": "🔥 岱崙 W6 & W7 抓錯題與容器量詞必考鐵律（WR3 U5 14 錯 + ODG3 U15 量詞）",
+      "eng_exp": "Avoid the exact traps from Week 6 Proofreading ('If I Had 3000 Dollars') and Week 7 Part A Measure Words ('seven slices of bread').",
+      "chi_exp": "【W6 14 處抓錯題 & W7 量詞造句避坑指南】\n① **Week 6《If I Had 3000 Dollars》漏抓與誤改 3 大重點**：\n   • `go to a baseball game`：不及物動詞 `go` 後接地點或比賽，中間必有介系詞 **`to`**（原卷印 `go a baseball game ❌`）！\n   • `With the rest of the money`：表示「用剩下的錢」固定為 `With` + **`the`** + `rest of the money`（原卷漏 `the`）！\n   • `put it in the bank`：代名詞 `it` 指代前面單數不可數的 `the rest of the money`，原本完全正確，千萬不要改成 `you`！\n\n② **Week 7 容器量詞與不可數名詞 3 重鐵律 (Grammar U15)**：\n   • 吐司/麵包切片必用 **`slices`**（不用 `packet`）➔ `There are seven slices of bread.`\n   • 數量超過 1 時，複數 `-s` **只能加在前面的容器/形狀量詞上**（`seven slices`），後面的不可數名詞 **`bread` 絕對不能加 `s`**（Rex 曾寫成 `seven packet of breads ❌` 連中三槍）！",
+      "examples": [
+        "【W6 抓錯必背 #1】First, I love sports, so I would go to a baseball game with my sister.",
+        "【W6 抓錯必背 #2】With the rest of the money, I would put it in the bank.",
+        "【W7 量詞滿分句】There are seven slices of bread. / There are five bars of chocolate."
       ]
     }
   ],
@@ -40801,6 +41096,118 @@ const ENGLISH_DATA = {
       "explanation": "🟢 正解：wedge (楔子) / knife (小刀) / mountain (山脈) / wheelchair (輪椅) / furnace (熔爐) / frames (鏡框)。\n⚠️ 避開考場鉛筆錯字：wadge ❌、Knif ❌、mountion ❌、whillchair ❌、furnes ❌、france ❌！"
     },
     {
+      "id": "q_tea08",
+      "book_id": "tea_midterm",
+      "unit_id": "tea_midterm_1",
+      "type": "vocab",
+      "question": "【岱崙 W6 考卷真題】Discover 3 (Unit 15) 植物生長聽寫中，『花蜜』與『花瓣』的正確拼寫為：",
+      "options": [
+        "nectar / petals",
+        "nector / patels",
+        "nectar / patels",
+        "nector / petals"
+      ],
+      "answer": "nectar / petals",
+      "difficulty": "★★★★☆",
+      "explanation": "🟢 正解：nectar (花蜜 n-e-c-t-a-r) / petals (花瓣 p-e-t-a-l-s)。\n⚠️ 考場失分剖析：Rex 在 W6 聽寫誤寫成『nector ❌』與『patels ❌』！口訣：花蜜甜如 star (-tar)，花瓣開頭是寵物 pet (pet-als)！"
+    },
+    {
+      "id": "q_tea09",
+      "book_id": "tea_midterm",
+      "unit_id": "tea_midterm_1",
+      "type": "vocab",
+      "question": "【岱崙 W6 考卷真題】RWW6 (Units 7 & 8) 聽寫大魔王！下列哪一組單字的拼寫與大小寫「100% 完全正確」？",
+      "options": [
+        "Mexican / language / official / government / French / countries / example / Mandarin / thousand / in fact",
+        "Maxican / langauges / offical / goverment / franch / contries / exemple / manderin / thoudnd / infecte",
+        "Mexican / language / offical / goverment / French / countries / example / Mandarin / thousand / in fact",
+        "Mexican / langauge / official / government / franch / contries / example / manderin / thousand / infect"
+      ],
+      "answer": "Mexican / language / official / government / French / countries / example / Mandarin / thousand / in fact",
+      "difficulty": "★★★★★",
+      "explanation": "🟢 正解：Mexican / language / official / government / French / countries / example / Mandarin / thousand / in fact。\n⚠️ 這 10 個字正是 Rex 在 W6 Part B 被扣 8 分的真實錯字，考前務必逐字默寫全對！"
+    },
+    {
+      "id": "q_tea10",
+      "book_id": "tea_midterm",
+      "unit_id": "tea_midterm_1",
+      "type": "grammar",
+      "question": "【岱崙 W6 考卷真題】在《If I Had 3000 Dollars》改錯題中，下列哪兩個句子已經完全修正了 Rex 漏抓的錯誤？",
+      "options": [
+        "First, I would go to a baseball game with my sister. / With the rest of the money, I would put it in the bank.",
+        "First, I would go a baseball game with my sister. / With rest of the money, I would put you in the bank.",
+        "First, I would go to a baseball game with my sister. / With rest of the money, I would put it in the bank.",
+        "First, I would go a baseball game with my sister. / With the rest of the money, I would put you in the bank."
+      ],
+      "answer": "First, I would go to a baseball game with my sister. / With the rest of the money, I would put it in the bank.",
+      "difficulty": "★★★★☆",
+      "explanation": "🟢 正解：go to a baseball game（必加介系詞 to）與 With the rest of the money, I would put it in the bank（必加定冠詞 the，且受詞代名詞用 it 指代錢，不可改成 you）！"
+    },
+    {
+      "id": "q_tea11",
+      "book_id": "tea_midterm",
+      "unit_id": "tea_midterm_1",
+      "type": "grammar",
+      "question": "【岱崙 W7 考卷真題】Grammar 3 (Unit 15) 量詞看圖造句：『盤子上有七片麵包』的滿分英文句為：",
+      "options": [
+        "There are seven slices of bread.",
+        "There are seven packet of breads.",
+        "There are seven slices of breads.",
+        "There are seven slice of bread."
+      ],
+      "answer": "There are seven slices of bread.",
+      "difficulty": "★★★★☆",
+      "explanation": "🟢 正解：There are seven slices of bread。\n⚠️ 考場三重失分剖析：Rex 在 W7 寫成『There are seven packet of breads ❌』：① 切片麵包量詞是 slice 不是 packet；② 七片必須加複數 -s (slices)；③ 不可數名詞 bread 永遠不加 -s！"
+    },
+    {
+      "id": "q_tea12",
+      "book_id": "tea_midterm",
+      "unit_id": "tea_midterm_1",
+      "type": "grammar",
+      "question": "【岱崙 W7 考卷真題】請選出 W7 Part B 倒裝與附和句『3 題全對』的滿分組合：",
+      "options": [
+        "① Roger will see the new Iron Man movie tomorrow, and so will Sean. ② Rachel doesn't learn to play the piano, and Nicole doesn't, either. ③ Penguins can't fly, and neither can ostriches.",
+        "① Roger see the new Iron Man movie tomorrow, so do Sean. ② Rachel do not learn to play the piano, Nicole do not, either. ③ Penguins can't fly, neither do ostriches.",
+        "① Roger will see the new Iron Man movie tomorrow, and so does Sean. ② Rachel doesn't learn to play the piano, and neither does Nicole. ③ Penguins can't fly, and neither do ostriches.",
+        "① Roger sees the new Iron Man movie tomorrow, and so will Sean. ② Rachel don't learn to play the piano, and Nicole don't, either. ③ Penguins can't fly, and ostriches can't, too."
+      ],
+      "answer": "① Roger will see the new Iron Man movie tomorrow, and so will Sean. ② Rachel doesn't learn to play the piano, and Nicole doesn't, either. ③ Penguins can't fly, and neither can ostriches.",
+      "difficulty": "★★★★★",
+      "explanation": "🟢 正解：① 看到 tomorrow 必用未來式 will ... so will Sean；② 單數主詞 Rachel / Nicole 否定必用 doesn't ... doesn't, either；③ 情態動詞 can't 的否定倒裝必用 neither can ostriches（不可換成 do）！"
+    },
+    {
+      "id": "q_tea13",
+      "book_id": "tea_midterm",
+      "unit_id": "tea_midterm_1",
+      "type": "grammar",
+      "question": "【岱崙 W7 考卷真題】How well did they do their homework? (Hana, Ingrid & Jeremy) 與 How badly do they play the electric guitar? (Fred, Ted & Bill) 滿分造句為：",
+      "options": [
+        "Hana did her homework well, Ingrid did her homework better than Hana, but Jeremy did his homework the best. / Fred plays badly, Ted plays worse than Fred, but Bill plays the worst.",
+        "Hana did her homework well, Ingrid did will than Hana, but Jeremy do the best. / Fred plays badly, Ted plays more badly than Fred, but Bill play the most badly.",
+        "Hana did her homework good, Ingrid did better than Hana, but Jeremy is the best. / Fred plays badly, Ted plays badder than Fred, but Bill plays the baddest.",
+        "Hana did her homework well, Ingrid did better than Hana, but Jeremy did the most well. / Fred plays badly, Ted plays worse than Fred, but Bill is the worst."
+      ],
+      "answer": "Hana did her homework well, Ingrid did her homework better than Hana, but Jeremy did his homework the best. / Fred plays badly, Ted plays worse than Fred, but Bill plays the worst.",
+      "difficulty": "★★★★★",
+      "explanation": "🟢 正解：兩大不規則副詞必背：well ➔ better than ➔ the best（過去式動詞一律用 did）；badly ➔ worse than ➔ the worst（單數現在式動詞必加 -s: plays）！"
+    },
+    {
+      "id": "q_tea14",
+      "book_id": "tea_midterm",
+      "unit_id": "tea_midterm_1",
+      "type": "grammar",
+      "question": "【岱崙 W7 考卷真題】How easily can you learn: maths, science & Chinese? 與 How beautifully do they sing? (Beth,icky & Anne) 滿分造句為：",
+      "options": [
+        "I can learn maths easily, I can learn science more easily than maths, but I can learn Chinese the most easily. / Beth sings beautifully, Vicky sings more beautifully than Beth, but Anne sings the most beautifully.",
+        "Maths is easily, science is easilier than maths, but Chinese is the easiliest. / Beth sings beautifully, Vicky sings more beautifully than Beth, but Anne is the most beautifully.",
+        "I learn maths easy, science more easy than maths, but Chinese the easiest. / Beth sings beautifully, Vicky sings beautifullier than Beth, but Anne sings the beautifulliest.",
+        "I can learn maths easily, science more easily than maths, but Chinese is the most easily. / Beth sing beautifully, Vicky sing more beautifully than Beth, but Anne is the most beautifully."
+      ],
+      "answer": "I can learn maths easily, I can learn science more easily than maths, but I can learn Chinese the most easily. / Beth sings beautifully, Vicky sings more beautifully than Beth, but Anne sings the most beautifully.",
+      "difficulty": "★★★★★",
+      "explanation": "🟢 正解：① easily 是副詞修飾動詞 learn，比較級/最高級為 more easily / the most easily，絕對不可省略 I can learn 寫成 Science is easilier ❌！② 最高級子句必須保留一般動詞 sings (Anne sings the most beautifully)，不可把 sings 換成 is ❌！"
+    },
+    {
       "id": "bg_mid_001",
       "book_id": "gra3",
       "unit_id": "gra3_13",
@@ -41699,6 +42106,114 @@ const ENGLISH_DATA = {
       "answer": "In orienteering, a racer who crosses the finish line first without a full control card does NOT win the race.",
       "difficulty": "Lv.10 (★★★★★)",
       "explanation": "🟢 正確語感直覺：定向越野必須集滿全卡所有控制點 (a full card with all 18 controls) 才能獲勝，漏打卡就算第一個衝線也會輸！\n🔴 誘答盲點排除：B 山頂在霧之上 (above the fog)；C 墨西哥未立法無官方語言；D Erico 認為發問是 Rosa 表達友善 (friendly) 的方式。"
+    },
+    {
+      "id": "bg_mid_051",
+      "book_id": "tea_midterm",
+      "unit_id": "tea_midterm_1",
+      "type": "brain_gym",
+      "is_midterm": true,
+      "star": 3,
+      "question": "【岱崙 W7 考卷真題】Penguins can't fly, and neither ______ ostriches.",
+      "options": [
+        "can",
+        "do",
+        "are",
+        "did"
+      ],
+      "answer": "can",
+      "difficulty": "Lv.3 (★★☆☆☆)",
+      "explanation": "🟢 正確語感直覺：前句使用情態助動詞 can't，否定倒裝必須鏡像沿用情態助動詞『neither can ostriches』！\n🔴 誘答盲點排除：Rex 在 W7 考卷誤寫成『neither do ostriches ❌』，把情態動詞 can 錯換成一般助動詞 do！"
+    },
+    {
+      "id": "bg_mid_052",
+      "book_id": "tea_midterm",
+      "unit_id": "tea_midterm_1",
+      "type": "brain_gym",
+      "is_midterm": true,
+      "star": 3,
+      "question": "【岱崙 W7 考卷真題】Roger ______ see the new Iron Man movie tomorrow, and so ______ Sean.",
+      "options": [
+        "will; will",
+        "see; do",
+        "sees; does",
+        "went; did"
+      ],
+      "answer": "will; will",
+      "difficulty": "Lv.3 (★★☆☆☆)",
+      "explanation": "🟢 正確語感直覺：看到未來時間副詞 tomorrow（明天），前半句必用未來式 will see，後半句肯定倒裝必用『so will Sean』！\n🔴 誘答盲點排除：Rex 在 W7 考卷漏看 tomorrow 寫成『Roger see..., so do Sean ❌』被扣分！"
+    },
+    {
+      "id": "bg_mid_053",
+      "book_id": "tea_midterm",
+      "unit_id": "tea_midterm_1",
+      "type": "brain_gym",
+      "is_midterm": true,
+      "star": 5,
+      "question": "【岱崙 W7 考卷真題】Hana did her homework well, Ingrid did her homework ______ than Hana, but Jeremy ______ his homework the best.",
+      "options": [
+        "better; did",
+        "will; do",
+        "more well; did",
+        "better; is"
+      ],
+      "answer": "better; did",
+      "difficulty": "Lv.5 (★★★☆☆)",
+      "explanation": "🟢 正確語感直覺：副詞 well 的不規則比較級是 better（絕不是 will！），且題幹問 did they do，過去式動詞一律用 did！\n🔴 誘答盲點排除：Rex 在 W7 考卷寫成『Ingrid did will than Hana, but Jeremy do the best ❌』，既拼錯比較級又錯了時態！"
+    },
+    {
+      "id": "bg_mid_054",
+      "book_id": "tea_midterm",
+      "unit_id": "tea_midterm_1",
+      "type": "brain_gym",
+      "is_midterm": true,
+      "star": 5,
+      "question": "【岱崙 W7 考卷真題】Fred plays the electric guitar badly, Ted plays ______ than Fred, but Bill plays ______.",
+      "options": [
+        "worse; the worst",
+        "more badly; the most badly",
+        "badder; the baddest",
+        "worse; the most badly"
+      ],
+      "answer": "worse; the worst",
+      "difficulty": "Lv.5 (★★★☆☆)",
+      "explanation": "🟢 正確語感直覺：不規則副詞 badly 的比較級是 worse，最高級是 the worst！\n🔴 誘答盲點排除：Rex 在 W7 考卷誤寫成『more badly / the most badly ❌』！bad 與 badly 的比較級/最高級都是 worse / the worst！"
+    },
+    {
+      "id": "bg_mid_055",
+      "book_id": "tea_midterm",
+      "unit_id": "tea_midterm_1",
+      "type": "brain_gym",
+      "is_midterm": true,
+      "star": 6,
+      "question": "【岱崙 W7 考卷真題】Look at the picture (7 slices of bread). There are seven ______ of ______.",
+      "options": [
+        "slices; bread",
+        "packet; breads",
+        "slices; breads",
+        "packets; breads"
+      ],
+      "answer": "slices; bread",
+      "difficulty": "Lv.6 (★★★☆☆)",
+      "explanation": "🟢 正確語感直覺：切片麵包量詞用 slices，且複數 -s 只能加在量詞 slices 上，不可數名詞 bread 永遠不加 -s！\n🔴 誘答盲點排除：Rex 在 W7 考卷寫出『seven packet of breads ❌』，一次犯了選錯量詞、量詞漏 s、不可數加 s 三重錯誤！"
+    },
+    {
+      "id": "bg_mid_056",
+      "book_id": "tea_midterm",
+      "unit_id": "tea_midterm_1",
+      "type": "brain_gym",
+      "is_midterm": true,
+      "star": 9,
+      "question": "【岱崙 W7 考卷真題】Beth sings beautifully, Vicky sings more beautifully than Beth, but Anne ______ the most beautifully.",
+      "options": [
+        "sings",
+        "is",
+        "sing",
+        "does"
+      ],
+      "answer": "sings",
+      "difficulty": "Lv.9 (★★★★★)",
+      "explanation": "🟢 正確語感直覺：最高級副詞 the most beautifully 用來修飾動作『唱歌 (sings)』，第三子句必須保留一般動詞 sings！\n🔴 誘答盲點排除：Rex 在 W7 考卷寫成『but Anne is the most beautifully ❌』，把動作動詞 sings 誤換成 be 動詞 is 是超常見失分坑！"
     }
   ]
 };

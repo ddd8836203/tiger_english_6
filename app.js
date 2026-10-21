@@ -1370,7 +1370,7 @@
     if (window.MIDTERM_DATABASE) {
       const teaUnit = window.MIDTERM_DATABASE.find(u => u.id === 'TEA_QUIZ_REVIEW');
       if (teaUnit && Array.isArray(teaUnit.mistake_buster)) {
-        teaUnit.mistake_buster.slice(0, 6).forEach((item, idx) => {
+        teaUnit.mistake_buster.forEach((item, idx) => {
           const errId = `TEA_MISTAKE_${idx + 1}`;
           if (!AppState.errors.some(e => e.id === errId)) {
             AppState.errors.push({
@@ -1476,7 +1476,7 @@
 
     list.innerHTML = '';
     if (filtered.length === 0) {
-      list.innerHTML = '<div class="no-data-msg" style="padding: 2.5rem; text-align: center;">🎉 目前沒有符合篩選條件的錯題！可點擊右上方「🔥 載入岱崙小考 18 道真實失分題」進行考前弱點特訓！</div>';
+      list.innerHTML = '<div class="no-data-msg" style="padding: 2.5rem; text-align: center;">🎉 目前沒有符合篩選條件的錯題！可點擊右上方「🔥 載入岱崙 W2~W7 真實失分題」進行考前弱點特訓！</div>';
       return;
     }
 
@@ -3027,7 +3027,7 @@ ${errorSample}
   }
 
   function renderQuizOriginalExam(sheet, isTeacher, isContrast, today) {
-    const title = '國小六年級 岱崙美語 3C Quiz 歷史真題 1:1 復原評量卷 (Week 2 / 4 / 5)';
+    const title = '國小六年級 岱崙美語 3C Quiz 歷史真題 1:1 復原評量卷 (Week 2 / 4 / 5 / 6 / 7)';
     
     let html = `
       <div class="exam-header">
@@ -3035,7 +3035,7 @@ ${errorSample}
           <div class="exam-grade-badge">岱崙美語 3C Quiz ｜ 歷史真實小考 1:1 復原重測</div>
           <h1 class="exam-title">${escapeHtml(title)}</h1>
           <div class="exam-meta-row">
-            <span>出卷來源：Week 2, Week 4, Week 5 歷史真卷</span>
+            <span>出卷來源：Week 2, 4, 5, 6, 7 歷史真卷全收錄</span>
             <span>滿分：100 分</span>
             <span>命題日期：${today}</span>
             ${isTeacher ? '<span style="color:#DC2626; font-weight:800;">【標準解答卷】</span>' : ''}
@@ -3057,24 +3057,34 @@ ${errorSample}
       </div>
     `;
 
-    // 考券 Part I: Spelling 單字聽寫 (Week 2, 4 真題)
+    // 考券 Part I: Spelling 單字聽寫 (Week 2, 4, 6 真實失分單字 20 題全收錄)
     const spellingItems = [
-      { num: 1, zh: "槓桿", ans: "lever", student: "lever", correct: true, note: "" },
-      { num: 2, zh: "斜坡道", ans: "ramp", student: "ramp", correct: true, note: "" },
-      { num: 3, zh: "楔子 (三角木)", ans: "wedge", student: "wadge", correct: false, note: "學生曾誤寫為 wadge，加強 /e/ 母音" },
-      { num: 4, zh: "小刀", ans: "knife", student: "Knif", correct: false, note: "學生曾漏寫字尾 e" },
-      { num: 5, zh: "山脈", ans: "mountain", student: "mountion", correct: false, note: "學生曾誤寫為 mountion" },
-      { num: 6, zh: "輪椅", ans: "wheelchair", student: "whillchair", correct: false, note: "學生曾誤寫為 whillchair" },
-      { num: 7, zh: "熔爐", ans: "furnace", student: "furnes", correct: false, note: "學生曾誤拼為 furnes，字尾為 -ace" },
-      { num: 8, zh: "眼鏡鏡框", ans: "frames", student: "France", correct: false, note: "學生誤寫成法國 France" },
-      { num: 9, zh: "在...前面", ans: "in front of", student: "infront off", correct: false, note: "三字需空格且介系詞為 of" },
-      { num: 10, zh: "在...對面", ans: "across from", student: "across from", correct: true, note: "" }
+      { num: 1, zh: "楔子 (三角木) [W2]", ans: "wedge", student: "wadge", correct: false, note: "誤寫為 wadge，注意短母音 e" },
+      { num: 2, zh: "小刀 [W2]", ans: "knife", student: "Knif", correct: false, note: "首字母誤大寫且漏字尾 e" },
+      { num: 3, zh: "山脈 [W2]", ans: "mountain", student: "mountion", correct: false, note: "誤寫為 mountion，字尾為 -tain" },
+      { num: 4, zh: "輪椅 [W2]", ans: "wheelchair", student: "whillchair", correct: false, note: "誤寫為 whillchair，輪子為 wheel" },
+      { num: 5, zh: "熔爐 [W4]", ans: "furnace", student: "furnes", correct: false, note: "誤拼為 furnes，字尾為 -ace" },
+      { num: 6, zh: "眼鏡鏡框 [W4]", ans: "frames", student: "France", correct: false, note: "誤寫成法國 France" },
+      { num: 7, zh: "在...前面 [W4]", ans: "in front of", student: "infront off", correct: false, note: "三字需分開且介系詞為單 f 的 of" },
+      { num: 8, zh: "花蜜 [W6]", ans: "nectar", student: "nector", correct: false, note: "誤拼為 nector，字尾為 -tar" },
+      { num: 9, zh: "花瓣 [W6]", ans: "petals", student: "patels", correct: false, note: "母音顛倒誤拼為 patels" },
+      { num: 10, zh: "墨西哥人/的 [W6]", ans: "Mexican", student: "Maxican", correct: false, note: "誤拼為 Maxican，開頭為 Mex-" },
+      { num: 11, zh: "語言 [W6]", ans: "language", student: "langauges", correct: false, note: "ua 顛倒為 au 且誤加 s" },
+      { num: 12, zh: "官方的 [W6]", ans: "official", student: "offical", correct: false, note: "c 後面漏寫 i (-cial)" },
+      { num: 13, zh: "政府 [W6]", ans: "government", student: "goverment", correct: false, note: "漏寫中間的 n (govern + ment)" },
+      { num: 14, zh: "法語 [W6]", ans: "French", student: "franch", correct: false, note: "忘記大寫 F 且把 e 寫成 a" },
+      { num: 15, zh: "國家 (複數) [W6]", ans: "countries", student: "contries", correct: false, note: "漏寫 o 後面的 u (count + ries)" },
+      { num: 16, zh: "例子 [W6]", ans: "example", student: "exemple", correct: false, note: "誤把 a 寫成 e" },
+      { num: 17, zh: "華語/普通話 [W6]", ans: "Mandarin", student: "manderin", correct: false, note: "忘記大寫 M 且把 da 寫成 de" },
+      { num: 18, zh: "千 (1,000) [W6]", ans: "thousand", student: "thoudnd", correct: false, note: "字尾應為沙子 sand (thou+sand)" },
+      { num: 19, zh: "事實上 [W6]", ans: "in fact", student: "infecte", correct: false, note: "兩字須分開，誤拼成感染 infecte" },
+      { num: 20, zh: "七片麵包 [W7]", ans: "seven slices of bread", student: "seven packet of breads", correct: false, note: "量詞用 slices，bread 不可數不加 s" }
     ];
 
     html += `
       <div class="exam-section">
-        <div class="section-title-print">Part I. Spelling Bee 考場聽寫單字 (每題 2 分，共 20 分)</div>
-        <div class="exam-questions-grid" style="grid-template-columns: 1fr 1fr; display: grid; gap: 8px 24px;">
+        <div class="section-title-print">Part I. Spelling Bee & Measure Words 考場真實錯字重測 (每題 1 分，共 20 分)</div>
+        <div class="exam-questions-grid" style="grid-template-columns: 1fr 1fr; display: grid; gap: 6px 20px;">
     `;
     spellingItems.forEach(sp => {
       let ansDisplay = '____________________';
@@ -3088,7 +3098,7 @@ ${errorSample}
         }
       }
       html += `
-        <div class="print-q-item" style="font-size:10.5pt; margin-bottom:4px;">
+        <div class="print-q-item" style="font-size:10pt; margin-bottom:3px;">
           <span class="q-num">${sp.num}.</span>
           <span class="q-text">${sp.zh} ➔ ${ansDisplay}</span>
         </div>
@@ -3096,137 +3106,151 @@ ${errorSample}
     });
     html += `</div></div>`;
 
-    // 考券 Part II: Grammar 3 (Unit 13) 倒裝附和句改寫 (Week 2 真題，學生得 5/12 分)
+    // 考券 Part II: Grammar 3 (Unit 13) 倒裝附和句改寫 (Week 2 & Week 7 真題全收錄)
     const grammar13Items = [
       {
-        q: "Ryan, Michael - 95% on quiz / too",
+        q: "[W2] Ryan, Michael - 95% on quiz / too",
         ans: "Ryan got 95% on his quiz, and Michael did, too.",
         student: "Ryan 95% on quiz, Michael are too",
         redNote: "補動詞 got，刪 are too 改 did, too",
         reason: "肯定附和句：前面有一般動詞 got，後面用助動詞 did + too"
       },
       {
-        q: "Brad, Lisa - did not play baseball / either",
-        ans: "Brad did not play baseball, and Lisa didn't either.",
-        student: "Brad did not play baseball, and Lisa didn't either.",
-        redNote: "滿分作答 ✓",
-        reason: "否定附和句：S + didn't + either 公式完全正確"
-      },
-      {
-        q: "Olivia, Penny - 100% on quiz / so",
+        q: "[W2] Olivia, Penny - 100% on quiz / so",
         ans: "Olivia got 100% on her quiz, and so did Penny.",
-        student: "Olivia 100% on quiz, Penny was so did",
+        student: "Olivia 100% on her quiz, 100% did Penny",
         redNote: "補動詞 got，改為 and so did Penny",
         reason: "倒裝附和句公式：so + 助動詞 (did) + 主詞 (Penny)"
       },
       {
-        q: "Ray, Jim - not pass quiz / either",
-        ans: "Ray didn't pass the quiz, and Jim didn't either.",
-        student: "Ray are not pass quiz, and Jim didn't either.",
-        redNote: "劃掉 are not pass，改為 didn't pass the quiz",
+        q: "[W2] Ray, Jim - not pass quiz / either",
+        ans: "Ray didn't pass the quiz, and Jim didn't, either.",
+        student: "Ray are not pass quiz, and Jim are either.",
+        redNote: "劃掉 are not pass 改 didn't pass，後句改 Jim didn't, either",
         reason: "過去式否定句必須使用助動詞 didn't + 原形動詞 pass"
+      },
+      {
+        q: "[W7] Roger, Sean – see new Iron Man movie tomorrow / so",
+        ans: "Roger will see the new Iron Man movie tomorrow, and so will Sean.",
+        student: "Roger see the new Iron Man movie tomorrow, so do Sean.",
+        redNote: "tomorrow 為未來式，補 will see，倒裝改為 so will Sean",
+        reason: "看到未來時間 tomorrow 必須使用助動詞 will，倒裝對齊用 so will + 主詞"
+      },
+      {
+        q: "[W7] Rachel, Nicole – not learn to play the piano / either",
+        ans: "Rachel doesn't learn to play the piano, and Nicole doesn't, either.",
+        student: "Rachel do not learn to play the piano, Nicole do not learn to play the piano, either.",
+        redNote: "單數主詞 Rachel / Nicole 否定助動詞必須用 doesn't (does not)",
+        reason: "第三人稱單數現在式否定必用 doesn't，不可用 do not"
+      },
+      {
+        q: "[W7] penguins, ostriches – can't fly / neither",
+        ans: "Penguins can't fly, and neither can ostriches.",
+        student: "Penguins can't fly, neither do ostriches.",
+        redNote: "前句為情態助動詞 can't，倒裝必須對齊用 neither can ostriches",
+        reason: "前句使用情態助動詞 can't，否定倒裝必須鏡像沿用 can，不可換成 do"
       }
     ];
 
     html += `
       <div class="exam-section">
-        <div class="section-title-print">Part II. Grammar 3 (U13) 倒裝附和句長句改寫 (每題 6 分，共 24 分)</div>
+        <div class="section-title-print">Part II. Grammar 3 (U13) 倒裝附和句長句改寫 (W2 & W7 真題，每題 4 分，共 24 分)</div>
         <div class="exam-questions-grid">
     `;
     grammar13Items.forEach((g, idx) => {
-      let ansLine = `<div class="write-line" style="border-bottom:1px solid #000; height:24px; margin-top:6px;"></div>`;
+      let ansLine = `<div class="write-line" style="border-bottom:1px solid #000; height:22px; margin-top:4px;"></div>`;
       if (isTeacher) {
         ansLine = `<div style="color:#DC2626; font-weight:600; margin-top:4px;">正解：${escapeHtml(g.ans)}</div>`;
       } else if (isContrast) {
         ansLine = `
           <div class="contrast-box">
-            <div>學生考場手寫：<span class="contrast-pencil">${escapeHtml(g.student)}</span> ${g.student === g.ans ? '<span style="color:#059669; font-weight:bold;">✓</span>' : '❌'}</div>
+            <div>學生考場手寫：<span class="contrast-pencil">${escapeHtml(g.student)}</span> ❌</div>
             <div>老師紅筆批註：<span class="contrast-redpen">${escapeHtml(g.ans)}</span> <small>(${escapeHtml(g.redNote)})</small></div>
             <span class="contrast-explanation">💡 語法盲點剖析：${escapeHtml(g.reason)}</span>
           </div>
         `;
       }
       html += `
-        <div class="print-q-item" style="margin-bottom:10px;">
+        <div class="print-q-item" style="margin-bottom:8px;">
           <span class="q-num">${idx + 1}.</span>
-          <span class="q-text">Prompt: <strong>[${escapeHtml(g.q)}]</strong></span>
+          <span class="q-text">Prompt: <strong>${escapeHtml(g.q)}</strong></span>
           ${ansLine}
         </div>
       `;
     });
     html += `</div></div>`;
 
-    // 考券 Part III: Grammar 3 (Unit 14) 副詞三級比較長句合成 (Week 4 / 5 真題全收錄，重大失分點 4/20 分)
+    // 考券 Part III: Grammar 3 (Unit 14) 副詞三級比較長句合成 (Week 4, 5, 7 真題全收錄)
     const grammar14Items = [
       {
-        q: "How did they do in their quiz? Anne: 100%, Penny: 95% & Eric: 90%",
-        ans: "Eric did well in his quiz, Penny did better than Eric, but Anne did the best.",
-        student: "Penny did better than Eric, but Anne did the best.",
-        redNote: "漏寫第一段原級子句 Eric did well in his quiz,",
-        reason: "必遵照三段式公式（well ➔ better than ➔ the best），須從 90% 的 Eric 寫起"
-      },
-      {
-        q: "How did they do in their quiz? Jerome: 65%, Ivan: 55% & Nate: 45%",
-        ans: "Jerome did badly in his quiz, Ivan did worse than Jerome, but Nate did the worst.",
-        student: "Ivan did worse Jerome, but Nate did the worst.",
-        redNote: "漏寫第一段原級 Jerome did badly in his quiz,；worse 後方補 than",
-        reason: "不規則副詞 badly ➔ worse than ➔ the worst，由 65% 往 45% 遞減比較"
-      },
-      {
-        q: "The distance they flew: eagle: 41km, duck: 91km & pigeon: 282km",
-        ans: "An eagle flew far, a duck flew farther than an eagle, but a pigeon flew the farthest.",
-        student: "A duck flew farther than an eagle, but a pigeon flew the farthest.",
-        redNote: "漏寫第一段原級 An eagle flew far,（注意 An eagle 冠詞）",
-        reason: "far ➔ farther/further than ➔ the farthest/furthest，注意過去式動詞 flew"
-      },
-      {
-        q: "How do they laugh? witch, vampire & zombie",
-        ans: "A witch laughs horribly, a vampire laughs more horribly than a witch, but a zombie laughs the most horribly.",
-        student: "A vampire laughed horribly than a witch, but a zoobie laughed the most horribly.",
-        redNote: "補第一段 A witch laughs horribly,；laughed 改現在式 laughs；horribly 前補 more；訂正 zombie",
-        reason: "題幹問 How do they laugh (現在式)，三單動詞必加 -s，多音節副詞比較級必加 more"
-      },
-      {
-        q: "How did they move? snail, tortoise & the old man",
-        ans: "The old man moved slowly, a tortoise moved more slowly than the old man, but a snail moved the most slowly.",
-        student: "A tortoise moved more slowly than an old man, but a snail moved the most slowly",
-        redNote: "補第一段 The old man moved slowly,（注意由慢 ➔ 更慢 ➔ 最慢排序）",
-        reason: "比誰移動更慢，最慢的 a snail 必須放在最後一段 the most slowly"
-      },
-      {
-        q: "How fast do they run? person, dog & lion",
+        q: "[W4] How fast do they run? (person, dog & lion)",
         ans: "A person runs fast, a dog runs faster than a person, but a lion runs the fastest.",
-        student: "A dog runs faster than a person, but lion can run fastest.",
-        redNote: "補第一段 A person runs fast,；lion 前補 a；fastest 前補 the；刪 can 改 runs",
-        reason: "單音節副詞 fast ➔ faster than ➔ the fastest；單數可數名詞必加 a，最高級必加 the"
+        student: "A person runs fast, a dog runs more faster than a dog, but a lion runs fastest.",
+        redNote: "刪 more；than 後改 a person；fastest 前補 the",
+        reason: "單音節副詞 fast 直接加 -er/-est 不可加 more；than 後接第一主詞；最高級必加 the"
       },
       {
-        q: "How quickly can they walk? five year old, eight year old & adult",
-        ans: "A five year old can walk quickly, an eight year old can walk more quickly than a five year old, but an adult can walk the most quickly.",
-        student: "An eight year old can walk more than a five year old, but an adult can walk the most quickly.",
-        redNote: "補第一段 A five year old can walk quickly,；more 後方補副詞 quickly",
-        reason: "比較級不可只寫 walk more than，必須寫完整 walk more quickly than"
-      },
-      {
-        q: "How far can they jump? frog, rabbit & kangaroo",
+        q: "[W5] How far can they jump? (frog, rabbit & kangaroo)",
         ans: "A frog can jump far, a rabbit can jump farther than a frog, but a kangaroo can jump the farthest.",
-        student: "A rabbit can jump further than a frog, but kangaroo can jump the furthest.",
-        redNote: "補第一段 A frog can jump far,；kangaroo 前補不定冠詞 a",
-        reason: "單數名詞 a kangaroo 不可裸奔漏冠詞"
+        student: "A frog can jump far, a rabbit can jump more farther than a frog, but a kangaroo can jump farthest.",
+        redNote: "刪多餘的 more；最高級 farthest 前方補定冠詞 the",
+        reason: "far 比較級 farther 已是比較級不可加 more；最高級 the farthest 必加 the"
+      },
+      {
+        q: "[W5] How horribly do they laugh? (clown, ghost & witch)",
+        ans: "A clown laughs horribly, a ghost laughs more horribly than a clown, but a witch laughs the most horribly.",
+        student: "A clown laugh horribly, a ghost laugh more horribly than a clown, but a witch laugh the most horribly.",
+        redNote: "三個單數主詞後的動詞 laugh 皆須補上第三人稱單數 -s (laughs)",
+        reason: "題幹問 do they laugh，拆為單數主詞 A clown / A ghost / A witch 時動詞必加 -s"
+      },
+      {
+        q: "[W7] How beautifully do they sing? (Beth, Vicky & Anne)",
+        ans: "Beth sings beautifully, Vicky sings more beautifully than Beth, but Anne sings the most beautifully.",
+        student: "Beth sings beautifully, Vicky sings more beautifully than Beth, but Anne is the most beautifully.",
+        redNote: "把最後子句的 is 劃掉，改回一般動詞 sings",
+        reason: "最高級副詞 the most beautifully 修飾動作唱歌，不可把動作動詞 sings 換成 be 動詞 is"
+      },
+      {
+        q: "[W7] How well did they do their homework? (Hana, Ingrid & Jeremy)",
+        ans: "Hana did her homework well, Ingrid did her homework better than Hana, but Jeremy did his homework the best.",
+        student: "Hana did her homework well, Ingrid did will than Hana, but Jeremy do the best.",
+        redNote: "will 改為不規則比較級 better；do 改為過去式 did",
+        reason: "well 的比較級是 better（不是 will），且過去式問句 did they do 動詞須維持過去式 did"
+      },
+      {
+        q: "[W7] How easily can you learn: Chinese, science & maths? (請依 makkelijk 程度排序)",
+        ans: "I can learn maths easily, I can learn science more easily than maths, but I can learn Chinese the most easily.",
+        student: "Maths is easily, science is easilier than maths, but Chinese is the easiliest.",
+        redNote: "補出主詞動詞 I can learn；副詞比較級/最高級改為 more easily / the most easily",
+        reason: "easily 是副詞修飾 learn，不可省略 I can learn 且不可自創 easilier / easiliest"
+      },
+      {
+        q: "[W7] How badly do they play the electric guitar? (Fred, Ted & Bill)",
+        ans: "Fred plays the electric guitar badly, Ted plays the electric guitar worse than Fred, but Bill plays the electric guitar the worst.",
+        student: "Fred plays the electric guitar badly, Ted plays the electric guitar more badly than Fred, but Bill play the most badly.",
+        redNote: "more badly 改 worse；Bill play 補 s (plays)；the most badly 改 the worst",
+        reason: "badly 為不規則變化：badly ➔ worse than ➔ the worst（不可加 more / most）"
+      },
+      {
+        q: "[W7] How early did they get up? (1. Elizabeth 05:40, 2. Sarah 06:15 & 3. Joanne 07:05)",
+        ans: "Joanne got up early, Sarah got up earlier than Joanne, but Elizabeth got up the earliest.",
+        student: "Joanne got up early, Sarah got up earlier than Joanne, but Elizebeth is the earliest.",
+        redNote: "把最後子句的 is 改為過去式動詞片語 got up（注意 Elizabeth 拼字）",
+        reason: "第三子句主詞 Elizabeth 後必須保留過去式動作動詞 got up，不可用 is 取代"
       }
     ];
 
     html += `
       <div class="exam-section">
-        <div class="section-title-print">Part III. Grammar 3 (U14) 副詞三級長句合成 (每題 4 分，共 32 分)</div>
+        <div class="section-title-print">Part III. Grammar 3 (U14) 副詞三級長句合成 (W4, W5 & W7 真題，每題 4.5 分，共 36 分)</div>
         <div style="font-size:9.5pt; background:#F8FAFC; border:1px solid #CBD5E1; padding:6px 10px; border-radius:4px; margin-bottom:10px; color:#1E293B;">
-          <div><strong>📌 副詞字庫 Adverbs</strong>：<code>[well, horribly, badly, quickly, far, fast, slowly]</code></div>
-          <div><strong>📐 必寫三段公式 Sentence form</strong>：<code>&lt;adverb clause&gt; , + &lt;comparative clause&gt; , + but + &lt;superlative clause&gt; .</code>（注意動詞時態與問句對齊！）</div>
+          <div><strong>📌 副詞字庫 Adverbs</strong>：<code>[fast, far, horribly, beautifully, well, easily, badly, early]</code></div>
+          <div><strong>📐 必寫三段公式 Sentence form</strong>：<code>&lt;adverb clause&gt; , + &lt;comparative clause&gt; , + but + &lt;superlative clause&gt; .</code>（最高級子句嚴禁把一般動詞換成 is！）</div>
         </div>
         <div class="exam-questions-grid">
     `;
     grammar14Items.forEach((g, idx) => {
-      let ansLine = `<div class="write-line" style="border-bottom:1px solid #000; height:24px; margin-top:6px;"></div>`;
+      let ansLine = `<div class="write-line" style="border-bottom:1px solid #000; height:22px; margin-top:4px;"></div>`;
       if (isTeacher) {
         ansLine = `<div style="color:#DC2626; font-weight:600; margin-top:4px;">正解：${escapeHtml(g.ans)}</div>`;
       } else if (isContrast) {
@@ -3239,26 +3263,26 @@ ${errorSample}
         `;
       }
       html += `
-        <div class="print-q-item" style="margin-bottom:12px;">
+        <div class="print-q-item" style="margin-bottom:10px;">
           <span class="q-num">${idx + 1}.</span>
-          <span class="q-text">Prompt: <strong>[${escapeHtml(g.q)}]</strong></span>
+          <span class="q-text">Prompt: <strong>${escapeHtml(g.q)}</strong></span>
           ${ansLine}
         </div>
       `;
     });
     html += `</div></div>`;
 
-    // 考券 Part IV: RWW6 Unit 6 定向越野課文長篇聽寫 (Week 5 真題 25/25 滿分)
+    // 考券 Part IV: Week 6 Write Right 3 (Unit 5) 14 錯字挑錯與 Week 5 RWW6 聽寫精華 (共 20 分)
     html += `
       <div class="exam-section">
-        <div class="section-title-print">Part IV. RWW6 (U6) 課文精準聽寫填空 (Orienteering 長篇，共 24 分)</div>
-        <div class="print-q-item" style="line-height:1.8; font-size:10.5pt; background:#F8FAFC; border:1px solid #E2E8F0; padding:12px; border-radius:6px;">
+        <div class="section-title-print">Part IV. Week 6《If I Had 3000 Dollars》14 處抓錯重測與 RWW6 課文填空 (共 20 分)</div>
+        <div class="print-q-item" style="line-height:1.75; font-size:10pt; background:#F8FAFC; border:1px solid #E2E8F0; padding:12px; border-radius:6px;">
     `;
     const dictationText = isTeacher ? 
-      `In the sport of orienteering, racers use a <strong style="color:#DC2626;">map</strong> and <strong style="color:#DC2626;">compass</strong> to find stations, which are called <strong style="color:#DC2626;">controls</strong>. A special <strong style="color:#DC2626;">flag</strong> marks each control. Controls are placed in tricky locations to challenge racers' <strong style="color:#DC2626;">navigation</strong> skills. Racers must punch their cards at every station to prove they visited it. The person who finishes the course in the <strong style="color:#DC2626;">fastest</strong> time wins the race.` :
+      `<strong>【W6 抓錯題滿分訂正完本】</strong>If I <strong style="color:#DC2626;">had</strong> 3000 dollars, I would do three things. First, I love sports, so I would go <strong style="color:#DC2626;">to</strong> a baseball game <strong style="color:#DC2626;">with</strong> my sister. Next, I would <strong style="color:#DC2626;">buy</strong> a new bike <strong style="color:#DC2626;">for</strong> my brother. His bike is very old, and he <strong style="color:#DC2626;">needs</strong> a new <strong style="color:#DC2626;">one</strong>. Finally, I would spend some money <strong style="color:#DC2626;">on</strong> myself. I would <strong style="color:#DC2626;">buy</strong> a new computer, a watch, and some video <strong style="color:#DC2626;">games</strong>. Those things would <strong style="color:#DC2626;">cost</strong> me about 1500 dollars. With <strong style="color:#DC2626;">the</strong> rest of the money, I would <strong style="color:#DC2626;">put</strong> it in the bank. Wouldn't it <strong style="color:#DC2626;">be</strong> great to have 3000 dollars?` :
       (isContrast ?
-      `In the sport of orienteering, racers use a <span class="contrast-redpen">map ✓</span> and <span class="contrast-redpen">compass ✓</span> to find stations, which are called <span class="contrast-redpen">controls ✓</span>. A special <span class="contrast-redpen">flag ✓</span> marks each control. Controls are placed in tricky locations to challenge racers' <span class="contrast-redpen">navigation ✓</span> skills. Racers must punch their cards at every station to prove they visited it. The person who finishes the course in the <span class="contrast-redpen">fastest ✓</span> time wins the race. <span style="display:block; color:#059669; font-weight:bold; margin-top:6px;">🎉 學生考場表現：25/25 滿分！生字拼寫與首字母大小寫零失誤！</span>` :
-      `In the sport of orienteering, racers use a <strong>(1) ________</strong> and <strong>(2) ________</strong> to find stations, which are called <strong>(3) ________</strong>. A special <strong>(4) ________</strong> marks each control. Controls are placed in tricky locations to challenge racers' <strong>(5) ________</strong> skills. Racers must punch their cards at every station to prove they visited it. The person who finishes the course in the <strong>(6) ________</strong> time wins the race.`);
+      `<strong>【W6 考場紅黑批改對照（得分 5/7）】</strong>If I <span class="contrast-redpen">had ✓</span> 3000 dollars, I would do three things. First, I love sports, so I would go <span class="contrast-redpen">[漏抓補 to ❌]</span> a baseball game <span class="contrast-redpen">with ✓</span> my sister. Next, I would <span class="contrast-redpen">buy ✓</span> a new bike <span class="contrast-redpen">for ✓</span> my brother. His bike is very old, and he <span class="contrast-redpen">needs ✓</span> a new <span class="contrast-redpen">one ✓</span>. Finally, I would spend some money <span class="contrast-redpen">on ✓</span> myself. I would <span class="contrast-redpen">[漏抓 by ➔ buy ❌]</span> a new computer, a watch, and some video <span class="contrast-redpen">games ✓</span>. Those things would <span class="contrast-redpen">cost ✓</span> me about 1500 dollars. With <span class="contrast-redpen">[漏抓補 the ❌]</span> rest of the money, I would <span class="contrast-redpen">put ✓</span> <span class="contrast-pencil">it 誤改為 you ❌</span> in the bank. Wouldn't it <span class="contrast-redpen">be ✓</span> great to have 3000 dollars?` :
+      `<strong>請在下列短文中圈出 14 個錯誤並於上方訂正：</strong><br>If I <u>have</u> 3000 dollars, I would do three things. First, I love sports, so I would <u>go a baseball game</u> <u>to</u> my sister. Next, I would <u>bought</u> a new bike <u>to</u> my brother. His bike is very old, and he <u>need</u> a new <u>it</u>. Finally, I would spend some money <u>in</u> myself. I would <u>by</u> a new computer, a watch, and some video <u>game</u>. Those things would <u>spend</u> me about 1500 dollars. <u>With rest</u> of the money, I would <u>putted</u> it in the bank. Wouldn't <u>it great</u> to have 3000 dollars?`);
 
     html += `${dictationText}</div></div>`;
 

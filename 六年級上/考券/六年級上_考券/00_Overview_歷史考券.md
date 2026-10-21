@@ -25,6 +25,10 @@
 | **Week 4** | Page 6 | `IMG_4019.HEIC` / `.jpg` | Grammar 3 U14 副詞三級比較長句合成 (原級+比較級+最高級 5題) | 4 / 20 | **20.0%** | [考券_六上_Week04_Page06.md](file:///c:/@植善課業/AI/英語學習網頁/六年級上/考券/六年級上_考券/考券_六上_Week04_Page06.md) |
 | **Week 5** | Page 7 | `IMG_4020.HEIC` / `.jpg` | RWW6 U6 尋寶定向運動課文長篇聽寫默寫 (The World of Orienteering p.40 前兩段) | 25 / 25 | **100%** | [考券_六上_Week05_Page07.md](file:///c:/@植善課業/AI/英語學習網頁/六年級上/考券/六年級上_考券/考券_六上_Week05_Page07.md) |
 | **Week 5** | Page 8 | `IMG_4021.HEIC` / `.jpg` | Grammar 3 U14 副詞長句比較 (3題) + Write Right 3 U5 假設語氣作文 (If I Had $6000) | 25 / 28 | 89.3% | [考券_六上_Week05_Page08.md](file:///c:/@植善課業/AI/英語學習網頁/六年級上/考券/六年級上_考券/考券_六上_Week05_Page08.md) |
+| **Week 6** | Page 9 | `IMG_4068.HEIC` / `.jpg` | Discover 3 U15 植物生長單字 (20題) + RWW6 U7&8 語言與國家單字聽寫 (15題) | 26 / 35 | 74.3% | [考券_六上_Week06_Page09.md](file:///c:/@植善課業/AI/英語學習網頁/六年級上/考券/六年級上_考券/考券_六上_Week06_Page09.md) |
+| **Week 6** | Page 10 | `IMG_4069.HEIC` / `.jpg` | Write Right 3 U5 短文 14 錯改錯 (If I Had $3000) + Grammar 3 How much/many (3題) | 17 / 19 | 89.5% | [考券_六上_Week06_Page10.md](file:///c:/@植善課業/AI/英語學習網頁/六年級上/考券/六年級上_考券/考券_六上_Week06_Page10.md) |
+| **Week 7** | Page 11 | `IMG_4070.HEIC` / `.jpg` | Grammar 3 U15 容器計量詞看圖造句 (Measure Words 10題) | 17.5 / 20 | 87.5% | [考券_六上_Week07_Page11.md](file:///c:/@植善課業/AI/英語學習網頁/六年級上/考券/六年級上_考券/考券_六上_Week07_Page11.md) |
+| **Week 7** | Page 12 | `IMG_4071.HEIC` / `.jpg` | Grammar 3 U13 倒裝附和句 (4題) + Grammar 3 U14 副詞三級比較問答 (5題) | 24 / 30 | 80.0% | [考券_六上_Week07_Page12.md](file:///c:/@植善課業/AI/英語學習網頁/六年級上/考券/六年級上_考券/考券_六上_Week07_Page12.md) |
 
 ---
 
